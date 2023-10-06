@@ -106,8 +106,46 @@ let common = {
       });
     });
   },
+  // class toggle
+  toggleClass: function(target, className, parent) {
+    parent === undefined ? target.classList.toggle(className) : target.closest(parent).classList.toggle(className);
+  },
+  // class toggle event bind
+  siblingsToggleClass: function(targetSelector, childrenSelector, initialIndex, className){
+    const targetElements = document.querySelectorAll(targetSelector);
+  
+    targetElements.forEach((targetElement) => {
+      const childrenElements = targetElement.querySelectorAll(childrenSelector);
+  
+      childrenElements.forEach((childElement, index) => {
+        const isActive = index === initialIndex;
+  
+        // Initialize classes based on the initial index
+        toggleClass(childElement, className, isActive);
+  
+        childElement.addEventListener('click', (e) => {
+          e.preventDefault();
+          
+          // remove
+          childrenElements.forEach((otherElement) => {
+            toggleClass(otherElement, className, false);
+          });
+  
+          // Add
+          toggleClass(e.currentTarget, className, true);
+        });
+      });
+    });
+
+    function toggleClass(element, className, isActive) {
+      isActive ? element.classList.add(className) : element.classList.remove(className);
+    }
+  }
 }
 common.init();
+
+
+common.siblingsToggleClass('.time_stamp_wrap', 'li', 0, 'active');
 
 
 
@@ -116,7 +154,7 @@ common.init();
 
 
 // swiper
-const swiper = new Swiper('.swiper', {
+const swiperTest = new Swiper('.swiper_scale', {
   slidesPerView: 3,
   centeredSlides: true,
   roundLengths: true,		// 이미지가 흐리게 나옴 방지
@@ -137,6 +175,15 @@ const swiper = new Swiper('.swiper', {
       slidesPerView: 1.5
     },
   }
+});
+
+// swiper
+const thumbImgWrap = new Swiper('.thumb_img_wrap .swiper', {
+  slidesPerView: 3,
+  spaceBetween: 20,
+  roundLengths: true,		// 이미지가 흐리게 나옴 방지
+  loop: true,
+
 });
 
 // circleProgress
@@ -166,7 +213,7 @@ function circleProgress(controlId, barSelector, valueSelector) {
   bar.style.strokeDasharray = CIRCUMFERENCE;
   progress(control.value);
 }
-circleProgress('control', '.bar', '.value');
+// circleProgress('control', '.bar', '.value');
 
 // bottomSheetModal
 function bottomSheetModal(showModalBtnSelector, bottomSheetSelector) {
@@ -228,24 +275,7 @@ function bottomSheetModal(showModalBtnSelector, bottomSheetSelector) {
   sheetOverlay.addEventListener("click", hideBottomSheet);
   showModalBtn.addEventListener("click", showBottomSheet);
 }
-bottomSheetModal(".show-modal", ".bottom-sheet");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// bottomSheetModal(".show-modal", ".bottom-sheet");
 
 // bottomSheetModal
 function bottomSheetModal2(targetSelector) {
@@ -314,5 +344,4 @@ function bottomSheetModal2(targetSelector) {
   // You can add a custom trigger event listener if needed.
   // For example: showModalBtn.addEventListener("click", showBottomSheet);
 }
-// Example usage:
 //bottomSheetModal2(".bottom-sheet");

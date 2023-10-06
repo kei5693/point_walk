@@ -11,6 +11,67 @@
   padding-top: 20px;
 }
 
+#wrap #header {
+  position: relative;
+  height: 44px;
+  margin: 0 30px;
+  padding-left: 34px;
+  display: flex;
+  align-items: center;
+}
+#wrap #header h1 {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--color-black);
+}
+#wrap #header .btn_back {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  background: #000;
+  font-size: 0;
+  line-height: 0;
+}
+#wrap #container .time_stamp_wrap {
+  height: 60px;
+  border-bottom: 1px solid #EEE;
+  margin-bottom: 2px;
+}
+#wrap #container .time_stamp_wrap > ul {
+  display: flex;
+  height: 100%;
+}
+#wrap #container .time_stamp_wrap > ul > li {
+  height: 100%;
+  margin-left: 20px;
+}
+#wrap #container .time_stamp_wrap > ul > li:first-child {
+  margin-left: 30px;
+}
+#wrap #container .time_stamp_wrap > ul > li a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--color-gray2);
+}
+#wrap #container .time_stamp_wrap > ul > li.active a {
+  font-weight: 800;
+  color: var(--color-black);
+}
+#wrap #container .time_stamp_wrap > ul > li.active a:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  background-color: var(--color-pri1);
+}
 body.active {
   overflow: hidden;
 }
@@ -39,11 +100,11 @@ body.active {
   font-weight: 900;
 }
 
-.swiper {
+.swiper_scale {
   width: 100%;
   height: 200px;
 }
-.swiper .swiper-slide {
+.swiper_scale .swiper-slide {
   background: lightgray;
   border-radius: 20px;
   transform: scale(0.8);
@@ -54,20 +115,20 @@ body.active {
   font-size: 30px;
   font-weight: bold;
 }
-.swiper .swiper-slide.swiper-slide-active {
+.swiper_scale .swiper-slide.swiper-slide-active {
   transform: scale(1);
   background: #fc0;
 }
-.swiper .swiper-button-prev,
-.swiper .swiper-rtl .swiper-button-next {
+.swiper_scale .swiper-button-prev,
+.swiper_scale .swiper-rtl .swiper-button-next {
   left: 0;
 }
-.swiper .swiper-button-next,
-.swiper .swiper-rtl .swiper-button-prev {
+.swiper_scale .swiper-button-next,
+.swiper_scale .swiper-rtl .swiper-button-prev {
   right: 0;
 }
 @media screen and (min-width: 1024px) {
-  .swiper {
+  .swiper_scale {
     width: 900px;
   }
 }
@@ -503,7 +564,7 @@ body.active {
 }
 
 .font-test,
-.swiper,
+.swiper_scale,
 .circle_progress_wrap,
 .number_count,
 .bottom_sheet_modal {
