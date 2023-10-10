@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>테스트</title>
+	<link rel="stylesheet" href="./css/swiper-bundle.min.css">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/animation.css">
+	<link rel="stylesheet" href="./css/common.css">
+	<script src="./js/swiper-bundle.min.js"></script>
+	<script src="./js/cdn.jsdelivr.net_npm_chart.js"></script>
+</head>
+
+<body>
+
+	<div id="wrap" class="test_wrap">
+		<div>
+			<canvas id="myChart"></canvas>
+		</div>
+		<script>
+			const ctx = document.getElementById('myChart');
+			var myChart = new Chart(ctx, {
+				type: 'doughnut',
+				data: {
+					datasets: [{
+						data: [8, 2],
+						backgroundColor: [
+							'red',
+							'transparent',
+						],
+					}, {
+						data: [7, 3],
+						backgroundColor: [
+							'blue',
+							'transparent',
+						],
+						// borderRadius: 60,
+						// borderWidth: 0,
+					},]
+				},
+				options: {
+					responsive: true,
+				},
+				// plugins: [{
+				// 	afterUpdate: function (chart) {
+				// 		const arcs = chart.getDatasetMeta(0).data;
+
+				// 		console.log(chart.getDatasetMeta(0));
+
+				// 		arcs.forEach(function (arc) {
+				// 			arc.round = {
+				// 				x: (chart.chartArea.left + chart.chartArea.right) / 2,
+				// 				y: (chart.chartArea.top + chart.chartArea.bottom) / 2,
+				// 				radius: (arc.outerRadius + arc.innerRadius) / 2,
+				// 				thickness: (arc.outerRadius - arc.innerRadius) / 2,
+				// 				backgroundColor: arc.options.backgroundColor
+				// 			}
+				// 		});
+				// 	},
+				// 	afterDraw: (chart) => {
+				// 		const {
+				// 			ctx,
+				// 			canvas
+				// 		} = chart;
+
+				// 		chart.getDatasetMeta(0).data.forEach(arc => {
+				// 			const startAngle = Math.PI / 2 - arc.startAngle;
+				// 			const endAngle = Math.PI / 2 - arc.endAngle;
+
+				// 			ctx.save();
+				// 			ctx.translate(arc.round.x, arc.round.y);
+				// 			ctx.fillStyle = arc.options.backgroundColor;
+				// 			ctx.beginPath();
+				// 			ctx.arc(arc.round.radius * Math.sin(endAngle), arc.round.radius * Math.cos(endAngle), arc.round.thickness, 0, 2 * Math.PI);
+				// 			ctx.closePath();
+				// 			ctx.fill();
+				// 			ctx.restore();
+				// 		});
+				// 	}
+				// }]
+			});
+		</script>
+
+		<!-- <canvas id="myChart"></canvas>
+		<script>
+			// round corners
+			Chart.pluginService.register({
+				afterUpdate: function (chart) {
+					if (chart.config.options.elements.arc.roundedCornersFor !== undefined) {
+						var arc = chart.getDatasetMeta(0).data[chart.config.options.elements.arc.roundedCornersFor];
+						arc.round = {
+							x: (chart.chartArea.left + chart.chartArea.right) / 2,
+							y: (chart.chartArea.top + chart.chartArea.bottom) / 2,
+							radius: (chart.outerRadius + chart.innerRadius) / 2,
+							thickness: (chart.outerRadius - chart.innerRadius) / 2 - 1,
+							backgroundColor: arc._model.backgroundColor
+						}
+					}
+				},
+
+				afterDraw: function (chart) {
+					if (chart.config.options.elements.arc.roundedCornersFor !== undefined) {
+						var ctx = chart.chart.ctx;
+						var arc = chart.getDatasetMeta(0).data[chart.config.options.elements.arc.roundedCornersFor];
+						var startAngle = Math.PI / 2 - arc._view.startAngle;
+						var endAngle = Math.PI / 2 - arc._view.endAngle;
+
+						ctx.save();
+						ctx.translate(arc.round.x, arc.round.y);
+						console.log(arc.round.startAngle)
+						ctx.fillStyle = arc.round.backgroundColor;
+						ctx.beginPath();
+						ctx.arc(arc.round.radius * Math.sin(startAngle), arc.round.radius * Math.cos(startAngle), arc.round.thickness, 0, 2 * Math.PI);
+						ctx.arc(arc.round.radius * Math.sin(endAngle), arc.round.radius * Math.cos(endAngle), arc.round.thickness, 0, 2 * Math.PI);
+						ctx.closePath();
+						ctx.fill();
+						ctx.restore();
+					}
+				},
+			});
+
+			// write text plugin
+			Chart.pluginService.register({
+				afterUpdate: function (chart) {
+					if (chart.config.options.elements.center) {
+						var helpers = Chart.helpers;
+						var centerConfig = chart.config.options.elements.center;
+						var globalConfig = Chart.defaults.global;
+						var ctx = chart.chart.ctx;
+
+						var fontStyle = helpers.getValueOrDefault(centerConfig.fontStyle, globalConfig.defaultFontStyle);
+						var fontFamily = helpers.getValueOrDefault(centerConfig.fontFamily, globalConfig.defaultFontFamily);
+
+						if (centerConfig.fontSize)
+							var fontSize = centerConfig.fontSize;
+						// figure out the best font size, if one is not specified
+						else {
+							ctx.save();
+							var fontSize = helpers.getValueOrDefault(centerConfig.minFontSize, 1);
+							var maxFontSize = helpers.getValueOrDefault(centerConfig.maxFontSize, 256);
+							var maxText = helpers.getValueOrDefault(centerConfig.maxText, centerConfig.text);
+
+							do {
+								ctx.font = helpers.fontString(fontSize, fontStyle, fontFamily);
+								var textWidth = ctx.measureText(maxText).width;
+
+								// check if it fits, is within configured limits and that we are not simply toggling back and forth
+								if (textWidth < chart.innerRadius * 2 && fontSize < maxFontSize)
+									fontSize += 1;
+								else {
+									// reverse last step
+									fontSize -= 1;
+									break;
+								}
+							} while (true)
+							ctx.restore();
+						}
+
+						// save properties
+						chart.center = {
+							font: helpers.fontString(fontSize, fontStyle, fontFamily),
+							fillStyle: helpers.getValueOrDefault(centerConfig.fontColor, globalConfig.defaultFontColor)
+						};
+					}
+				},
+				afterDraw: function (chart) {
+					if (chart.center) {
+						var centerConfig = chart.config.options.elements.center;
+						var ctx = chart.chart.ctx;
+
+						ctx.save();
+						ctx.font = chart.center.font;
+						ctx.fillStyle = chart.center.fillStyle;
+						ctx.textAlign = 'center';
+						ctx.textBaseline = 'middle';
+						var centerX = (chart.chartArea.left + chart.chartArea.right) / 2;
+						var centerY = (chart.chartArea.top + chart.chartArea.bottom) / 2;
+						ctx.fillText(centerConfig.text, centerX, centerY);
+						ctx.restore();
+					}
+				},
+			})
+
+
+			var config = {
+				type: 'doughnut',
+				data: {
+					labels: [
+						"Red",
+						"Gray"
+					],
+					datasets: [{
+						data: [67, 33],
+						backgroundColor: [
+							"#FF6684",
+							"#ccc"
+						],
+						hoverBackgroundColor: [
+							"#FF6384",
+							"#ccc"
+						]
+					}]
+				},
+				options: {
+					elements: {
+						arc: {
+							roundedCornersFor: 0
+						},
+						center: {
+							// the longest text that could appear in the center
+							maxText: '100%',
+							text: '67%',
+							fontColor: '#FF6684',
+							fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+							fontStyle: 'normal',
+							// fontSize: 12,
+							// if a fontSize is NOT specified, we will scale (within the below limits) maxText to take up the maximum space in the center
+							// if these are not specified either, we default to 1 and 256
+							minFontSize: 1,
+							maxFontSize: 256,
+						}
+					}
+				}
+			};
+
+			var ctx = document.getElementById("myChart").getContext("2d");
+			var myChart = new Chart(ctx, config);
+		</script> -->
+
+
+
+
+
+		<!-- circle_progress -->
+		<div class="circle_progress_wrap">
+			<svg class="circle_progress" width="120" height="120" viewBox="0 0 120 120">
+				<circle class="frame" cx="50%" cy="50%" r="54" stroke-width="12" />
+				<circle class="bar" cx="50%" cy="50%" r="54" stroke-width="12" />
+			</svg>
+			<input id="control" type="range" value="30" />
+			<strong class="value"></strong>
+		</div>
+		<!-- //circle_progress -->
+
+
+
+
+
+
+		<!-- swiper -->
+		<div class="swiper scale_swiper">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">Slide 1</div>
+				<div class="swiper-slide">Slide 2</div>
+				<div class="swiper-slide">Slide 3</div>
+				<div class="swiper-slide">Slide 4</div>
+				<div class="swiper-slide">Slide 5</div>
+			</div>
+
+			<!-- If we need pagination -->
+			<!-- <div class="swiper-pagination"></div> -->
+
+			<!-- If we need navigation buttons -->
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
+
+			<!-- If we need scrollbar -->
+			<!-- <div class="swiper-scrollbar"></div> -->
+		</div>
+		<!-- //swiper -->
+
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+
+		<!-- Swiper -->
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="https://swiperjs.com/demos/images/nature-1.jpg" /></div>
+        <div class="swiper-slide"><img src="https://swiperjs.com/demos/images/nature-2.jpg" /></div>
+        <div class="swiper-slide"><img src="https://swiperjs.com/demos/images/nature-3.jpg" /></div>
+        <div class="swiper-slide"><img src="https://swiperjs.com/demos/images/nature-4.jpg" /></div>
+        <div class="swiper-slide"><img src="https://swiperjs.com/demos/images/nature-5.jpg" /></div>
+        <div class="swiper-slide"><img src="https://swiperjs.com/demos/images/nature-6.jpg" /></div>
+        <div class="swiper-slide"><img src="https://swiperjs.com/demos/images/nature-7.jpg" /></div>
+        <div class="swiper-slide"><img src="https://swiperjs.com/demos/images/nature-8.jpg" /></div>
+        <div class="swiper-slide"><img src="https://swiperjs.com/demos/images/nature-9.jpg" /></div>
+      </div>
+      <!-- <div class="swiper-pagination"></div> -->
+    </div>
+		<script>
+      var swiper = new Swiper(".mySwiper", {
+				loop: true,
+        centeredSlides: true,
+        slidesPerView: 1.4,
+
+				spaceBetween: 30,
+				grabCursor: true,
+        effect: "coverflow",
+        coverflowEffect: {
+          rotate: 5,
+          slideShadows: true
+        },
+        // pagination: {
+        //   el: ".swiper-pagination"
+        // }
+      });
+    </script>
+
+
+
+
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+
+
+		<!-- bottom_sheet_modal -->
+		<div class="bottom_sheet_modal">
+			<button class="show-modal">Show Bottom Sheet</button>
+
+			<div class="bottom-sheet">
+				<div class="sheet-overlay"></div>
+				<div class="content">
+					<div class="header">
+						<div class="drag-icon"><span></span></div>
+					</div>
+					<div class="body">
+						<h2>Bottom Sheet Modal</h2>
+						<p>Create a bottom sheet modal that functions similarly to Facebook modal using HTML CSS and JavaScript.
+							This modal allows user to view its contents, drag it up or down, and close it. It also works on
+							touch-enabled devices. Lorem Ipsum are simply dummy text of there printing and typesetting industry.
+							Lorem new Ipsum has been the industryss standard dummy text ever since the 1500s, when an off
+							unknown printer tooks a galley of type and scrambled it to makes type spemen book It has survived
+							not only five centuries.
+						</p>
+						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat quae facere, quaerat deleniti,
+							voluptates optio ipsam ipsum beatae, maxime quis ea quasi minima numquam. Minima accusamus
+							reiciendis, impedit blanditiis nulla quia? Odio deleniti commodi id nesciunt voluptas cumque odit,
+							vel molestias ratione sit consectetur inventore error ullam magni labore voluptate doloribus sed
+							similique. Delectus non pariatur eligendi eos voluptatum provident eveniet consequuntur. Laboriosam,
+							nesciunt reiciendis libero sunt adipisci numquam voluptas ullam, iure voluptates soluta mollitia
+							quam voluptatem? Nemo, ipsum magnam.
+						</p>
+						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum eligendi commodi tenetur est beatae
+							cupiditate incidunt aspernatur asperiores repudiandae? Odit, nulla modi ducimus assumenda ad
+							voluptatem explicabo laudantium est unde ea similique excepturi fugiat nisi facere ab pariatur
+							libero eius aperiam, non accusantium, asperiores optio. Accusantium, inventore in. Quaerat
+							exercitationem aut, alias dolorem facere atque sint quo quasi vitae sed corrupti perferendis laborum
+							eligendi repudiandae esse autem doloribus sapiente deleniti.
+						</p>
+						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde voluptates, animi ipsa explicabo
+							assumenda molestiae adipisci. Amet, dignissimos reiciendis, voluptatibus placeat quo ab quibusdam
+							illum repellat, ad molestias quaerat saepe modi aperiam distinctio dolore id sapiente molestiae
+							quas! Animi optio nobis nesciunt pariatur? Non necessitatibus mollitia veniam nihil eos natus libero
+							quaerat vitae maiores. Praesentium nesciunt natus tempora. Doloremque, fuga?
+						</p>
+						<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt deleniti a non dolorem delectus
+							possimus distinctio! Nemo officiis tempore quos culpa fugit iste suscipit minus voluptatem, officia
+							dicta ad deleniti harum voluptatibus dignissimos in, commodi placeat accusamus sint tenetur non
+							natus? Error fugit quasi repudiandae mollitia doloribus officia eius magnam ratione soluta aut in
+							iusto vel ut minima, at facere, minus sequi earum dolores animi ipsa nihil labore. Odio eius vitae
+							iste repellendus molestias, amet sapiente laudantium optio, provident dignissimos voluptatum
+							nesciunt nemo magni obcaecati commodi officiis delectus esse sed.
+						</p>
+						<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat atque labore eligendi iusto sint!
+							Fuga vel eius dolor eligendi ab cumque, maxime commodi, ducimus inventore temporibus illo delectus
+							iste, quisquam ipsum labore eaque ipsa soluta praesentium voluptatem accusamus amet recusandae.
+							Veniam necessitatibus laboriosam deleniti maxime, saepe vitae officia tempora voluptates voluptas
+							ratione fugiat ad? Nostrum explicabo, earum dolor magnam commodi maiores iusto delectus porro
+							ducimus architecto non enim eum, perspiciatis facere mollitia. Minus, mollitia animi! Nostrum
+							deleniti, error quia hic eum modi? Corrupti illo provident dolores qui enim, expedita adipisci.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- //bottom_sheet_modal -->
+
+
+
+
+
+		<!-- number count -->
+		<div class="number_count">
+			<div class="value">100</div>
+			<div class="value">100</div>
+			<div class="value">100</div>
+			<div class="value">100</div>
+		</div>
+		<!-- //number count -->
+	</div>
+	<script>
+		let counters = document.querySelectorAll('.number_count .value');
+
+		animateCounter(counters[0], 50);
+		// animateCounter(counters[1], 95);
+		// animateCounter(counters[2], 999);
+		// animateCounter(counters[3], 9999);
+
+		function animateCounter(counter, targetValue) {
+			let startValue = parseInt(counter.innerText);
+			let duration = 1000;
+			let increment = (targetValue - startValue) / duration;
+
+			// console.log(increment); -0.05
+			let qwe = 0;
+
+			// Update counter
+			let startTimestamp;
+			function updateCounter(timestamp) {
+				if (!startTimestamp) startTimestamp = timestamp;
+				let elapsedTime = timestamp - startTimestamp;
+
+
+				//console.log(++qwe, timestamp, startTimestamp, elapsedTime);
+
+
+				if (elapsedTime < duration) {
+					let newValue = Math.round(startValue + increment * elapsedTime);
+					counter.textContent = newValue;
+					requestAnimationFrame(updateCounter);
+				} else {
+					// Set the final value as the targetValue
+					counter.textContent = targetValue;
+				}
+			}
+
+			// Start the animation
+			requestAnimationFrame(updateCounter);
+		}
+	</script>
+	<script src="./js/common.js"></script>
+	<script>
+		common.circleProgress('control', '.bar', '.value');
+		bottomSheetModal(".show-modal", ".bottom-sheet");
+	</script>
+</body>
+
+</html>

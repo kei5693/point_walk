@@ -13,138 +13,81 @@
 <body>
 
 	<div id="wrap">
-		<ul class="font-test">
-			<li class="font100">테스트</li>
-			<li class="font300">테스트</li>
-			<li class="font400">테스트</li>
-			<li class="font600">테스트</li>
-			<li class="font700">테스트</li>
-			<li class="font900">테스트</li>
-		</ul>
-
-
-
-
-
-		<!-- swiper -->
-		<div class="swiper swiper_scale">
-			<div class="swiper-wrapper">
-				<div class="swiper-slide">Slide 1</div>
-				<div class="swiper-slide">Slide 2</div>
-				<div class="swiper-slide">Slide 3</div>
-				<div class="swiper-slide">Slide 4</div>
-				<div class="swiper-slide">Slide 5</div>
-			</div>
-	
-			<!-- If we need pagination -->
-			<!-- <div class="swiper-pagination"></div> -->
-		
-			<!-- If we need navigation buttons -->
-			<div class="swiper-button-prev"></div>
-			<div class="swiper-button-next"></div>
-		
-			<!-- If we need scrollbar -->
-			<!-- <div class="swiper-scrollbar"></div> -->
-		</div>
-		<!-- //swiper -->
-
-
-
-
-
-		<!-- circle_progress -->
-		<div class="circle_progress_wrap">
-			<svg class="circle_progress" width="120" height="120" viewBox="0 0 120 120">
-				<circle class="frame" cx="50%" cy="50%" r="54" stroke-width="12" />
-				<circle class="bar" cx="50%" cy="50%" r="54" stroke-width="12" />
-			</svg>
-			<input id="control" type="range" value="30" />
-			<strong class="value"></strong>
-		</div>
-		<!-- //circle_progress -->
-
-
-
-
-		<!-- bottom_sheet_modal -->
-		<div class="bottom_sheet_modal">
-			<button class="show-modal">Show Bottom Sheet</button>
-
-			<div class="bottom-sheet">
-				<div class="sheet-overlay"></div>
-				<div class="content">
-					<div class="header">
-						<div class="drag-icon"><span></span></div>
+		<!-- index_list -->
+		<div class="index_list">
+			<ul class="desc">
+				<li class="link">링크</li>
+				<li class="popup">팝업</li>
+			</ul>
+			<dl>
+				<dt>MN0100020 : OS 권한 요청(iOS)</dt>
+				<dd>
+					<button type="button" class="layer_button_toggle" data-popup-name='#layerAccIos'>앱 접근 권한 안내(ios)</button>
+					<div>
+						<button type="button" class="layer_button_toggle" data-popup-name='#layerDialog1-1'>동작 및 피트니스(ios)</button>
+						<button type="button" class="layer_button_toggle" data-popup-name='#layerDialog2'>위치 설정</button>
 					</div>
-					<div class="body">
-						<h2>Bottom Sheet Modal</h2>
-						<p>Create a bottom sheet modal that functions similarly to Facebook modal using HTML CSS and JavaScript.
-							This modal allows user to view its contents, drag it up or down, and close it. It also works on
-							touch-enabled devices. Lorem Ipsum are simply dummy text of there printing and typesetting industry.
-							Lorem new Ipsum has been the industryss standard dummy text ever since the 1500s, when an off
-							unknown printer tooks a galley of type and scrambled it to makes type spemen book It has survived
-							not only five centuries.
-						</p>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat quae facere, quaerat deleniti,
-							voluptates optio ipsam ipsum beatae, maxime quis ea quasi minima numquam. Minima accusamus
-							reiciendis, impedit blanditiis nulla quia? Odio deleniti commodi id nesciunt voluptas cumque odit,
-							vel molestias ratione sit consectetur inventore error ullam magni labore voluptate doloribus sed
-							similique. Delectus non pariatur eligendi eos voluptatum provident eveniet consequuntur. Laboriosam,
-							nesciunt reiciendis libero sunt adipisci numquam voluptas ullam, iure voluptates soluta mollitia
-							quam voluptatem? Nemo, ipsum magnam.
-						</p>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum eligendi commodi tenetur est beatae
-							cupiditate incidunt aspernatur asperiores repudiandae? Odit, nulla modi ducimus assumenda ad
-							voluptatem explicabo laudantium est unde ea similique excepturi fugiat nisi facere ab pariatur
-							libero eius aperiam, non accusantium, asperiores optio. Accusantium, inventore in. Quaerat
-							exercitationem aut, alias dolorem facere atque sint quo quasi vitae sed corrupti perferendis laborum
-							eligendi repudiandae esse autem doloribus sapiente deleniti.
-						</p>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde voluptates, animi ipsa explicabo
-							assumenda molestiae adipisci. Amet, dignissimos reiciendis, voluptatibus placeat quo ab quibusdam
-							illum repellat, ad molestias quaerat saepe modi aperiam distinctio dolore id sapiente molestiae
-							quas! Animi optio nobis nesciunt pariatur? Non necessitatibus mollitia veniam nihil eos natus libero
-							quaerat vitae maiores. Praesentium nesciunt natus tempora. Doloremque, fuga?
-						</p>
-						<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt deleniti a non dolorem delectus
-							possimus distinctio! Nemo officiis tempore quos culpa fugit iste suscipit minus voluptatem, officia
-							dicta ad deleniti harum voluptatibus dignissimos in, commodi placeat accusamus sint tenetur non
-							natus? Error fugit quasi repudiandae mollitia doloribus officia eius magnam ratione soluta aut in
-							iusto vel ut minima, at facere, minus sequi earum dolores animi ipsa nihil labore. Odio eius vitae
-							iste repellendus molestias, amet sapiente laudantium optio, provident dignissimos voluptatum
-							nesciunt nemo magni obcaecati commodi officiis delectus esse sed.
-						</p>
-						<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat atque labore eligendi iusto sint!
-							Fuga vel eius dolor eligendi ab cumque, maxime commodi, ducimus inventore temporibus illo delectus
-							iste, quisquam ipsum labore eaque ipsa soluta praesentium voluptatem accusamus amet recusandae.
-							Veniam necessitatibus laboriosam deleniti maxime, saepe vitae officia tempora voluptates voluptas
-							ratione fugiat ad? Nostrum explicabo, earum dolor magnam commodi maiores iusto delectus porro
-							ducimus architecto non enim eum, perspiciatis facere mollitia. Minus, mollitia animi! Nostrum
-							deleniti, error quia hic eum modi? Corrupti illo provident dolores qui enim, expedita adipisci.
-						</p>
+				</dd>
+
+				<dt>MN0100030	: OS 권한 요청(Android)</dt>
+				<dd>
+					<button type="button" class="layer_button_toggle" data-popup-name='#layerAccAnd'>앱 접근 권한 안내(andriod)</button>
+					<div>
+						<button type="button" class="layer_button_toggle" data-popup-name='#layerDialog1-2'>신체 활동(andriod)</button>
+						<button type="button" class="layer_button_toggle" data-popup-name='#layerDialog2'>위치 설정</button>
 					</div>
-				</div>
-			</div>
+				</dd>
+
+				<dt>MN0100040 : 프로필 설정</dt>
+				<dd>
+					<button type="button" class="layer_button_toggle" data-popup-name='#layerProfile'>프로필 설정</button>
+					<div>
+						<button type="button" class="layer_button_toggle" data-popup-name='#layerDialog3'>설정 내용 저장</button>
+					</div>
+				</dd>
+
+				<dt>MN0100080 : 타임스탬프 - 사진 촬영하기</dt>
+				<dd>
+					<a href="./MN0100080.html" target="_blank">MN0100080</a>
+					<div>
+						<button type="button" class="layer_button_toggle" data-popup-name='#layerDialog4'>카메라 설정</button>
+					</div>
+				</dd>
+
+				<dt>MN0100090 : 타임스탬프 - 앨범에서 선택</dt>
+				<dd>
+					<a href="./MN0100080.html" target="_blank">MN0100090</a>
+					<div>
+						<button type="button" class="layer_button_toggle" data-popup-name='#layerDialog5'>사진 설정(ios)</button>
+						<button type="button" class="layer_button_toggle" data-popup-name='#layerDialog6'>저장공간 설정(andriod)</button>
+					</div>
+				</dd>
+
+				<dt>MN0100091 : 타임스탬프 - 사진 영역 선택</dt>
+				<dd>
+					<a href="./MN0100091.html" target="_blank">MN0100090</a>
+				</dd>
+
+				<dt>MN0100100 : 타임스탬프 - 스티커 추가하기</dt>
+				<dd>
+					<a href="./MN0100100.html" target="_blank">MN0100100</a>
+					<div>
+						<button type="button" class="layer_button_toggle" data-popup-name='#layerDialog7'>이전 화면</button>
+						<button type="button" class="layer_button_toggle" data-popup-name='#layerDialog8'>삭제</button>
+					</div>
+				</dd>
+
+				<dt>MN0100110 : 타임스탬프 - 공유하기</dt>
+				<dd>
+					<a href="./MN0100110.html" target="_blank">MN0100110</a>
+					<div>
+						<button type="button" class="layer_button_toggle" data-popup-name='#layerDialog5'>사진 설정(ios)</button>
+						<button type="button" class="layer_button_toggle" data-popup-name='#layerDialog6'>저장공간 설정(andriod)</button>
+					</div>
+				</dd>
+			</dl>
 		</div>
-		<!-- //bottom_sheet_modal -->
-
-
-
-		<div>
-			<button type="button" class="common_btn layer_button_toggle" data-popup-name='#layerAccIos'>앱 접근 권한 안내(ios)</button>
-			<button type="button" class="common_btn layer_button_toggle" data-popup-name='#layerAccAnd'>앱 접근 권한 안내(andriod)</button>
-			<button type="button" class="common_btn layer_button_toggle" data-popup-name='#layerProfile'>프로필 설정</button>
-			<button type="button" class="common_btn layer_button_toggle" data-popup-name='#layerDialog1-1'>동작 및 피트니스(ios)</button>
-			<button type="button" class="common_btn layer_button_toggle" data-popup-name='#layerDialog1-2'>신체 활동(andriod)</button>
-			<button type="button" class="common_btn layer_button_toggle" data-popup-name='#layerDialog2'>위치 설정</button>
-			<button type="button" class="common_btn layer_button_toggle" data-popup-name='#layerDialog3'>설정 내용 저장</button>
-			<button type="button" class="common_btn layer_button_toggle" data-popup-name='#layerDialog4'>카메라 설정</button>
-			<button type="button" class="common_btn layer_button_toggle" data-popup-name='#layerDialog5'>사진 설정</button>
-			<button type="button" class="common_btn layer_button_toggle" data-popup-name='#layerDialog6'>저장공간 설정</button>
-			<button type="button" class="common_btn layer_button_toggle" data-popup-name='#layerDialog7'>이전 화면</button>
-			<button type="button" class="common_btn layer_button_toggle" data-popup-name='#layerDialog8'>삭제</button>
-		</div>
-
+		<!-- //index_list -->
 
 		<!-- 앱 접근 권한 안내 팝업(ios) -->
 		<div id="layerAccIos" class="modal_layer_popup">
@@ -330,11 +273,6 @@
 		</div>
 		<!-- //프로필 설정 팝업 -->
 
-
-
-
-
-
 		<!-- 동작 및 피트니스(ios) -->
 		<div id="layerDialog1-1" class="modal_layer_popup align_center">
 			<div class="dimmed_layer"></div>
@@ -352,7 +290,7 @@
 					</div>
 					<!-- footer -->
 					<div class="layer_footer">
-						<div class="btn_dialog">
+						<div class="btn_dialog align_right">
 							<button type="button" class="btn_cancel">취소</button>
 							<button type="button" class="btn_confirm">확인</button>
 						</div>
@@ -379,7 +317,7 @@
 					</div>
 					<!-- footer -->
 					<div class="layer_footer">
-						<div class="btn_dialog">
+						<div class="btn_dialog align_right">
 							<button type="button" class="btn_cancel">취소</button>
 							<button type="button" class="btn_confirm">확인</button>
 						</div>
@@ -406,7 +344,7 @@
 					</div>
 					<!-- footer -->
 					<div class="layer_footer">
-						<div class="btn_dialog">
+						<div class="btn_dialog align_right">
 							<button type="button" class="btn_cancel">취소</button>
 							<button type="button" class="btn_confirm">확인</button>
 						</div>
@@ -432,7 +370,7 @@
 					</div>
 					<!-- footer -->
 					<div class="layer_footer">
-						<div class="btn_dialog">
+						<div class="btn_dialog align_right">
 							<button type="button" class="btn_cancel">취소</button>
 							<button type="button" class="btn_confirm">확인</button>
 						</div>
@@ -459,7 +397,7 @@
 					</div>
 					<!-- footer -->
 					<div class="layer_footer">
-						<div class="btn_dialog">
+						<div class="btn_dialog align_right">
 							<button type="button" class="btn_cancel">취소</button>
 							<button type="button" class="btn_confirm">확인</button>
 						</div>
@@ -486,7 +424,7 @@
 					</div>
 					<!-- footer -->
 					<div class="layer_footer">
-						<div class="btn_dialog">
+						<div class="btn_dialog align_right">
 							<button type="button" class="btn_cancel">취소</button>
 							<button type="button" class="btn_confirm">확인</button>
 						</div>
@@ -513,7 +451,7 @@
 					</div>
 					<!-- footer -->
 					<div class="layer_footer">
-						<div class="btn_dialog">
+						<div class="btn_dialog align_right">
 							<button type="button" class="btn_cancel">취소</button>
 							<button type="button" class="btn_confirm">확인</button>
 						</div>
@@ -540,7 +478,7 @@
 					</div>
 					<!-- footer -->
 					<div class="layer_footer">
-						<div class="btn_dialog">
+						<div class="btn_dialog align_right">
 							<button type="button" class="btn_cancel">취소</button>
 							<button type="button" class="btn_confirm">확인</button>
 						</div>
@@ -560,13 +498,13 @@
 					</div>
 					<!-- body -->
 					<div class="layer_body">
-						<p class="popup_sub_txt interval_padding">
+						<p class="popup_sub_txt">
 							삭제하시겠습니까?
 						</p>
 					</div>
 					<!-- footer -->
 					<div class="layer_footer">
-						<div class="btn_dialog">
+						<div class="btn_dialog align_right">
 							<button type="button" class="btn_cancel">취소</button>
 							<button type="button" class="btn_confirm">확인</button>
 						</div>
@@ -575,62 +513,8 @@
 			</div>
 		</div>
 		<!-- //삭제 -->
-
-
-
-		<!-- number count --> 
-		<div class="number_count">
-			<div class="value">100</div>
-			<div class="value">100</div>
-			<div class="value">100</div>
-			<div class="value">100</div>
-		</div>
-		<!-- //number count -->
 	</div>
-	<script>
-		let counters = document.querySelectorAll('.number_count .value');
 
-		animateCounter(counters[0], 50);
-		// animateCounter(counters[1], 95);
-		// animateCounter(counters[2], 999);
-		// animateCounter(counters[3], 9999);
-
-		function animateCounter(counter, targetValue) {
-			let startValue = parseInt(counter.innerText);
-			let duration = 1000;
-			let increment = (targetValue - startValue) / duration;
-
-			// console.log(increment); -0.05
-			let qwe = 0;
-			
-			// Update counter
-			let startTimestamp;
-			function updateCounter(timestamp) {
-				if (!startTimestamp) startTimestamp = timestamp;
-				let elapsedTime = timestamp - startTimestamp;
-				
-
-				//console.log(++qwe, timestamp, startTimestamp, elapsedTime);
-				
-
-				if (elapsedTime < duration) {
-					let newValue = Math.round(startValue + increment * elapsedTime);
-					counter.textContent = newValue;
-					requestAnimationFrame(updateCounter);
-				} else {
-					// Set the final value as the targetValue
-					counter.textContent = targetValue;
-				}
-			}
-
-			// Start the animation
-			requestAnimationFrame(updateCounter);
-		}
-	</script>
 	<script src="./js/common.js"></script>
-	<script>
-		circleProgress('control', '.bar', '.value');
-		bottomSheetModal(".show-modal", ".bottom-sheet");
-	</script>
 </body>
 </html>

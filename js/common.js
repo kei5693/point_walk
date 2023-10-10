@@ -2,7 +2,6 @@ let common = {
   init: function () {
     this.layerButtonToggle();
     this.inputBorderStyle();
-    //this.designSelect();
   },
   // 버튼으로 팝업 열기
   layerButtonToggle: function(){
@@ -40,6 +39,95 @@ let common = {
         this.layerToggle(target);
       }
     });
+  },
+  // 프로필 설정 인풋 포커스, 인풋 값 삭제
+  inputBorderStyle: function(){
+    let targetInp = document.querySelectorAll('.inp_box_list > li input');
+    targetInp.forEach((input)=>{
+      input.addEventListener("focus", (e) => {
+        let parent = e.target.closest('li');
+        parent.classList.add('active');
+      });
+
+      input.addEventListener("blur", (e) => {
+        let parent = e.target.closest('li');
+        parent.classList.remove('active');
+      });
+    });
+
+    let targetBtn = document.querySelectorAll('.inp_box_list > li button');
+    targetBtn.forEach((btn)=>{
+      btn.addEventListener("click", (e) => {
+        let input = e.target.closest('li').querySelector('input');
+        input.value = '';
+      });
+    });
+  },
+  // class toggle event bind
+  siblingsToggleClass: function(targetSelector, childrenSelector, initialIndex, className){
+    const targetElements = document.querySelectorAll(targetSelector);
+  
+    targetElements.forEach((targetElement) => {
+      const childrenElements = targetElement.querySelectorAll(childrenSelector);
+  
+      childrenElements.forEach((childElement, index) => {
+        const isActive = index === initialIndex;
+  
+        // Initialize classes based on the initial index
+        toggleClass(childElement, className, isActive);
+  
+        childElement.addEventListener('click', (e) => {
+          e.preventDefault();
+          
+          // remove
+          childrenElements.forEach((otherElement) => {
+            toggleClass(otherElement, className, false);
+          });
+  
+          // Add
+          toggleClass(e.currentTarget, className, true);
+        });
+      });
+    });
+
+    function toggleClass(element, className, isActive) {
+      isActive ? element.classList.add(className) : element.classList.remove(className);
+    }
+  },
+
+
+
+
+  // circleProgress
+  circleProgress: function(controlId, barSelector, valueSelector) {
+    var control				= document.getElementById(controlId);
+    var bar						= document.querySelector(barSelector);
+    var value					= document.querySelector(valueSelector);
+    var RADIUS				= bar.attributes.r.value;
+    var CIRCUMFERENCE = 2 * Math.PI * RADIUS; // 339.29200658769764			
+
+    function progress(per) {
+      var progress = per / 100;
+      var dashoffset = CIRCUMFERENCE * (1 - progress);
+
+      value.innerHTML = per + '%';
+      bar.style.strokeDashoffset = dashoffset;
+    }
+
+    control.addEventListener('input', function(event) {
+      progress(event.target.valueAsNumber);
+    });
+
+    control.addEventListener('change', function(event) {
+      progress(event.target.valueAsNumber);
+    });
+
+    bar.style.strokeDasharray = CIRCUMFERENCE;
+    progress(control.value);
+  },
+  // class toggle
+  toggleClass: function(target, className, parent) {
+    parent === undefined ? target.classList.toggle(className) : target.closest(parent).classList.toggle(className);
   },
   // 디자인 셀렉트
   designSelect: function(){
@@ -83,78 +171,26 @@ let common = {
       });
     });
   },
-  // 프로필 설정 인풋 포커스, 인풋 값 삭제
-  inputBorderStyle: function(){
-    let targetInp = document.querySelectorAll('.inp_box_list > li input');
-    targetInp.forEach((input)=>{
-      input.addEventListener("focus", (e) => {
-        let parent = e.target.closest('li');
-        parent.classList.add('active');
-      });
-
-      input.addEventListener("blur", (e) => {
-        let parent = e.target.closest('li');
-        parent.classList.remove('active');
-      });
-    });
-
-    let targetBtn = document.querySelectorAll('.inp_box_list > li button');
-    targetBtn.forEach((btn)=>{
-      btn.addEventListener("click", (e) => {
-        let input = e.target.closest('li').querySelector('input');
-        input.value = '';
-      });
-    });
-  },
-  // class toggle
-  toggleClass: function(target, className, parent) {
-    parent === undefined ? target.classList.toggle(className) : target.closest(parent).classList.toggle(className);
-  },
-  // class toggle event bind
-  siblingsToggleClass: function(targetSelector, childrenSelector, initialIndex, className){
-    const targetElements = document.querySelectorAll(targetSelector);
-  
-    targetElements.forEach((targetElement) => {
-      const childrenElements = targetElement.querySelectorAll(childrenSelector);
-  
-      childrenElements.forEach((childElement, index) => {
-        const isActive = index === initialIndex;
-  
-        // Initialize classes based on the initial index
-        toggleClass(childElement, className, isActive);
-  
-        childElement.addEventListener('click', (e) => {
-          e.preventDefault();
-          
-          // remove
-          childrenElements.forEach((otherElement) => {
-            toggleClass(otherElement, className, false);
-          });
-  
-          // Add
-          toggleClass(e.currentTarget, className, true);
-        });
-      });
-    });
-
-    function toggleClass(element, className, isActive) {
-      isActive ? element.classList.add(className) : element.classList.remove(className);
-    }
-  }
 }
+
 common.init();
-
-
-common.siblingsToggleClass('.time_stamp_wrap', 'li', 0, 'active');
-
+common.siblingsToggleClass('.time_stamp_wrap .select_photo_list', 'li', 0, 'active');
 
 
 
 
 
+// album_swiper
+const thumbImgWrap = new Swiper('.album_swiper', {
+  slidesPerView: 3,
+  spaceBetween: 20,
+  roundLengths: true,		// 이미지가 흐리게 나옴 방지
+  loop: true,
 
-// swiper
-const swiperTest = new Swiper('.swiper_scale', {
+});
+
+// scale_swiper
+const swiperTest = new Swiper('.scale_swiper', {
   slidesPerView: 3,
   centeredSlides: true,
   roundLengths: true,		// 이미지가 흐리게 나옴 방지
@@ -177,43 +213,10 @@ const swiperTest = new Swiper('.swiper_scale', {
   }
 });
 
-// swiper
-const thumbImgWrap = new Swiper('.thumb_img_wrap .swiper', {
-  slidesPerView: 3,
-  spaceBetween: 20,
-  roundLengths: true,		// 이미지가 흐리게 나옴 방지
-  loop: true,
 
-});
 
-// circleProgress
-function circleProgress(controlId, barSelector, valueSelector) {
-  var control				= document.getElementById(controlId);
-  var bar						= document.querySelector(barSelector);
-  var value					= document.querySelector(valueSelector);
-  var RADIUS				= bar.attributes.r.value;
-  var CIRCUMFERENCE = 2 * Math.PI * RADIUS; // 339.29200658769764			
 
-  function progress(per) {
-    var progress = per / 100;
-    var dashoffset = CIRCUMFERENCE * (1 - progress);
 
-    value.innerHTML = per + '%';
-    bar.style.strokeDashoffset = dashoffset;
-  }
-
-  control.addEventListener('input', function(event) {
-    progress(event.target.valueAsNumber);
-  });
-
-  control.addEventListener('change', function(event) {
-    progress(event.target.valueAsNumber);
-  });
-
-  bar.style.strokeDasharray = CIRCUMFERENCE;
-  progress(control.value);
-}
-// circleProgress('control', '.bar', '.value');
 
 // bottomSheetModal
 function bottomSheetModal(showModalBtnSelector, bottomSheetSelector) {
