@@ -14,31 +14,99 @@ let common = {
   },
   // 팝업 열기
   layerToggle: function(target){
-    let layerPopup = document.querySelector(target);
-    let condition = layerPopup.classList.contains('active');
+    const layerPopup        = document.querySelector(target);
+    // 방어
+    if (!layerPopup) return console.error(`Element with selector '${target}' not found.`);
+    // dimmed
+    const dimmedLayer       = layerPopup.querySelector('.dimmed_layer');
+    // 팝업 컨텐츠 영역
+    const layerContentWrap  = layerPopup.querySelector('.layer_content_wrap');
+    // 닫기 버튼
+    const layerClose        = layerContentWrap.querySelector(':scope > .layer_close');
+    // 드래그
+    const layerDrag         = layerPopup.querySelector(".layer_drag");
 
-    if (condition) {
-      //console.log('close');
+    // 드래그 상태
+    let isDragging          = false;
+    // 좌표
+    let startY              = 0;
+    // 높이
+    let startHeight         = 0;
+    
+    // 팝업 상태
+    let isOpened            = layerPopup.classList.contains('active');
+    // 팝업 타입
+    let isCentered          = layerPopup.classList.contains('align_center');
 
-      document.querySelector('body').classList.remove('active');
-      
-      layerPopup.classList.remove('active');
-      layerPopup.classList.add('close');
-    } else {
-      //console.log('open');
-      document.querySelector('body').classList.add('active');
+    isOpened ? hideBottomSheet() : showBottomSheet();
 
+    // 팝업 닫기 클릭 이벤트
+    document.querySelector('html').addEventListener('click', (e) => {
+      if (e.target == layerClose || e.target == dimmedLayer) {
+        hideBottomSheet();
+      }
+    });
+
+    // 팝업 열기
+    function showBottomSheet(){
+      document.body.classList.add('active');
       layerPopup.classList.add('active');
-      layerPopup.classList.remove('close');
+
+      if(!isCentered){
+        updateSheetHeight(100);
+      }
+    }
+
+    // 팝업 열기(중앙)
+    function showCenterSheet(){
+      console.log('center');
     }
 
     // 팝업 닫기
-    let layerClose = layerPopup.querySelector(':scope > .layer_content_wrap > .layer_close');
-    document.querySelector('html').addEventListener('click', (e) => {
-      if (e.target.classList.contains('active') || e.target == layerClose) {
-        this.layerToggle(target);
-      }
-    });
+    function hideBottomSheet(){
+      document.body.classList.remove('active');
+      layerPopup.classList.remove('active');
+    }
+
+    function updateSheetHeight(height){
+      layerContentWrap.style.height = `${height}%`;
+      layerPopup.classList.toggle("fullscreen", height === 100);
+    }
+
+    // 드래그
+    if(layerDrag){
+      (function dragEvent(){
+        const dragStart = (e) => {
+          isDragging = true;
+          startY = e.pageY || e.touches?.[0].pageY;
+          startHeight = parseInt(layerContentWrap.style.height);
+          layerPopup.classList.add("dragging");
+        }
+  
+        const dragging = (e) => {
+          if (!isDragging) return;
+          const delta = startY - (e.pageY || e.touches?.[0].pageY);
+          const newHeight = startHeight + delta / window.innerHeight * 100;
+          updateSheetHeight(newHeight);
+        }
+  
+        const dragStop = () => {
+          isDragging = false;
+          layerPopup.classList.remove("dragging");
+          const sheetHeight = parseInt(layerContentWrap.style.height);
+          // sheetHeight < 25 ? hideBottomSheet() : sheetHeight > 75 ? updateSheetHeight(100) : updateSheetHeight(50);
+          sheetHeight < 50 ? hideBottomSheet() : updateSheetHeight(100);
+        }
+  
+        layerDrag.addEventListener("mousedown", dragStart);
+        document.addEventListener("mousemove", dragging);
+        document.addEventListener("mouseup", dragStop);
+  
+        layerDrag.addEventListener("touchstart", dragStart);
+        document.addEventListener("touchmove", dragging);
+        document.addEventListener("touchend", dragStop);
+      })();
+    }
   },
   // 프로필 설정 인풋 포커스, 인풋 값 삭제
   inputBorderStyle: function(){
@@ -94,10 +162,6 @@ let common = {
       isActive ? element.classList.add(className) : element.classList.remove(className);
     }
   },
-
-
-
-
   // circleProgress
   circleProgress: function(controlId, barSelector, valueSelector) {
     var control				= document.getElementById(controlId);

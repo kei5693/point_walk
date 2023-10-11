@@ -52,41 +52,50 @@ body.active {overflow: hidden;}
 .modal_layer_popup {
   display: flex;
   align-items: flex-end;
+
   position: fixed;
-  top: 100%;
+  top: 0;
   left: 0;
   z-index: 1000;
+
   width: 100%;
   height: 100%;
-  animation-duration: 0.4s;
-  animation-fill-mode: forwards;
+
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.1s linear;
+	// 오픈
   &.active {
-    animation-name: layer_open;
-    .dimmed_layer {animation-name: opacity_show;}
+		opacity: 1;
+    pointer-events: auto;
+		.layer_content_wrap {
+			transform: translateY(0);
+		}
   }
-  &.close {
-    animation-name: layer_close;
-    .dimmed_layer {animation-name: opacity_hide;}
-  }
+	// 드래그
+	&.dragging {
+		.layer_content_wrap {
+			transition: none;
+		}
+	}
   .dimmed_layer {
-    opacity: 0;
-    pointer-events: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.3);
-    animation-duration: 0.4s;
-    animation-fill-mode: forwards;
   }
   .layer_content_wrap {
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 0;
 
     max-width: 768px;
     max-height: calc(100% - 44px);
+
+		transform: translateY(100%);
+    transition: 0.3s ease;
 
     margin: 0 auto;
     padding: 60px 0 70px;
@@ -241,6 +250,29 @@ body.active {overflow: hidden;}
       font-size: 0;
       line-height: 0;
     }
+    .layer_drag {
+			position: absolute;
+			top: 0;
+			left: 50%;
+			transform: translateX(-50%);
+
+			display: flex;
+			align-items: center;
+			height: 60px;
+			padding: 0 50px;
+
+			cursor: grab;
+			user-select: none;
+			
+      span {
+        display: block;
+        width: 40px;
+        height: 4px;
+
+        background: #C7D0E1;
+        border-radius: 2px;
+      }
+    }
   }
   // 중앙 정렬 팝업
   &.align_center {
@@ -248,25 +280,24 @@ body.active {overflow: hidden;}
     justify-content: center;
     align-items: center;
 
-    animation-duration: 0.4s;
+		transition-delay: 0.2s;
     &.active {
-      animation-name: layer_open2;
-      .layer_content_wrap {animation-name: opacity_show;}
-    }
-    &.close {
-      animation-name: layer_close2;
-      .layer_content_wrap {animation-name: opacity_hide;}
+			transition-delay: 0s;
+			.layer_content_wrap {
+				transform: translateY(0);
+				opacity: 1;
+			}
     }
     .layer_content_wrap {
+			transform: translateY(40px);
+			opacity: 0;
+
       height: auto;
       max-width: 360px;
       max-height: none;
       margin: 0 30px;
       padding-top: 0;
       border-radius: 0;
-
-      animation-duration: 0.2s;
-      animation-fill-mode: forwards;
       .layer_content {
         padding: 30px 20px;
         .layer_header {

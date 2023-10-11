@@ -149,6 +149,7 @@
 					</div>
 				</div>
 				<button type="button" class="layer_close">close</button>
+				<div class="layer_drag"><span></span></div>
 			</div>
 		</div>
 		<!-- //앱 접근 권한 안내 팝업(ios) -->
@@ -212,6 +213,7 @@
 					</div>
 				</div>
 				<button type="button" class="layer_close">close</button>
+				<div class="layer_drag"><span></span></div>
 			</div>
 		</div>
 		<!-- //앱 접근 권한 안내 팝업(android) -->
@@ -269,6 +271,7 @@
 					</div>
 				</div>
 				<button type="button" class="layer_close">close</button>
+				<div class="layer_drag"><span></span></div>
 			</div>
 		</div>
 		<!-- //프로필 설정 팝업 -->
@@ -516,5 +519,13 @@
 	</div>
 
 	<script src="./js/common.js"></script>
+	<script>
+		// common.layerToggle('#layerAccIos');
+
+		// let layerDrag = document.querySelector('#layerAccIos .layer_content_wrap .layer_drag');
+		// layerDrag.addEventListener('click', (e)=>{
+		// 	console.log(e.target);
+		// });
+	</script>
 </body>
 </html>
