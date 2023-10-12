@@ -11,11 +11,36 @@
 	<link rel="stylesheet" href="./css/common.css">
 	<script src="./js/swiper-bundle.min.js"></script>
 	<script src="./js/cdn.jsdelivr.net_npm_chart.js"></script>
+
+	<script src="./js/masonry.pkgd.min.js"></script>
+	<script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+	<script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.js"></script>
 </head>
 
 <body>
 
 	<div id="wrap" class="test_wrap">
+
+
+
+
+
+
+
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+
+
+
 		<div>
 			<canvas id="myChart"></canvas>
 		</div>
@@ -399,7 +424,100 @@
 			<div class="value">100</div>
 		</div>
 		<!-- //number count -->
+
+
+
+
+
+
+
+		<div class="grid_wrap">
+			<div class="grid-sizer"></div>
+			<div class="grid-item"><span>1</span><img src="https://i.pinimg.com/236x/7e/40/54/7e40545d9e395d983bc3ad5a5193ea87.jpg" alt=""></div>
+			<div class="grid-item"><span>2</span><img src="https://i.pinimg.com/236x/ee/bf/26/eebf263cb85614e2b39bcb3e5aff6272.jpg" alt=""></div>
+			<div class="grid-item"><span>3</span><img src="https://i.pinimg.com/236x/5f/e8/71/5fe871675ae4b1522844469051b1ba66.jpg" alt=""></div>
+			<div class="grid-item"><span>4</span><img src="https://i.pinimg.com/236x/1d/76/bf/1d76bfff1dd5026241ffbd4956f6f718.jpg" alt=""></div>
+			<div class="grid-item"><span>5</span><img src="https://i.pinimg.com/236x/1f/f2/4d/1ff24d7ebbae1a4eef4a76861f979994.jpg" alt=""></div>
+			<div class="grid-item"><span>6</span><img src="https://i.pinimg.com/236x/92/a3/52/92a35232a5a9abae976e971f57fe1ccf.jpg" alt=""></div>
+			<div class="grid-item"><span>7</span><img src="https://i.pinimg.com/236x/24/e1/bd/24e1bda77a465bc9462566d5aaa006d8.jpg" alt=""></div>
+			<div class="grid-item"><span>8</span><img src="https://i.pinimg.com/236x/ed/4b/d9/ed4bd93a5375ac63f29736451e38801b.jpg" alt=""></div>
+			<div class="grid-item"><span>9</span><img src="https://i.pinimg.com/236x/00/5e/51/005e517222ecb274147c19db09a54f12.jpg" alt=""></div>
+			<div class="grid-item"><span>10</span><img src="https://i.pinimg.com/236x/50/01/40/500140a2117bad5badf02c422393e547.jpg" alt=""></div>
+			<div class="grid-item"><span>11</span><img src="https://i.pinimg.com/236x/35/6d/78/356d78b9775a25aed8c472aa261727ef.jpg" alt=""></div>
+			<div class="grid-item"><span>12</span><img src="https://i.pinimg.com/236x/91/75/4c/91754ca61d9f29a5c64cf69a5fd59bfe.jpg" alt=""></div>
+			<div class="grid-item"><span>13</span><img src="https://i.pinimg.com/236x/da/14/7a/da147a764f2e39828373f342fbe246e8.jpg" alt=""></div>
+			<div class="grid-item"><span>14</span><img src="https://i.pinimg.com/236x/00/2a/83/002a838bc6a06e7220c5334a66fa2045.jpg" alt=""></div>
+			<div class="grid-item"><span>15</span><img src="https://i.pinimg.com/236x/e2/d5/ff/e2d5ff4d4852f8cb281e426959329831.jpg" alt=""></div>
+			<div class="grid-item"><span>16</span><img src="https://i.pinimg.com/236x/37/eb/14/37eb144773e0ef3971ecf7b96d51954f.jpg" alt=""></div>
+			<div class="grid-item"><span>17</span><img src="https://i.pinimg.com/236x/0f/15/d6/0f15d6350163a4608a48fb73ccac21f7.jpg" alt=""></div>
+			<div class="grid-item"><span>18</span><img src="https://i.pinimg.com/236x/cc/3c/42/cc3c4255a31630605fecea3db663cc9d.jpg" alt=""></div>
+			<div class="grid-item"><span>19</span><img src="https://i.pinimg.com/236x/d9/d5/d1/d9d5d1993f3daaef3f10ed1d2f45761b.jpg" alt=""></div>
+			<div class="grid-item"><span>20</span><img src="https://i.pinimg.com/236x/6d/00/97/6d00973bca2e5d5429b0fe45ef39cf58.jpg" alt=""></div>
+		</div>
+	
+		<script>
+			var elem = document.querySelector('.grid_wrap');
+			var msnry = new Masonry( elem, {
+				itemSelector: '.grid-item',
+				columnWidth: '.grid-sizer',
+				percentPosition: true,
+				visibleStyle: { transform: 'translateY(0)', opacity: 1 },
+				hiddenStyle: { transform: 'translateY(100px)', opacity: 0 },
+				// horizontalOrder: true,
+				// gutter: 20,
+			});
+
+			imagesLoaded( '.grid_wrap' ).on( 'progress', function() {
+				msnry.layout();
+			});
+
+			function scrollAddItem(){
+				const newItems = createNewItems();
+				elem.appendChild(newItems);
+				msnry.reloadItems();
+				msnry.layout();
+			}
+
+			window.addEventListener('scroll', () => {
+				if(isScrollNearBottom){
+					scrollAddItem();
+				}
+			});
+
+			function isScrollNearBottom() {
+				const scrollY = window.scrollY || window.pageYOffset;
+				const viewportHeight = window.innerHeight;
+				const contentHeight = document.documentElement.scrollHeight;
+				const buffer = 200; // Adjust this buffer value to your preference
+				return contentHeight - (scrollY + viewportHeight) < buffer;
+			}
+		
+			function createNewItems() {
+				const fragment = document.createDocumentFragment();
+				let imgArr = [
+					'https://i.pinimg.com/236x/7e/40/54/7e40545d9e395d983bc3ad5a5193ea87.jpg',
+					'https://i.pinimg.com/236x/ee/bf/26/eebf263cb85614e2b39bcb3e5aff6272.jpg',
+					'https://i.pinimg.com/236x/5f/e8/71/5fe871675ae4b1522844469051b1ba66.jpg',
+					'https://i.pinimg.com/236x/1d/76/bf/1d76bfff1dd5026241ffbd4956f6f718.jpg',
+					'https://i.pinimg.com/236x/1f/f2/4d/1ff24d7ebbae1a4eef4a76861f979994.jpg'
+				];
+
+				for (let i = 0; i < 5; i++) {
+					const newItem = document.createElement('div');
+					newItem.className = 'grid-item';
+					// Add content or image with a data-src attribute for LazyLoad
+					newItem.innerHTML = `<span>${i}</span><img src=${imgArr[i]} alt="">`;
+					fragment.appendChild(newItem);
+				}
+				return fragment;
+			}
+		</script>
 	</div>
+
+
+
+
+
 	<script>
 		let counters = document.querySelectorAll('.number_count .value');
 
@@ -446,5 +564,4 @@
 		bottomSheetModal(".show-modal", ".bottom-sheet");
 	</script>
 </body>
-
 </html>
