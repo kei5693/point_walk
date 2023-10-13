@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-	<title>OS 권한요청</title>
+	<title>index</title>
 	<link rel="stylesheet" href="./css/swiper-bundle.min.css">
 	<link rel="stylesheet" href="./css/reset.css">
 	<link rel="stylesheet" href="./css/animation.css">
@@ -13,81 +13,534 @@
 <body>
 
 	<div id="wrap">
-		<!-- index_list -->
-		<div class="index_list">
-			<ul class="desc">
-				<li class="link">링크</li>
-				<li class="popup">팝업</li>
+		<div class="index_table_wrap">
+			<ul class="page_count">
+				<li>total : <span class="count_total"></span></li>
+				<li>complete : <span class="count_com"></span></li>
+				<li>incomplete : <span class="count_incom"></span></li>
 			</ul>
-			<dl>
-				<dt>MN0100020 : OS 권한 요청(iOS)</dt>
-				<dd>
-					<button type="button" class="layer_button_toggle" data-popup-name='#layerAccIos'>앱 접근 권한 안내(ios)</button>
-					<div>
-						<button type="button" class="layer_button_toggle" data-popup-name='#layerDialog1-1'>동작 및 피트니스(ios)</button>
-						<button type="button" class="layer_button_toggle" data-popup-name='#layerDialog2'>위치 설정</button>
-					</div>
-				</dd>
 
-				<dt>MN0100030	: OS 권한 요청(Android)</dt>
-				<dd>
-					<button type="button" class="layer_button_toggle" data-popup-name='#layerAccAnd'>앱 접근 권한 안내(andriod)</button>
-					<div>
-						<button type="button" class="layer_button_toggle" data-popup-name='#layerDialog1-2'>신체 활동(andriod)</button>
-						<button type="button" class="layer_button_toggle" data-popup-name='#layerDialog2'>위치 설정</button>
-					</div>
-				</dd>
+			<table>
+				<colgroup>
+					<col style="width: 200px;" />
+					<col style="width: 200px;" />
+					<col style="width: 200px;" />
+					<col style="width: 200px;" />
+					<col />
+				</colgroup>
+				<tbody>
+					<!-- 포인트워크 진입 -->
+					<tr>
+						<td>포인트워크 진입</td>
+						<td></td>
+						<td></td>
+						<td>OS권한요청(IOS)</td>
+						<td><a href="./MN0100020.html" target="_blank">MN0100020</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>OS권한요청(Android)</td>
+						<td><a href="./MN0100030.html" target="_blank">MN0100030</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>동작 및 피트니스(ios)</td>
+						<td><a href="./layerDialog1-1.html" target="_blank">layerDialog1-1</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>신체 활동(andriod)</td>
+						<td><a href="./layerDialog1-2.html" target="_blank">layerDialog1-2</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>위치 설정</td>
+						<td><a href="./layerDialog2.html" target="_blank">layerDialog2</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>프로필 설정</td>
+						<td><a href="./MN0100040.html" target="_blank">MN0100040</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>설정 내용 저장</td>
+						<td><a href="./layerDialog3.html" target="_blank">layerDialog3</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>튜토리얼</td>
+						<td></td>
+						<td></td>
+						<td><a href="./MN0100060.html" target="_blank">MN0100060</a></td>
+					</tr>
+					<tr>
+						<td>메인</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td><a href="./PW-UI-002.html" target="_blank">PW-UI-002</a></td>
+					</tr>
+					<!-- 상시보상팝업 -->
+					<tr>
+						<td>상시보상팝업</td>
+						<td>젤리 받기</td>
+						<td>기본</td>
+						<td></td>
+						<td><a href="./CM0900010.html" target="_blank">CM0900010</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td>일일 미션 완료</td>
+						<td></td>
+						<td><a href="./CM0900020.html" target="_blank">CM0900020</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td>dialog - 알럿</td>
+						<td></td>
+						<td><a href="./CM0900030.html" target="_blank">CM0900030</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td>dialog - 확인</td>
+						<td></td>
+						<td><a href="./CM0900040.html" target="_blank">CM0900040</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td>토스트 팝업</td>
+						<td></td>
+						<td><a href="./CM0900050.html" target="_blank">CM0900050</a></td>
+					</tr>
+					<!-- 챌린지 -->
+					<tr>
+						<td>챌린지</td>
+						<td>챌린지 목록</td>
+						<td></td>
+						<td></td>
+						<td><a href="./CG0600010.html" target="_blank">CG0600010</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>챌린지 상세</td>
+						<td></td>
+						<td></td>
+						<td><a href="./CG0600020.html" target="_blank">CG0600020</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>기부</td>
+						<td></td>
+						<td></td>
+						<td><a href="./CG0600021.html" target="_blank">CG0600021</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td>스탬프 획득 팝업</td>
+						<td></td>
+						<td><a href="./CG0600022.html" target="_blank">CG0600022</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>함께한 기록</td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>크루목록</td>
+						<td>크루 있음</td>
+						<td></td>
+						<td><a href="./CG0600200.html" target="_blank">CG0600200</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td>크루 없음</td>
+						<td></td>
+						<td><a href="./CG0600210.html" target="_blank">CG0600210</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>크루 초대</td>
+						<td></td>
+						<td></td>
+						<td><a href="./CG0600220.html" target="_blank">CG0600220</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>댓글</td>
+						<td>댓글 목록</td>
+						<td></td>
+						<td><a href="./CG0600030.html" target="_blank">CG0600030</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td>수정/삭제 선택</td>
+						<td></td>
+						<td><a href="./CG0600040.html" target="_blank">CG0600040</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td>이미지 모아보기</td>
+						<td></td>
+						<td><a href="./CG0600050.html" target="_blank">CG0600050</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td>이미지 댓글 보기</td>
+						<td></td>
+						<td><a href="./CG0600060.html" target="_blank">CG0600060</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td>댓글 쓰기</td>
+						<td></td>
+						<td><a href="./CG0600070.html" target="_blank">CG0600070</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td>답글 쓰기</td>
+						<td></td>
+						<td><a href="./CG0600080.html" target="_blank">CG0600080</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td>사진 선택</td>
+						<td></td>
+						<td><a href="./CG0600090.html" target="_blank">CG0600090</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td>신고하기</td>
+						<td></td>
+						<td><a href="./CG0600100.html" target="_blank">CG0600100</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td>팝업 4종</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>크루 수락하기</td>
+						<td></td>
+						<td></td>
+						<td><a href="./CG0600230.html" target="_blank">CG0600230</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td>챌린지 시작 예외 케이스</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td>챌린지 완료 예외 케이스</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td>챌린지 내 Player 제공 케이스</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td>음원다운로드</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>걷기가이드 Player</td>
+						<td></td>
+						<td></td>
+						<td><a href="./CG0600250.html" target="_blank">CG0600250</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Player 축소</td>
+						<td></td>
+						<td></td>
+						<td><a href="./CG0600260.html" target="_blank">CG0600260</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>음원선택</td>
+						<td></td>
+						<td></td>
+						<td><a href="./CG0600270.html" target="_blank">CG0600270</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>챌린지 완료</td>
+						<td>즉시 보상</td>
+						<td></td>
+						<td><a href="./CG0600105.html" target="_blank">CG0600105</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>챌린지 완료</td>
+						<td>추후 보상</td>
+						<td></td>
+						<td><a href="./CG0600106.html" target="_blank">CG0600106</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>챌린지 완료</td>
+						<td>크루</td>
+						<td></td>
+						<td><a href="./CG0600107.html" target="_blank">CG0600107</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>래플 응모 완료</td>
+						<td></td>
+						<td></td>
+						<td><a href="./CG0600108.html" target="_blank">CG0600108</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>기부안내</td>
+						<td></td>
+						<td></td>
+						<td><a href="./CG0600109.html" target="_blank">CG0600109</a></td>
+					</tr>
+					<!-- 걷기가이드 -->
+					<tr>
+						<td>걷기가이드</td>
+						<td>목록</td>
+						<td></td>
+						<td></td>
+						<td><a href="./WG0700010.html" target="_blank">WG0700010</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>상세</td>
+						<td></td>
+						<td></td>
+						<td><a href="./WG0700020.html" target="_blank">WG0700020</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>음원선택</td>
+						<td></td>
+						<td></td>
+						<td><a href="./WG0700030.html" target="_blank">WG0700030</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>운동시작 카운트</td>
+						<td></td>
+						<td></td>
+						<td><a href="./WG0700040.html" target="_blank">WG0700040</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>운동종료</td>
+						<td></td>
+						<td></td>
+						<td><a href="./WG0700050.html" target="_blank">WG0700050</a></td>
+					</tr>
+					<!-- 설정 -->
+					<tr>
+						<td>설정</td>
+						<td>인덱스</td>
+						<td></td>
+						<td></td>
+						<td><a href="./CR0500010.html" target="_blank">CR0500010</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>프로필 설정</td>
+						<td></td>
+						<td></td>
+						<td><a href="./CR0500020.html" target="_blank">CR0500020</a></td>
+					</tr>
+					<!-- 리워드(젤리, 포인트) -->
+					<tr>
+						<td>리워드(젤리, 포인트)</td>
+						<td>리워드</td>
+						<td></td>
+						<td></td>
+						<td><a href="./JEL0400005.html" target="_blank">JEL0400005</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>젤리교환</td>
+						<td></td>
+						<td></td>
+						<td><a href="./JEL0400010.html" target="_blank">JEL0400010</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>h.point 교환 비율</td>
+						<td></td>
+						<td></td>
+						<td><a href="./JEL0400020.html" target="_blank">JEL0400020</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>젤리내역</td>
+						<td></td>
+						<td></td>
+						<td><a href="./JEL0400030.html" target="_blank">JEL0400030</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>소멸예정 젤리</td>
+						<td></td>
+						<td></td>
+						<td><a href="./JEL0400040.html" target="_blank">JEL0400040</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>포인트 내역</td>
+						<td></td>
+						<td></td>
+						<td><a href="./JEL0400050.html" target="_blank">JEL0400050</a></td>
+					</tr>
+					<!-- 출석 -->
+					<tr>
+						<td>출석</td>
+						<td>출석</td>
+						<td></td>
+						<td></td>
+						<td><a href="./CL0200010.html" target="_blank">CL0200010</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>출석 혜택</td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<!-- 활동 -->
+					<tr>
+						<td>활동</td>
+						<td>분석</td>
+						<td>주간</td>
+						<td></td>
+						<td><a href="./AC0300010.html" target="_blank">AC0300010</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td>월간</td>
+						<td></td>
+						<td><a href="./AC0300020.html" target="_blank">AC0300020</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td>연간</td>
+						<td></td>
+						<td><a href="./AC0300030.html" target="_blank">AC0300030</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>뱃지</td>
+						<td>매일걷기</td>
+						<td></td>
+						<td><a href="./AC0300040.html" target="_blank">AC0300040</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td>달성 가능한 뱃지</td>
+						<td></td>
+						<td><a href="./AC0300041.html" target="_blank">AC0300041</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td>챌린지</td>
+						<td></td>
+						<td><a href="./AC0300042.html" target="_blank">AC0300042</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td>상세보기</td>
+						<td></td>
+						<td><a href="./AC0300043.html" target="_blank">AC0300043</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td>나의 챌린지</td>
+						<td></td>
+						<td><a href="./AC0300050.html" target="_blank">AC0300050</a></td>
+					</tr>
+				</tbody>
+			</table>
 
-				<dt>MN0100040 : 프로필 설정</dt>
-				<dd>
-					<button type="button" class="layer_button_toggle" data-popup-name='#layerProfile'>프로필 설정</button>
-					<div>
-						<button type="button" class="layer_button_toggle" data-popup-name='#layerDialog3'>설정 내용 저장</button>
-					</div>
-				</dd>
-
-				<dt>MN0100080 : 타임스탬프 - 사진 촬영하기</dt>
-				<dd>
-					<a href="./MN0100080.html" target="_blank">MN0100080</a>
-					<div>
-						<button type="button" class="layer_button_toggle" data-popup-name='#layerDialog4'>카메라 설정</button>
-					</div>
-				</dd>
-
-				<dt>MN0100090 : 타임스탬프 - 앨범에서 선택</dt>
-				<dd>
-					<a href="./MN0100080.html" target="_blank">MN0100090</a>
-					<div>
-						<button type="button" class="layer_button_toggle" data-popup-name='#layerDialog5'>사진 설정(ios)</button>
-						<button type="button" class="layer_button_toggle" data-popup-name='#layerDialog6'>저장공간 설정(andriod)</button>
-					</div>
-				</dd>
-
-				<dt>MN0100091 : 타임스탬프 - 사진 영역 선택</dt>
-				<dd>
-					<a href="./MN0100091.html" target="_blank">MN0100090</a>
-				</dd>
-
-				<dt>MN0100100 : 타임스탬프 - 스티커 추가하기</dt>
-				<dd>
-					<a href="./MN0100100.html" target="_blank">MN0100100</a>
-					<div>
-						<button type="button" class="layer_button_toggle" data-popup-name='#layerDialog7'>이전 화면</button>
-						<button type="button" class="layer_button_toggle" data-popup-name='#layerDialog8'>삭제</button>
-					</div>
-				</dd>
-
-				<dt>MN0100110 : 타임스탬프 - 공유하기</dt>
-				<dd>
-					<a href="./MN0100110.html" target="_blank">MN0100110</a>
-					<div>
-						<button type="button" class="layer_button_toggle" data-popup-name='#layerDialog5'>사진 설정(ios)</button>
-						<button type="button" class="layer_button_toggle" data-popup-name='#layerDialog6'>저장공간 설정(andriod)</button>
-					</div>
-				</dd>
-			</dl>
+			<div class="preview_wrap">
+				<iframe id="prevHtml" src="./MN0100080.html" frameborder="0"></iframe>
+			</div>
 		</div>
-		<!-- //index_list -->
+
+
+		<script>
+			const indexTableWrap = document.querySelector('.index_table_wrap');
+			const tableTr = indexTableWrap.querySelectorAll('tr').length;
+			const link = indexTableWrap.querySelectorAll('a');
+			const complete = indexTableWrap.querySelectorAll('.com').length;
+
+			let countTotal = indexTableWrap.querySelector('.count_total');
+			let countCom = indexTableWrap.querySelector('.count_com');
+			let countIncom = indexTableWrap.querySelector('.count_incom');
+
+			const prevHtml = document.querySelector('#prevHtml');
+
+			countTotal.innerHTML = tableTr;
+			countCom.innerHTML = complete;
+			countIncom.innerHTML = tableTr - complete;
+
+			link.forEach((el)=> el.addEventListener("mouseover", () => prevHtml.setAttribute('src', el.getAttribute("href"))));
+		</script>
+
+
+
+
+
+
+
+
 
 		<!-- 앱 접근 권한 안내 팝업(ios) -->
 		<div id="layerAccIos" class="modal_layer_popup">
@@ -519,13 +972,6 @@
 	</div>
 
 	<script src="./js/common.js"></script>
-	<script>
-		// common.layerToggle('#layerAccIos');
-
-		// let layerDrag = document.querySelector('#layerAccIos .layer_content_wrap .layer_drag');
-		// layerDrag.addEventListener('click', (e)=>{
-		// 	console.log(e.target);
-		// });
 	</script>
 </body>
 </html>
