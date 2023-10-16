@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-	<title>잴리 받기 - 일일 미션 완료</title>
+	<title>공통 - 잴리 받기 - 일일 미션 완료</title>
 	<link rel="stylesheet" href="./css/swiper-bundle.min.css">
 	<link rel="stylesheet" href="./css/reset.css">
 	<link rel="stylesheet" href="./css/animation.css">
@@ -17,6 +17,46 @@
 </head>
 
 <body>
-	<h1 class="temp">잴리 받기 - 일일 미션 완료</h1>
+
+	<div class="popup_btn_wrap">
+    <button type="button" data-popup-name='#CM0900020'>잴리 받기 - 일일 미션 완료</button>
+  </div>
+
+  <!-- 잴리 받기 - 일일 미션 완료 -->
+  <div id="CM0900020" class="modal_layer_popup align_center">
+    <div class="dimmed_layer"></div>
+    <div class="layer_content_wrap">
+      <div class="layer_content">
+        <!-- header -->
+        <div class="layer_header">
+          <h1>일일 미션 달성!</h1>
+        </div>
+        <!-- body -->
+        <div class="layer_body">
+					<div class="popup_visual interval_padding">
+						<img src="./images/img_dummy.jpg" alt="" />
+					</div>
+          <p class="popup_sub_txt interval_padding">
+            일일 이션 달성을 완료했어요!
+          </p>
+        </div>
+        <!-- footer -->
+        <div class="layer_footer">
+          <div class="btn_dialog align_right">
+						<!-- <button type="button" class="btn_cancel">취소</button> -->
+            <button type="button" class="btn_confirm">확인</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- //잴리 받기 - 일일 미션 완료 -->
+  <script src="./js/common.js"></script>
+  <script>
+    setTimeout(() => {
+      common.layerToggle('#CM0900020');
+    }, 300);
+  </script>
+
 </body>
 </html>

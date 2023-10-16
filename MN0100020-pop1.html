@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-	<title>공통 - dialog - 알럿</title>
+	<title>앱 접근 권한 안내 팝업(ios)</title>
 	<link rel="stylesheet" href="./css/swiper-bundle.min.css">
 	<link rel="stylesheet" href="./css/reset.css">
 	<link rel="stylesheet" href="./css/animation.css">
@@ -17,43 +17,40 @@
 </head>
 
 <body>
-	<div class="popup_btn_wrap">
-    <button type="button" data-popup-name='#CM0900030'>dialog - 알럿</button>
+  <div class="popup_btn_wrap">
+    <button type="button" data-popup-name='#MN0100020-pop1'>동작 및 피트니스(ios)</button>
   </div>
 
-  <!-- dialog - 알럿 -->
-  <div id="CM0900030" class="modal_layer_popup align_center">
+  <!-- 동작 및 피트니스(ios) -->
+  <div id="MN0100020-pop1" class="modal_layer_popup align_center">
     <div class="dimmed_layer"></div>
     <div class="layer_content_wrap">
       <div class="layer_content">
         <!-- header -->
         <div class="layer_header">
-          <!-- <h1>젤리 받기</h1> -->
+          <h1>‘동작 및 피스니스’ 설정이 꺼져 있습니다.</h1>
         </div>
         <!-- body -->
         <div class="layer_body">
-					<!-- <div class="popup_visual interval_padding">
-						<img src="./images/img_dummy.jpg" alt="" />
-					</div> -->
-          <p class="popup_sub_txt">
-            <strong>선택한 항목</strong>을 삭제 하였습니다.
+          <p class="popup_sub_txt interval_padding">
+            사용자의 걸음 수를 측정하기 위해 해당 설정이 켜져 있어야 합니다.
           </p>
         </div>
         <!-- footer -->
         <div class="layer_footer">
           <div class="btn_dialog align_right">
-						<!-- <button type="button" class="btn_cancel">취소</button> -->
+            <button type="button" class="btn_cancel">취소</button>
             <button type="button" class="btn_confirm">확인</button>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!-- //dialog - 알럿 -->
+  <!-- //동작 및 피트니스(ios) -->
   <script src="./js/common.js"></script>
   <script>
     setTimeout(() => {
-      common.layerToggle('#CM0900030');
+      common.layerToggle('#MN0100020-pop1');
     }, 300);
   </script>
 

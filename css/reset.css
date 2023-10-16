@@ -21,6 +21,7 @@ caption{width:0; height:0; font-size:0; line-height:0; overflow:hidden; visibili
 *, :after, :before {box-sizing: border-box;}
 button, a {-webkit-tap-highlight-color: transparent;}
 button {border: 0 none;}
+* {-webkit-tap-highlight-color: transparent;}
 
 @font-face {
   font-family: 'HGGGothicssi';

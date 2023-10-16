@@ -1,6 +1,7 @@
 let common = {
   init: function () {
     this.layerButtonToggle();
+    this.toastButtonToggle();
     this.inputBorderStyle();
   },
   // 버튼으로 팝업 열기
@@ -57,11 +58,6 @@ let common = {
       }
     }
 
-    // 팝업 열기(중앙)
-    function showCenterSheet(){
-      console.log('center');
-    }
-
     // 팝업 닫기
     function hideBottomSheet(){
       document.body.classList.remove('active');
@@ -107,6 +103,32 @@ let common = {
         document.addEventListener("touchend", dragStop);
       })();
     }
+  },
+  // 버튼으로 토스트 팝업 열기
+  toastButtonToggle: function(){
+    let btnArr = document.querySelectorAll('.toast_button_toggle');
+    btnArr.forEach((btn)=>{
+      btn.addEventListener('click', ()=>{
+				this.toastPopupToggle(btn.dataset.popupName);
+			});
+    });
+  },
+  // 토스트 팝업 열기
+  toastPopupToggle: function(target){
+    const toastPopup = document.querySelector(target);
+    // 방어
+    if (!toastPopup) return console.error(`Element with selector '${target}' not found.`);
+
+    toastPopup.classList.add('active');
+    toastPopup.addEventListener("transitionend", () => {
+      if(toastPopup.classList.contains('active')){
+        setTimeout(() => {
+          toastPopup.classList.remove('active');
+        }, 2000);
+      }
+    });
+
+
   },
   // 프로필 설정 인풋 포커스, 인풋 값 삭제
   inputBorderStyle: function(){
@@ -161,6 +183,14 @@ let common = {
     function toggleClass(element, className, isActive) {
       isActive ? element.classList.add(className) : element.classList.remove(className);
     }
+  },
+
+
+
+
+
+  isMobile: function() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   },
   // circleProgress
   circleProgress: function(controlId, barSelector, valueSelector) {

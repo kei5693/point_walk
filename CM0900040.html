@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-	<title>잴리 받기 - dialog - 확인</title>
+	<title>공통 - dialog - 확인</title>
 	<link rel="stylesheet" href="./css/swiper-bundle.min.css">
 	<link rel="stylesheet" href="./css/reset.css">
 	<link rel="stylesheet" href="./css/animation.css">
@@ -17,6 +17,25 @@
 </head>
 
 <body>
-	<h1 class="temp">잴리 받기 - dialog - 확인</h1>
+	<div class="popup_btn_wrap">
+    <button type="button" class="toast_button_toggle" data-popup-name='#CM0900040'>dialog - 확인</button>
+  </div>
+
+	<!-- toast_popup_wrap -->
+	<div class="toast_popup_wrap" id="CM0900040">
+		<div class="inner">
+			<p>챌린지가 시작되었습니다!</p>
+		</div>
+	</div>
+	<!-- //toast_popup_wrap -->
+
+
+  <script src="./js/common.js"></script>
+  <script>
+    setTimeout(() => {
+      common.toastPopupToggle('#CM0900040');
+    }, 300);
+  </script>
+
 </body>
 </html>

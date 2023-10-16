@@ -18,6 +18,46 @@
 </head>
 
 <body>
-	<h1 class="temp">설정	인덱스</h1>
+
+  <div id="wrap">
+    <!-- header -->
+    <div id="header">
+      <div class="title_wrap">
+        <button type="button" class="btn_back">뒤로가기</button>
+        <h1>설정</h1>
+      </div>
+    </div>
+    <!-- container -->
+    <div id="container">
+			<div class="setting_wrap">
+				<ul class="setting_list">
+					<li>
+						<h2><a href="./MN0100040.html">프로필</a></h2>
+
+						<p>닉네임과 운동량 측정을 위한 키, 체중 정보를 설정합니다.</p>
+					</li>
+
+					<li>
+						<div>
+							<h2>걸음 수 활성화</h2>
+							<span class="inpchk_wrap"><input type="checkbox" id="inp01" /><label for="inp01"><span>toggle</span></label></span>
+						</div>
+						<p>걸음 수 측정 기능을 끄면<br>포인트워크 이용에 따른 미션 혜택을 받으실 수 없습니다.</p>
+						<span class="align_right"><button type="button"><span>걸음 수 동기화</span></button></span>
+					</li>
+					
+					<li>
+						<div>
+							<h2>알림 관리</h2>
+							<span class="inpchk_wrap"><input type="checkbox" id="inp02" /><label for="inp02"><span>toggle</span></label></span>
+						</div>
+						
+						<p>챌린지 안내 및 완료 알림, 7일 이상 미출석 알림을 받습니다.</p>
+					</li>
+				</ul>
+			</div>
+    </div>
+  </div>
+  <script src="./js/common.js"></script>
 </body>
 </html>
