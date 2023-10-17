@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-	<title>걸음 수 측정 기능</title>
+	<title>최근 걷기 기록</title>
 	<link rel="stylesheet" href="./css/swiper-bundle.min.css">
 	<link rel="stylesheet" href="./css/reset.css">
 	<link rel="stylesheet" href="./css/animation.css">
@@ -18,11 +18,11 @@
 
 <body>
   <div class="popup_btn_wrap">
-    <button type="button" class="layer_button_toggle" data-popup-name='#CR0500010-pop1'>걸음 수 측정 기능</button>
+    <button type="button" class="layer_button_toggle" data-popup-name='#WG0700010-pop1'>최근 걷기 기록</button>
   </div>
 
-  <!-- 걸음 수 측정 기능 -->
-  <div id="CR0500010-pop1" class="modal_layer_popup align_center">
+  <!-- 최근 걷기 기록 -->
+  <div id="WG0700010-pop1" class="modal_layer_popup align_center">
     <div class="dimmed_layer"></div>
     <div class="layer_content_wrap">
       <div class="layer_content">
@@ -32,7 +32,8 @@
         <!-- body -->
         <div class="layer_body">
           <p class="popup_sub_txt">
-            걸음 수 측정 기능을 끄시겠습니까?
+            최근 걷기 기록이 있습니다.<br />
+            이어서 걷기 시작할까요?
           </p>
         </div>
         <!-- footer -->
@@ -45,11 +46,11 @@
       </div>
     </div>
   </div>
-  <!-- //걸음 수 측정 기능 -->
+  <!-- //최근 걷기 기록 -->
   <script src="./js/common.js"></script>
   <script>
     setTimeout(() => {
-      common.layerToggle('#CR0500010-pop1');
+      common.layerToggle('#WG0700010-pop1');
     }, 300);
   </script>
 

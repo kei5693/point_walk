@@ -8,16 +8,6 @@
   --color-gray2: #AAA;
 }
 
-@mixin flex_cb {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-@mixin flex_cc {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 @mixin text_ellipsis {
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -70,6 +60,7 @@ body.active {overflow: hidden;}
     background: rgba(0, 0, 0, 0.3);
   }
   .layer_content_wrap {
+    display: flex;
     position: relative;
     width: 100%;
     height: 0;
@@ -87,7 +78,8 @@ body.active {overflow: hidden;}
     background: #fff;
     box-sizing: border-box;
     .layer_content {
-      height: 100%;
+      // height: 100%;
+      flex: 1;
       overflow-y: auto;
       padding: 0 30px;
       .layer_header {
@@ -130,8 +122,8 @@ body.active {overflow: hidden;}
     }
     .layer_close {
       position: absolute;
-      top: 10px;
-      right: 10px;
+      top: 20px;
+      right: 20px;
       width: 20px;
       height: 20px;
       background: #000;
@@ -164,7 +156,9 @@ body.active {overflow: hidden;}
   }
   // 중앙 정렬 팝업
   &.align_center {
-    @include flex_cc();
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
 		transition-delay: 0.2s;
     &.active {
@@ -180,7 +174,7 @@ body.active {overflow: hidden;}
 
       height: auto;
       max-width: 360px;
-      max-height: none;
+      // max-height: none;
       margin: 0 30px;
       padding: 0 0 60px;
       border-radius: 0;
@@ -204,6 +198,18 @@ body.active {overflow: hidden;}
         .layer_footer {
           height: 60px;
         }
+      }
+      .layer_close {
+        top: 30px;
+      }
+    }
+  }
+  // 푸터 없음
+  &.hide_footer {
+    .layer_content_wrap {
+      padding-bottom: 0;
+      .layer_content .layer_footer {
+        display: none;
       }
     }
   }
@@ -434,9 +440,11 @@ body.active {overflow: hidden;}
     height: 44px;
     padding: 0 30px;
 
-    @include flex_cb();
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-    background-color: #ff9e9e;
+    background-color: #ffccb6;
     &:empty {
       height: auto;
     }
@@ -485,12 +493,12 @@ body.active {overflow: hidden;}
     height: 100%;
     overflow-y: auto;
 
-    background-color: #71dbff;
+    background-color: #ffffb5;
   }
   #footer {
     height: 70px;
 
-    background-color: #87ffbd;
+    background-color: #a2e1db;
     &:empty {
       height: auto;
     }
@@ -505,7 +513,9 @@ body.active {overflow: hidden;}
         border-top: 1px solid #000;
       }
       > div {
-        @include flex_cb();
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
       }
       h2 {
         font-size: 18px;
@@ -558,6 +568,119 @@ body.active {overflow: hidden;}
     }
   }
 }
+// 걷기가이드
+.walking_guide_wrap {
+  font-size: 16px;
+  .walking_guide_list {
+    
+  }
+  .walking_guide_detail {
+    .title {
+      h2 {font-size: 20px;}
+      p {}
+    }
+    > p {}
+
+    .control_wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      button {font-size: 20px;}
+      span {}
+      p {}
+    }
+  }
+  .walking_guide_complete {
+    .result_wrap {
+      p {
+        text-align: center;
+      }
+      ul {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 10px;
+        > li {
+          text-align: center;
+          border: 1px solid #000;
+        }
+      }
+    }
+    .recommend_wrap {}
+  }
+  .walking_menu_list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    > li {
+      border: 1px solid #000;
+      box-sizing: border-box;
+
+      text-align: center;
+    }
+  }
+  .btn_align {
+    font-size: 20px;
+    span {
+      display: block;
+      position: relative;
+      padding-left: 26px;
+      &::after {
+        content: '';
+        position: absolute;
+        top: 4px;
+        left: 0;
+
+        width: 20px;
+        height: 20px;
+
+        background: #000;;
+      }
+    }
+  }
+}
+// 리워드 - 젤리
+.jelly_reward_wrap {
+  padding: 0 20px;
+  font-size: 20px;
+  button {
+    font-size: inherit;
+  }
+  .holding_point {
+    > li {
+      > div {
+        > div {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          padding: 5px;
+          &:first-child {
+            border: 1px solid #000;
+          }
+        }
+      }
+    }
+  }
+  .point_guide {
+    > div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 5px;
+    }
+  }
+  .donation_banner {
+    img {}
+  }
+  .notice_wrap {
+
+  }
+}
+// H.Point 교환 비율
+.point_exchange_wrap {
+  font-size: 16px;
+}
 
 // 인덱스 테이블
 .index_table_wrap {
@@ -573,15 +696,20 @@ body.active {overflow: hidden;}
   }
   table {
     tbody {
-      tr.active td {
-        background-color: #e6e6e6;
+      tr {
+        &.border {
+          td {border-top-width: 4px;}
+        }
       }
       td {
         padding: 5px 10px;
         border: 1px solid #000;
 
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 600;
+        &:last-child {
+          text-align: center;
+        }
         a:hover {
           color:red;
         }

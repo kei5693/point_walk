@@ -19,9 +19,12 @@ table,th,td{color:#000;font-family: '돋움',dotum,helvetica,sans-serif; font-si
 caption{width:0; height:0; font-size:0; line-height:0; overflow:hidden; visibility:hidden;}
 
 *, :after, :before {box-sizing: border-box;}
-button, a {-webkit-tap-highlight-color: transparent;}
-button {border: 0 none;}
+button {border: 0 none; background: transparent;}
 * {-webkit-tap-highlight-color: transparent;}
+img {
+  display: block;
+  width: 100%;
+}
 
 @font-face {
   font-family: 'HGGGothicssi';

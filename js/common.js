@@ -14,7 +14,8 @@ let common = {
     });
   },
   // 팝업 열기
-  layerToggle: function(target){
+  layerToggle: function(target, sheetHeight = 100){
+    console.log(target);
     const layerPopup        = document.querySelector(target);
     // 방어
     if (!layerPopup) return console.error(`Element with selector '${target}' not found.`);
@@ -54,7 +55,7 @@ let common = {
       layerPopup.classList.add('active');
 
       if(!isCentered){
-        updateSheetHeight(100);
+        updateSheetHeight(sheetHeight);
       }
     }
 
