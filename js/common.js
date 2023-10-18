@@ -3,6 +3,21 @@ let common = {
     this.layerButtonToggle();
     this.toastButtonToggle();
     this.inputBorderStyle();
+    this.initTabMenus();
+
+    // document.addEventListener('scroll', (e) => {
+    //   if(this.isScrollNearBottom()){
+    //     console.log('end');
+    //   }
+    // });
+
+    // if(document.querySelector('#container')){
+    //   document.querySelector('#container').addEventListener('scroll', (e) => {
+    //     if(this.isScrollNearBottom(e.target)){
+    //       console.log('end');
+    //     }
+    //   });
+    // }
   },
   // 버튼으로 팝업 열기
   layerButtonToggle: function(){
@@ -154,76 +169,47 @@ let common = {
       });
     });
   },
-  // class toggle event bind
-  siblingsToggleClass: function(targetSelector, childrenSelector, initialIndex, className){
-    const targetElements = document.querySelectorAll(targetSelector);
+  // 탭메뉴 이벤트
+  initTabMenus: function(initIndex){
+    const tabMenus = document.querySelectorAll('.tab_menu_wrap');
+
+    tabMenus.forEach((tabMenu) => {
+      const tabTitles = tabMenu.querySelectorAll('.tab_title > li');
+      const tabContents = tabMenu.querySelectorAll('.tab_content > div');
+      const initialIndex = initIndex || 0;
+
+      // init
+      setActiveTab(tabTitles, tabContents, initialIndex);
   
-    targetElements.forEach((targetElement) => {
-      const childrenElements = targetElement.querySelectorAll(childrenSelector);
-  
-      childrenElements.forEach((childElement, index) => {
-        const isActive = index === initialIndex;
-  
-        // Initialize classes based on the initial index
-        toggleClass(childElement, className, isActive);
-  
-        childElement.addEventListener('click', (e) => {
-          e.preventDefault();
-          
-          // remove
-          childrenElements.forEach((otherElement) => {
-            toggleClass(otherElement, className, false);
-          });
-  
-          // Add
-          toggleClass(e.currentTarget, className, true);
+      // 클릭 이벤트
+      tabTitles.forEach((tabTitle, currentIndex) => {
+        tabTitle.addEventListener('click', () => {
+          setActiveTab(tabTitles, tabContents, currentIndex);
         });
       });
     });
 
-    function toggleClass(element, className, isActive) {
-      isActive ? element.classList.add(className) : element.classList.remove(className);
+    function setActiveTab(titles, contents, index) {
+      titles.forEach((title, i) => {
+        title.classList.toggle('active', i === index);
+      });
+    
+      contents.forEach((content, i) => {
+        content.classList.toggle('active', i === index);
+      });
     }
   },
-
-
-
-
-
-  isMobile: function() {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  // 스크롤 엔드 감지
+  isScrollNearBottom: function(target = document, buffer = 100) {
+    const scrollY         = target === document ? window.scrollY || window.pageYOffset : target.scrollTop;
+    const viewportHeight  = target === document ? window.innerHeight : target.clientHeight;
+    const contentHeight   = target === document ? document.documentElement.scrollHeight : target.scrollHeight;
+    return contentHeight - (scrollY + viewportHeight) < buffer;
   },
-  // circleProgress
-  circleProgress: function(controlId, barSelector, valueSelector) {
-    var control				= document.getElementById(controlId);
-    var bar						= document.querySelector(barSelector);
-    var value					= document.querySelector(valueSelector);
-    var RADIUS				= bar.attributes.r.value;
-    var CIRCUMFERENCE = 2 * Math.PI * RADIUS; // 339.29200658769764			
 
-    function progress(per) {
-      var progress = per / 100;
-      var dashoffset = CIRCUMFERENCE * (1 - progress);
 
-      value.innerHTML = per + '%';
-      bar.style.strokeDashoffset = dashoffset;
-    }
 
-    control.addEventListener('input', function(event) {
-      progress(event.target.valueAsNumber);
-    });
 
-    control.addEventListener('change', function(event) {
-      progress(event.target.valueAsNumber);
-    });
-
-    bar.style.strokeDasharray = CIRCUMFERENCE;
-    progress(control.value);
-  },
-  // class toggle
-  toggleClass: function(target, className, parent) {
-    parent === undefined ? target.classList.toggle(className) : target.closest(parent).classList.toggle(className);
-  },
   // 디자인 셀렉트
   designSelect: function(){
     let selectBox = document.querySelectorAll('.designSelect');
@@ -266,12 +252,75 @@ let common = {
       });
     });
   },
+  // class toggle event bind
+  siblingsToggleClass: function(targetSelector, childrenSelector, initialIndex, className){
+    const targetElements = document.querySelectorAll(targetSelector);
+  
+    targetElements.forEach((targetElement) => {
+      const childrenElements = targetElement.querySelectorAll(childrenSelector);
+  
+      childrenElements.forEach((childElement, index) => {
+        const isActive = index === initialIndex;
+  
+        // Initialize classes based on the initial index
+        toggleClass(childElement, className, isActive);
+  
+        childElement.addEventListener('click', (e) => {
+          e.preventDefault();
+          
+          // remove
+          childrenElements.forEach((otherElement) => {
+            toggleClass(otherElement, className, false);
+          });
+  
+          // Add
+          toggleClass(e.currentTarget, className, true);
+        });
+      });
+    });
+
+    function toggleClass(element, className, isActive) {
+      isActive ? element.classList.add(className) : element.classList.remove(className);
+    }
+  },
+  // class toggle
+  toggleClass: function(target, className, parent) {
+    parent === undefined ? target.classList.toggle(className) : target.closest(parent).classList.toggle(className);
+  },
+  // 모바일 체크
+  isMobile: function() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  },
+  // circleProgress
+  circleProgress: function(controlId, barSelector, valueSelector) {
+    var control				= document.getElementById(controlId);
+    var bar						= document.querySelector(barSelector);
+    var value					= document.querySelector(valueSelector);
+    var RADIUS				= bar.attributes.r.value;
+    var CIRCUMFERENCE = 2 * Math.PI * RADIUS; // 339.29200658769764			
+
+    function progress(per) {
+      var progress = per / 100;
+      var dashoffset = CIRCUMFERENCE * (1 - progress);
+
+      value.innerHTML = per + '%';
+      bar.style.strokeDashoffset = dashoffset;
+    }
+
+    control.addEventListener('input', function(event) {
+      progress(event.target.valueAsNumber);
+    });
+
+    control.addEventListener('change', function(event) {
+      progress(event.target.valueAsNumber);
+    });
+
+    bar.style.strokeDasharray = CIRCUMFERENCE;
+    progress(control.value);
+  },
 }
 
 common.init();
-common.siblingsToggleClass('.time_stamp_wrap .select_photo_list', 'li', 0, 'active');
-
-
 
 
 
@@ -307,12 +356,6 @@ const swiperTest = new Swiper('.scale_swiper', {
     },
   }
 });
-
-
-
-
-
-
 // bottomSheetModal
 function bottomSheetModal(showModalBtnSelector, bottomSheetSelector) {
   const showModalBtn = document.querySelector(showModalBtnSelector);
@@ -374,72 +417,3 @@ function bottomSheetModal(showModalBtnSelector, bottomSheetSelector) {
   showModalBtn.addEventListener("click", showBottomSheet);
 }
 // bottomSheetModal(".show-modal", ".bottom-sheet");
-
-// bottomSheetModal
-function bottomSheetModal2(targetSelector) {
-  const bottomSheet = document.querySelector(targetSelector);
-  if (!bottomSheet) {
-    console.error(`Element with selector '${targetSelector}' not found.`);
-    return;
-  }
-
-
-  const sheetOverlay = bottomSheet.querySelector(".sheet-overlay");
-  const sheetContent = bottomSheet.querySelector(".content");
-  const dragIcon = bottomSheet.querySelector(".drag-icon");
-
-  let isDragging = false,
-    startY,
-    startHeight;
-
-  const updateSheetHeight = (height) => {
-    sheetContent.style.height = `${height}%`;
-    bottomSheet.classList.toggle("fullscreen", height === 100);
-  }
-
-  const showBottomSheet = () => {
-    bottomSheet.classList.add("show");
-    document.body.style.overflowY = "hidden";
-    updateSheetHeight(50);
-  }
-  showBottomSheet();
-
-  const hideBottomSheet = () => {
-    bottomSheet.classList.remove("show");
-    document.body.style.overflowY = "auto";
-  }
-
-  const dragStart = (e) => {
-    isDragging = true;
-    startY = e.pageY || e.touches?.[0].pageY;
-    startHeight = parseInt(sheetContent.style.height);
-    bottomSheet.classList.add("dragging");
-  }
-
-  const dragging = (e) => {
-    if (!isDragging) return;
-    const delta = startY - (e.pageY || e.touches?.[0].pageY);
-    const newHeight = startHeight + delta / window.innerHeight * 100;
-    updateSheetHeight(newHeight);
-  }
-
-  const dragStop = () => {
-    isDragging = false;
-    bottomSheet.classList.remove("dragging");
-    const sheetHeight = parseInt(sheetContent.style.height);
-    sheetHeight < 25 ? hideBottomSheet() : sheetHeight > 75 ? updateSheetHeight(100) : updateSheetHeight(50);
-  }
-
-  dragIcon.addEventListener("mousedown", dragStart);
-  document.addEventListener("mousemove", dragging);
-  document.addEventListener("mouseup", dragStop);
-
-  dragIcon.addEventListener("touchstart", dragStart);
-  document.addEventListener("touchmove", dragging);
-  document.addEventListener("touchend", dragStop);
-
-  sheetOverlay.addEventListener("click", hideBottomSheet);
-  // You can add a custom trigger event listener if needed.
-  // For example: showModalBtn.addEventListener("click", showBottomSheet);
-}
-//bottomSheetModal2(".bottom-sheet");
