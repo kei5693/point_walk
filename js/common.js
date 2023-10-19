@@ -4,20 +4,6 @@ let common = {
     this.toastButtonToggle();
     this.inputBorderStyle();
     this.initTabMenus();
-
-    // document.addEventListener('scroll', (e) => {
-    //   if(this.isScrollNearBottom()){
-    //     console.log('end');
-    //   }
-    // });
-
-    // if(document.querySelector('#container')){
-    //   document.querySelector('#container').addEventListener('scroll', (e) => {
-    //     if(this.isScrollNearBottom(e.target)){
-    //       console.log('end');
-    //     }
-    //   });
-    // }
   },
   // 버튼으로 팝업 열기
   layerButtonToggle: function(){
@@ -30,7 +16,6 @@ let common = {
   },
   // 팝업 열기
   layerToggle: function(target, sheetHeight = 100){
-    console.log(target);
     const layerPopup        = document.querySelector(target);
     // 방어
     if (!layerPopup) return console.error(`Element with selector '${target}' not found.`);
@@ -199,12 +184,22 @@ let common = {
       });
     }
   },
-  // 스크롤 엔드 감지
+  // 스크롤 엔드 감지 함수 사용(대상은 1개만 있을 경우로 작성 되었다)
+  scrollEnd: function(target = document, buffer = 100){
+    const targetEl = target === document ? document : document.querySelector(target);
+
+    targetEl.addEventListener('scroll', (e) => {
+      if(this.isScrollNearBottom(e.target, buffer)){
+        console.log('end');
+      }
+    });
+  },
+  // 스크롤 엔드 감지 함수
   isScrollNearBottom: function(target = document, buffer = 100) {
     const scrollY         = target === document ? window.scrollY || window.pageYOffset : target.scrollTop;
     const viewportHeight  = target === document ? window.innerHeight : target.clientHeight;
     const contentHeight   = target === document ? document.documentElement.scrollHeight : target.scrollHeight;
-    return contentHeight - (scrollY + viewportHeight) < buffer;
+    return contentHeight - (scrollY + viewportHeight) < buffer
   },
 
 
