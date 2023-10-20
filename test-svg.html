@@ -161,7 +161,7 @@
 	<div>
 		<div id="output" class="output large">
 			<section id="default-example" class="default-example">
-				<div id="example-element" class="transition-all" style="offset-distance: 0%;"></div>
+				<div id="example-element" class="transition-all"></div>
 			</section>
 		</div>
 
@@ -199,8 +199,17 @@
 			.transition-all {
 					transition: all .3s ease-in;
 			}
+			#default-example.active #example-element {
+				offset-distance: 100%;
+			}
 		</style>
+		<script>
+			document.querySelector('#default-example').addEventListener('click', (e)=>{
+				document.querySelector('#default-example').classList.toggle('active');
+			});
+		</script>
 	</div>
+	
 
 
 

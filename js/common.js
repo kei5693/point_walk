@@ -4,6 +4,7 @@ let common = {
     this.toastButtonToggle();
     this.inputBorderStyle();
     this.initTabMenus();
+    this.scrollDeformation();
   },
   // 버튼으로 팝업 열기
   layerButtonToggle: function(){
@@ -201,10 +202,72 @@ let common = {
     const contentHeight   = target === document ? document.documentElement.scrollHeight : target.scrollHeight;
     return contentHeight - (scrollY + viewportHeight) < buffer
   },
+  // 헤더 스크롤 이벤트
+  scrollDeformation: function(){
+    const condition = document.querySelector('#wrap').classList.contains('scroll_deformation');
+    const titleEl = document.querySelector('#header > .title_wrap h1');
+    var matrixArr = [-36, 50, 2];
 
+    if(!condition) return
 
+    // init
+    initStyle(matrixArr);
+    document.addEventListener('scroll', handleScroll);
 
+    // 스크롤 중간에서 새로고침 할 경우 대비
+    function initStyle(arr){
+      const scrollTop = document.documentElement.scrollTop;
 
+      if(scrollTop == 0 ){
+        titleEl.style.transform = `translate(${arr[0]}px, ${arr[1]}px) scale(${arr[2]})`;
+      } else {
+        titleEl.style.transform = 'translate(0, 0) scale(1)';
+      }
+    }
+
+    function handleScroll(){
+      const scrollTop = document.documentElement.scrollTop;
+      applyTransform(scrollTop);
+    }
+
+    function applyTransform(scrollTop){
+      if(scrollTop >= 50){
+        scrollTop = 50;
+      } else if(scrollTop <= 0){
+        scrollTop = 0;
+      }
+
+      const calArr = matrixArr.map((el) => el / matrixArr[1]);
+      const transformed = matrixArr.map((el, i) => {
+        return i === matrixArr.length - 1
+          ? el - (calArr[i] * scrollTop) / 2
+          : el - calArr[i] * scrollTop;
+      });
+
+      titleEl.style.transform = `translate(${transformed[0]}px, ${transformed[1]}px) scale(${transformed[2]})`;
+    }
+  },
+  // 스크롤 방향 감지
+  getScrollDirection: function(){
+    let prevScrollPos = window.pageYOffset || document.documentElement.scrollTop;
+    let scrollDirection;
+  
+    window.addEventListener('scroll', () => {
+      const currentScrollPos = window.pageYOffset || document.documentElement.scrollTop;
+  
+      if (currentScrollPos > prevScrollPos) {
+        scrollDirection = 'down';
+      } else if (currentScrollPos < prevScrollPos) {
+        scrollDirection = 'up';
+      } else {
+        scrollDirection = 'unchanged';
+      }
+  
+      prevScrollPos = currentScrollPos;
+    });
+  
+    return () => scrollDirection;
+  },
   // 디자인 셀렉트
   designSelect: function(){
     let selectBox = document.querySelectorAll('.designSelect');

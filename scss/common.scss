@@ -381,15 +381,40 @@ body.active {overflow: hidden;}
 
 // 전체 레이아웃
 #wrap {
-  display: flex;
-  flex-direction: column;
-
-          font-size: 20px;
+        font-size: 20px;
+  &.flex_layout {
+    display: flex;
+    flex-direction: column;
+    #header {
+      flex-shrink: 0;
+    }
+    #container {
+      height: 100%;
+      overflow-y: auto;
+    }
+  }
+  &.scroll_deformation {
+    #header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      
+      width: 100%;
+      h1 {
+        // transform: translate(-36px, 50px) scale(2);
+        transform-origin: left;
+      }
+    }
+    #container {
+      padding-top: 98px;
+    }
+  }
   #header {
-    flex-shrink: 0;
-
     height: 44px;
     padding: 0 30px;
+
+    position: relative;
+    z-index: 1000;
 
     display: flex;
     align-items: center;
@@ -425,7 +450,7 @@ body.active {overflow: hidden;}
         font-size: 18px;
         font-weight: 800;
         color: var(--color-black);
-        line-height: 24px;  
+        line-height: 24px;
       }
       .btn_back {
         width: 24px;
@@ -441,9 +466,6 @@ body.active {overflow: hidden;}
     }
   }
   #container {
-    height: 100%;
-    overflow-y: auto;
-
     background-color: #ffffb5;
   }
   #footer {
