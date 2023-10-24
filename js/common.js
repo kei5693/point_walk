@@ -392,7 +392,6 @@ const thumbImgWrap = new Swiper('.album_swiper', {
   loop: true,
 
 });
-
 // scale_swiper
 const swiperTest = new Swiper('.scale_swiper', {
   slidesPerView: 3,
