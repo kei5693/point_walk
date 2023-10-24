@@ -9,17 +9,85 @@
 	<link rel="stylesheet" href="./css/reset.css">
 	<link rel="stylesheet" href="./css/animation.css">
 	<link rel="stylesheet" href="./css/common.css">
+
 	<script src="./js/swiper-bundle.min.js"></script>
+
 	<script src="./js/cdn.jsdelivr.net_npm_chart.js"></script>
 
 	<script src="./js/masonry.pkgd.min.js"></script>
 	<script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
 	<script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.js"></script>
+
+	<script src="./js/lottie-player.js"></script>
 </head>
 
 <body>
 
 	<div id="wrap" class="test_wrap">
+
+		<div class="lottie_player">
+			<lottie-player
+				autoplay
+				loop
+				mode="normal"
+				src="./json/animation_lo2isjhu.json"
+				>
+				
+				<!--
+					controls
+					src="./json/animation_lo2isjhu.json"
+				-->
+			</lottie-player>
+
+			<!-- <lottie-player
+				autoplay
+				loop
+				controls
+				mode="normal"
+				src="./json/lf20_UJNc2t.json"
+			>
+			</lottie-player> -->
+		</div>
+
+		<style>
+			.lottie_player {
+				border: 5px solid #000;
+			}
+		</style>
+
+		<script>
+			const player = document.querySelector("lottie-player");
+			// player.load("./json/lf20_UJNc2t.json");
+
+			player.addEventListener('ready', function(){
+				var svg = player.shadowRoot.querySelector("svg");
+				// svg.setAttribute("viewBox", "0 0 800 800"); 
+
+				svg.setAttribute("viewBox", "-177 150 750 450"); 
+				svg.setAttribute("height", "450");
+			});
+
+
+			
+			// console.log(svg);
+			
+
+			// svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+		</script>
+
+
+
+
+
+
+
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
 		
 		<div class="designSelect">
 			<p class="selected"><span>option1</span></p>
@@ -277,10 +345,11 @@
 
 		<!-- circle_progress -->
 		<div class="circle_progress_wrap">
-			<svg class="circle_progress" width="120" height="120" viewBox="0 0 120 120">
+			<svg class="circle_progress" viewBox="0 0 150 150">
 				<circle class="frame" cx="50%" cy="50%" r="54" stroke-width="12" />
 				<circle class="bar" cx="50%" cy="50%" r="54" stroke-width="12" />
 			</svg>
+			
 			<input id="control" type="range" value="30" />
 			<strong class="value"></strong>
 		</div>

@@ -5,6 +5,8 @@ let common = {
     this.inputBorderStyle();
     this.initTabMenus();
     this.scrollDeformation();
+
+    this.designSelect();
   },
   // 버튼으로 팝업 열기
   layerButtonToggle: function(){
