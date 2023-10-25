@@ -6,6 +6,7 @@ let common = {
     this.initTabMenus();
     this.scrollDeformation();
 
+    this.categoryListEvent();
     this.designSelect();
   },
   // 버튼으로 팝업 열기
@@ -171,7 +172,7 @@ let common = {
   
       // 클릭 이벤트
       tabTitles.forEach((tabTitle, currentIndex) => {
-        tabTitle.addEventListener('click', () => {
+        tabTitle.addEventListener('click', (e) => {
           setActiveTab(tabTitles, tabContents, currentIndex);
         });
       });
@@ -206,6 +207,8 @@ let common = {
   },
   // 헤더 스크롤 이벤트
   scrollDeformation: function(){
+    if(document.querySelector('#wrap') == null) return;
+
     const condition = document.querySelector('#wrap').classList.contains('scroll_deformation');
     const titleEl = document.querySelector('#header > .title_wrap h1');
     var matrixArr = [-36, 50, 2];
@@ -377,6 +380,88 @@ let common = {
 
     bar.style.strokeDasharray = CIRCUMFERENCE;
     progress(control.value);
+  },
+  categoryListEvent: function(){
+    const categoryContent = document.querySelector('.category_list_content');
+    const categoryInner = categoryContent.querySelector('.inner');
+    const categoryUl = categoryInner.querySelector('ul');
+    const categoryEl = categoryUl.querySelectorAll('li');
+    const toggleBtn = categoryContent.querySelector('button');
+    const spreadList = categoryContent.querySelectorAll('.spread_list li');
+
+    window.addEventListener("DOMContentLoaded", () => {setTabInit()});
+
+    // init
+    setActiveTab(categoryEl, 0);
+    setActiveTab(spreadList, 0);
+    
+    // inner 리스트 클릭 이벤트
+    categoryEl.forEach((tabTitle, currentIndex) => {
+      tabTitle.addEventListener('click', () => {
+        let condition = categoryContent.classList.contains('active');
+
+        if(!condition){
+          setActiveTab(categoryEl, currentIndex);
+          // setActiveTab(spreadList, currentIndex);
+          switchTab(currentIndex);
+        } 
+      });
+    });
+
+    // spread 리스트 클릭 이벤트
+    spreadList.forEach((tabTitle, currentIndex) => {
+      tabTitle.addEventListener('click', () => {
+        let condition = categoryContent.classList.contains('active');
+
+        if(condition){
+          // setActiveTab(categoryEl, currentIndex);
+          setActiveTab(spreadList, currentIndex);
+        }
+      });
+    });
+
+    // 토글 버튼 이벤트
+    toggleBtn.addEventListener('click', ()=>{categoryContent.classList.toggle('active')});
+
+    // 탭 전체 width 설정
+    function setTabInit(){
+      let tabWidth = 0;
+      let gap = 10;
+      
+      categoryEl.forEach((el, index)=>{
+        if(index == 0 ){
+          tabWidth += (el.offsetWidth);
+        } else {
+          tabWidth += (el.offsetWidth + gap);
+        }
+      });
+      categoryUl.style.width = tabWidth+'px';
+    }
+    // 클릭한 대상에 active
+    function setActiveTab(titles, index) {
+      titles.forEach((title, i) => {
+        title.classList.toggle('active', i === index);
+      });
+    }
+    // 클릭한 대상으로 scroll 이동 이벤트
+    function switchTab(n){
+      let posCenter = window.outerWidth / 2;
+      let pos = 0;
+      let posLimit = categoryUl.offsetWidth - categoryInner.offsetWidth;
+
+      if (categoryEl[n].offsetLeft + categoryEl[n].offsetWidth / 2 <= posCenter) {
+        pos = 0;
+      } else {
+        pos = (categoryEl[n].offsetLeft + categoryEl[n].offsetWidth / 2) - posCenter;
+        if (pos > posLimit) {
+          pos = posLimit
+        }
+      }
+
+      // console.log(pos);
+      categoryInner.scrollLeft = pos;
+      // categoryUl.style.transform = `translateX(${pos}px)`;
+    }
   },
 }
 

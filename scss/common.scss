@@ -394,33 +394,28 @@ body.active {overflow: hidden;}
     }
   }
   &.scroll_deformation {
-    #header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      
-      width: 100%;
-      h1 {
-        // transform: translate(-36px, 50px) scale(2);
-        transform-origin: left;
-      }
-    }
     #container {
       padding-top: 98px;
     }
   }
   #header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+
+    width: 100%;
     height: 44px;
     padding: 0 30px;
-
-    position: relative;
-    z-index: 1000;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     background-color: #ffccb6;
+    h1 {
+      transform-origin: left;
+    }
     &:empty {
       height: auto;
     }
@@ -466,7 +461,7 @@ body.active {overflow: hidden;}
     }
   }
   #container {
-    background-color: #ffffb5;
+    padding-top: 44px;
   }
   #footer {
     height: 70px;
@@ -751,6 +746,294 @@ body.active {overflow: hidden;}
 
 // * 활동
 .activity_wrap {}
+// 챌린지
+.challenge_content_wrap {
+  .tab_menu_wrap {
+    .tab_title {
+      > li {
+        a {}
+      }
+    }
+    .tab_content {
+      > div {
+        margin-top: 20px;
+        &.challenge_daily {
+          .banner_content {
+            padding: 20px;
+            border: 1px solid #000;
+            p {}
+          }
+        }
+        &.challenge_mission {
+          .notice_content {
+            padding: 20px;
+            border: 1px solid #000;
+            p {
+              position: relative;
+              padding: 0 26px;
+              &:before,
+              &:after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+              }
+              &:before {
+                left: 0;
+                width: 20px;
+                height: 20px;
+                background: #000;
+              }
+              &:after {
+                right: 0;
+                width: 20px;
+                height: 20px;
+                background: #000;
+              }
+            }
+          }
+          .category_list_content {
+            margin-top: 20px;
+            padding-right: 50px;
+            position: relative;
+            &.active {
+              .spread_list {
+                max-height: 999px;
+                transition-duration: 0.6s;
+              }
+            }
+            .inner {
+              overflow: auto;
+              height: 40px;
+              scroll-behavior: smooth;
+              &::-webkit-scrollbar {
+                display: none;
+              }
+              > ul {
+                flex-wrap: nowrap;
+                align-items: center;
+                > li + li {margin-left: 10px;}
+              }
+            }
+            ul {
+              display: flex;
+              > li {
+                &.active a {
+                  background: #000;
+                  color: #fff;
+                }
+                > a {
+                  display: block;
+                  white-space: nowrap;
+                  padding: 5px 10px;
+                  border: 1px solid #000;
+                  span {
+                    display: inline-block;
+                    width: 20px;
+                    height: 20px;
+
+                    border-radius: 50%;
+                    background: #000;
+
+                    color: #fff;
+                    font-size: 16px;
+                    text-align: center;
+                    line-height: 20px;
+                  }
+                }
+              }
+            }
+            > button {
+              position: absolute;
+              top: 0;
+              right: 0;
+
+              width: 40px;
+              height: 40px;
+
+              border: 1px solid #000;
+              background: #000;
+              color: #fff;
+
+              font-size: 0;
+              line-height: 0;
+            }
+            .spread_list {
+              position: absolute;
+              top: 40px;
+              left: 0;
+              z-index: 100;
+              width: 100%;
+
+              overflow: hidden;
+              max-height: 0;
+              transition: max-height 0.3s;
+              background: #fff;
+              > ul {
+                flex-wrap: wrap;
+                > li {
+                  margin: 10px 0 0 10px;
+                }
+              }
+            }
+          }
+        }
+      }
+      .challenge_list {
+        margin-top: 20px;
+        .list_view {
+          display: flex;
+          justify-content: right;
+          .btn_list_view {
+            margin-bottom: 20px;
+            padding: 5px 10px;
+            border: 1px solid #000;
+            background: #fff;
+            font-size: 20px;
+            color: #000;
+          }
+        }
+        > ul {
+          > li {
+            position: relative;
+            &.status {
+              &.coming:before {
+                content: 'COMING \A SOON';
+                color: #fff;
+                border-color: #fff;
+              }
+              &.deadline:before {
+                content: '마감';
+                color: #fff;
+                border-color: #fff;
+              }
+              &.first_come:before {
+                content: '선착순 \A 마감';
+                color: #fff;
+                border-color: #fff;
+              }
+              &.crew:before {
+                content: '크루를 기다려요';
+                color: #fff;
+                border-color: #fff;
+
+                width: auto;
+                height: auto;
+
+                border-radius: 0;
+                border: 0 none;
+              }
+              &:after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.3);
+              }
+              &:before {
+                content: 'MISSION \A CLEAR';
+                white-space: pre-wrap;
+    
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                z-index: 100;
+                transform: translate(-50%, -50%);
+    
+                color: red;
+                text-align: center;
+                line-height: 1.2;
+    
+                width: 120px;
+                height: 120px;
+                border: 5px solid red;
+                border-radius: 50%;
+    
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              }
+            }
+  
+            & + li {
+              margin-top: 40px;
+            }
+            > a {
+              display: block;
+              position: relative;
+              color: #fff;
+              > :not(.visual_box) {
+                position: absolute;
+              }
+              .visual_box {
+                position: relative;
+                img {
+                  display: block;
+                  width: 100%;
+                }
+                .status_msg {
+                  position: absolute;
+                  top: 10px;
+                  right: 10px;
+      
+                  background: #000;
+                  padding: 5px 10px;
+                }
+              }
+              .title_box {
+                left: 0;
+                bottom: 0;
+                width: 100%;
+    
+                background: rgba(0,0,0,0.5);
+                padding: 10px 20px;
+                .title {
+                  > p {}
+                  > strong {
+                    display: block;
+                  }
+                  > span {
+                    display: block;
+                  }
+                }
+                > .icon_case {
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  transform: translateY(calc(-100% - 5px));
+    
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  > span {
+                    border: 1px solid #000;
+                    background: #fff;
+                    color: #000;
+                    padding: 5px;
+                  }
+                  > .icon_box {
+                    span {
+                      border: 1px solid #000;
+                      background: #fff;
+                      color: #000;
+                      padding: 5px 10px;
+                      & + span {
+                        margin-left: 10px;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
 
 
 
