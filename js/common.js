@@ -381,13 +381,19 @@ let common = {
     bar.style.strokeDasharray = CIRCUMFERENCE;
     progress(control.value);
   },
+  // 챌린지 - 목록 - 카테고리 이벤트
   categoryListEvent: function(){
-    const categoryContent = document.querySelector('.category_list_content');
-    const categoryInner = categoryContent.querySelector('.inner');
+    if(document.querySelector('.challenge_category') == null) return;
+
+    const challengeCategory = document.querySelector('.challenge_category');
+    const categoryInner = challengeCategory.querySelector('.inner');
     const categoryUl = categoryInner.querySelector('ul');
     const categoryEl = categoryUl.querySelectorAll('li');
-    const toggleBtn = categoryContent.querySelector('button');
-    const spreadList = categoryContent.querySelectorAll('.spread_list li');
+    const toggleBtn = challengeCategory.querySelector('button');
+    const spreadList = challengeCategory.querySelectorAll('.spread_list li');
+
+    const challengeList = document.querySelector('.challenge_list');
+    const btnViewType = challengeList.querySelector('.view_type button');
 
     window.addEventListener("DOMContentLoaded", () => {setTabInit()});
 
@@ -397,8 +403,10 @@ let common = {
     
     // inner 리스트 클릭 이벤트
     categoryEl.forEach((tabTitle, currentIndex) => {
-      tabTitle.addEventListener('click', () => {
-        let condition = categoryContent.classList.contains('active');
+      tabTitle.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        let condition = challengeCategory.classList.contains('active');
 
         if(!condition){
           setActiveTab(categoryEl, currentIndex);
@@ -410,8 +418,10 @@ let common = {
 
     // spread 리스트 클릭 이벤트
     spreadList.forEach((tabTitle, currentIndex) => {
-      tabTitle.addEventListener('click', () => {
-        let condition = categoryContent.classList.contains('active');
+      tabTitle.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        let condition = challengeCategory.classList.contains('active');
 
         if(condition){
           // setActiveTab(categoryEl, currentIndex);
@@ -421,7 +431,11 @@ let common = {
     });
 
     // 토글 버튼 이벤트
-    toggleBtn.addEventListener('click', ()=>{categoryContent.classList.toggle('active')});
+    toggleBtn.addEventListener('click', ()=>{challengeCategory.classList.toggle('active')});
+
+    btnViewType.addEventListener('click', ()=>{challengeList.classList.toggle('active')});
+
+    console.log(btnViewType);
 
     // 탭 전체 width 설정
     function setTabInit(){
@@ -466,8 +480,6 @@ let common = {
 }
 
 common.init();
-
-
 
 // album_swiper
 const thumbImgWrap = new Swiper('.album_swiper', {

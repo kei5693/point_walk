@@ -18,7 +18,7 @@
 
 <body>
 
-  <div id="wrap">
+  <div id="wrap" class="flex_layout">
     <!-- header -->
     <div id="header">
       <div class="title_wrap">
@@ -31,7 +31,124 @@
     </div>
     <!-- container -->
     <div id="container">
+      <!-- 챌린지 -->
+      <div class="challenge_content_wrap">
+        <!-- 챌린지 상세 -->
+        <div class="challenge_detail_wrap">
+          <div class="inner">
+            <!-- 이미지 -->
+            <div class="challenge_visual">
+              <img src="./images/img_dummy.jpg" alt="" />
+            </div>
 
+            <!-- 기본정보 -->
+            <div class="challenge_info">
+              <h2>[현대백화점 김포점] 경기도와 함께하는 친구와 하루 6천보 걷기 챌린지</h2>
+              
+              <dl>
+                <dt>기간</dt>
+                <dd>2023.11.12~2023.12.19</dd>
+                <dt>대상</dt>
+                <dd>모든 포인트워크 회원</dd>
+                <dt>목표</dt>
+                <dd>크루원 5명이 기간 내 누적 10만보 달성</dd>
+                <dt>리워드</dt>
+                <dd>챌린지 완료 시 1,000J 지급</dd>
+              </dl>
+            </div>
+
+            <!-- 크루 : 참여전 -->
+            <div class="challenge_crew">
+              <h2>크루와 함께 도전하세요!</h2>
+            </div>
+
+            <!-- 크루 : [챌린지 도전 버튼 선택 후 전환 노출] -->
+            <div class="challenge_crew">
+              <h2>함께할 크루 <strong>5</strong>명을 초대하세요!</h2>
+              <div>
+                <button type="button"><span>+친구초대</span></button>
+              </div>
+            </div>
+
+            <!-- 크루 : [리더: 챌린지 도전~크루원 미충족] -->
+            <div class="challenge_crew">
+              <h2>현재 <strong>2</strong>명이 함께하고 있어요!<br><strong>5</strong>명이되면 챌린지를 시작할 수 있어요</h2>
+              <div>
+                <button type="button"><span>크루보기v</span></button>
+                <button type="button"><span>+친구초대</span></button>
+              </div>
+            </div>
+
+            <!-- 크루 : [챌린지 초대받은 사람(챌린치 참여 전)] -->
+            <div class="challenge_crew">
+              <h2>김*대님이 챌린지에 초대했어요!<br>챌린지에 참여하시겠어요?</h2>
+              <div>
+                <button type="button"><span>참여할께요</span></button>
+              </div>
+            </div>
+
+            <!-- 크루 : [리더&크루 : 챌린지가 정상적으로 시작~종료 전] -->
+            <div class="challenge_crew">
+              <h2>5명의 크루와 함께하고 있어요.</h2>
+              <div>
+                <button type="button"><span>크루보기</span></button>
+              </div>
+            </div>
+
+            <!-- 리워드 -->
+            <div class="challenge_reward">
+              <h2>Reward</h2>
+              <p>각 단계를 클리어하시고 리워드를 받아가세요.</p>
+
+              <ul>
+                <li>
+                  <div>
+                    <h3>1단계 <span>3,000</span> 걸음/km</h3>
+                    <p>3J</p>
+                  </div>
+                  <button type="button" class="complete"><span>받기 완료</span></button>
+                </li>
+                <li>
+                  <div>
+                    <h3>2단계 <span>6,000</span> 걸음/km</h3>
+                    <p>1</p>
+                  </div>
+                  <button type="button"><span>받기</span></button>
+                </li>
+                <li>
+                  <div>
+                    <h3>3단계 <span>9,000</span> 걸음/km</h3>
+                    <p>100</p>
+                  </div>
+                  <button type="button" disabled="disabled"><span>받기 완료</span></button>
+                </li>
+              </ul>
+
+              <button type="button"><span>열기</span></button>
+            </div>
+
+            <!-- 소개 -->
+            <div class="challenge_intro">
+              <h2>Pick Challenge</h2>
+              <img src="./images/img_dummy.jpg" alt="" />
+              <img src="./images/img_dummy.jpg" alt="" />
+              <img src="./images/img_dummy.jpg" alt="" />
+              <img src="./images/img_dummy.jpg" alt="" />
+              <img src="./images/img_dummy.jpg" alt="" />
+            </div>
+
+            <!-- 유의사항 -->
+            <div class="challenge_precautions">
+              Notice
+              1개월에 부여되는 젤리 총 제한수는 10,000J를 초과할 수 없습니다.
+            </div>
+          </div>
+          <button type="button">챌린지 도전</button>
+        </div>
+        <!-- //챌린지 상세 -->
+
+      </div>
+      <!-- //챌린지 -->
     </div>
   </div>
   <script src="./js/common.js"></script>

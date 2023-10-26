@@ -336,6 +336,7 @@ body.active {
 }
 
 #wrap {
+  padding-top: 44px;
   font-size: 20px;
 }
 #wrap.flex_layout {
@@ -408,9 +409,6 @@ body.active {
   flex-shrink: 0;
   display: flex;
   align-items: center;
-}
-#wrap #container {
-  padding-top: 44px;
 }
 #wrap #footer {
   height: 70px;
@@ -643,77 +641,75 @@ body.active {
   justify-content: space-between;
   padding: 5px;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content > div {
-  margin-top: 20px;
-}
-.challenge_content_wrap .tab_menu_wrap .tab_content > div.challenge_daily .banner_content {
+.challenge_content_wrap .challenge_list_wrap .challenge_notice {
   padding: 20px;
   border: 1px solid #000;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content > div.challenge_mission .notice_content {
-  padding: 20px;
-  border: 1px solid #000;
-}
-.challenge_content_wrap .tab_menu_wrap .tab_content > div.challenge_mission .notice_content p {
+.challenge_content_wrap .challenge_list_wrap .challenge_notice p {
   position: relative;
   padding: 0 26px;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content > div.challenge_mission .notice_content p:before, .challenge_content_wrap .tab_menu_wrap .tab_content > div.challenge_mission .notice_content p:after {
+.challenge_content_wrap .challenge_list_wrap .challenge_notice p:before, .challenge_content_wrap .challenge_list_wrap .challenge_notice p:after {
   content: "";
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content > div.challenge_mission .notice_content p:before {
+.challenge_content_wrap .challenge_list_wrap .challenge_notice p:before {
   left: 0;
   width: 20px;
   height: 20px;
   background: #000;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content > div.challenge_mission .notice_content p:after {
+.challenge_content_wrap .challenge_list_wrap .challenge_notice p:after {
   right: 0;
   width: 20px;
   height: 20px;
   background: #000;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content > div.challenge_mission .category_list_content {
+.challenge_content_wrap .challenge_list_wrap .challenge_category {
   margin-top: 20px;
   padding-right: 50px;
   position: relative;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content > div.challenge_mission .category_list_content.active .spread_list {
+.challenge_content_wrap .challenge_list_wrap .challenge_category.active .spread_list {
   max-height: 999px;
-  transition-duration: 0.6s;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content > div.challenge_mission .category_list_content .inner {
+.challenge_content_wrap .challenge_list_wrap .challenge_category .inner {
   overflow: auto;
   height: 40px;
   scroll-behavior: smooth;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content > div.challenge_mission .category_list_content .inner::-webkit-scrollbar {
+.challenge_content_wrap .challenge_list_wrap .challenge_category .inner::-webkit-scrollbar {
   display: none;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content > div.challenge_mission .category_list_content .inner > ul {
+.challenge_content_wrap .challenge_list_wrap .challenge_category .inner > ul {
   flex-wrap: nowrap;
   align-items: center;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content > div.challenge_mission .category_list_content .inner > ul > li + li {
+.challenge_content_wrap .challenge_list_wrap .challenge_category .inner > ul > li + li {
   margin-left: 10px;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content > div.challenge_mission .category_list_content ul {
+.challenge_content_wrap .challenge_list_wrap .challenge_category ul {
   display: flex;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content > div.challenge_mission .category_list_content ul > li.active a {
+.challenge_content_wrap .challenge_list_wrap .challenge_category ul > li {
+  max-width: calc(100% - 20px);
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_category ul > li.active a {
   background: #000;
   color: #fff;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content > div.challenge_mission .category_list_content ul > li > a {
+.challenge_content_wrap .challenge_list_wrap .challenge_category ul > li > a {
+  padding: 5px 10px;
   display: block;
   white-space: nowrap;
-  padding: 5px 10px;
   border: 1px solid #000;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content > div.challenge_mission .category_list_content ul > li > a span {
+.challenge_content_wrap .challenge_list_wrap .challenge_category ul > li > a span {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -724,7 +720,7 @@ body.active {
   text-align: center;
   line-height: 20px;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content > div.challenge_mission .category_list_content > button {
+.challenge_content_wrap .challenge_list_wrap .challenge_category > button {
   position: absolute;
   top: 0;
   right: 0;
@@ -736,7 +732,7 @@ body.active {
   font-size: 0;
   line-height: 0;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content > div.challenge_mission .category_list_content .spread_list {
+.challenge_content_wrap .challenge_list_wrap .challenge_category .spread_list {
   position: absolute;
   top: 40px;
   left: 0;
@@ -744,23 +740,55 @@ body.active {
   width: 100%;
   overflow: hidden;
   max-height: 0;
-  transition: max-height 0.3s;
   background: #fff;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content > div.challenge_mission .category_list_content .spread_list > ul {
+.challenge_content_wrap .challenge_list_wrap .challenge_category .spread_list > ul {
   flex-wrap: wrap;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content > div.challenge_mission .category_list_content .spread_list > ul > li {
+.challenge_content_wrap .challenge_list_wrap .challenge_category .spread_list > ul > li {
   margin: 10px 0 0 10px;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content .challenge_list {
+.challenge_content_wrap .challenge_list_wrap .challenge_list {
   margin-top: 20px;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content .challenge_list .list_view {
+.challenge_content_wrap .challenge_list_wrap .challenge_list.active .view_type button {
+  background: #000;
+  color: #fff;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li + li {
+  border-top: 1px solid #000;
+  padding-top: 20px;
+  margin-top: 20px;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > a {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  grid-gap: 10px;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > a .visual_box .status_msg {
+  top: 0;
+  right: 0;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > a .title_box {
+  position: static;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > a .title_box .icon_case {
+  position: static;
+  flex-wrap: wrap;
+  transform: translateY(0);
+  margin-top: 20px;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > a .title_box .icon_case span {
+  flex-shrink: 0;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > a .title_box .icon_case .icon_box span + span {
+  margin-left: 0px;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list .view_type {
   display: flex;
   justify-content: right;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content .challenge_list .list_view .btn_list_view {
+.challenge_content_wrap .challenge_list_wrap .challenge_list .view_type button {
   margin-bottom: 20px;
   padding: 5px 10px;
   border: 1px solid #000;
@@ -768,25 +796,31 @@ body.active {
   font-size: 20px;
   color: #000;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content .challenge_list > ul > li {
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li {
   position: relative;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content .challenge_list > ul > li.status.coming:before {
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li.status > a:before {
+  display: flex;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li.status > a:after {
+  display: block;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li.status.coming > a:before {
   content: "COMING \aSOON";
   color: #fff;
   border-color: #fff;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content .challenge_list > ul > li.status.deadline:before {
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li.status.deadline > a:before {
   content: "마감";
   color: #fff;
   border-color: #fff;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content .challenge_list > ul > li.status.first_come:before {
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li.status.first_come > a:before {
   content: "선착순 \a마감";
   color: #fff;
   border-color: #fff;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content .challenge_list > ul > li.status.crew:before {
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li.status.crew > a:before {
   content: "크루를 기다려요";
   color: #fff;
   border-color: #fff;
@@ -795,16 +829,25 @@ body.active {
   border-radius: 0;
   border: 0 none;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content .challenge_list > ul > li.status:after {
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li + li {
+  margin-top: 40px;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a {
+  display: block;
+  position: relative;
+  color: #fff;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a:after {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content .challenge_list > ul > li.status:before {
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a:before {
   content: "MISSION \a CLEAR";
   white-space: pre-wrap;
   position: absolute;
@@ -822,46 +865,39 @@ body.active {
   display: flex;
   align-items: center;
   justify-content: center;
+  display: none;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content .challenge_list > ul > li + li {
-  margin-top: 40px;
-}
-.challenge_content_wrap .tab_menu_wrap .tab_content .challenge_list > ul > li > a {
-  display: block;
-  position: relative;
-  color: #fff;
-}
-.challenge_content_wrap .tab_menu_wrap .tab_content .challenge_list > ul > li > a > :not(.visual_box) {
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a > :not(.visual_box) {
   position: absolute;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content .challenge_list > ul > li > a .visual_box {
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a .visual_box {
   position: relative;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content .challenge_list > ul > li > a .visual_box img {
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a .visual_box img {
   display: block;
   width: 100%;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content .challenge_list > ul > li > a .visual_box .status_msg {
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a .visual_box .status_msg {
   position: absolute;
   top: 10px;
   right: 10px;
   background: #000;
   padding: 5px 10px;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content .challenge_list > ul > li > a .title_box {
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a .title_box {
   left: 0;
   bottom: 0;
   width: 100%;
   background: rgba(0, 0, 0, 0.5);
   padding: 10px 20px;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content .challenge_list > ul > li > a .title_box .title > strong {
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a .title_box .title > strong {
   display: block;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content .challenge_list > ul > li > a .title_box .title > span {
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a .title_box .title > span {
   display: block;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content .challenge_list > ul > li > a .title_box > .icon_case {
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a .title_box > .icon_case {
   position: absolute;
   top: 0;
   left: 0;
@@ -871,20 +907,153 @@ body.active {
   justify-content: space-between;
   align-items: center;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content .challenge_list > ul > li > a .title_box > .icon_case > span {
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a .title_box > .icon_case > span {
   border: 1px solid #000;
   background: #fff;
   color: #000;
   padding: 5px;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content .challenge_list > ul > li > a .title_box > .icon_case > .icon_box span {
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a .title_box > .icon_case > .icon_box {
+  display: flex;
+  align-items: center;
+  height: 34px;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a .title_box > .icon_case > .icon_box span {
   border: 1px solid #000;
   background: #fff;
   color: #000;
   padding: 5px 10px;
 }
-.challenge_content_wrap .tab_menu_wrap .tab_content .challenge_list > ul > li > a .title_box > .icon_case > .icon_box span + span {
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a .title_box > .icon_case > .icon_box span + span {
   margin-left: 10px;
+}
+.challenge_content_wrap .challenge_company .challenge_visual img {
+  display: block;
+  width: 100%;
+}
+.challenge_content_wrap .challenge_company .challenge_list {
+  margin-top: 40px;
+}
+.challenge_content_wrap .challenge_company .challenge_list.active > ul {
+  display: block;
+}
+.challenge_content_wrap .challenge_company .challenge_list.active > ul > li + li {
+  margin-top: 20px;
+}
+.challenge_content_wrap .challenge_company .challenge_list > ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+.challenge_content_wrap .challenge_company .challenge_list > ul > li + li {
+  margin-top: 0;
+}
+.challenge_content_wrap .challenge_company .challenge_list > ul > li > a .title_box {
+  position: static;
+}
+.challenge_content_wrap .challenge_company .challenge_list > ul > li > a .title_box .icon_case {
+  position: static;
+  transform: translateY(0);
+}
+.challenge_content_wrap .challenge_detail_wrap .inner {
+  margin: 70% 10px 50px;
+  background: #fff;
+  padding: 20px;
+}
+.challenge_content_wrap .challenge_detail_wrap .inner h2 {
+  font-size: 20px;
+}
+.challenge_content_wrap .challenge_detail_wrap .inner > .challenge_info ~ div {
+  border-top: 1px solid #000;
+  padding-top: 20px;
+  margin-top: 20px;
+}
+.challenge_content_wrap .challenge_detail_wrap .inner .challenge_visual img {
+  position: fixed;
+  top: 44px;
+  left: 0;
+  z-index: -1;
+  display: block;
+  width: 100%;
+}
+.challenge_content_wrap .challenge_detail_wrap .inner .challenge_info dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 10px;
+}
+.challenge_content_wrap .challenge_detail_wrap .inner .challenge_crew {
+  padding: 20px 0;
+}
+.challenge_content_wrap .challenge_detail_wrap .inner .challenge_crew > div {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+.challenge_content_wrap .challenge_detail_wrap .inner .challenge_crew > div button {
+  padding: 5px 10px;
+  background: #fff;
+  border: 1px solid #000;
+  border-radius: 5px;
+  color: #000;
+  font-size: 20px;
+}
+.challenge_content_wrap .challenge_detail_wrap .inner .challenge_crew > div button + button {
+  margin-left: 10px;
+}
+.challenge_content_wrap .challenge_detail_wrap .inner .challenge_reward {
+  overflow: hidden;
+}
+.challenge_content_wrap .challenge_detail_wrap .inner .challenge_reward > ul * {
+  font-size: 20px;
+}
+.challenge_content_wrap .challenge_detail_wrap .inner .challenge_reward > ul > li {
+  padding: 10px;
+  border: 1px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.challenge_content_wrap .challenge_detail_wrap .inner .challenge_reward > ul > li + li {
+  margin-top: 10px;
+}
+.challenge_content_wrap .challenge_detail_wrap .inner .challenge_reward > ul > li > button {
+  flex-shrink: 0;
+}
+.challenge_content_wrap .challenge_detail_wrap .inner .challenge_reward > button {
+  margin-top: 20px;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+.challenge_content_wrap .challenge_detail_wrap .inner .challenge_reward > button span {
+  position: relative;
+  display: inline-block;
+  font-size: 20px;
+  padding: 5px 10px;
+  border: 1px solid #000;
+}
+.challenge_content_wrap .challenge_detail_wrap .inner .challenge_intro > img {
+  display: block;
+  width: 100%;
+}
+.challenge_content_wrap .challenge_detail_wrap > button {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background: #fff;
+  border: 1px solid #000;
+  font-size: 20px;
+  color: #000;
+  text-align: center;
+}
+
+.challenge_info,
+.challenge_crew,
+.challenge_intro,
+.challenge_precautions {
+  display: none;
 }
 
 .index_table_wrap {
