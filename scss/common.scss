@@ -1120,17 +1120,22 @@ body.active {overflow: hidden;}
   }
   // 챌린지 상세
   .challenge_detail_wrap {
-    .inner {
+    > .inner {
       margin: 70% 10px 50px;
       background: #fff;
       padding: 20px;
       h2 {
         font-size: 20px;
       }
-      > .challenge_info ~ div {
+      > .challenge_visual ~ div {
         border-top: 1px solid #000;
         padding-top: 20px;
         margin-top: 20px;
+      }
+      > .challenge_visual + .challenge_info {
+        border-top: 0 none;
+        padding-top: 0;
+        margin-top: 0;
       }
       .challenge_visual {
         img {
@@ -1141,6 +1146,62 @@ body.active {overflow: hidden;}
   
           display: block;
           width: 100%;
+        }
+      }
+      .challenge_record {
+        position: fixed;
+        top: calc(44px + 50px);
+        left: 10px;
+
+        width: calc(100% - 20px);
+        margin-top: 0 !important;
+        padding: 20px !important;
+        border-top: 0 none !important;
+        background: fixed#fff;
+        > .inner {
+          .progress_box {
+            position: relative;
+            margin-top: 20px;
+            height: 40px;
+
+            border: 1px solid #000;
+            border-radius: 20px;
+            background: #fff;
+            > div,
+            > span {
+              position: absolute;
+              top: 50%;
+              left: 0;
+
+              transform: translateY(-50%);
+            }
+            div span {
+              left: auto;
+              right: 10px;
+            }
+          }
+          > ul {
+            margin-top: 20px;
+            display: flex;
+            justify-content: right;
+            align-items: center;
+            > li {
+              position: relative;
+              padding-left: 11px;
+              margin-left: 10px;
+              & + li:after {
+                content: '';
+                position: absolute;
+                top: 7px;
+                left: 0;
+
+                width: 1px;
+                height: 14px;
+
+                background: #868686;
+              }
+            }
+          }
         }
       }
       .challenge_info {
@@ -1171,9 +1232,9 @@ body.active {overflow: hidden;}
         };
       }
       .challenge_reward {
-        overflow: hidden;
-        // max-height: 190px;
         > ul {
+          overflow: hidden;
+          transition: height 0.3s;
           * {
             font-size: 20px;
           }
@@ -1215,6 +1276,12 @@ body.active {overflow: hidden;}
           display: block;
           width: 100%;
         }
+        .banner_box {
+          margin-top: 20px;
+          img + img {
+            margin-top: 10px;
+          }
+        }
       }
       .challenge_precautions {
 
@@ -1240,11 +1307,12 @@ body.active {overflow: hidden;}
 
 .challenge_info,
 .challenge_crew,
-.challenge_intro,
+.challenge_reward,
 .challenge_precautions {
-  display: none;
+  // display: none;
 }
 
+// .challenge_intro,
 
 
 

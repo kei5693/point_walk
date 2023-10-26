@@ -5,9 +5,9 @@ let common = {
     this.inputBorderStyle();
     this.initTabMenus();
     this.scrollDeformation();
-
     this.categoryListEvent();
     this.designSelect();
+    this.challengeRewardEvent();
   },
   // 버튼으로 팝업 열기
   layerButtonToggle: function(){
@@ -435,8 +435,6 @@ let common = {
 
     btnViewType.addEventListener('click', ()=>{challengeList.classList.toggle('active')});
 
-    console.log(btnViewType);
-
     // 탭 전체 width 설정
     function setTabInit(){
       let tabWidth = 0;
@@ -477,9 +475,75 @@ let common = {
       // categoryUl.style.transform = `translateX(${pos}px)`;
     }
   },
+  // 챌린지 - 상세 - 리워드 버튼 이벤트
+  challengeRewardEvent: function () {
+    if(document.querySelector('.challenge_detail_wrap .challenge_reward') == null) return
+    const challengeReward = document.querySelector('.challenge_detail_wrap .challenge_reward');
+    const rewardUl = challengeReward.querySelector(':scope > ul');
+    const rewardLi = rewardUl.querySelectorAll(':scope > li');
+    const rewardBtn = challengeReward.querySelector(':scope > button');
+    let heights = calcHeight();
+  
+    // 초기 상태 설정
+    initHeight(rewardBtn, heights);
+  
+    // 클릭 이벤트
+    rewardBtn.addEventListener('click', (e) => {
+      initHeight(e.target.closest('button'), heights);
+    });
+
+    // 리사이즈 이벤트
+    window.addEventListener('resize', () => {
+      heights = calcHeight();
+      resizeHeight(heights);
+    });
+  
+    // 버튼에 class toggle, ul 높이 값 변경
+    function initHeight(target, heights) {
+      let condition = target.classList.contains('active');
+      let value = 0;
+  
+      if (condition) {
+        target.classList.remove('active');
+        value = heights.parentHeight;
+      } else {
+        target.classList.add('active');
+        value = heights.childrenHeight;
+      }
+
+      rewardUl.style.height = value + 'px';
+    }
+  
+    // 높이값 계산
+    function calcHeight() {
+      let parentHeight = 0;
+      let childrenHeight = rewardLi[0].offsetHeight;
+      let gap = 10;
+  
+      rewardLi.forEach((li, index) => {
+        let value = index > 0 ? li.offsetHeight + gap : li.offsetHeight;
+        parentHeight += value;
+      });
+  
+      return { parentHeight, childrenHeight };
+    }
+  
+    // 리사이즈 대응
+    function resizeHeight(heights) {
+      let condition = rewardBtn.classList.contains('active');
+
+      if (condition) {
+        rewardUl.style.height = heights.childrenHeight + 'px';
+      } else {
+        rewardUl.style.height = heights.parentHeight + 'px';
+      }
+    }
+  }  
 }
 
 common.init();
+
+
 
 // album_swiper
 const thumbImgWrap = new Swiper('.album_swiper', {
