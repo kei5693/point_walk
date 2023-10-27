@@ -383,6 +383,7 @@ body.active {overflow: hidden;}
 #wrap {
   padding-top: 44px;
         font-size: 20px;
+  // 화면
   &.flex_layout {
     display: flex;
     flex-direction: column;
@@ -392,6 +393,25 @@ body.active {overflow: hidden;}
     #container {
       height: 100%;
       overflow-y: auto;
+    }
+  }
+  // 챌린지 상세 레이아웃
+  &.challenge_layout {
+    #container {
+      height: 100%;
+      overflow-y: auto;
+      padding: 70% 0 50px;
+    }
+    // 진행중
+    &.ongoing {
+      #container {
+        // padding-top: 50px;
+        overflow: hidden;
+        .challenge_content_wrap {
+          height: 100%;
+          overflow-y: auto;
+        }
+      }
     }
   }
   &.scroll_deformation {
@@ -1121,9 +1141,11 @@ body.active {overflow: hidden;}
   // 챌린지 상세
   .challenge_detail_wrap {
     > .inner {
-      margin: 70% 10px 50px;
+      margin: 0 10px;
       background: #fff;
       padding: 20px;
+      border: 1px solid #000;
+      border-bottom: 0 none;
       h2 {
         font-size: 20px;
       }
@@ -1138,48 +1160,28 @@ body.active {overflow: hidden;}
         margin-top: 0;
       }
       .challenge_visual {
+        position: fixed;
+        top: 44px;
+        left: 0;
+        z-index: -1;
         img {
-          position: fixed;
-          top: 44px;
-          left: 0;
-          z-index: -1;
-  
           display: block;
           width: 100%;
         }
       }
+      // 기록
       .challenge_record {
         position: fixed;
         top: calc(44px + 50px);
         left: 10px;
+        z-index: 100;
 
         width: calc(100% - 20px);
         margin-top: 0 !important;
         padding: 20px !important;
-        border-top: 0 none !important;
+        border: 1px solid #000;
         background: fixed#fff;
         > .inner {
-          .progress_box {
-            position: relative;
-            margin-top: 20px;
-            height: 40px;
-
-            border: 1px solid #000;
-            border-radius: 20px;
-            background: #fff;
-            > div,
-            > span {
-              position: absolute;
-              top: 50%;
-              left: 0;
-
-              transform: translateY(-50%);
-            }
-            div span {
-              left: auto;
-              right: 10px;
-            }
-          }
           > ul {
             margin-top: 20px;
             display: flex;
@@ -1204,6 +1206,7 @@ body.active {overflow: hidden;}
           }
         }
       }
+      // 기본정보
       .challenge_info {
         dl {
           display: grid;
@@ -1211,9 +1214,13 @@ body.active {overflow: hidden;}
           grid-gap: 10px;
         }
       }
+      // 크루
       .challenge_crew {
         padding: 20px 0;
-        > div {
+        &.active > .crew_content {
+          max-height: 999px;
+        }
+        > .btn {
           margin-top: 20px;
           display: flex;
           justify-content: center;
@@ -1230,7 +1237,12 @@ body.active {overflow: hidden;}
             }
           }
         };
+        > .crew_content {
+          overflow: hidden;
+          max-height: 0;
+        }
       }
+      // 리워드
       .challenge_reward {
         > ul {
           overflow: hidden;
@@ -1271,6 +1283,7 @@ body.active {overflow: hidden;}
           }
         }
       }
+      // 소개
       .challenge_intro {
         > img {
           display: block;
@@ -1283,14 +1296,51 @@ body.active {overflow: hidden;}
           }
         }
       }
-      .challenge_precautions {
+      // 프로그래스(공통)
+      .challenge_progress_box {
+        overflow: hidden;
+        position: relative;
+        margin-top: 20px;
+        height: 40px;
 
+        border: 1px solid #000;
+        border-radius: 20px;
+        background: #fff;
+        > div {
+          position: relative;
+          z-index: 100;
+          width: 0%;
+          height: 100%;
+
+          background: cyan;
+          border-radius: 20px;
+          span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 100;
+
+            height: 100%;
+            padding: 0 10px;
+
+            line-height: 38px;
+            white-space: nowrap;
+          }
+        }
+        > span {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          right: 10px;
+        }
       }
     }
+    // 하단 고정 버튼
     > button {
       position: fixed;
       bottom: 0;
       left: 0;
+      z-index: 100;
       
       width: 100%;
       height: 50px;
@@ -1306,13 +1356,12 @@ body.active {overflow: hidden;}
 }
 
 .challenge_info,
-.challenge_crew,
 .challenge_reward,
-.challenge_precautions {
-  // display: none;
+.challenge_intro{
+  display: none;
 }
 
-// .challenge_intro,
+// .challenge_crew,
 
 
 

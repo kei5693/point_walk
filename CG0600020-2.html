@@ -18,7 +18,7 @@
 
 <body>
 
-  <div id="wrap" class="flex_layout">
+  <div id="wrap" class="challenge_layout ongoing">
     <!-- header -->
     <div id="header">
       <div class="title_wrap">
@@ -30,23 +30,23 @@
       </div>
     </div>
     <!-- container -->
-    <div id="container">
+    <div id="container" class="interval_layout">
       <!-- 챌린지 -->
       <div class="challenge_content_wrap">
         <!-- 챌린지 상세 : 참여중 상태일 경우 ongoing 추가 -->
-        <div class="challenge_detail_wrap ongoing">
+        <div class="challenge_detail_wrap">
           <div class="inner">
             <!-- 이미지 -->
             <div class="challenge_visual">
               <img src="./images/img_dummy.jpg" alt="" />
             </div>
 
-            <!-- 챌린지 기록 -->
+            <!-- 챌린지 기록 : 상단 고정 -->
             <div class="challenge_record">
               <h2>10,000걸음 중 100걸음</h2>
 
               <div class="inner">
-                <div class="progress_box">
+                <div class="challenge_progress_box">
                   <div><span>100걸음</span></div>
                   <span>10,000걸음</span>
                 </div>
@@ -59,41 +59,69 @@
               </div>
             </div>
 
-            <!-- 크루 : 참여전 -->
+            <!-- 크루 : [챌린지 리더] -->
             <div class="challenge_crew">
-              <h2>크루와 함께 도전하세요!</h2>
-            </div>
+              <h2>현재 <strong>2</strong>명이 함께하고 있어요!<br>
+                <strong>5</strong>명이되면 챌린지를 시작할 수 있어요
+              </h2>
 
-            <!-- 크루 : [챌린지 도전 버튼 선택 후 전환 노출] -->
-            <div class="challenge_crew">
-              <h2>함께할 크루 <strong>5</strong>명을 초대하세요!</h2>
-              <div>
+              <div class="btn">
+                <button type="button" class="btn_view_crew"><span>크루보기v</span></button>
                 <button type="button"><span>+친구초대</span></button>
               </div>
             </div>
+
 
             <!-- 크루 : [리더: 챌린지 도전~크루원 미충족] -->
             <div class="challenge_crew">
-              <h2>현재 <strong>2</strong>명이 함께하고 있어요!<br><strong>5</strong>명이되면 챌린지를 시작할 수 있어요</h2>
-              <div>
-                <button type="button"><span>크루보기v</span></button>
+              <h2>현재 <strong>2</strong>명이 함께하고 있어요!<br>
+                <strong>5</strong>명이되면 챌린지를 시작할 수 있어요
+              </h2>
+
+              <div class="btn">
+                <button type="button" class="btn_view_crew"><span>크루보기v</span></button>
                 <button type="button"><span>+친구초대</span></button>
               </div>
-            </div>
 
-            <!-- 크루 : [챌린지 초대받은 사람(챌린치 참여 전)] -->
-            <div class="challenge_crew">
-              <h2>김*대님이 챌린지에 초대했어요!<br>챌린지에 참여하시겠어요?</h2>
-              <div>
-                <button type="button"><span>참여할께요</span></button>
+              <div class="crew_content">
+                
               </div>
             </div>
 
-            <!-- 크루 : [리더&크루 : 챌린지가 정상적으로 시작~종료 전] -->
+            <!-- 크루 : [리더&크루 : 챌린지 달성&종료] -->
             <div class="challenge_crew">
-              <h2>5명의 크루와 함께하고 있어요.</h2>
-              <div>
-                <button type="button"><span>크루보기</span></button>
+              <h2>5명의 크루와 함께했어요!</h2>
+
+              <div class="btn">
+                <button type="button" class="btn_view_crew"><span>크루기록보기 V</span></button>
+              </div>
+
+              <div class="crew_content">
+                <h3>함께한 크루 기룩</h3>
+
+                <ul>
+                  <li>
+                    <p>할룽할룽 김*수  걸음수</p>
+                    <div class="challenge_progress_box">
+                      <div><span>100걸음</span></div>
+                      <span>10,000걸음</span>
+                    </div>
+                  </li>
+                  <li>
+                    <p>압구정날라리 유*석  걸음수</p>
+                    <div class="challenge_progress_box">
+                      <div><span>100걸음</span></div>
+                      <span>10,000걸음</span>
+                    </div>
+                  </li>
+                  <li>
+                    <p>걸어보자 한*민  걸음수</p>
+                    <div class="challenge_progress_box">
+                      <div><span>100걸음</span></div>
+                      <span>10,000걸음</span>
+                    </div>
+                  </li>
+                </ul>
               </div>
             </div>
 
@@ -129,7 +157,7 @@
               <button type="button"><span>열기</span></button>
             </div>
 
-            <!-- 기본정보 -->
+            <!-- 기본정보 : 참여중일 경우 순서 변경됨 -->
             <div class="challenge_info">
               <h2>[현대백화점 김포점] 경기도와 함께하는 친구와 하루 6천보 걷기 챌린지</h2>
               

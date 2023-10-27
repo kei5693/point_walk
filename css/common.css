@@ -350,6 +350,18 @@ body.active {
   height: 100%;
   overflow-y: auto;
 }
+#wrap.challenge_layout #container {
+  height: 100%;
+  overflow-y: auto;
+  padding: 70% 0 50px;
+}
+#wrap.challenge_layout.ongoing #container {
+  overflow: hidden;
+}
+#wrap.challenge_layout.ongoing #container .challenge_content_wrap {
+  height: 100%;
+  overflow-y: auto;
+}
 #wrap.scroll_deformation #container {
   padding-top: 98px;
 }
@@ -956,9 +968,11 @@ body.active {
   transform: translateY(0);
 }
 .challenge_content_wrap .challenge_detail_wrap > .inner {
-  margin: 70% 10px 50px;
+  margin: 0 10px;
   background: #fff;
   padding: 20px;
+  border: 1px solid #000;
+  border-bottom: 0 none;
 }
 .challenge_content_wrap .challenge_detail_wrap > .inner h2 {
   font-size: 20px;
@@ -973,11 +987,13 @@ body.active {
   padding-top: 0;
   margin-top: 0;
 }
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_visual img {
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_visual {
   position: fixed;
   top: 44px;
   left: 0;
   z-index: -1;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_visual img {
   display: block;
   width: 100%;
 }
@@ -985,30 +1001,12 @@ body.active {
   position: fixed;
   top: 94px;
   left: 10px;
+  z-index: 100;
   width: calc(100% - 20px);
   margin-top: 0 !important;
   padding: 20px !important;
-  border-top: 0 none !important;
-  background: fixed #fff;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_record > .inner .progress_box {
-  position: relative;
-  margin-top: 20px;
-  height: 40px;
   border: 1px solid #000;
-  border-radius: 20px;
-  background: #fff;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_record > .inner .progress_box > div,
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_record > .inner .progress_box > span {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_record > .inner .progress_box div span {
-  left: auto;
-  right: 10px;
+  background: fixed #fff;
 }
 .challenge_content_wrap .challenge_detail_wrap > .inner .challenge_record > .inner > ul {
   margin-top: 20px;
@@ -1038,12 +1036,15 @@ body.active {
 .challenge_content_wrap .challenge_detail_wrap > .inner .challenge_crew {
   padding: 20px 0;
 }
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_crew > div {
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_crew.active > .crew_content {
+  max-height: 999px;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_crew > .btn {
   margin-top: 20px;
   display: flex;
   justify-content: center;
 }
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_crew > div button {
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_crew > .btn button {
   padding: 5px 10px;
   background: #fff;
   border: 1px solid #000;
@@ -1051,8 +1052,12 @@ body.active {
   color: #000;
   font-size: 20px;
 }
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_crew > div button + button {
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_crew > .btn button + button {
   margin-left: 10px;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_crew > .crew_content {
+  overflow: hidden;
+  max-height: 0;
 }
 .challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > ul {
   overflow: hidden;
@@ -1097,10 +1102,44 @@ body.active {
 .challenge_content_wrap .challenge_detail_wrap > .inner .challenge_intro .banner_box img + img {
   margin-top: 10px;
 }
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_progress_box {
+  overflow: hidden;
+  position: relative;
+  margin-top: 20px;
+  height: 40px;
+  border: 1px solid #000;
+  border-radius: 20px;
+  background: #fff;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_progress_box > div {
+  position: relative;
+  z-index: 100;
+  width: 0%;
+  height: 100%;
+  background: cyan;
+  border-radius: 20px;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_progress_box > div span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  height: 100%;
+  padding: 0 10px;
+  line-height: 38px;
+  white-space: nowrap;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_progress_box > span {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+}
 .challenge_content_wrap .challenge_detail_wrap > button {
   position: fixed;
   bottom: 0;
   left: 0;
+  z-index: 100;
   width: 100%;
   height: 50px;
   background: #fff;
@@ -1108,6 +1147,12 @@ body.active {
   font-size: 20px;
   color: #000;
   text-align: center;
+}
+
+.challenge_info,
+.challenge_reward,
+.challenge_intro {
+  display: none;
 }
 
 .index_table_wrap {

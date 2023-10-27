@@ -8,6 +8,7 @@ let common = {
     this.categoryListEvent();
     this.designSelect();
     this.challengeRewardEvent();
+    this.challengeLayoutHeight();
   },
   // 버튼으로 팝업 열기
   layerButtonToggle: function(){
@@ -538,11 +539,54 @@ let common = {
         rewardUl.style.height = heights.parentHeight + 'px';
       }
     }
-  }  
+  },
+  // 챌린지 상세 - 진행중 상태 일때 실행되어야함(fixed 메뉴 가변 높이 값 적용)
+  challengeLayoutHeight: function(){
+    if(document.querySelector('.challenge_layout.ongoing') == null) return;
+
+    const target = document.querySelector('.challenge_layout.ongoing');
+    const challengeDetailWrap = target.querySelector('.challenge_detail_wrap');
+    const inner = challengeDetailWrap.querySelector(':scope > .inner');
+    const record = inner.querySelector(':scope > .challenge_record');
+
+    // init
+    setValue();
+
+    // 높이값 계산
+    function setValue() {
+      let height = record.offsetHeight;
+      let gap = 50;
+      document.querySelector('#container').style.paddingTop = height+gap+'px';
+    }
+    // 리사이즈 이벤트
+    window.addEventListener('resize', () => {setValue()});
+  },
+  // 챌린지 상세 - 프로스래스 바(결정된 내용이 아니라 보류 완성된 소스 아님)
+  challengeProgressBar: function(target, number){
+    const progressBox = document.querySelectorAll('.challenge_record > .inner .progress_box');
+    
+    progressBox.forEach((progress)=>{
+      let target = progress.querySelector(':scope > div');
+      console.log(target.offsetWidth, number);
+    });
+  },
+  toggleSlide: function(parent, trigger){
+    const triggerEl =  document.querySelectorAll(trigger);
+
+    triggerEl.forEach((trigger)=>{
+      trigger.addEventListener('click', ()=>{
+        const parentEl = trigger.closest(parent);
+        parentEl.classList.toggle('active');
+        
+      });
+    });
+    
+  },
 }
 
 common.init();
-
+//common.challengeProgressBar(50);
+common.toggleSlide('.challenge_crew ', '.btn');
 
 
 // album_swiper
@@ -576,64 +620,3 @@ const swiperTest = new Swiper('.scale_swiper', {
     },
   }
 });
-// bottomSheetModal
-function bottomSheetModal(showModalBtnSelector, bottomSheetSelector) {
-  const showModalBtn = document.querySelector(showModalBtnSelector);
-  const bottomSheet = document.querySelector(bottomSheetSelector);
-  const sheetOverlay = bottomSheet.querySelector(".sheet-overlay");
-  const sheetContent = bottomSheet.querySelector(".content");
-  const dragIcon = bottomSheet.querySelector(".drag-icon");
-
-  let isDragging = false,
-    startY,
-    startHeight;
-
-  const showBottomSheet = () => {
-    bottomSheet.classList.add("show");
-    document.body.style.overflowY = "hidden";
-    updateSheetHeight(50);
-  }
-
-  const updateSheetHeight = (height) => {
-    sheetContent.style.height = `${height}%`;
-    bottomSheet.classList.toggle("fullscreen", height === 100);
-  }
-
-  const hideBottomSheet = () => {
-    bottomSheet.classList.remove("show");
-    document.body.style.overflowY = "auto";
-  }
-
-  const dragStart = (e) => {
-    isDragging = true;
-    startY = e.pageY || e.touches?.[0].pageY;
-    startHeight = parseInt(sheetContent.style.height);
-    bottomSheet.classList.add("dragging");
-  }
-
-  const dragging = (e) => {
-    if (!isDragging) return;
-    const delta = startY - (e.pageY || e.touches?.[0].pageY);
-    const newHeight = startHeight + delta / window.innerHeight * 100;
-    updateSheetHeight(newHeight);
-  }
-
-  const dragStop = () => {
-    isDragging = false;
-    bottomSheet.classList.remove("dragging");
-    const sheetHeight = parseInt(sheetContent.style.height);
-    sheetHeight < 25 ? hideBottomSheet() : sheetHeight > 75 ? updateSheetHeight(100) : updateSheetHeight(50);
-  }
-
-  dragIcon.addEventListener("mousedown", dragStart);
-  document.addEventListener("mousemove", dragging);
-  document.addEventListener("mouseup", dragStop);
-
-  dragIcon.addEventListener("touchstart", dragStart);
-  document.addEventListener("touchmove", dragging);
-  document.addEventListener("touchend", dragStop);
-
-  sheetOverlay.addEventListener("click", hideBottomSheet);
-  showModalBtn.addEventListener("click", showBottomSheet);
-}
-// bottomSheetModal(".show-modal", ".bottom-sheet");
