@@ -350,10 +350,20 @@ body.active {
   height: 100%;
   overflow-y: auto;
 }
+#wrap.challenge_layout {
+  padding-top: 0;
+}
+#wrap.challenge_layout #header {
+  z-index: -1;
+  background-color: transparent;
+}
 #wrap.challenge_layout #container {
   height: 100%;
   overflow-y: auto;
   padding: 70% 0 50px;
+}
+#wrap.challenge_layout #container .challenge_content_wrap .challenge_detail_wrap > .inner .challenge_visual {
+  z-index: -2;
 }
 #wrap.challenge_layout.ongoing #container {
   overflow: hidden;
@@ -361,6 +371,7 @@ body.active {
 #wrap.challenge_layout.ongoing #container .challenge_content_wrap {
   height: 100%;
   overflow-y: auto;
+  scroll-behavior: smooth;
 }
 #wrap.scroll_deformation #container {
   padding-top: 98px;
@@ -369,7 +380,7 @@ body.active {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1000;
+  z-index: 100;
   width: 100%;
   height: 44px;
   padding: 0 30px;
@@ -421,6 +432,9 @@ body.active {
   flex-shrink: 0;
   display: flex;
   align-items: center;
+}
+#wrap #container {
+  scroll-behavior: smooth;
 }
 #wrap #footer {
   height: 70px;
@@ -989,7 +1003,7 @@ body.active {
 }
 .challenge_content_wrap .challenge_detail_wrap > .inner .challenge_visual {
   position: fixed;
-  top: 44px;
+  top: 0;
   left: 0;
   z-index: -1;
 }
@@ -1147,12 +1161,6 @@ body.active {
   font-size: 20px;
   color: #000;
   text-align: center;
-}
-
-.challenge_info,
-.challenge_reward,
-.challenge_intro {
-  display: none;
 }
 
 .index_table_wrap {

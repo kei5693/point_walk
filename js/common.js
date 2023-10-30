@@ -487,16 +487,33 @@ let common = {
   
     // 초기 상태 설정
     initHeight(rewardBtn, heights);
+
+    // 높이값 계산
+    function calcHeight() {
+      let parentHeight = 0;
+      let childrenHeight = rewardLi[0].offsetHeight;
+      let gap = 10;
   
-    // 클릭 이벤트
+      rewardLi.forEach((li, index) => {
+        let value = index > 0 ? li.offsetHeight + gap : li.offsetHeight;
+        parentHeight += value;
+      });
+  
+      return { parentHeight, childrenHeight };
+    }
+
+    // 클릭 이벤트 + 스크롤 이동
     rewardBtn.addEventListener('click', (e) => {
       initHeight(e.target.closest('button'), heights);
-    });
 
-    // 리사이즈 이벤트
-    window.addEventListener('resize', () => {
-      heights = calcHeight();
-      resizeHeight(heights);
+      // 진행전, 진행중 레이아웃이 달라서 스크롤 대상도 다름
+      // 진행중
+      if(e.target.closest('.ongoing')){
+        common.scrollToEvent('.challenge_content_wrap', challengeReward, 10);
+      } else {
+        // 진행전
+        common.scrollToEvent('#container', challengeReward);
+      }
     });
   
     // 버튼에 class toggle, ul 높이 값 변경
@@ -511,24 +528,16 @@ let common = {
         target.classList.add('active');
         value = heights.childrenHeight;
       }
-
+      
       rewardUl.style.height = value + 'px';
     }
-  
-    // 높이값 계산
-    function calcHeight() {
-      let parentHeight = 0;
-      let childrenHeight = rewardLi[0].offsetHeight;
-      let gap = 10;
-  
-      rewardLi.forEach((li, index) => {
-        let value = index > 0 ? li.offsetHeight + gap : li.offsetHeight;
-        parentHeight += value;
-      });
-  
-      return { parentHeight, childrenHeight };
-    }
-  
+
+    // 리사이즈 이벤트
+    window.addEventListener('resize', () => {
+      heights = calcHeight();
+      resizeHeight(heights);
+    });
+
     // 리사이즈 대응
     function resizeHeight(heights) {
       let condition = rewardBtn.classList.contains('active');
@@ -582,11 +591,18 @@ let common = {
     });
     
   },
+  // 챌린지 상세 - 리워드 열기 버튼 시 스크롤 이동
+  scrollToEvent: function(target, interval, gap = 40){
+    let scrollTarget = document.querySelector(target);
+    let scrollValue = interval.offsetTop - scrollTarget.offsetTop - gap;
+
+    scrollTarget.scrollTop = scrollValue;
+  },
 }
 
 common.init();
 //common.challengeProgressBar(50);
-common.toggleSlide('.challenge_crew ', '.btn');
+// common.toggleSlide('.challenge_crew', '.btn');
 
 
 // album_swiper

@@ -93,7 +93,12 @@
               <h2>5명의 크루와 함께했어요!</h2>
 
               <div class="btn">
-                <button type="button" class="btn_view_crew"><span>크루기록보기 V</span></button>
+                <!--
+                  2개는 팝업열 때 필수
+                  layer_button_toggle,
+                  data-popup-name='#layerAccIos'
+                -->
+                <button type="button" class="btn_view_crew layer_button_toggle" data-popup-name='#layerAccIos'><span>크루기록보기 V</span></button>
               </div>
 
               <div class="crew_content">
@@ -197,6 +202,56 @@
       <!-- //챌린지 -->
     </div>
   </div>
+
+    <!-- 앱 접근 권한 안내 팝업(ios) -->
+    <div id="layerAccIos" class="modal_layer_popup">
+      <div class="dimmed_layer"></div>
+      <div class="layer_content_wrap">
+        <div class="layer_content">
+          <!-- header -->
+          <div class="layer_header">
+            <h1>함께한 크루 기룩</h1>
+          </div>
+          <!-- body -->
+          <div class="layer_body">
+            <ul>
+              <li>
+                <p>할룽할룽 김*수  걸음수</p>
+                <div class="challenge_progress_box">
+                  <div><span>100걸음</span></div>
+                  <span>10,000걸음</span>
+                </div>
+              </li>
+              <li>
+                <p>압구정날라리 유*석  걸음수</p>
+                <div class="challenge_progress_box">
+                  <div><span>100걸음</span></div>
+                  <span>10,000걸음</span>
+                </div>
+              </li>
+              <li>
+                <p>걸어보자 한*민  걸음수</p>
+                <div class="challenge_progress_box">
+                  <div><span>100걸음</span></div>
+                  <span>10,000걸음</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <!-- footer -->
+          <div class="layer_footer">
+            <div class="btn_dialog">
+              <button type="button">모두 확인함</button>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="layer_close">close</button>
+        <div class="layer_drag"><span></span></div>
+      </div>
+    </div>
+    <!-- //앱 접근 권한 안내 팝업(ios) -->
+
+
   <script src="./js/common.js"></script>
 </body>
 </html>
