@@ -23,14 +23,14 @@
   </div>
 
 		<!-- 프로필 설정 팝업 -->
-		<div id="MN0100040" class="modal_layer_popup">
+		<!-- fullscreen 이 있으면 드래그 기능이 없는 풀페이지 팝업 -->
+		<div id="MN0100040" class="modal_layer_popup fullscreen">
 			<div class="dimmed_layer"></div>
 			<div class="layer_content_wrap">
 				<div class="layer_content">
 					<!-- header -->
 					<div class="layer_header">
-						<h1>프로필 설정</h1>
-						<p>포인트워크의 원활한 이용을 위해 프로필 설정을 완료해 주세요.</p>
+						<h1>포인트워크에서 사용할<br>닉네임과 정보를 등록해주세요!</h1>
 					</div>
 					<!-- body -->
 					<div class="layer_body">
@@ -41,22 +41,32 @@
 								<h3>닉네임</h2>
 								<ul class="inp_box_list">
 									<li>
-										<input type="text" />
-										<button type="button">삭제</button>
+										<div>
+											<input type="text" placeholder="닉네임을 입력하세요" />
+											<button type="button" class="btn_delete">삭제</button>
+											<a href="#" role="button" class="btn_overlap">중복체크</a>
+										</div>
+
+										<p>이미 사용중인 닉네임입니다.</p>
+										<p class="clear">사용 가능한 닉네임입니다.</p>
 									</li>
 								</ul>
 			
 								<h3>신체정보</h2>
 								<ul class="inp_box_list">
 									<li>
-										<input type="number" />
-										<button type="button">삭제</button>
-										<span>cm</span>
+										<div>
+											<input type="number" placeholder="키를 입력하세요" />
+											<button type="button" class="btn_delete">삭제</button>
+											<span>cm</span>
+										</div>
 									</li>
 									<li>
-										<input type="number" />
-										<button type="button">삭제</button>
-										<span>kg</span>
+										<div>
+											<input type="number" placeholder="체중을 입력하세요" />
+											<button type="button" class="btn_delete">삭제</button>
+											<span>kg</span>
+										</div>
 									</li>
 								</ul>
 							</div>
@@ -75,7 +85,7 @@
 					<!-- footer -->
 					<div class="layer_footer">
 						<div class="btn_dialog">
-							<button type="button">저장</button>
+							<button type="button">프로필 등록</button>
 						</div>
 					</div>
 				</div>

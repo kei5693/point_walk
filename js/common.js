@@ -8,7 +8,7 @@ let common = {
     this.categoryListEvent();
     this.designSelect();
     this.challengeRewardEvent();
-    this.challengeLayoutHeight();
+    // this.challengeLayoutHeight();
   },
   // 버튼으로 팝업 열기
   layerButtonToggle: function(){
@@ -72,7 +72,7 @@ let common = {
 
     function updateSheetHeight(height){
       layerContentWrap.style.height = `${height}%`;
-      layerPopup.classList.toggle("fullscreen", height === 100);
+      // layerPopup.classList.toggle("fullscreen", height === 100);
     }
 
     // 드래그
@@ -550,6 +550,7 @@ let common = {
     }
   },
   // 챌린지 상세 - 진행중 상태 일때 실행되어야함(fixed 메뉴 가변 높이 값 적용)
+  // 일단 사용하지 않음 10/31
   challengeLayoutHeight: function(){
     if(document.querySelector('.challenge_layout.ongoing') == null) return;
 
@@ -592,7 +593,7 @@ let common = {
     
   },
   // 챌린지 상세 - 리워드 열기 버튼 시 스크롤 이동
-  scrollToEvent: function(target, interval, gap = 40){
+  scrollToEvent: function(target, interval, gap = 50){
     let scrollTarget = document.querySelector(target);
     let scrollValue = interval.offsetTop - scrollTarget.offsetTop - gap;
 
