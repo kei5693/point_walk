@@ -323,8 +323,9 @@ body.active {overflow: hidden;}
 }
 // 체크박스 애니메이션
 .inpchk_wrap {
-  width: 100px;
-  height: 40px;
+  display: inline-block;
+  width: 80px;
+  height: 38px;
   
   overflow: hidden;
   border-radius: 20px;
@@ -350,8 +351,8 @@ body.active {overflow: hidden;}
       top: 4px;
       left: 4px;
 
-      width: 30px;
-      height: 30px;
+      width: 28px;
+      height: 28px;
 
       background: #dfdfdf;
       border: 1px solid #000;
@@ -704,60 +705,51 @@ body.active {overflow: hidden;}
   .setting_list {
     > li {
       padding: 20px;
-      & + li {
-        border-top: 1px solid #000;
-      }
-      > div {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
       h2 {
         font-size: 18px;
         font-weight: 800;
-        a {
-          display: block;
-          position: relative;
-          &:after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            right: 0;
-            transform: translateY(-50%);
-            
-            width: 20px;
-            height: 20px;
-            background: #000;
-          }
-        }
       }
-      > P {
-        margin-top: 10px;
+      h3 {
         font-size: 14px;
+        font-weight: 600;
       }
-      > .align_right {
+      > ul {
+        padding-top: 10px;
         margin-top: 10px;
-        display: flex;
-        justify-content: right;
-        button {
-          font-size: 20px;
-          font-weight: 800;
-          background: transparent;
-          border: 0 none;
-          span {
+        border-top: 1px solid #000;
+
+        position: relative;
+        > li {
+          position: relative;
+          padding: 10px 0;
+          & + li {
+            border-top: 1px solid #b8b8b8;
+          }
+          a {
+            display: block;
             position: relative;
-            padding-right: 30px;
+            font-size: 14px;
             &:after {
               content: '';
               position: absolute;
-              top: 0;
+              top: 50%;
               right: 0;
-
+              transform: translateY(-50%);
+              
               width: 20px;
               height: 20px;
               background: #000;
             }
           }
+        }
+        P {
+          margin-top: 10px;
+          font-size: 14px;
+        }
+        .inpchk_wrap {
+          position: absolute;
+          top: 10px;
+          right: 0;
         }
       }
     }
@@ -1343,44 +1335,6 @@ body.active {overflow: hidden;}
           }
         }
       }
-      // 프로그래스(공통)
-      .challenge_progress_box {
-        overflow: hidden;
-        position: relative;
-        margin-top: 20px;
-        height: 40px;
-
-        border: 1px solid #000;
-        border-radius: 20px;
-        background: #fff;
-        > div {
-          position: relative;
-          z-index: 100;
-          width: 0%;
-          height: 100%;
-
-          background: cyan;
-          border-radius: 20px;
-          span {
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 100;
-
-            height: 100%;
-            padding: 0 10px;
-
-            line-height: 38px;
-            white-space: nowrap;
-          }
-        }
-        > span {
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          right: 10px;
-        }
-      }
     }
     // 하단 고정 버튼
     > button {
@@ -1401,14 +1355,47 @@ body.active {overflow: hidden;}
     }
   }
 }
+// 챌린지 프로그래스(공통)
+.challenge_progress_box {
+  overflow: hidden;
+  position: relative;
+  margin-top: 20px;
+  height: 40px;
 
-.challenge_info,
-.challenge_reward,
-.challenge_intro{
-  // display: none;
+  border: 1px solid #000;
+  border-radius: 20px;
+  background: #fff;
+  > div {
+    position: relative;
+    z-index: 100;
+    width: 0%;
+    height: 100%;
+
+    background: cyan;
+    border-radius: 20px;
+    span {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 100;
+
+      height: 100%;
+      padding: 0 10px;
+
+      line-height: 38px;
+      white-space: nowrap;
+    }
+  }
+  > span {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+  }
 }
 
-// .challenge_crew,
+
+
 
 
 
@@ -1699,22 +1686,6 @@ h1.temp {
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .test_svg_wrap {
   padding: 20px;
   height: auto !important;

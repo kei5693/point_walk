@@ -580,6 +580,7 @@ let common = {
       console.log(target.offsetWidth, number);
     });
   },
+  // class toggle event
   toggleSlide: function(parent, trigger){
     const triggerEl =  document.querySelectorAll(trigger);
 
