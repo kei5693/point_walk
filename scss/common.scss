@@ -302,6 +302,22 @@ body.active {overflow: hidden;}
     }
   }
 }
+// 오늘 하루 안보기 버튼 영역
+.btn_today {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 100%;
+  margin: 0 20px;
+  > button {
+    height: 100%;
+    padding: 0 20px;
+    background: #000;
+    font-size: 20px;
+    color: #fff;
+  }
+}
 // 블릿 리스트
 .bull_list {
   > li {
@@ -322,7 +338,7 @@ body.active {overflow: hidden;}
   }
 }
 // 체크박스 애니메이션
-.inpchk_wrap {
+.inpchk_ani {
   display: inline-block;
   width: 80px;
   height: 38px;
@@ -358,6 +374,28 @@ body.active {overflow: hidden;}
       border: 1px solid #000;
       border-radius: 50%;
       transition: left 0.3s, background 0.3s;
+    }
+  }
+}
+// 디자인 체크박스
+.design_checkbox {
+  input {
+    display: none;
+    &:checked + label:after {
+      background: red;
+    }
+  }
+  label {
+    position: relative;
+    padding-left: 26px;
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      background: #000;
     }
   }
 }
@@ -1471,7 +1509,7 @@ body.active {overflow: hidden;}
   }
 }
 // 임시
-.designSelect {
+.design_select {
   display: inline-block;
   position: relative;
   z-index: 100;

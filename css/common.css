@@ -266,6 +266,21 @@ body.active {
   color: var(--color-gray2);
 }
 
+.btn_today {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  margin: 0 20px;
+}
+.btn_today > button {
+  height: 100%;
+  padding: 0 20px;
+  background: #000;
+  font-size: 20px;
+  color: #fff;
+}
+
 .bull_list > li {
   position: relative;
   padding-left: 14px;
@@ -283,7 +298,7 @@ body.active {
   background: #AAA;
 }
 
-.inpchk_wrap {
+.inpchk_ani {
   display: inline-block;
   width: 80px;
   height: 38px;
@@ -292,20 +307,20 @@ body.active {
   border: 1px solid #000;
   background-color: #fff;
 }
-.inpchk_wrap input {
+.inpchk_ani input {
   display: none;
 }
-.inpchk_wrap input:checked + label span {
+.inpchk_ani input:checked + label span {
   left: calc(100% - 34px);
   background: cyan;
 }
-.inpchk_wrap label {
+.inpchk_ani label {
   position: relative;
   display: block;
   width: 100%;
   height: 100%;
 }
-.inpchk_wrap label span {
+.inpchk_ani label span {
   font-size: 0;
   line-height: 0;
   position: absolute;
@@ -317,6 +332,26 @@ body.active {
   border: 1px solid #000;
   border-radius: 50%;
   transition: left 0.3s, background 0.3s;
+}
+
+.design_checkbox input {
+  display: none;
+}
+.design_checkbox input:checked + label:after {
+  background: red;
+}
+.design_checkbox label {
+  position: relative;
+  padding-left: 26px;
+}
+.design_checkbox label:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background: #000;
 }
 
 .tab_menu_wrap .tab_title {
@@ -1245,7 +1280,7 @@ body.active {
   border: 1px solid #000;
 }
 
-.designSelect {
+.design_select {
   display: inline-block;
   position: relative;
   z-index: 100;
@@ -1258,19 +1293,19 @@ body.active {
      -moz-user-select: none;
           user-select: none;
 }
-.designSelect > .selected {
+.design_select > .selected {
   display: flex;
   align-items: center;
   height: 3.4rem;
   padding: 0 1.2rem;
   border: 1px solid transparent;
 }
-.designSelect > .selected span {
+.design_select > .selected span {
   position: relative;
   width: 100%;
   padding-right: 1.4rem;
 }
-.designSelect > .selected span:after {
+.design_select > .selected span:after {
   content: "";
   position: absolute;
   top: 50%;
@@ -1280,14 +1315,14 @@ body.active {
   border-right: 0.4rem solid transparent;
   border-top: 0.6rem solid #000;
 }
-.designSelect > .optionList {
+.design_select > .optionList {
   display: none;
   position: absolute;
   top: calc(100% + 1px);
   left: 0;
   width: 100%;
 }
-.designSelect > .optionList > li {
+.design_select > .optionList > li {
   display: flex;
   align-items: center;
   height: 3.4rem;
@@ -1295,22 +1330,22 @@ body.active {
   border: 1px solid #e4e4e4;
   border-top: 0 none;
 }
-.designSelect > .optionList > li span {
+.design_select > .optionList > li span {
   position: relative;
   width: 100%;
   padding-right: 1.4rem;
 }
-.designSelect.active > .selected {
+.design_select.active > .selected {
   background-color: #fff;
   border: 1px solid #e4e4e4;
 }
-.designSelect.active > .selected span:after {
+.design_select.active > .selected span:after {
   transform: translateY(-50%) rotate(180deg);
 }
-.designSelect.active > .optionList {
+.design_select.active > .optionList {
   display: block;
 }
-.designSelect.active > .optionList:after {
+.design_select.active > .optionList:after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -1320,10 +1355,10 @@ body.active {
   height: calc(100% + 3.4rem);
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 4px 8px 3px rgba(0, 0, 0, 0.15);
 }
-.designSelect.active > .optionList > li {
+.design_select.active > .optionList > li {
   background-color: #fff;
 }
-.designSelect.active > .optionList > li.select {
+.design_select.active > .optionList > li.select {
   background: #d7d7d7;
 }
 

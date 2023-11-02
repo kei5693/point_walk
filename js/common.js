@@ -276,7 +276,7 @@ let common = {
   },
   // 디자인 셀렉트
   designSelect: function(){
-    let selectBox = document.querySelectorAll('.designSelect');
+    let selectBox = document.querySelectorAll('.design_select');
 
     selectBox.forEach((select) => {
       // 선택된 옵션
@@ -308,7 +308,7 @@ let common = {
 
       // 셀렉트 모두 닫기
       document.querySelector('html').addEventListener('click', (e) => {
-        if (!e.target.closest('.designSelect')) {
+        if (!e.target.closest('.design_select')) {
           selectBox.forEach((select) => {
             select.classList.remove('active');
           });
