@@ -607,6 +607,18 @@ common.init();
 // common.toggleSlide('.challenge_crew', '.btn');
 
 
+// 메인 스와이퍼
+// album_swiper
+const mainVisualSwipe = new Swiper('.main_swipe_menu .visual_swiper', {
+  roundLengths: true,		// 이미지가 흐리게 나옴 방지
+  loop: true
+});
+const mainTextSwipe = new Swiper('.main_swipe_menu .text_swiper', {
+  effect: "fade",
+  loop: true
+});
+
+
 // album_swiper
 const thumbImgWrap = new Swiper('.album_swiper', {
   slidesPerView: 3,
