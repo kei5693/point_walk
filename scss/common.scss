@@ -1,3 +1,6 @@
+@import "animation.css";
+
+
 :root {
   --color-brand1: #4B20EC;
   --color-brand2: #BA91F2; 
@@ -430,12 +433,25 @@ body.active {overflow: hidden;}
 body.bg_main {background: #F9F9FB;}
 #container td, th {font-size: 20px;}
 
-
 // 전체 레이아웃
 #wrap {
   padding-top: 44px;
   color: var(--color-font1);
         font-size: 20px;
+
+  &:after {
+    content: '';
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    z-index: 1000;
+
+    width: 100%;
+    height: 1px;
+    background: red;
+  }
+
   // 화면
   &.flex_layout {
     display: flex;
@@ -653,7 +669,7 @@ body.bg_main {background: #F9F9FB;}
                     > a .text {
                       strong,
                       span {
-                        color: var(--color-font1);
+                        color: var(--color-font1) !important;
                       }
                     }
                   }
@@ -666,9 +682,11 @@ body.bg_main {background: #F9F9FB;}
                       }
                     }
                   }
-                  &.day_sat > a .text span {color: var(--color-brand1);}
-                  &.day_sun > a .text span {color: var(--color-sec1);}
-                  &:last-child {margin-right: 20px;}
+                  &.active {
+                    background: cyan;
+                  }
+                  &:nth-child(1) > a .text span {color: var(--color-sec1);}
+                  &:nth-child(7) > a .text span {color: var(--color-brand1);}
                   > a {
                     display: block;
                     height: 100%;
@@ -706,6 +724,18 @@ body.bg_main {background: #F9F9FB;}
           }
           .notice_msg {
             position: relative;
+            &:after {
+              content: '';
+              position: absolute;
+              top: -7px;
+              left: 50%;
+              transform: translateX(-50%);
+
+              border-top : 0 none;
+              border-left: 7px solid transparent;
+              border-right: 7px solid transparent;
+              border-bottom: 7px solid var(--color-brand3);
+            }
             > div {        
               display: flex;
               align-items: center;
@@ -736,40 +766,52 @@ body.bg_main {background: #F9F9FB;}
               background: #000;
             }
           }
-          .monthly_unit_unit {}
         }
       }
       // 스와이프
       .main_swipe_menu {
-        margin: 50px 0;
-        .visual_swiper {
-          .swiper-slide > div {
-            max-width: 300px;
-            margin: 0 auto;
-          }
+        overflow: hidden;
+        height: 0;
+        transition: height 0.5s;
+        &.active .inner {
+          // transform: translateY(0);
+          // transition-delay: 0.5s;
+          animation: bottomToShow 0.5s forwards;
+          animation-delay: 0.8s;
         }
-        .text_swiper {
-          .swiper-slide > div {
-            max-width: 300px;
-            margin: 0 auto;
-            background: #F9F9FB;
-            p {
-              font-size: 16px;
-              text-align: center;
+        .inner {
+          padding: 50px 0;
+          transform: translateY(100%);
+          transition: transform 0.5s;
+          .visual_swiper {
+            .swiper-slide > div {
+              max-width: 300px;
+              margin: 0 auto;
             }
-            button {
-              display: block;
-              width: 100%;
-              max-width: 280px;
-              height: 42px;
-
-              margin: 24px auto 0;
-              background: var(--color-brand1);
-              border-radius: 8px;
-
-              font-size: 14px;
-              font-weight: 400;
-              color: #fff;
+          }
+          .text_swiper {
+            .swiper-slide > div {
+              max-width: 300px;
+              margin: 0 auto;
+              background: #F9F9FB;
+              p {
+                font-size: 16px;
+                text-align: center;
+              }
+              button {
+                display: block;
+                width: 100%;
+                max-width: 280px;
+                height: 42px;
+  
+                margin: 24px auto 0;
+                background: var(--color-brand1);
+                border-radius: 8px;
+  
+                font-size: 14px;
+                font-weight: 400;
+                color: #fff;
+              }
             }
           }
         }
@@ -784,6 +826,11 @@ body.bg_main {background: #F9F9FB;}
             background: #fff; 
             border-radius: 16px;
             box-shadow: 0px 2px 2px 0px #00000040;
+            &.active {
+              background-color: cyan;
+              height: 300px;
+              transition: height 0.5s;
+            }
             & + li {
               margin-top: 8px;
             }
@@ -792,6 +839,7 @@ body.bg_main {background: #F9F9FB;}
               font-weight: 800;
             }
             .text_wrap {
+              margin-top: 6px;
               text-align: center;
               h4 {
                 font-size: 16px;
@@ -802,10 +850,14 @@ body.bg_main {background: #F9F9FB;}
                 }
               }
               p {
+                margin-top: 3px;
                 font-size: 13px;
+                font-weight: 400;
               }
             }
             .progress_wrap {
+              display: none;
+              padding-top: 112px;
               > div {}
             }
           }
@@ -818,12 +870,18 @@ body.bg_main {background: #F9F9FB;}
         left: 0;
         z-index: 100;
 
+        transform: translateY(100%);
+        transition: transform 0.3s;
+
         width: 100%;
         height: 106px;
 
         padding: 16px 0;
         background: #fff;
         box-shadow: 0px -2px 4px 0px #0000001A;
+        &.active {
+          transform: translateY(0);
+        }
         > ul {
           display: flex;
           justify-content: space-evenly;
@@ -866,13 +924,12 @@ body.bg_main {background: #F9F9FB;}
         }
       }
     }
-
-
-
-
   }
 }
 
+// .attendance_wrap {display: none;}
+// .main_swipe_menu {display: none;}
+#container {height: 5000px}
 
 
 // 포인트워크 진입 - 접근 권한

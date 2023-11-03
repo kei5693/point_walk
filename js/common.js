@@ -8,6 +8,9 @@ let common = {
     this.categoryListEvent();
     this.designSelect();
     this.challengeRewardEvent();
+    this.weeklyEvent(3); // 요일 0 ~ 6(일 ~ 토)
+    this.mainScrollEvent();
+    this.mainSwiper();
     // this.challengeLayoutHeight();
   },
   // 버튼으로 팝업 열기
@@ -450,12 +453,14 @@ let common = {
       });
       categoryUl.style.width = tabWidth+'px';
     }
+
     // 클릭한 대상에 active
     function setActiveTab(titles, index) {
       titles.forEach((title, i) => {
         title.classList.toggle('active', i === index);
       });
     }
+
     // 클릭한 대상으로 scroll 이동 이벤트
     function switchTab(n){
       let posCenter = window.outerWidth / 2;
@@ -600,23 +605,141 @@ let common = {
 
     scrollTarget.scrollTop = scrollValue;
   },
+  // 메인 - 출석 이벤트
+  weeklyEvent: function(day){
+    if(document.querySelector('.attendance_wrap .calendar_cont') == null) return;
+
+    const attendance = document.querySelector('.attendance_wrap .calendar_cont');
+    const weeklyInner = attendance.querySelector(':scope > .weekly_unit .inner');
+    const weeklyUl = weeklyInner.querySelector(':scope > ul');
+    const weeklyLi = weeklyUl.querySelectorAll('li');
+
+    // 바로 실행하면 오류 발생
+    window.addEventListener("DOMContentLoaded", () => {
+      setTabInit();
+
+      // init
+      setTimeout(() => {
+        setActiveTab(weeklyLi, day);
+        switchTab(day);
+      }, 500);
+    });
+    
+    // inner 리스트 클릭 이벤트
+    // weeklyLi.forEach((tabTitle, currentIndex) => {
+    //   tabTitle.addEventListener('click', (e) => {
+    //     e.preventDefault();
+
+    //     setActiveTab(weeklyLi, currentIndex);
+    //     switchTab(currentIndex);
+    //   });
+    // });
+
+    // 탭 전체 width 설정
+    function setTabInit(){
+      let tabWidth = 20; // 우측 간격 20 필요해서 추가
+      let gap = 16;
+      
+      weeklyLi.forEach((el, index)=>{
+        if(index == 0 ){
+          tabWidth += (el.offsetWidth);
+        } else {
+          tabWidth += (el.offsetWidth + gap);
+        }
+      });
+      weeklyUl.style.width = tabWidth+'px';
+    }
+    // 클릭한 대상에 active
+    function setActiveTab(titles, index) {
+      titles.forEach((title, i) => {
+        title.classList.toggle('today', i === index);
+      });
+    }
+    // 클릭한 대상으로 scroll 이동 이벤트
+    function switchTab(n){
+      let posCenter = window.outerWidth / 2;
+      let pos = 0;
+      let posLimit = weeklyUl.offsetWidth - weeklyInner.offsetWidth + 20; // inner에 패딩 20있어서 추가
+
+      if (weeklyLi[n].offsetLeft + weeklyLi[n].offsetWidth / 2 <= posCenter) {
+        pos = 0;
+      } else {
+        pos = (weeklyLi[n].offsetLeft + weeklyLi[n].offsetWidth / 2) - posCenter;
+        if (pos > posLimit) {
+          pos = posLimit
+        }
+      }
+
+      weeklyInner.scrollLeft = pos;
+    }
+  },
+  // 메인 스와이퍼
+  mainSwiper: function(){
+    if(document.querySelector('.main_swipe_menu') == null) return;
+
+    const mainVisualSwipe = new Swiper('.main_swipe_menu .visual_swiper', {
+      roundLengths: true,		// 이미지가 흐리게 나옴 방지
+      loop: true
+    });
+    const mainTextSwipe = new Swiper('.main_swipe_menu .text_swiper', {
+      effect: "fade",
+      speed: 200,
+      loop: true
+    });
+
+    mainVisualSwipe.on('slideChange', function () {
+      mainTextSwipe.slideTo(this.realIndex);
+    });
+  },
+  // 메인 스크롤 이벤트
+  mainScrollEvent: function(){
+    const mainSwipe = document.querySelector('.main_swipe_menu');
+    const getHeight = mainSwipe.querySelector(':scope > .inner').offsetHeight;
+    const calcPos = mainSwipe.offsetTop - window.outerHeight/2;
+
+    const statusUl = document.querySelector('.status_wrap > ul');
+    const statusLi = statusUl.querySelectorAll(':scope > li');
+
+    window.addEventListener('scroll', () => {
+      const currentScrollPos = window.pageYOffset || document.documentElement.scrollTop;
+
+      // 메인 스와이퍼 스크롤 감지
+      if(currentScrollPos > calcPos){
+        if(!mainSwipe.classList.contains('active')){
+          mainSwipe.classList.add('active');
+          mainSwipe.style.height = getHeight+'px';
+        }
+      }
+
+      // statusLi.forEach((el)=>{
+      //   el.style.height = el.offsetHeight + 'px';
+      // });
+
+      // 상태 스크롤 감지
+      common.detectScroll(statusLi, currentScrollPos);
+    });
+  },
+  // 스크롤 값에 맞춰서 class 추가
+  detectScroll: function(target, scrollTop){
+    target.forEach((el)=>{
+      let calcPos = el.offsetTop - window.outerHeight/2;
+
+      //el.style.height = el.offsetHeight + 'px';
+
+      if(scrollTop > calcPos){
+        el.classList.add('active');
+      }
+    });
+  },
 }
+
 
 common.init();
 //common.challengeProgressBar(50);
 // common.toggleSlide('.challenge_crew', '.btn');
 
 
-// 메인 스와이퍼
-// album_swiper
-const mainVisualSwipe = new Swiper('.main_swipe_menu .visual_swiper', {
-  roundLengths: true,		// 이미지가 흐리게 나옴 방지
-  loop: true
-});
-const mainTextSwipe = new Swiper('.main_swipe_menu .text_swiper', {
-  effect: "fade",
-  loop: true
-});
+
 
 
 // album_swiper

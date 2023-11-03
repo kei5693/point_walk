@@ -18,3 +18,10 @@
 	99% {top: 40px;}
 	100% {top: 100%;}
 }
+
+@keyframes bottomToShow {
+	0% {transform: translateY(100%)}
+	50%,
+	70% {transform: translateY(-5%)}
+	100% {transform: translateY(0%)}
+}

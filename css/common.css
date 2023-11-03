@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import "animation.css";
 :root {
   --color-brand1: #4B20EC;
   --color-brand2: #BA91F2;
@@ -385,6 +386,17 @@ body.bg_main {
   color: var(--color-font1);
   font-size: 20px;
 }
+#wrap:after {
+  content: "";
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 1px;
+  background: red;
+}
 #wrap.flex_layout {
   display: flex;
   flex-direction: column;
@@ -585,7 +597,7 @@ body.bg_main {
 }
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.complete > a .text strong,
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.complete > a .text span {
-  color: var(--color-font1);
+  color: var(--color-font1) !important;
 }
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.today {
   background: var(--color-brand1);
@@ -594,14 +606,14 @@ body.bg_main {
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.today > a .text span {
   color: #fff;
 }
-#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.day_sat > a .text span {
-  color: var(--color-brand1);
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.active {
+  background: cyan;
 }
-#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.day_sun > a .text span {
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li:nth-child(1) > a .text span {
   color: var(--color-sec1);
 }
-#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li:last-child {
-  margin-right: 20px;
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li:nth-child(7) > a .text span {
+  color: var(--color-brand1);
 }
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li > a {
   display: block;
@@ -635,6 +647,17 @@ body.bg_main {
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .notice_msg {
   position: relative;
 }
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .notice_msg:after {
+  content: "";
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top: 0 none;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid var(--color-brand3);
+}
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .notice_msg > div {
   display: flex;
   align-items: center;
@@ -661,22 +684,33 @@ body.bg_main {
   background: #000;
 }
 #wrap.main_content_wrap #container .main_swipe_menu {
-  margin: 50px 0;
+  overflow: hidden;
+  height: 0;
+  transition: height 0.5s;
 }
-#wrap.main_content_wrap #container .main_swipe_menu .visual_swiper .swiper-slide > div {
+#wrap.main_content_wrap #container .main_swipe_menu.active .inner {
+  animation: bottomToShow 0.5s forwards;
+  animation-delay: 0.8s;
+}
+#wrap.main_content_wrap #container .main_swipe_menu .inner {
+  padding: 50px 0;
+  transform: translateY(100%);
+  transition: transform 0.5s;
+}
+#wrap.main_content_wrap #container .main_swipe_menu .inner .visual_swiper .swiper-slide > div {
   max-width: 300px;
   margin: 0 auto;
 }
-#wrap.main_content_wrap #container .main_swipe_menu .text_swiper .swiper-slide > div {
+#wrap.main_content_wrap #container .main_swipe_menu .inner .text_swiper .swiper-slide > div {
   max-width: 300px;
   margin: 0 auto;
   background: #F9F9FB;
 }
-#wrap.main_content_wrap #container .main_swipe_menu .text_swiper .swiper-slide > div p {
+#wrap.main_content_wrap #container .main_swipe_menu .inner .text_swiper .swiper-slide > div p {
   font-size: 16px;
   text-align: center;
 }
-#wrap.main_content_wrap #container .main_swipe_menu .text_swiper .swiper-slide > div button {
+#wrap.main_content_wrap #container .main_swipe_menu .inner .text_swiper .swiper-slide > div button {
   display: block;
   width: 100%;
   max-width: 280px;
@@ -697,6 +731,11 @@ body.bg_main {
   border-radius: 16px;
   box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.2509803922);
 }
+#wrap.main_content_wrap #container .status_wrap > ul > li.active {
+  background-color: cyan;
+  height: 300px;
+  transition: height 0.5s;
+}
 #wrap.main_content_wrap #container .status_wrap > ul > li + li {
   margin-top: 8px;
 }
@@ -705,6 +744,7 @@ body.bg_main {
   font-weight: 800;
 }
 #wrap.main_content_wrap #container .status_wrap > ul > li .text_wrap {
+  margin-top: 6px;
   text-align: center;
 }
 #wrap.main_content_wrap #container .status_wrap > ul > li .text_wrap h4 {
@@ -716,18 +756,29 @@ body.bg_main {
   color: var(--color-brand1);
 }
 #wrap.main_content_wrap #container .status_wrap > ul > li .text_wrap p {
+  margin-top: 3px;
   font-size: 13px;
+  font-weight: 400;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li .progress_wrap {
+  display: none;
+  padding-top: 112px;
 }
 #wrap.main_content_wrap #container .toolbar_wrap {
   position: fixed;
   bottom: 0;
   left: 0;
   z-index: 100;
+  transform: translateY(100%);
+  transition: transform 0.3s;
   width: 100%;
   height: 106px;
   padding: 16px 0;
   background: #fff;
   box-shadow: 0px -2px 4px 0px rgba(0, 0, 0, 0.1019607843);
+}
+#wrap.main_content_wrap #container .toolbar_wrap.active {
+  transform: translateY(0);
 }
 #wrap.main_content_wrap #container .toolbar_wrap > ul {
   display: flex;
@@ -763,6 +814,10 @@ body.bg_main {
   font-weight: 800;
   line-height: 1;
   color: #828282;
+}
+
+#container {
+  height: 5000px;
 }
 
 .access_rights .icon_list {
