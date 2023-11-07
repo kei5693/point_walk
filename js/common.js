@@ -484,6 +484,7 @@ let common = {
   // 챌린지 - 상세 - 리워드 버튼 이벤트
   challengeRewardEvent: function () {
     if(document.querySelector('.challenge_detail_wrap .challenge_reward') == null) return
+
     const challengeReward = document.querySelector('.challenge_detail_wrap .challenge_reward');
     const rewardUl = challengeReward.querySelector(':scope > ul');
     const rewardLi = rewardUl.querySelectorAll(':scope > li');
@@ -512,13 +513,15 @@ let common = {
       initHeight(e.target.closest('button'), heights);
 
       // 진행전, 진행중 레이아웃이 달라서 스크롤 대상도 다름
-      // 진행중
-      if(e.target.closest('.ongoing')){
-        common.scrollToEvent('.challenge_content_wrap', challengeReward, 10);
-      } else {
-        // 진행전
-        common.scrollToEvent('#container', challengeReward);
-      }
+      // // 진행중
+      // if(e.target.closest('.ongoing')){
+      //   common.scrollToEvent('.challenge_content_wrap', challengeReward, 10);
+      // } else {
+      //   // 진행전
+      //   common.scrollToEvent('#container', challengeReward);
+      // }
+
+      common.scrollToEvent('html', challengeReward);
     });
   
     // 버튼에 class toggle, ul 높이 값 변경
@@ -647,6 +650,7 @@ let common = {
           tabWidth += (el.offsetWidth + gap);
         }
       });
+
       weeklyUl.style.width = tabWidth+'px';
     }
     // 클릭한 대상에 active
@@ -693,30 +697,57 @@ let common = {
   },
   // 메인 스크롤 이벤트
   mainScrollEvent: function(){
+    if(document.querySelector('.main_content_wrap') == null) return;
+
+    // 출석
+    const attendance = document.querySelector('.attendance_wrap');
+
+    // 메인 스와이프
     const mainSwipe = document.querySelector('.main_swipe_menu');
     const getHeight = mainSwipe.querySelector(':scope > .inner').offsetHeight;
-    const calcPos = mainSwipe.offsetTop - window.outerHeight/2;
 
+    // 상태
     const statusUl = document.querySelector('.status_wrap > ul');
     const statusLi = statusUl.querySelectorAll(':scope > li');
+    
+    // 툴바
+    const toolBar = document.querySelector('.toolbar_wrap');
+    const header = document.querySelector('#header');
 
     window.addEventListener('scroll', () => {
       const currentScrollPos = window.pageYOffset || document.documentElement.scrollTop;
+      let calcScroll = mainSwipe.offsetTop + mainSwipe.offsetHeight - header.offsetHeight; 
+      let calcPos = mainSwipe.offsetTop - window.outerHeight/2;
 
-      // 메인 스와이퍼 스크롤 감지
+      // 스크롤 감지(스와이퍼, 툴바)
       if(currentScrollPos > calcPos){
+        // 메인 스와이퍼 
         if(!mainSwipe.classList.contains('active')){
           mainSwipe.classList.add('active');
           mainSwipe.style.height = getHeight+'px';
+        } else {
+          // 툴바
+          currentScrollPos > calcScroll ? toolBar.classList.remove('active') : toolBar.classList.add('active');
         }
       }
 
-      // statusLi.forEach((el)=>{
-      //   el.style.height = el.offsetHeight + 'px';
-      // });
-
+      // 출석
+      currentScrollPos > header.offsetHeight ? attendance.classList.add('active') : resetMainScrollEvent();
+      
       // 상태 스크롤 감지
       common.detectScroll(statusLi, currentScrollPos);
+
+      // 메인 스크롤 이벤트 초기화
+      function resetMainScrollEvent(){
+        attendance.classList.remove('active');
+
+        mainSwipe.classList.remove('active');
+        mainSwipe.style.height = 0;
+
+        toolBar.classList.remove('active');
+
+        statusLi.forEach((el)=>{el.classList.remove('active')});
+      }
     });
   },
   // 스크롤 값에 맞춰서 class 추가
@@ -732,7 +763,6 @@ let common = {
     });
   },
 }
-
 
 common.init();
 //common.challengeProgressBar(50);
