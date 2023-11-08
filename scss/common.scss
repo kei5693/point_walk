@@ -2,7 +2,7 @@
 
 
 :root {
-  --color-brand1: #4B20EC;
+  --color-brand1: #4E2AF4;
   --color-brand2: #D6BBFB; 
   --color-brand3: #EAE8FF;
   --color-sec1: #FF2E6D;
@@ -771,6 +771,30 @@ body.bg_main {background: #F9F9FB;}
               max-width: 92%;
               min-height: 40px;
               margin: 16px auto 0;
+
+              padding-bottom: 26px;
+              &:before,
+              &:after {
+                content: '';
+                position: absolute;
+                bottom: 10px;
+                left: 50%;
+                width: 10px;
+                height: 1px;
+                background: #000;
+              }
+              &:before {
+                margin-left: -2px;
+                transform: rotate(0);
+                transform-origin: left top;
+                animation: scrollInfoLeft 1s infinite linear;
+              }
+              &:after {
+                margin-left: 2px;
+                transform: rotate(0);
+                transform-origin: right top;
+                animation: scrollInfoRight 1s infinite linear;
+              }
               p {
                 padding: 10px 12px;
                 background: var(--color-brand3);
@@ -781,18 +805,18 @@ body.bg_main {background: #F9F9FB;}
                 color: var(--color-font1);
               }
             }
-            button {
-              position: relative;
-              left: 50%;
-              transform: translateX(-50%);
+            // button {
+            //   position: relative;
+            //   left: 50%;
+            //   transform: translateX(-50%);
 
-              display: block;
-              width: 30px;
-              height: 20px;
+            //   display: block;
+            //   width: 30px;
+            //   height: 20px;
 
-              margin-top: 20px;
-              background: #000;
-            }
+            //   margin-top: 20px;
+            //   background: #000;
+            // }
           }
         }
       }
@@ -859,135 +883,213 @@ body.bg_main {background: #F9F9FB;}
             border-radius: 16px;
             box-shadow: 0px 2px 2px 0px #00000040;
             &.active {
-              min-height: 200px;
-              > .content1 {
-                max-height: 0;
-              }
-              > .content2 {
-                max-height: 999px;
+              > .inner > .contents {
+                transform: translateX(-100%);
               }
             }
             & + li {
               margin-top: 8px;
             }
-            > h3 {
-              font-size: 16px;
-              font-weight: 800;
-            }
-            > .content1 {
-              max-height: 999px;
-              transition: max-height 0.6s;
-            }
-            > .content2 {
-              max-height: 0;
-              transition: max-height 0.3s;
-            }
-            > div {
+            > .inner {
               overflow: hidden;
-            }
-            &.walking {
-              > .content1 {
-                margin-top: 18px;
-                display: flex;
-                justify-content: space-between;
+              > h3 {
+                font-size: 16px;
+                font-weight: 800;
               }
-              > div {
-                .progress_wrap {
-                  position: relative;
-                  height: 48px;
-                  margin-top: 11px;
-
-                  flex: 1;
-                  display: flex;
-                  align-items: end;
-
-                  &:after {
-                    content: '';
-                    position: absolute;
-                    left: 0;
-                    bottom: 0;
-
-                    width: 100%;
-                    height: 8px;
-
-                    background: var(--color-brand2);
-                    border-radius: 4px;
-                  }
-                  > div {
-                    position: relative;
-                    width: 100%;
-                    height: 8px;
-                    > span,
-                    > em {
-                      position: absolute;
-                      top: 0;
-                      left: 0;
-
-                      height: 100%;
-                      border-radius: 4px;
-                    }
-                    > span {
-                      width: 20%;
-                      z-index: 200;
-                      background: #B5FA95;
-
-                      transition: width 1s;
-                      &:before {
-                        content: '';
-                        position: absolute;
-                        top: -10px;
-                        right: 0;
-                        transform: translateX(50%);
-
-                        width: 10px;
-                        height: 6px;
-                        background: url('../images/common/ico_arrow_down02.svg') no-repeat;
-                        background-size: 100%;
-                      }
-                      &:after {
-                        content: '';
-                        position: absolute;
-                        top: -40px;
-                        right: 0;
-                        transform: translateX(50%);
-
-                        width: 28px;
-                        height: 28px;
-                        background: #000;
-                        border-radius: 50%;
+              > .contents {
+                position: relative;
+                margin-top: 18px;
+                transition: height 0.5s, transform 0.5s;
+                > div {
+                  position: absolute;
+                  top: 0;
+                  width: 100%;
+                  .text_wrap {
+                    h4 {
+                      font-size: 16px;
+                      font-weight: 600;
+                      a {
+                        display: block;
+                        position: relative;
+                        padding-right: 32px;
+                        strong {
+                          display: inline-block;
+                          font-size: 38px;
+                          font-weight: 600;
+                          color: var(--color-brand1);
+                        }
+                        &:after {
+                          content: '';
+                          position: absolute;
+                          top: 50%;
+                          right: 0;
+                          transform: translateY(-50%);
+    
+                          width: 20px;
+                          height: 20px;
+    
+                          background: url('../images/common/ico_arrow_right01.svg') no-repeat;
+                          background-size: 100%;
+                        }
                       }
                     }
-                    > em {
-                      left: 1px;
-                      width: 70%;
-                      z-index: 100;
-                      background: var(--color-brand1);
+                    p {
+                      margin-top: 3px;
+                      font-size: 14px;
+                      font-weight: 400;
+                      color: #475467;
                     }
                   }
                 }
-
-                .text_wrap {
-                  margin-left: 36px;
-                  h4 {
-                    position: relative;
-                    padding-right: 32px;
-                    strong {
-                      display: block;
-                      font-size: 38px;
-                      color: var(--color-brand1);
+                > .content1 {
+                  left: 0;
+                }
+                > .content2 {
+                  left: 100%;
+                }
+              }
+            }
+            &.walking {
+              > .inner {
+                > .contents {
+                  > .content1 {
+                    display: flex;
+                    .text_wrap {
+                      margin-left: 36px;
                     }
+                  }
+                  > .content2 {
+                    text-align: center;
+                    .text_wrap {
+                      h4 a {
+                        padding: 38px 0 0 0;
+                        margin-top: -38px;
+                        &:after {
+                          top: 0;
+                          transform: translateY(0);
+                        }
+                      }
+                    }
+                    .progress_wrap {
+                      margin: 47px 26px 52px;
+                      .desc {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+
+                        padding-top: 8px;
+                        margin-top: 8px;
+                        span {
+                          font-size: 16px;
+                          font-weight: 600;
+                          color: var(--color-brand1);
+                        }
+                      }
+                    }
+                  }
+                  .progress_wrap {
+                    position: relative;
+                    height: 48px;
+                    margin-top: 11px;
+  
+                    flex: 1;
+                    display: flex;
+                    align-items: end;
                     &:after {
                       content: '';
                       position: absolute;
-                      top: 50%;
-                      right: 0;
-                      transform: translateY(-50%);
+                      left: 0;
+                      bottom: 0;
+  
+                      width: 100%;
+                      height: 8px;
+  
+                      background: var(--color-brand2);
+                      border-radius: 4px;
+                    }
+                    > div {
+                      position: relative;
+                      width: 100%;
+                      height: 8px;
+                      > span,
+                      > em {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+  
+                        height: 100%;
+                        border-radius: 4px;
+                      }
+                      > span {
+                        width: 20%;
+                        z-index: 200;
+                        background: #B5FA95;
+  
+                        transition: width 1s;
+                        &:before {
+                          content: '';
+                          position: absolute;
+                          top: -10px;
+                          right: 0;
+                          transform: translateX(50%);
+  
+                          width: 10px;
+                          height: 6px;
+                          background: url('../images/common/ico_arrow_down02.svg') no-repeat;
+                          background-size: 100%;
+                        }
+                        // &:after {
+                        //   content: '';
+                        //   position: absolute;
+                        //   top: -40px;
+                        //   right: 0;
+                        //   transform: translateX(50%);
+  
+                        //   width: 28px;
+                        //   height: 28px;
+                        //   background: #000;
+                        //   border-radius: 50%;
+                        // }
+                        span {
+                          position: absolute;
+                          top: -38px;
+                          right: 0;
+                          transform: translateX(46%);
 
-                      width: 20px;
-                      height: 20px;
+                          white-space: nowrap;
+                          font-size: 16px;
+                          font-weight: 600;
+                          color: var(--color-brand1);
+                        }
+                      }
+                      > em {
+                        left: 1px;
+                        width: 70%;
+                        z-index: 100;
+                        background: var(--color-brand1);
+                      }
+                    }
+                  }
+                  
+                  .btn_wrap {
+                    margin: 23px 14px 0;
+                    > p {
+                      font-size: 14px;
+                      font-weight: 600;
+                      color: var(--color-brand1);
+                    }
+                    > button {
+                      margin-top: 8px;
 
-                      background: url('../images/common/ico_arrow_right01.svg') no-repeat;
-                      background-size: 100%;
+                      display: block;
+                      width: 100%;
+                      height: 42px;
+                      background: var(--color-brand1);
+                      border-radius: 8px;
+
+                      font-size: 14px;
+                      font-weight: 600;
+                      color: #fff;
                     }
                   }
                 }
@@ -1076,8 +1178,8 @@ body.bg_main {background: #F9F9FB;}
   }
 }
 
-.attendance_wrap {display: none;}
-.main_swipe_menu {display: none;}
+// .attendance_wrap {display: none;}
+// .main_swipe_menu {display: none;}
 
 
 // 포인트워크 진입 - 접근 권한

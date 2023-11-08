@@ -444,7 +444,7 @@
 
 		<!-- number count -->
 		<div class="number_count">
-			<div class="value">100</div>
+			<div class="value">50</div>
 			<div class="value">100</div>
 			<div class="value">100</div>
 			<div class="value">100</div>
@@ -544,50 +544,10 @@
 
 
 
-	<script>
-		let counters = document.querySelectorAll('.number_count .value');
 
-		animateCounter(counters[0], 50);
-		// animateCounter(counters[1], 95);
-		// animateCounter(counters[2], 999);
-		// animateCounter(counters[3], 9999);
-
-		function animateCounter(counter, targetValue) {
-			let startValue = parseInt(counter.innerText);
-			let duration = 1000;
-			let increment = (targetValue - startValue) / duration;
-
-			// console.log(increment); -0.05
-			let qwe = 0;
-
-			// Update counter
-			let startTimestamp;
-			function updateCounter(timestamp) {
-				if (!startTimestamp) startTimestamp = timestamp;
-				let elapsedTime = timestamp - startTimestamp;
-
-
-				//console.log(++qwe, timestamp, startTimestamp, elapsedTime);
-
-
-				if (elapsedTime < duration) {
-					let newValue = Math.round(startValue + increment * elapsedTime);
-					counter.textContent = newValue;
-					requestAnimationFrame(updateCounter);
-				} else {
-					// Set the final value as the targetValue
-					counter.textContent = targetValue;
-				}
-			}
-
-			// Start the animation
-			requestAnimationFrame(updateCounter);
-		}
-	</script>
 	<script src="./js/common.js"></script>
 	<script>
 		common.circleProgress('control', '.bar', '.value');
-		bottomSheetModal(".show-modal", ".bottom-sheet");
 	</script>
 </body>
 </html>

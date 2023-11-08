@@ -25,3 +25,32 @@
 	70% {transform: translateY(-5%)}
 	100% {transform: translateY(0%)}
 }
+
+@keyframes scrollInfoLeft {
+	0%, 20% {
+		margin-left: -4px;
+		transform: rotate(0deg);
+	}
+	50% {
+		margin-left: -4px;
+	}
+	80%,
+	100% {
+		margin-left: -2px;
+		transform: rotate(45deg);
+	}
+}
+@keyframes scrollInfoRight {
+	0%, 20% {
+		margin-left: 4px;
+		transform: rotate(0deg);
+	}
+	50% {
+		margin-left: 4px;
+	}
+	80%,
+	100% {
+		margin-left: 2px;
+		transform: rotate(-45deg);
+	}
+}

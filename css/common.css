@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @import "animation.css";
 :root {
-  --color-brand1: #4B20EC;
+  --color-brand1: #4E2AF4;
   --color-brand2: #D6BBFB;
   --color-brand3: #EAE8FF;
   --color-sec1: #FF2E6D;
@@ -687,6 +687,28 @@ body.bg_main {
   max-width: 92%;
   min-height: 40px;
   margin: 16px auto 0;
+  padding-bottom: 26px;
+}
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .notice_msg > div:before, #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .notice_msg > div:after {
+  content: "";
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  width: 10px;
+  height: 1px;
+  background: #000;
+}
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .notice_msg > div:before {
+  margin-left: -2px;
+  transform: rotate(0);
+  transform-origin: left top;
+  animation: scrollInfoLeft 1s infinite linear;
+}
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .notice_msg > div:after {
+  margin-left: 2px;
+  transform: rotate(0);
+  transform-origin: right top;
+  animation: scrollInfoRight 1s infinite linear;
 }
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .notice_msg > div p {
   padding: 10px 12px;
@@ -695,16 +717,6 @@ body.bg_main {
   font-size: 14px;
   font-weight: 400;
   color: var(--color-font1);
-}
-#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .notice_msg button {
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  display: block;
-  width: 30px;
-  height: 20px;
-  margin-top: 20px;
-  background: #000;
 }
 #wrap.main_content_wrap #container .main_swipe_menu {
   overflow: hidden;
@@ -757,39 +769,100 @@ body.bg_main {
   border-radius: 16px;
   box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.2509803922);
 }
-#wrap.main_content_wrap #container .status_wrap > ul > li.active {
-  min-height: 200px;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.active > .content1 {
-  max-height: 0;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.active > .content2 {
-  max-height: 999px;
+#wrap.main_content_wrap #container .status_wrap > ul > li.active > .inner > .contents {
+  transform: translateX(-100%);
 }
 #wrap.main_content_wrap #container .status_wrap > ul > li + li {
   margin-top: 8px;
 }
-#wrap.main_content_wrap #container .status_wrap > ul > li > h3 {
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner {
+  overflow: hidden;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > h3 {
   font-size: 16px;
   font-weight: 800;
 }
-#wrap.main_content_wrap #container .status_wrap > ul > li > .content1 {
-  max-height: 999px;
-  transition: max-height 0.6s;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li > .content2 {
-  max-height: 0;
-  transition: max-height 0.3s;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li > div {
-  overflow: hidden;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .content1 {
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents {
+  position: relative;
   margin-top: 18px;
+  transition: height 0.5s, transform 0.5s;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents > div {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents > div .text_wrap h4 {
+  font-size: 16px;
+  font-weight: 600;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents > div .text_wrap h4 a {
+  display: block;
+  position: relative;
+  padding-right: 32px;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents > div .text_wrap h4 a strong {
+  display: inline-block;
+  font-size: 38px;
+  font-weight: 600;
+  color: var(--color-brand1);
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents > div .text_wrap h4 a:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background: url("../images/common/ico_arrow_right01.svg") no-repeat;
+  background-size: 100%;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents > div .text_wrap p {
+  margin-top: 3px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #475467;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents > .content1 {
+  left: 0;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents > .content2 {
+  left: 100%;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents > .content1 {
+  display: flex;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents > .content1 .text_wrap {
+  margin-left: 36px;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents > .content2 {
+  text-align: center;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents > .content2 .text_wrap h4 a {
+  padding: 38px 0 0 0;
+  margin-top: -38px;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents > .content2 .text_wrap h4 a:after {
+  top: 0;
+  transform: translateY(0);
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents > .content2 .progress_wrap {
+  margin: 47px 26px 52px;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents > .content2 .progress_wrap .desc {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding-top: 8px;
+  margin-top: 8px;
 }
-#wrap.main_content_wrap #container .status_wrap > ul > li.walking > div .progress_wrap {
+#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents > .content2 .progress_wrap .desc span {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-brand1);
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents .progress_wrap {
   position: relative;
   height: 48px;
   margin-top: 11px;
@@ -797,7 +870,7 @@ body.bg_main {
   display: flex;
   align-items: end;
 }
-#wrap.main_content_wrap #container .status_wrap > ul > li.walking > div .progress_wrap:after {
+#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents .progress_wrap:after {
   content: "";
   position: absolute;
   left: 0;
@@ -807,26 +880,26 @@ body.bg_main {
   background: var(--color-brand2);
   border-radius: 4px;
 }
-#wrap.main_content_wrap #container .status_wrap > ul > li.walking > div .progress_wrap > div {
+#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents .progress_wrap > div {
   position: relative;
   width: 100%;
   height: 8px;
 }
-#wrap.main_content_wrap #container .status_wrap > ul > li.walking > div .progress_wrap > div > span,
-#wrap.main_content_wrap #container .status_wrap > ul > li.walking > div .progress_wrap > div > em {
+#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents .progress_wrap > div > span,
+#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents .progress_wrap > div > em {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   border-radius: 4px;
 }
-#wrap.main_content_wrap #container .status_wrap > ul > li.walking > div .progress_wrap > div > span {
+#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents .progress_wrap > div > span {
   width: 20%;
   z-index: 200;
   background: #B5FA95;
   transition: width 1s;
 }
-#wrap.main_content_wrap #container .status_wrap > ul > li.walking > div .progress_wrap > div > span:before {
+#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents .progress_wrap > div > span:before {
   content: "";
   position: absolute;
   top: -10px;
@@ -837,45 +910,40 @@ body.bg_main {
   background: url("../images/common/ico_arrow_down02.svg") no-repeat;
   background-size: 100%;
 }
-#wrap.main_content_wrap #container .status_wrap > ul > li.walking > div .progress_wrap > div > span:after {
-  content: "";
+#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents .progress_wrap > div > span span {
   position: absolute;
-  top: -40px;
+  top: -38px;
   right: 0;
-  transform: translateX(50%);
-  width: 28px;
-  height: 28px;
-  background: #000;
-  border-radius: 50%;
+  transform: translateX(46%);
+  white-space: nowrap;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-brand1);
 }
-#wrap.main_content_wrap #container .status_wrap > ul > li.walking > div .progress_wrap > div > em {
+#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents .progress_wrap > div > em {
   left: 1px;
   width: 70%;
   z-index: 100;
   background: var(--color-brand1);
 }
-#wrap.main_content_wrap #container .status_wrap > ul > li.walking > div .text_wrap {
-  margin-left: 36px;
+#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents .btn_wrap {
+  margin: 23px 14px 0;
 }
-#wrap.main_content_wrap #container .status_wrap > ul > li.walking > div .text_wrap h4 {
-  position: relative;
-  padding-right: 32px;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.walking > div .text_wrap h4 strong {
-  display: block;
-  font-size: 38px;
+#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents .btn_wrap > p {
+  font-size: 14px;
+  font-weight: 600;
   color: var(--color-brand1);
 }
-#wrap.main_content_wrap #container .status_wrap > ul > li.walking > div .text_wrap h4:after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  width: 20px;
-  height: 20px;
-  background: url("../images/common/ico_arrow_right01.svg") no-repeat;
-  background-size: 100%;
+#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents .btn_wrap > button {
+  margin-top: 8px;
+  display: block;
+  width: 100%;
+  height: 42px;
+  background: var(--color-brand1);
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
 }
 #wrap.main_content_wrap #container .toolbar_wrap {
   position: fixed;
@@ -941,14 +1009,6 @@ body.bg_main {
 }
 #wrap.main_content_wrap #container .banner_wrap img + img {
   margin-top: 10px;
-}
-
-.attendance_wrap {
-  display: none;
-}
-
-.main_swipe_menu {
-  display: none;
 }
 
 .access_rights .icon_list {
