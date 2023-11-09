@@ -1,21 +1,4 @@
 let common = {
-  init: function () {
-    this.layerButtonToggle();
-    this.toastButtonToggle();
-
-    this.mainScrollEvent();
-    this.mainSwiper();
-    this.mainWeeklyEvent(3); // 요일 0 ~ 6(일 ~ 토)
-
-    this.tabMenuEvent();
-    this.inputBorderEvent();
-    
-    this.challengeCategoryListEvent();
-    this.challengeRewardEvent();
-    
-    this.designSelect();
-    this.scrollDeformation();
-  },
   // 공통 - 팝업 : 버튼으로 팝업 열기
   layerButtonToggle: function(){
     let btnArr = document.querySelectorAll('.layer_button_toggle');
@@ -192,15 +175,13 @@ let common = {
     target.forEach((el)=>{
       let calcPos = el.offsetTop - window.outerHeight/2;
 
-      //el.style.height = el.offsetHeight + 'px';
-
       if(scrollTop > calcPos){
         el.classList.add('active');
       }
 
-      if(scrollTop == 0){
-        el.classList.remove('active');
-      }
+      // if(scrollTop == 0){
+      //   el.classList.remove('active');
+      // }
     });
   },
   // 공통 : 탭메뉴 이벤트
@@ -233,8 +214,437 @@ let common = {
       });
     }
   },
+  // 공통 : 숫자 애니메인션 카운터
+  animateCounter: function(counter, targetValue, duration){
+    if(document.querySelector(counter) == null) return;
+
+    const targetCounter = document.querySelector(counter);
+    let startValue = parseInt(targetCounter.innerText);
+    let increment = (targetValue - startValue) / duration;
+
+    // Update counter
+    let startTimestamp;
+    
+    function updateCounter(timestamp) {
+      if (!startTimestamp) startTimestamp = timestamp;
+      let elapsedTime = timestamp - startTimestamp;
+
+      if (elapsedTime < duration) {
+        let newValue = Math.round(startValue + increment * elapsedTime);
+
+        targetCounter.textContent = newValue.toLocaleString(); // Use toLocaleString to add commas
+        requestAnimationFrame(updateCounter);
+      } else {
+        // Set the final value as the targetValue
+        targetCounter.textContent = targetValue.toLocaleString();
+      }
+    }
+
+    // Start the animation
+    requestAnimationFrame(updateCounter);
+  },
+  // 프로필 설정 : 인풋 포커스, 인풋 값 삭제
+  inputBorderEvent: function(){
+    let targetInp = document.querySelectorAll('.inp_box_list > li input');
+    targetInp.forEach((input)=>{
+      input.addEventListener("focus", (e) => {
+        let parent = e.target.closest('li');
+        parent.classList.add('active');
+      });
+  
+      input.addEventListener("blur", (e) => {
+        let parent = e.target.closest('li');
+        parent.classList.remove('active');
+      });
+    });
+  
+    let targetBtn = document.querySelectorAll('.inp_box_list > li button');
+    targetBtn.forEach((btn)=>{
+      btn.addEventListener("click", (e) => {
+        let input = e.target.closest('li').querySelector('input');
+        input.value = '';
+      });
+    });
+  },
 
 
+
+
+
+
+  // 헤더 스크롤 이벤트(아직 결정된 사항 아님)
+  scrollDeformation: function(){
+    if(document.querySelector('#wrap') == null) return;
+
+    const condition = document.querySelector('#wrap').classList.contains('scroll_deformation');
+    const titleEl = document.querySelector('#header > .title_wrap h1');
+    var matrixArr = [-36, 50, 2];
+
+    if(!condition) return
+
+    // init
+    initStyle(matrixArr);
+    document.addEventListener('scroll', handleScroll);
+
+    // 스크롤 중간에서 새로고침 할 경우 대비
+    function initStyle(arr){
+      const scrollTop = document.documentElement.scrollTop;
+
+      if(scrollTop == 0 ){
+        titleEl.style.transform = `translate(${arr[0]}px, ${arr[1]}px) scale(${arr[2]})`;
+      } else {
+        titleEl.style.transform = 'translate(0, 0) scale(1)';
+      }
+    }
+
+    function handleScroll(){
+      const scrollTop = document.documentElement.scrollTop;
+      applyTransform(scrollTop);
+    }
+
+    function applyTransform(scrollTop){
+      if(scrollTop >= 50){
+        scrollTop = 50;
+      } else if(scrollTop <= 0){
+        scrollTop = 0;
+      }
+
+      const calArr = matrixArr.map((el) => el / matrixArr[1]);
+      const transformed = matrixArr.map((el, i) => {
+        return i === matrixArr.length - 1
+          ? el - (calArr[i] * scrollTop) / 2
+          : el - calArr[i] * scrollTop;
+      });
+
+      titleEl.style.transform = `translate(${transformed[0]}px, ${transformed[1]}px) scale(${transformed[2]})`;
+    }
+  },
+  // 디자인 셀렉트(아직 결정된 사항 아님)
+  designSelect: function(){
+    let selectBox = document.querySelectorAll('.design_select');
+
+    selectBox.forEach((select) => {
+      // 선택된 옵션
+      let selected = select.querySelector(':scope > .selected');
+      // 선택한 옵션 타이틀
+      let selectTitle = selected.querySelector(':scope span');
+      // 옵션 리스트
+      let optionList = select.querySelectorAll(':scope > .optionList > li');
+
+      // 선택한 셀렉트 열기
+      selected.addEventListener('click', () => {
+        selectBox.forEach(function (e) {
+          e != select ? e.classList.remove('active') : e.classList.toggle('active');
+        });
+      });
+
+      // 선택한 옵션 활성화
+      optionList.forEach((option) => {
+        option.addEventListener('click', (e) => {
+          optionList.forEach(function (current) {
+            current != option ? current.classList.remove('select') : current.classList.add('select');
+          });
+          // 해당 셀렉트 닫기
+          select.classList.remove('active');
+          // 선택한 옵션 타이틀 변경 : p 태그를 변경하니 오작동 할 때가 있어서 span 추가
+          selectTitle.innerText = e.target.innerText;
+        });
+      });
+
+      // 셀렉트 모두 닫기
+      document.querySelector('html').addEventListener('click', (e) => {
+        if (!e.target.closest('.design_select')) {
+          selectBox.forEach((select) => {
+            select.classList.remove('active');
+          });
+        }
+      });
+    });
+  },
+  // 클릭한 대상에 class 추가 이벤트(사용된 부분이 없음)
+  siblingsToggleClass: function(targetSelector, childrenSelector, initialIndex, className){
+    const targetElements = document.querySelectorAll(targetSelector);
+
+    targetElements.forEach((targetElement) => {
+      const childrenElements = targetElement.querySelectorAll(childrenSelector);
+
+      childrenElements.forEach((childElement, index) => {
+        const isActive = index === initialIndex;
+
+        // Initialize classes based on the initial index
+        toggleClass(childElement, className, isActive);
+
+        childElement.addEventListener('click', (e) => {
+          e.preventDefault();
+          
+          // remove
+          childrenElements.forEach((otherElement) => {
+            toggleClass(otherElement, className, false);
+          });
+
+          // Add
+          toggleClass(e.currentTarget, className, true);
+        });
+      });
+    });
+
+    function toggleClass(element, className, isActive) {
+      isActive ? element.classList.add(className) : element.classList.remove(className);
+    }
+  },
+  // class toggle 이벤트(사용된 부분이 없음)
+  toggleClass: function(target, className, parent) {
+    parent === undefined ? target.classList.toggle(className) : target.closest(parent).classList.toggle(className);
+  },
+  // 모바일 체크(사용된 부분이 없음)
+  isMobile: function() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  },
+  // circleProgress(사용된 부분이 없음)
+  circleProgress: function(controlId, barSelector, valueSelector) {
+    var control				= document.getElementById(controlId);
+    var bar						= document.querySelector(barSelector);
+    var value					= document.querySelector(valueSelector);
+    var RADIUS				= bar.attributes.r.value;
+    var CIRCUMFERENCE = 2 * Math.PI * RADIUS; // 339.29200658769764			
+
+    function progress(per) {
+      var progress = per / 100;
+      var dashoffset = CIRCUMFERENCE * (1 - progress);
+
+      value.innerHTML = per + '%';
+      bar.style.strokeDashoffset = dashoffset;
+    }
+
+    control.addEventListener('input', function(event) {
+      progress(event.target.valueAsNumber);
+    });
+
+    control.addEventListener('change', function(event) {
+      progress(event.target.valueAsNumber);
+    });
+
+    bar.style.strokeDasharray = CIRCUMFERENCE;
+    progress(control.value);
+  },
+}
+
+let main = {
+  // 메인 : 출석 이벤트 오늘날짜로 스크롤 이동
+  mainWeeklyEvent: function(day){
+    if(document.querySelector('.attendance_wrap .calendar_cont') == null) return;
+
+    const attendance = document.querySelector('.attendance_wrap .calendar_cont');
+    const weeklyInner = attendance.querySelector(':scope > .weekly_unit .inner');
+    const weeklyUl = weeklyInner.querySelector(':scope > ul');
+    const weeklyLi = weeklyUl.querySelectorAll('li');
+
+    // 바로 실행하면 오류 발생
+    window.addEventListener("DOMContentLoaded", () => {
+      setTabInit();
+
+      // init
+      setTimeout(() => {
+        setActiveTab(weeklyLi, day);
+        switchTab(day);
+      }, 500);
+    });
+    
+    // inner 리스트 클릭 이벤트
+    // weeklyLi.forEach((tabTitle, currentIndex) => {
+    //   tabTitle.addEventListener('click', (e) => {
+    //     e.preventDefault();
+
+    //     setActiveTab(weeklyLi, currentIndex);
+    //     switchTab(currentIndex);
+    //   });
+    // });
+
+    // 탭 전체 width 설정
+    function setTabInit(){
+      let tabWidth = 20; // 우측 간격 20 필요해서 추가
+      let gap = 16;
+      
+      weeklyLi.forEach((el, index)=>{
+        if(index == 0 ){
+          tabWidth += (el.offsetWidth);
+        } else {
+          tabWidth += (el.offsetWidth + gap);
+        }
+      });
+
+      weeklyUl.style.width = tabWidth+'px';
+    }
+    // 클릭한 대상에 active
+    function setActiveTab(titles, index) {
+      titles.forEach((title, i) => {
+        title.classList.toggle('today', i === index);
+      });
+    }
+    // 클릭한 대상으로 scroll 이동 이벤트
+    function switchTab(n){
+      let posCenter = window.outerWidth / 2;
+      let pos = 0;
+      let posLimit = weeklyUl.offsetWidth - weeklyInner.offsetWidth + 20; // inner에 패딩 20있어서 추가
+
+      if (weeklyLi[n].offsetLeft + weeklyLi[n].offsetWidth / 2 <= posCenter) {
+        pos = 0;
+      } else {
+        pos = (weeklyLi[n].offsetLeft + weeklyLi[n].offsetWidth / 2) - posCenter;
+        if (pos > posLimit) {
+          pos = posLimit
+        }
+      }
+
+      weeklyInner.scrollLeft = pos;
+    }
+  },
+  // 메인 : 스와이퍼
+  mainSwiper: function(){
+    if(document.querySelector('.main_swipe_menu') == null) return;
+
+    const mainVisualSwipe = new Swiper('.main_swipe_menu .visual_swiper', {
+      roundLengths: true,		// 이미지가 흐리게 나옴 방지
+      loop: true
+    });
+    const mainTextSwipe = new Swiper('.main_swipe_menu .text_swiper', {
+      effect: "fade",
+      speed: 200,
+      loop: true
+    });
+
+    let currentIndex = 0;
+
+    mainVisualSwipe.on('slideChange', function () {
+      currentIndex = this.realIndex;
+      mainTextSwipe.slideTo(currentIndex);
+    });
+
+  },
+  // 메인 : 스크롤 이벤트(출석, 스와이퍼, 상태, 툴바)
+  mainScrollEvent: function(){
+    if(document.querySelector('.main_content_wrap') == null) return;
+
+    // 출석
+    const attendance = document.querySelector('.attendance_wrap');
+
+    // 메인 스와이프
+    const mainSwipe = document.querySelector('.main_swipe_menu');
+    const getHeight = mainSwipe.querySelector(':scope > .inner').offsetHeight;
+
+    // 상태
+    const statusUl = document.querySelector('.status_wrap > ul');
+    const statusLi = statusUl.querySelectorAll(':scope > li');
+    
+    // 툴바
+    const toolBar = document.querySelector('.toolbar_wrap');
+    const header = document.querySelector('#header');
+
+    // 상태 스크롤 class 이벤트 
+    mainStatusScrollEvent();
+
+    window.addEventListener('scroll', () => {
+      const currentScrollPos = window.pageYOffset || document.documentElement.scrollTop;
+      let calcScroll = mainSwipe.offsetTop + mainSwipe.offsetHeight - header.offsetHeight; 
+      let calcPos = mainSwipe.offsetTop - window.outerHeight/2;
+
+      // 스크롤 감지(스와이퍼, 툴바)
+      if(currentScrollPos > calcPos){
+        // 메인 스와이퍼 
+        if(!mainSwipe.classList.contains('active')){
+          mainSwipe.classList.add('active');
+          mainSwipe.style.height = getHeight+'px';
+        } else {
+          // 툴바
+          currentScrollPos > calcScroll ? toolBar.classList.remove('active') : toolBar.classList.add('active');
+        }
+      }
+
+      // 출석
+      currentScrollPos > 10 ? attendance.classList.add('active') : resetMainScrollEvent();
+      
+      // 상태 스크롤 감지
+      detectScroll(statusLi, currentScrollPos);
+
+      // 상태 스크롤 class 이벤트
+      mainStatusScrollEvent();
+
+      function detectScroll(target, scrollTop){
+        target.forEach((el)=>{
+          let calcPos = el.offsetTop - window.outerHeight/2;
+    
+          if(scrollTop > calcPos){
+            el.classList.add('active');
+    
+            // 애니메이션 동작 후에 실행
+            el.addEventListener("transitionend", () => {
+              if(el.classList.contains('active') && el.classList.contains('walking')){
+                setTimeout(() => {mainAni()}, 300);
+              }
+            }, {once: false});
+          }
+    
+          if(scrollTop == 0){
+            el.classList.remove('active');
+            resetMainAni();
+          }
+    
+          // 걷기 그래프 애니메이션
+          function mainAni(){
+            const target = document.querySelector('.main_content_wrap .status_wrap li.walking .content2 > .progress_wrap > div');
+            // common.animateCounter('.main_content_wrap li.walking .content2 .text_wrap strong', 99999, 1000);
+            target.querySelector(':scope > span').style.width = '30%';
+            target.querySelector(':scope > em').style.width = '80%';
+          }
+          // 걷기 그래프 초기화
+          function resetMainAni(){
+            const target = document.querySelector('.main_content_wrap .status_wrap li.walking .content2 > .progress_wrap > div');
+            target.querySelector(':scope > span').style.width = '0%';
+            target.querySelector(':scope > em').style.width = '0%';
+          }
+        });
+      }
+    });
+    
+    // 메인 스크롤 이벤트 초기화
+    function resetMainScrollEvent(){
+      attendance.classList.remove('active');
+
+      mainSwipe.classList.remove('active');
+      mainSwipe.style.height = 0;
+
+      toolBar.classList.remove('active');
+
+      statusLi.forEach((el)=>{el.classList.remove('active')});
+    }
+
+    // 메인 : 상태 이벤트
+    function mainStatusScrollEvent(){
+      if(document.querySelector('.status_wrap') == null) return;
+      
+      const statusContents = document.querySelectorAll('.status_wrap > ul > li.animate > .inner > .contents');
+  
+      statusContents.forEach((contents)=>{
+        let content1 = contents.querySelector('.content1').offsetHeight + 'px';
+        let content2 = contents.querySelector('.content2').offsetHeight + 'px';
+        let heightValue = contents.closest('li').classList.contains('active') ? content2 : content1;
+
+        contents.style.height = heightValue;
+      });
+    }
+  },
+  // 메인 최초 로드 시 걸음 숫자, 그래프 애니메이션
+  mainInit: function(){
+    if(document.querySelector('.main_content_wrap .status_wrap') == null) return;
+
+    const target = document.querySelector('.main_content_wrap .status_wrap li.walking .content1 > .progress_wrap > div');
+    common.animateCounter('.main_content_wrap li.walking .content1 .text_wrap strong', 99999, 1000);
+    target.querySelector(':scope > span').style.width = '30%';
+    target.querySelector(':scope > em').style.width = '80%';
+  }
+}
+
+let challenge = {
   // 챌린지 : 목록 - 카테고리 이벤트
   challengeCategoryListEvent: function(){
     if(document.querySelector('.challenge_category') == null) return;
@@ -438,386 +848,29 @@ let common = {
       console.log(target.offsetWidth, number);
     });
   },
-
-
-  // 메인 : 출석 이벤트 오늘날짜로 스크롤 이동
-  mainWeeklyEvent: function(day){
-    if(document.querySelector('.attendance_wrap .calendar_cont') == null) return;
-
-    const attendance = document.querySelector('.attendance_wrap .calendar_cont');
-    const weeklyInner = attendance.querySelector(':scope > .weekly_unit .inner');
-    const weeklyUl = weeklyInner.querySelector(':scope > ul');
-    const weeklyLi = weeklyUl.querySelectorAll('li');
-
-    // 바로 실행하면 오류 발생
-    window.addEventListener("DOMContentLoaded", () => {
-      setTabInit();
-
-      // init
-      setTimeout(() => {
-        setActiveTab(weeklyLi, day);
-        switchTab(day);
-      }, 500);
-    });
-    
-    // inner 리스트 클릭 이벤트
-    // weeklyLi.forEach((tabTitle, currentIndex) => {
-    //   tabTitle.addEventListener('click', (e) => {
-    //     e.preventDefault();
-
-    //     setActiveTab(weeklyLi, currentIndex);
-    //     switchTab(currentIndex);
-    //   });
-    // });
-
-    // 탭 전체 width 설정
-    function setTabInit(){
-      let tabWidth = 20; // 우측 간격 20 필요해서 추가
-      let gap = 16;
-      
-      weeklyLi.forEach((el, index)=>{
-        if(index == 0 ){
-          tabWidth += (el.offsetWidth);
-        } else {
-          tabWidth += (el.offsetWidth + gap);
-        }
-      });
-
-      weeklyUl.style.width = tabWidth+'px';
-    }
-    // 클릭한 대상에 active
-    function setActiveTab(titles, index) {
-      titles.forEach((title, i) => {
-        title.classList.toggle('today', i === index);
-      });
-    }
-    // 클릭한 대상으로 scroll 이동 이벤트
-    function switchTab(n){
-      let posCenter = window.outerWidth / 2;
-      let pos = 0;
-      let posLimit = weeklyUl.offsetWidth - weeklyInner.offsetWidth + 20; // inner에 패딩 20있어서 추가
-
-      if (weeklyLi[n].offsetLeft + weeklyLi[n].offsetWidth / 2 <= posCenter) {
-        pos = 0;
-      } else {
-        pos = (weeklyLi[n].offsetLeft + weeklyLi[n].offsetWidth / 2) - posCenter;
-        if (pos > posLimit) {
-          pos = posLimit
-        }
-      }
-
-      weeklyInner.scrollLeft = pos;
-    }
-  },
-  // 메인 : 스와이퍼
-  mainSwiper: function(){
-    if(document.querySelector('.main_swipe_menu') == null) return;
-
-    const mainVisualSwipe = new Swiper('.main_swipe_menu .visual_swiper', {
-      roundLengths: true,		// 이미지가 흐리게 나옴 방지
-      loop: true
-    });
-    const mainTextSwipe = new Swiper('.main_swipe_menu .text_swiper', {
-      effect: "fade",
-      speed: 200,
-      loop: true
-    });
-
-    mainVisualSwipe.on('slideChange', function () {
-      mainTextSwipe.slideTo(this.realIndex);
-    });
-  },
-  // 메인 : 스크롤 이벤트(출석, 스와이퍼, 상태, 툴바)
-  mainScrollEvent: function(){
-    if(document.querySelector('.main_content_wrap') == null) return;
-
-    // 출석
-    const attendance = document.querySelector('.attendance_wrap');
-
-    // 메인 스와이프
-    const mainSwipe = document.querySelector('.main_swipe_menu');
-    const getHeight = mainSwipe.querySelector(':scope > .inner').offsetHeight;
-
-    // 상태
-    const statusUl = document.querySelector('.status_wrap > ul');
-    const statusLi = statusUl.querySelectorAll(':scope > li');
-    
-    // 툴바
-    const toolBar = document.querySelector('.toolbar_wrap');
-    const header = document.querySelector('#header');
-
-    // 상태 스크롤 class 이벤트 
-    mainStatusScrollEvent();
-
-    window.addEventListener('scroll', () => {
-      const currentScrollPos = window.pageYOffset || document.documentElement.scrollTop;
-      let calcScroll = mainSwipe.offsetTop + mainSwipe.offsetHeight - header.offsetHeight; 
-      let calcPos = mainSwipe.offsetTop - window.outerHeight/2;
-
-      // 스크롤 감지(스와이퍼, 툴바)
-      if(currentScrollPos > calcPos){
-        // 메인 스와이퍼 
-        if(!mainSwipe.classList.contains('active')){
-          mainSwipe.classList.add('active');
-          mainSwipe.style.height = getHeight+'px';
-        } else {
-          // 툴바
-          currentScrollPos > calcScroll ? toolBar.classList.remove('active') : toolBar.classList.add('active');
-        }
-      }
-
-      // 출석
-      currentScrollPos > 0 ? attendance.classList.add('active') : resetMainScrollEvent();
-      
-      // 상태 스크롤 감지
-      common.detectScroll(statusLi, currentScrollPos);
-
-      // 상태 스크롤 class 이벤트
-      mainStatusScrollEvent();
-    });
-    
-    // 메인 스크롤 이벤트 초기화
-    function resetMainScrollEvent(){
-      attendance.classList.remove('active');
-
-      mainSwipe.classList.remove('active');
-      mainSwipe.style.height = 0;
-
-      toolBar.classList.remove('active');
-
-      statusLi.forEach((el)=>{el.classList.remove('active')});
-    }
-
-    // 메인 : 상태 이벤트
-    function mainStatusScrollEvent(){
-      if(document.querySelector('.status_wrap') == null) return;
-      
-      const statusContents = document.querySelectorAll('.status_wrap > ul > li > .inner > .contents');
-  
-      statusContents.forEach((contents)=>{
-        let content1 = contents.querySelector('.content1').offsetHeight + 'px';
-        let content2 = contents.querySelector('.content2').offsetHeight + 'px';
-        let heightValue = contents.closest('li').classList.contains('active') ? content2 : content1;
-
-        contents.style.height = heightValue;
-      });
-    }
-  },
-  // 프로필 설정 : 인풋 포커스, 인풋 값 삭제
-  inputBorderEvent: function(){
-    let targetInp = document.querySelectorAll('.inp_box_list > li input');
-    targetInp.forEach((input)=>{
-      input.addEventListener("focus", (e) => {
-        let parent = e.target.closest('li');
-        parent.classList.add('active');
-      });
-  
-      input.addEventListener("blur", (e) => {
-        let parent = e.target.closest('li');
-        parent.classList.remove('active');
-      });
-    });
-  
-    let targetBtn = document.querySelectorAll('.inp_box_list > li button');
-    targetBtn.forEach((btn)=>{
-      btn.addEventListener("click", (e) => {
-        let input = e.target.closest('li').querySelector('input');
-        input.value = '';
-      });
-    });
-  },
-
-
-
-
-  // 숫자 애니메인션 카운터
-  animateCounter: function(counter, targetValue, duration){
-    if(document.querySelector(counter) == null) return;
-
-    const targetCounter = document.querySelector(counter);
-    let startValue = parseInt(targetCounter.innerText);
-    let increment = (targetValue - startValue) / duration;
-
-    // Update counter
-    let startTimestamp;
-    
-    function updateCounter(timestamp) {
-      if (!startTimestamp) startTimestamp = timestamp;
-      let elapsedTime = timestamp - startTimestamp;
-
-      if (elapsedTime < duration) {
-        let newValue = Math.round(startValue + increment * elapsedTime);
-
-        targetCounter.textContent = newValue.toLocaleString(); // Use toLocaleString to add commas
-        requestAnimationFrame(updateCounter);
-      } else {
-        // Set the final value as the targetValue
-        targetCounter.textContent = targetValue.toLocaleString();
-      }
-    }
-
-    // Start the animation
-    requestAnimationFrame(updateCounter);
-  },
-  // 헤더 스크롤 이벤트(아직 결정된 사항 아님)
-  scrollDeformation: function(){
-    if(document.querySelector('#wrap') == null) return;
-
-    const condition = document.querySelector('#wrap').classList.contains('scroll_deformation');
-    const titleEl = document.querySelector('#header > .title_wrap h1');
-    var matrixArr = [-36, 50, 2];
-
-    if(!condition) return
-
-    // init
-    initStyle(matrixArr);
-    document.addEventListener('scroll', handleScroll);
-
-    // 스크롤 중간에서 새로고침 할 경우 대비
-    function initStyle(arr){
-      const scrollTop = document.documentElement.scrollTop;
-
-      if(scrollTop == 0 ){
-        titleEl.style.transform = `translate(${arr[0]}px, ${arr[1]}px) scale(${arr[2]})`;
-      } else {
-        titleEl.style.transform = 'translate(0, 0) scale(1)';
-      }
-    }
-
-    function handleScroll(){
-      const scrollTop = document.documentElement.scrollTop;
-      applyTransform(scrollTop);
-    }
-
-    function applyTransform(scrollTop){
-      if(scrollTop >= 50){
-        scrollTop = 50;
-      } else if(scrollTop <= 0){
-        scrollTop = 0;
-      }
-
-      const calArr = matrixArr.map((el) => el / matrixArr[1]);
-      const transformed = matrixArr.map((el, i) => {
-        return i === matrixArr.length - 1
-          ? el - (calArr[i] * scrollTop) / 2
-          : el - calArr[i] * scrollTop;
-      });
-
-      titleEl.style.transform = `translate(${transformed[0]}px, ${transformed[1]}px) scale(${transformed[2]})`;
-    }
-  },
-  // 디자인 셀렉트(아직 결정된 사항 아님)
-  designSelect: function(){
-    let selectBox = document.querySelectorAll('.design_select');
-
-    selectBox.forEach((select) => {
-      // 선택된 옵션
-      let selected = select.querySelector(':scope > .selected');
-      // 선택한 옵션 타이틀
-      let selectTitle = selected.querySelector(':scope span');
-      // 옵션 리스트
-      let optionList = select.querySelectorAll(':scope > .optionList > li');
-
-      // 선택한 셀렉트 열기
-      selected.addEventListener('click', () => {
-        selectBox.forEach(function (e) {
-          e != select ? e.classList.remove('active') : e.classList.toggle('active');
-        });
-      });
-
-      // 선택한 옵션 활성화
-      optionList.forEach((option) => {
-        option.addEventListener('click', (e) => {
-          optionList.forEach(function (current) {
-            current != option ? current.classList.remove('select') : current.classList.add('select');
-          });
-          // 해당 셀렉트 닫기
-          select.classList.remove('active');
-          // 선택한 옵션 타이틀 변경 : p 태그를 변경하니 오작동 할 때가 있어서 span 추가
-          selectTitle.innerText = e.target.innerText;
-        });
-      });
-
-      // 셀렉트 모두 닫기
-      document.querySelector('html').addEventListener('click', (e) => {
-        if (!e.target.closest('.design_select')) {
-          selectBox.forEach((select) => {
-            select.classList.remove('active');
-          });
-        }
-      });
-    });
-  },
-  // 클릭한 대상에 class 추가 이벤트(사용된 부분이 없음)
-  siblingsToggleClass: function(targetSelector, childrenSelector, initialIndex, className){
-    const targetElements = document.querySelectorAll(targetSelector);
-
-    targetElements.forEach((targetElement) => {
-      const childrenElements = targetElement.querySelectorAll(childrenSelector);
-
-      childrenElements.forEach((childElement, index) => {
-        const isActive = index === initialIndex;
-
-        // Initialize classes based on the initial index
-        toggleClass(childElement, className, isActive);
-
-        childElement.addEventListener('click', (e) => {
-          e.preventDefault();
-          
-          // remove
-          childrenElements.forEach((otherElement) => {
-            toggleClass(otherElement, className, false);
-          });
-
-          // Add
-          toggleClass(e.currentTarget, className, true);
-        });
-      });
-    });
-
-    function toggleClass(element, className, isActive) {
-      isActive ? element.classList.add(className) : element.classList.remove(className);
-    }
-  },
-  // class toggle 이벤트(사용된 부분이 없음)
-  toggleClass: function(target, className, parent) {
-    parent === undefined ? target.classList.toggle(className) : target.closest(parent).classList.toggle(className);
-  },
-  // 모바일 체크(사용된 부분이 없음)
-  isMobile: function() {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-  },
-  // circleProgress(사용된 부분이 없음)
-  circleProgress: function(controlId, barSelector, valueSelector) {
-    var control				= document.getElementById(controlId);
-    var bar						= document.querySelector(barSelector);
-    var value					= document.querySelector(valueSelector);
-    var RADIUS				= bar.attributes.r.value;
-    var CIRCUMFERENCE = 2 * Math.PI * RADIUS; // 339.29200658769764			
-
-    function progress(per) {
-      var progress = per / 100;
-      var dashoffset = CIRCUMFERENCE * (1 - progress);
-
-      value.innerHTML = per + '%';
-      bar.style.strokeDashoffset = dashoffset;
-    }
-
-    control.addEventListener('input', function(event) {
-      progress(event.target.valueAsNumber);
-    });
-
-    control.addEventListener('change', function(event) {
-      progress(event.target.valueAsNumber);
-    });
-
-    bar.style.strokeDasharray = CIRCUMFERENCE;
-    progress(control.value);
-  },
 }
 
-common.init();
-common.animateCounter('.number_count .value', 1230, 1000);
+function init(){
+  common.layerButtonToggle();
+  common.toastButtonToggle();
+  common.designSelect();
+  common.scrollDeformation();
+  common.tabMenuEvent();
+  common.inputBorderEvent();
+  
+  main.mainInit();
+  main.mainWeeklyEvent(3); // 요일 0 ~ 6(일 ~ 토)
+  main.mainSwiper();
+  main.mainScrollEvent();
+  
+  challenge.challengeCategoryListEvent();
+  challenge.challengeRewardEvent();
+};
+
+init();
+
+
+
 
 //common.challengeProgressBar(50);
 // common.toggleSlide('.challenge_crew', '.btn');
