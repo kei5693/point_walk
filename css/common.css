@@ -824,8 +824,16 @@ body.bg_main {
 #wrap.main_content_wrap #container .status_wrap > ul > li.animate > .inner > .contents > .content2 {
   left: 100%;
 }
-#wrap.main_content_wrap #container .status_wrap > ul > li.animate > .inner > .contents > .content2 .text_wrap h4 a {
+#wrap.main_content_wrap #container .status_wrap > ul > li.animate > .inner > .contents > .content2 .text_wrap {
   text-align: center;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.animate > .inner > .contents > .content2 .text_wrap h4 a {
+  padding: 24px 0 0;
+  text-align: center;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.animate > .inner > .contents > .content2 .text_wrap h4 a:after {
+  top: -20px;
+  transform: translateY(0);
 }
 #wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents > .content1 {
   display: flex;
@@ -852,13 +860,6 @@ body.bg_main {
   font-size: 16px;
   font-weight: 600;
   color: var(--color-brand1);
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents > .content2 .text_wrap h4 a {
-  padding: 24px 0 0;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents > .content2 .text_wrap h4 a:after {
-  top: -20px;
-  transform: translateY(0);
 }
 #wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents .progress_wrap {
   position: relative;
@@ -994,6 +995,21 @@ body.bg_main {
   font-weight: 600;
   color: var(--color-brand1);
 }
+#wrap.main_content_wrap #container .status_wrap > ul > li.completed.active {
+  position: relative;
+  background-color: #F9F9FB;
+  margin-bottom: 36px;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.completed.active:after {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  z-index: -1;
+  width: calc(100% + 40px);
+  height: calc(100% + 40px);
+  background-color: #fff;
+}
 #wrap.main_content_wrap #container .status_wrap > ul > li.badge > .inner > .contents > .content1 .text_wrap h4 a {
   color: var(--color-brand1);
 }
@@ -1061,6 +1077,20 @@ body.bg_main {
 }
 #wrap.main_content_wrap #container .banner_wrap img + img {
   margin-top: 10px;
+}
+
+.attendance_wrap {
+  display: none;
+}
+
+.main_swipe_menu {
+  display: none;
+}
+
+.status_wrap .walking,
+.status_wrap .jelly,
+.status_wrap .participate {
+  display: none;
 }
 
 .access_rights .icon_list {

@@ -939,6 +939,7 @@ body.bg_main {background: #F9F9FB;}
                 }
               }
             }
+            // 활성화 시 좌우 애니메이션
             &.animate {
               &.active {
                 > .inner > .contents {
@@ -956,13 +957,21 @@ body.bg_main {background: #F9F9FB;}
                 }
                 > .content2 {
                   left: 100%;
-                  .text_wrap h4 a {
+                  .text_wrap {
                     text-align: center;
+                    h4 a {
+                      padding: 24px 0 0;
+                      text-align: center;
+                      &:after {
+                        top: -20px;
+                        transform: translateY(0);
+                      }
+                    }
                   }
                 }
               }
             }
-
+            // 걷기
             &.walking {
               > .inner {
                 > .contents {
@@ -989,15 +998,6 @@ body.bg_main {background: #F9F9FB;}
                           font-size: 16px;
                           font-weight: 600;
                           color: var(--color-brand1);
-                        }
-                      }
-                    }
-                    .text_wrap {
-                      h4 a {
-                        padding: 24px 0 0;
-                        &:after {
-                          top: -20px;
-                          transform: translateY(0);
                         }
                       }
                     }
@@ -1099,6 +1099,7 @@ body.bg_main {background: #F9F9FB;}
                 }
               }
             }
+            // 젤리
             &.jelly {
               > .inner {
                 > .contents {
@@ -1163,6 +1164,29 @@ body.bg_main {background: #F9F9FB;}
                 }
               }
             }
+            // 참여 가능한 챌린지
+            &.participate {
+
+            }
+            // 완료한 챌린지
+            &.completed.active {
+              position: relative;
+              background-color: #F9F9FB;
+              margin-bottom: 36px;
+              &:after {
+                content: '';
+                position: absolute;
+                top: -20px;
+                left: -20px;
+                z-index: -1;
+
+                width: calc(100% + 40px);
+                height: calc(100% + 40px);
+                background-color: #fff;
+              }
+            }
+            
+            // 뱃지
             &.badge {
               > .inner {
                 > .contents {
@@ -1172,6 +1196,9 @@ body.bg_main {background: #F9F9FB;}
                         color: var(--color-brand1);
                       }
                     }
+                  }
+                  > .content2 {
+
                   }
                 }
               }
@@ -1259,8 +1286,15 @@ body.bg_main {background: #F9F9FB;}
   }
 }
 
-// .attendance_wrap {display: none;}
-// .main_swipe_menu {display: none;}
+.attendance_wrap {display: none;}
+.main_swipe_menu {display: none;}
+.status_wrap .walking,
+.status_wrap .jelly,
+.status_wrap .participate,
+{
+  display: none;
+}
+// .status_wrap .completed
 
 
 // 포인트워크 진입 - 접근 권한
