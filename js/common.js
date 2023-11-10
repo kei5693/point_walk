@@ -438,6 +438,8 @@ let main = {
     const weeklyInner = attendance.querySelector(':scope > .weekly_unit .inner');
     const weeklyUl = weeklyInner.querySelector(':scope > ul');
     const weeklyLi = weeklyUl.querySelectorAll('li');
+    const weeklyHeart = weeklyInner.querySelector(':scope > .weekly_heart');
+    const heartEffect = weeklyInner.querySelector(':scope > .heart_effect');
 
     // 바로 실행하면 오류 발생
     window.addEventListener("DOMContentLoaded", () => {
@@ -451,14 +453,24 @@ let main = {
     });
     
     // inner 리스트 클릭 이벤트
-    // weeklyLi.forEach((tabTitle, currentIndex) => {
-    //   tabTitle.addEventListener('click', (e) => {
-    //     e.preventDefault();
+    weeklyLi.forEach((tabTitle, currentIndex) => {
+      tabTitle.addEventListener('click', (e) => {
+        e.preventDefault();
 
-    //     setActiveTab(weeklyLi, currentIndex);
-    //     switchTab(currentIndex);
-    //   });
-    // });
+        tabTitle.querySelector(':scope .icon').classList.remove('unclicked');
+        tabTitle.querySelector(':scope .icon').classList.add('clicked');
+
+        let target = tabTitle.querySelector(':scope .heart_effect');
+        target.querySelector('lottie-player').play();
+        
+        target.querySelector('lottie-player').addEventListener("complete", () => {
+          console.log('111111');
+          tabTitle.querySelector(':scope .icon').classList.remove('clicked');
+          tabTitle.querySelector(':scope .icon').classList.add('played');
+        });
+        
+      });
+    });
 
     // 탭 전체 width 설정
     function setTabInit(){
@@ -479,6 +491,13 @@ let main = {
     function setActiveTab(titles, index) {
       titles.forEach((title, i) => {
         title.classList.toggle('today', i === index);
+
+        // today에 lottie 적용
+        if(i === index){
+          title.querySelector(':scope > a .icon').classList.add('unclicked');
+          title.querySelector(':scope > a .icon').append(weeklyHeart);
+          title.querySelector(':scope > a .icon').append(heartEffect);
+        }
       });
     }
     // 클릭한 대상으로 scroll 이동 이벤트
@@ -535,6 +554,7 @@ let main = {
     // 상태
     const statusUl = document.querySelector('.status_wrap > ul');
     const statusLi = statusUl.querySelectorAll(':scope > li');
+    const progressWrap = statusUl.querySelector(':scope > li.walking .content2 > .progress_wrap > div');
     
     // 툴바
     const toolBar = document.querySelector('.toolbar_wrap');
@@ -579,7 +599,7 @@ let main = {
             // 애니메이션 동작 후에 실행
             el.addEventListener("transitionend", () => {
               if(el.classList.contains('active') && el.classList.contains('walking')){
-                setTimeout(() => {mainAni()}, 300);
+                setTimeout(() => {mainAni(30, 80)}, 300);
               }
             }, {once: false});
           }
@@ -590,17 +610,14 @@ let main = {
           }
     
           // 걷기 그래프 애니메이션
-          function mainAni(){
-            const target = document.querySelector('.main_content_wrap .status_wrap li.walking .content2 > .progress_wrap > div');
-            // common.animateCounter('.main_content_wrap li.walking .content2 .text_wrap strong', 99999, 1000);
-            target.querySelector(':scope > span').style.width = '30%';
-            target.querySelector(':scope > em').style.width = '80%';
+          function mainAni(today, yesterday){
+            progressWrap.querySelector(':scope > span').style.width = today+'%';
+            progressWrap.querySelector(':scope > em').style.width = yesterday+'%';
           }
           // 걷기 그래프 초기화
           function resetMainAni(){
-            const target = document.querySelector('.main_content_wrap .status_wrap li.walking .content2 > .progress_wrap > div');
-            target.querySelector(':scope > span').style.width = '0%';
-            target.querySelector(':scope > em').style.width = '0%';
+            progressWrap.querySelector(':scope > span').style.width = '0%';
+            progressWrap.querySelector(':scope > em').style.width = '0%';
           }
         });
       }
@@ -622,25 +639,39 @@ let main = {
     function mainStatusScrollEvent(){
       if(document.querySelector('.status_wrap') == null) return;
       
-      const statusContents = document.querySelectorAll('.status_wrap > ul > li.animate > .inner > .contents');
+      const statusContents = document.querySelectorAll('.status_wrap > ul > li');
   
-      statusContents.forEach((contents)=>{
-        let content1 = contents.querySelector('.content1').offsetHeight + 'px';
-        let content2 = contents.querySelector('.content2').offsetHeight + 'px';
-        let heightValue = contents.closest('li').classList.contains('active') ? content2 : content1;
+      statusContents.forEach((li)=>{
+        // 걸음, 젤리, 완료한 챌린지
+        if(li.classList.contains('animate')){
+          let contents = li.querySelector(':scope > .inner > .contents');
+          let content1 = contents.querySelector(':scope .content1').offsetHeight;
+          let content2 = contents.querySelector(':scope .content2').offsetHeight;
+          let heightValue = li.classList.contains('active') ? content2+'px' : content1+'px';
+  
+          contents.style.height = heightValue;
+        }
 
-        contents.style.height = heightValue;
+        // 참여가능한 챌린지
+        if(li.classList.contains('participate')){
+          let contents = li.querySelector(':scope > .inner > .contents');
+          let content1 = contents.querySelector(':scope .content1').offsetHeight;
+          let content2 = contents.querySelector(':scope .content2').offsetHeight;
+          let heightValue = li.classList.contains('active') ? content2+content1+'px' : content1+'px';
+
+          contents.style.height = heightValue;
+        }
       });
     }
   },
-  // 메인 최초 로드 시 걸음 숫자, 그래프 애니메이션
-  mainInit: function(){
+  // 메인 최초 로드 시 애니메이션(걸음수, 오늘, 어제)
+  mainInit: function(count, today, yesterday){
     if(document.querySelector('.main_content_wrap .status_wrap') == null) return;
 
     const target = document.querySelector('.main_content_wrap .status_wrap li.walking .content1 > .progress_wrap > div');
-    common.animateCounter('.main_content_wrap li.walking .content1 .text_wrap strong', 99999, 1000);
-    target.querySelector(':scope > span').style.width = '30%';
-    target.querySelector(':scope > em').style.width = '80%';
+    common.animateCounter('.main_content_wrap li.walking .content1 .text_wrap strong', count, 1000);
+    target.querySelector(':scope > span').style.width = today+'%';
+    target.querySelector(':scope > em').style.width = yesterday+'%';
   }
 }
 
@@ -858,8 +889,8 @@ function init(){
   common.tabMenuEvent();
   common.inputBorderEvent();
   
-  main.mainInit();
-  main.mainWeeklyEvent(3); // 요일 0 ~ 6(일 ~ 토)
+  main.mainInit(99999, 30, 80); // 걸음수, 오늘, 어제
+  main.mainWeeklyEvent(2); // 요일 0 ~ 6(일 ~ 토)
   main.mainSwiper();
   main.mainScrollEvent();
   

@@ -597,26 +597,6 @@ body.bg_main {
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li + li {
   margin-left: 16px;
 }
-#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.complete {
-  background: var(--color-brand2);
-}
-#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.complete > a .text strong,
-#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.complete > a .text span {
-  color: var(--color-font1) !important;
-}
-#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.today {
-  background: var(--color-brand1);
-}
-#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.today > a .text strong,
-#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.today > a .text span {
-  color: #fff;
-}
-#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li:nth-child(1) > a .text span {
-  color: var(--color-sec1);
-}
-#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li:nth-child(7) > a .text span {
-  color: var(--color-brand1);
-}
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li > a {
   display: block;
   padding: 16px 0 9px;
@@ -647,13 +627,103 @@ body.bg_main {
   transition-delay: 0.2s;
 }
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li > a .icon {
+  position: relative;
   width: 40px;
   height: 40px;
   margin: 7px auto 0;
-  background: #E7E6E9;
   border-radius: 50%;
   transition: width 0.3s, height 0.3s, margin-top 0.3s;
   transition-delay: 0.3s;
+}
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li > a .icon > div {
+  width: 100%;
+  height: 100%;
+}
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li > a .icon .static {
+  display: block;
+  opacity: 1;
+  transition: opacity 0.3s;
+  height: 100%;
+  background: url("../images/common/ico_heart01.svg") no-repeat;
+  background-size: 100%;
+}
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li:nth-child(1) > a .text span {
+  color: var(--color-sec1) !important;
+}
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li:nth-child(7) > a .text span {
+  color: var(--color-brand1) !important;
+}
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.not_comp {
+  background: var(--color-brand2);
+}
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.not_comp > a .text strong {
+  color: var(--color-font1);
+}
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.not_comp > a .icon .static {
+  background: url("../images/common/ico_heart02.svg") no-repeat;
+  background-size: 100%;
+}
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.complete {
+  background: var(--color-brand2);
+}
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.complete > a .text strong,
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.complete > a .text span {
+  color: var(--color-font1);
+}
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.complete > a .icon .static {
+  background: url("../images/common/ico_heart03.svg") no-repeat;
+  background-size: 100%;
+}
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.today {
+  background: var(--color-brand1);
+}
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.today > a .text strong,
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.today > a .text span {
+  color: #fff;
+}
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.today > a .icon .static {
+  background: url("../images/common/ico_heart04.svg") no-repeat;
+  background-size: 100%;
+}
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.today > a .icon.unclicked {
+  background: #fff;
+}
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.today > a .icon.unclicked .static {
+  opacity: 0;
+  pointer-events: none;
+}
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.today > a .icon.unclicked .weekly_heart {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: scale(1.4);
+}
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.today > a .icon.clicked .heart_effect {
+  display: block;
+}
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.today > a .icon.played .static {
+  opacity: 1;
+  background: url("../images/common/ico_heart03.svg") no-repeat;
+}
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.today > a .icon .weekly_heart {
+  display: block;
+}
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.today > a .icon .heart_effect {
+  display: block;
+}
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.today > a .icon .heart_effect {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner .weekly_heart {
+  display: none;
+}
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner .heart_effect {
+  display: none;
 }
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .notice_msg {
   position: relative;
@@ -835,6 +905,35 @@ body.bg_main {
   top: -20px;
   transform: translateY(0);
 }
+#wrap.main_content_wrap #container .status_wrap > ul > li.animate_background {
+  position: relative;
+  background-color: rgb(255, 255, 255);
+  transition: all 0.3s;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.animate_background:after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  z-index: -1;
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
+  background-color: #fff;
+  border-radius: 16px;
+  transition: all 0.3s;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.animate_background.active {
+  background-color: rgb(249, 249, 251);
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.animate_background.active:after {
+  top: -36px;
+  left: -36px;
+  z-index: -1;
+  width: calc(100% + 72px);
+  height: calc(100% + 72px);
+  background-color: #fff;
+  border-radius: 0;
+}
 #wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents > .content1 {
   display: flex;
 }
@@ -995,20 +1094,116 @@ body.bg_main {
   font-weight: 600;
   color: var(--color-brand1);
 }
-#wrap.main_content_wrap #container .status_wrap > ul > li.completed.active {
-  position: relative;
-  background-color: #F9F9FB;
-  margin-bottom: 36px;
+#wrap.main_content_wrap #container .status_wrap > ul > li.participate > .inner h3 {
+  transition: padding-left 0.3s;
 }
-#wrap.main_content_wrap #container .status_wrap > ul > li.completed.active:after {
-  content: "";
+#wrap.main_content_wrap #container .status_wrap > ul > li.participate > .inner .contents {
+  transition-duration: 0.3s, 0.5s;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.participate > .inner .contents .content1 .text_wrap {
+  transition: padding-right 0.3s;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.participate > .inner .contents .content2 {
+  overflow: hidden;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.participate > .inner .contents .content2 > ul > li > a {
+  display: block;
+  position: relative;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.participate > .inner .contents .content2 > ul > li > a .thumb img {
+  padding-bottom: 40%;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.participate > .inner .contents .content2 > ul > li > a .desc {
   position: absolute;
-  top: -20px;
-  left: -20px;
-  z-index: -1;
-  width: calc(100% + 40px);
-  height: calc(100% + 40px);
-  background-color: #fff;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 16px 20px;
+  background: #fff;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.participate > .inner .contents .content2 > ul > li > a .desc .info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.participate > .inner .contents .content2 > ul > li > a .desc .info .title {
+  display: flex;
+  align-items: center;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.participate > .inner .contents .content2 > ul > li > a .desc .info .title span {
+  display: inline-block;
+  padding: 4px 8px;
+  border: 1px solid var(--color-brand1);
+  border-radius: 32px;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--color-brand1);
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.participate > .inner .contents .content2 > ul > li > a .desc .info .title span + span {
+  margin-left: 2px;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.participate > .inner .contents .content2 > ul > li > a .desc .info .page {
+  font-size: 14px;
+  font-weight: 800;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.participate > .inner .contents .content2 > ul > li > a .desc .cont {
+  margin-top: 12px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #E4E7EC;
+  position: relative;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.participate > .inner .contents .content2 > ul > li > a .desc .cont h5 {
+  font-size: 18px;
+  font-weight: 800;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.participate > .inner .contents .content2 > ul > li > a .desc .cont p {
+  font-size: 15px;
+  font-weight: 600;
+  color: #98A2B3;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.participate > .inner .contents .content2 > ul > li > a .desc .cont span {
+  display: block;
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: 600;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.participate > .inner .contents .content2 > ul > li > a .desc .cont .icon {
+  position: absolute;
+  bottom: 16px;
+  right: 0;
+  display: flex;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.participate > .inner .contents .content2 > ul > li > a .desc .cont .icon > span {
+  width: 28px;
+  height: 28px;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.participate > .inner .contents .content2 > ul > li > a .desc .cont .icon > span + span {
+  margin-left: -8px;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.participate > .inner .contents .content2 > ul > li > a .desc .cont .icon > span.crew {
+  background: url("../images/challenge/ico_crew.svg") no-repeat;
+  background-size: 100%;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.participate > .inner .contents .content2 > ul > li > a .desc .cont .icon > span.jelly {
+  background: url("../images/challenge/ico_jelly.svg") no-repeat;
+  background-size: 100%;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.participate.active {
+  margin: 44px 0;
+  padding: 16px 0;
+  background: #fff;
+  box-shadow: none;
+  border-radius: 0;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.participate.active > .inner h3 {
+  padding-left: 36px;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.participate.active > .inner .contents .content1 .text_wrap {
+  padding-right: 36px;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.completed.active {
+  margin-bottom: 52px;
 }
 #wrap.main_content_wrap #container .status_wrap > ul > li.badge > .inner > .contents > .content1 .text_wrap h4 a {
   color: var(--color-brand1);
@@ -1077,20 +1272,6 @@ body.bg_main {
 }
 #wrap.main_content_wrap #container .banner_wrap img + img {
   margin-top: 10px;
-}
-
-.attendance_wrap {
-  display: none;
-}
-
-.main_swipe_menu {
-  display: none;
-}
-
-.status_wrap .walking,
-.status_wrap .jelly,
-.status_wrap .participate {
-  display: none;
 }
 
 .access_rights .icon_list {

@@ -438,20 +438,6 @@ body.bg_main {background: #F9F9FB;}
   padding-top: 44px;
   color: var(--color-font1);
         font-size: 20px;
-
-  // &:after {
-  //   content: '';
-  //   position: fixed;
-  //   top: 50%;
-  //   transform: translateY(-50%);
-  //   left: 0;
-  //   z-index: 1000;
-
-  //   width: 100%;
-  //   height: 1px;
-  //   background: red;
-  // }
-
   // 화면
   &.flex_layout {
     display: flex;
@@ -680,26 +666,6 @@ body.bg_main {background: #F9F9FB;}
                   border: 1px solid #E9F1FF;
                   border-radius: 16px;
                   & + li {margin-left: 16px;}
-                  &.complete {
-                    background: var(--color-brand2);
-                    > a .text {
-                      strong,
-                      span {
-                        color: var(--color-font1) !important;
-                      }
-                    }
-                  }
-                  &.today {
-                    background: var(--color-brand1);
-                    > a .text {
-                      strong,
-                      span {
-                        color: #fff;
-                      }
-                    }
-                  }
-                  &:nth-child(1) > a .text span {color: var(--color-sec1);}
-                  &:nth-child(7) > a .text span {color: var(--color-brand1);}
                   > a {
                     display: block;
                     padding: 16px 0 9px;
@@ -734,19 +700,120 @@ body.bg_main {background: #F9F9FB;}
                       }
                     }
                     .icon {
+                      position: relative;
                       width: 40px;
                       height: 40px;
                       
                       margin: 7px auto 0;
-                      background: #E7E6E9;
                       border-radius: 50%;
-
+                      
                       transition: width 0.3s, height 0.3s, margin-top 0.3s;
                       transition-delay: 0.3s;
+                      > div {
+                        width: 100%;
+                        height: 100%;
+                      }
+                      .static {
+                        display: block;
+                        opacity: 1;
+                        transition: opacity 0.3s;
+
+                        height: 100%;
+                        background: url('../images/common/ico_heart01.svg') no-repeat;
+                        background-size: 100%;
+                      }
+                    }
+                  }
+                  &:nth-child(1) > a .text span {color: var(--color-sec1) !important;}
+                  &:nth-child(7) > a .text span {color: var(--color-brand1) !important;}
+                  &.not_comp {
+                    background: var(--color-brand2);
+                    > a {
+                      .text {
+                        strong {
+                          color: var(--color-font1);
+                        }
+                      }
+                      .icon {
+                        .static {
+                          background: url('../images/common/ico_heart02.svg') no-repeat;
+                          background-size: 100%;
+                        }
+                      }
+                    }
+                  }
+                  &.complete {
+                    background: var(--color-brand2);
+                    > a {
+                      .text {
+                        strong,
+                        span {
+                          color: var(--color-font1);
+                        }
+                      }
+                      .icon {
+                        .static {
+                          background: url('../images/common/ico_heart03.svg') no-repeat;
+                          background-size: 100%;
+                        }
+                      }
+                    }
+                  }
+                  &.today {
+                    background: var(--color-brand1);
+                    > a {
+                      .text {
+                        strong,
+                        span {
+                          color: #fff;
+                        }
+                      }
+                      .icon {
+                        .static {
+                          background: url('../images/common/ico_heart04.svg') no-repeat;
+                          background-size: 100%;
+                        }
+                        &.unclicked {
+                          background: #fff;
+                          .static {
+                            opacity: 0;
+                            pointer-events: none;
+                          }
+                          .weekly_heart {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            transform:scale(1.4);
+                          }
+                        }
+                        &.clicked {
+                          .heart_effect {
+                            display: block;
+                          }
+                        }
+                        &.played {
+                          .static {
+                            opacity: 1;
+                            background: url('../images/common/ico_heart03.svg') no-repeat;
+                          }
+                        }
+                        .weekly_heart {display: block;}
+                        .heart_effect {display: block;}
+                        .heart_effect {
+                          position: absolute;
+                          bottom: 0;
+                          left: 0;
+                          width: 100%;
+                        }
+                      }
                     }
                   }
                 }
               }
+              .weekly_heart {display: none;}
+              .heart_effect {display: none;}
             }
           }
           .notice_msg {
@@ -971,6 +1038,39 @@ body.bg_main {background: #F9F9FB;}
                 }
               }
             }
+            // 활성화 시 배경 컬러 변경
+            &.animate_background {
+              position: relative;
+              background-color: rgb(255, 255, 255);
+              transition: all 0.3s;
+              &:after {
+                content: '';
+                position: absolute;
+                top: 6px;
+                left: 6px;
+                z-index: -1;
+                
+                width: calc(100% - 12px);
+                height: calc(100% - 12px);
+                background-color: #fff;
+                border-radius: 16px;
+                
+                transition: all 0.3s;
+              }
+              &.active {
+                background-color: rgb(249, 249, 251);
+                &:after {
+                  top: -36px;
+                  left: -36px;
+                  z-index: -1;
+  
+                  width: calc(100% + 72px);
+                  height: calc(100% + 72px);
+                  background-color: #fff;
+                  border-radius: 0;
+                }
+              }
+            }
             // 걷기
             &.walking {
               > .inner {
@@ -1166,26 +1266,137 @@ body.bg_main {background: #F9F9FB;}
             }
             // 참여 가능한 챌린지
             &.participate {
+              > .inner {
+                h3 {
+                  transition: padding-left 0.3s;
+                }
+                .contents {
+                  transition-duration: 0.3s, 0.5s;
+                  .content1 .text_wrap {
+                    transition: padding-right 0.3s;
+                  }
+                  .content2 {
+                    overflow: hidden;
+                    > ul {
+                      > li {
+                        > a {
+                          display: block;
+                          position: relative;
+                          .thumb {
+                            img {
+                              // 임시 스타일
+                              padding-bottom: 40%;
+                            }
+                          }
+                          .desc {
+                            position: absolute;
+                            bottom: 0;
+                            left: 0;
 
-            }
-            // 완료한 챌린지
-            &.completed.active {
-              position: relative;
-              background-color: #F9F9FB;
-              margin-bottom: 36px;
-              &:after {
-                content: '';
-                position: absolute;
-                top: -20px;
-                left: -20px;
-                z-index: -1;
+                            width: 100%;
+                            padding: 16px 20px;
 
-                width: calc(100% + 40px);
-                height: calc(100% + 40px);
-                background-color: #fff;
+                            background: #fff;
+                            .info {
+                              display: flex;
+                              justify-content: space-between;
+                              align-items: center;
+                              .title {
+                                display: flex;
+                                align-items: center;
+                                span {
+                                  display: inline-block;
+                                  padding: 4px 8px;
+                                  border: 1px solid var(--color-brand1);
+                                  border-radius: 32px;
+
+                                  font-size:12px;
+                                  font-weight: 800;
+                                  line-height: 1;
+                                  color: var(--color-brand1);
+                                  & + span {
+                                    margin-left: 2px;
+                                  }
+                                }
+                              }
+                              .page {
+                                font-size:14px;
+                                font-weight: 800;
+                              }
+                            }
+                            .cont {
+                              margin-top: 12px;
+                              padding-bottom: 16px;
+                              border-bottom: 1px solid #E4E7EC;
+
+                              position: relative;
+                              h5 {
+                                font-size: 18px;
+                                font-weight: 800;
+                              }
+                              p {
+                                font-size: 15px;
+                                font-weight: 600;
+                                color: #98A2B3;
+                              }
+                              span {
+                                display: block;
+                                margin-top: 12px;
+                                font-size: 14px;
+                                font-weight: 600;
+                              }
+                              .icon {
+                                position: absolute;
+                                bottom: 16px;
+                                right: 0;
+
+                                display: flex;
+                                > span {
+                                  width: 28px;
+                                  height: 28px;
+                                  & + span {
+                                    margin-left: -8px;
+                                  }
+                                  &.crew {
+                                    background: url('../images/challenge/ico_crew.svg') no-repeat;
+                                    background-size: 100%;
+                                  }
+                                  &.jelly {
+                                    background: url('../images/challenge/ico_jelly.svg') no-repeat;
+                                    background-size: 100%;
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+              &.active {
+                margin: 44px 0;
+                padding: 16px 0;
+                background: #fff;
+                box-shadow: none;
+                border-radius: 0;
+                > .inner {
+                  h3 {
+                    padding-left: 36px;
+                  }
+                  .contents .content1 .text_wrap {
+                    padding-right: 36px;
+                  }
+                }
               }
             }
-            
+            // 완료한 챌린지
+            &.completed {
+              &.active {
+                margin-bottom: 52px;
+              }
+            }
             // 뱃지
             &.badge {
               > .inner {
@@ -1286,15 +1497,17 @@ body.bg_main {background: #F9F9FB;}
   }
 }
 
-.attendance_wrap {display: none;}
-.main_swipe_menu {display: none;}
+// .attendance_wrap {display: none;}
+// .main_swipe_menu {display: none;}
+
 .status_wrap .walking,
-.status_wrap .jelly,
-.status_wrap .participate,
+.status_wrap .jelly
 {
-  display: none;
+  // display: none;
 }
-// .status_wrap .completed
+// .status_wrap .participate
+// .status_wrap .completed,
+// .status_wrap .badge
 
 
 // 포인트워크 진입 - 접근 권한
