@@ -438,8 +438,8 @@ let main = {
     const weeklyInner = attendance.querySelector(':scope > .weekly_unit .inner');
     const weeklyUl = weeklyInner.querySelector(':scope > ul');
     const weeklyLi = weeklyUl.querySelectorAll('li');
-    const weeklyHeart = weeklyInner.querySelector(':scope > .weekly_heart');
-    const heartEffect = weeklyInner.querySelector(':scope > .heart_effect');
+    const heartEffect01 = weeklyInner.querySelector(':scope > .heart_effect01');
+    const heartEffect02 = weeklyInner.querySelector(':scope > .heart_effect02');
 
     // 바로 실행하면 오류 발생
     window.addEventListener("DOMContentLoaded", () => {
@@ -453,19 +453,21 @@ let main = {
     });
     
     // inner 리스트 클릭 이벤트
-    weeklyLi.forEach((tabTitle, currentIndex) => {
+    weeklyLi.forEach((tabTitle) => {
       tabTitle.addEventListener('click', (e) => {
         e.preventDefault();
 
-        // tabTitle.querySelector(':scope .icon').classList.replace('unclicked', 'clicked');
+        // 클릭 효과 lottie
+        heartEffect02.querySelectorAll('lottie-player').forEach((lp)=>{
+          lp.play();
+        });
 
-        // let target = tabTitle.querySelector(':scope .heart_effect');
-        // target.querySelector('lottie-player').play();
-        
-        // target.querySelector('lottie-player').addEventListener("complete", () => {
-        //   console.log('111111');
-        //   tabTitle.querySelector(':scope .icon').classList.replace('clicked', 'played');
-        // });
+        tabTitle.querySelector(':scope .icon').classList.replace('unclicked', 'clicked');
+
+        // callback
+        heartEffect02.querySelectorAll('lottie-player')[1].addEventListener("complete", () => {
+          tabTitle.closest('li').classList.replace('today', 'complete');
+        });
       });
     });
 
@@ -492,8 +494,14 @@ let main = {
         // today에 lottie 적용
         if(i === index){
           title.querySelector(':scope > a .icon').classList.add('unclicked');
-          title.querySelector(':scope > a .icon').append(weeklyHeart);
-          title.querySelector(':scope > a .icon').append(heartEffect);
+          title.querySelector(':scope > a .icon').append(heartEffect01);
+          title.querySelector(':scope > a .icon').append(heartEffect02);
+
+          setTimeout(() => {
+            heartEffect01.querySelectorAll('lottie-player').forEach((lp)=>{
+              lp.play();
+            });
+          }, 10);
         }
       });
     }
@@ -887,7 +895,7 @@ function init(){
   common.inputBorderEvent();
   
   main.mainInit(99999, 30, 80); // 걸음수, 오늘, 어제
-  main.mainWeeklyEvent(2); // 요일 0 ~ 6(일 ~ 토)
+  main.mainWeeklyEvent(3); // 요일 0 ~ 6(일 ~ 토)
   main.mainSwiper();
   main.mainScrollEvent();
   

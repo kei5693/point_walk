@@ -645,7 +645,10 @@ body.bg_main {background: #F9F9FB;}
         .calendar_cont {
           margin-top: 32px;
           .weekly_unit {
+            // overflow: hidden;
+            height: 118px;
             .inner {
+              position: relative;
               overflow-y: auto;
               scroll-behavior: smooth;
 
@@ -665,6 +668,7 @@ body.bg_main {background: #F9F9FB;}
                   background: #fff;
                   border: 1px solid #E9F1FF;
                   border-radius: 16px;
+                  transition: background 0.3s;
                   & + li {margin-left: 16px;}
                   > a {
                     display: block;
@@ -721,6 +725,7 @@ body.bg_main {background: #F9F9FB;}
                         height: 100%;
                         background: url('../images/common/ico_heart01.svg') no-repeat;
                         background-size: 100%;
+                        border-radius: 50%;
                       }
                     }
                   }
@@ -756,12 +761,21 @@ body.bg_main {background: #F9F9FB;}
                           background: url('../images/common/ico_heart03.svg') no-repeat;
                           background-size: 100%;
                         }
+                        &.clicked {
+                          .heart_effect01 {
+                            opacity: 0;
+                            transition: opacity 0.3s;
+                          }
+                          .heart_effect02 {
+                            opacity: 0;
+                            transition: opacity 0.3s;
+                          }
+                        }
                       }
                     }
                   }
                   &.today {
                     background: var(--color-brand1);
-                    transition: background 0.3s;
                     > a {
                       .text {
                         strong,
@@ -771,62 +785,82 @@ body.bg_main {background: #F9F9FB;}
                       }
                       .icon {
                         .static {
-                          background: url('../images/common/ico_heart04.svg') no-repeat;
+                          background: url('../images/common/ico_heart03.svg') no-repeat;
                           background-size: 100%;
                         }
-                        .weekly_heart {height: auto;}
-                        .heart_effect {height: auto;}
                         &.unclicked {
                           background: #fff;
-                          // .static {opacity: 0;}
-                          .weekly_heart {
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            width: 100%;
-                            height: 100%;
-                            z-index: 100;
-
-                            transform:scale(1.4);
+                          .static {
+                            background: #fff;
+                          }
+                          .heart_effect02 {
+                            z-index: -1;
                           }
                         }
                         &.clicked {
-                          // .static {opacity: 0;}
-                          .weekly_heart {
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            width: 100%;
-                            height: 100%;
-                            z-index: 100;
+                          .heart_effect01 {
+                            opacity: 0;
+                            transition: opacity 0.3s;
+                          }
+                        }
+                      }
+                    }
+                  }
+                  .heart_effect01,
+                  .heart_effect02 {
+                    left: 0;
+                  }
+                  .heart_effect01 {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    
+                    transform:scale(1.4);
+                    lottie-player {
+                      position: absolute;
+                      top: 0;
+                      left: 0;
 
-                            transform:scale(1.4);
-                          }
-                          .heart_effect {opacity: 1;}
-                        }
-                        &.played {
-                          .static {
-                            // opacity: 1;
-                            background: url('../images/common/ico_heart03.svg') no-repeat;
-                          }
-                        }
-                        .heart_effect {
-                          position: absolute;
-                          bottom: 0;
-                          left: 0;
-                          width: 100%;
-                          height: 40px;
-                          
-                          opacity: 0;
-                          transition: opacity 0.3s;
-                        }
+                      width: 100%;
+                      height: 100%;
+                      & + lottie-player {
+                        transform:scale(1.2);
+                      }
+                    }
+                  }
+                  .heart_effect02 {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    
+                    transform-origin: 50% 100%;
+                    lottie-player {
+                      position: absolute;
+                      top: 0;
+                      left: 0;
+                      
+                      width: 100%;
+                      height: 100%;
+                      transform:scale(4.5);
+                      & + lottie-player {
+                        top: -13px;
+                        left: -4px;
+                        transform:scale(2.5);
                       }
                     }
                   }
                 }
               }
-              .weekly_heart {height: 0;}
-              .heart_effect {height: 0;}
+              .heart_effect01,
+              .heart_effect02 {
+                position: absolute;
+                bottom: 0;
+                left: 100%;
+              }
             }
           }
           .notice_msg {
