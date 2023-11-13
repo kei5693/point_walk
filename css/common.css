@@ -377,15 +377,8 @@ body.active {
   display: block;
 }
 
-body.bg_main {
-  background: #F9F9FB;
-}
-
-#container td, th {
-  font-size: 20px;
-}
-
 #wrap {
+  background: #F9F9FB;
   padding-top: 44px;
   color: var(--color-font1);
   font-size: 20px;
@@ -469,8 +462,7 @@ body.bg_main {
 }
 #wrap #header .title_wrap h1 {
   flex: 1;
-  text-align: center;
-  padding: 0 30px;
+  padding: 0 32px;
   font-size: 18px;
   font-weight: 800;
   text-overflow: ellipsis;
@@ -516,6 +508,9 @@ body.bg_main {
 }
 #wrap #footer:empty {
   height: auto;
+}
+#wrap.main_content_wrap #header .title_wrap h1 {
+  text-align: center;
 }
 #wrap.main_content_wrap #container {
   padding-top: 30px;
@@ -2039,6 +2034,69 @@ body.bg_main {
   top: 50%;
   transform: translateY(-50%);
   right: 10px;
+}
+
+.monthly_attendance_wrap h2 {
+  padding: 20px 20px 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+.monthly_attendance_wrap .monthly_calendar {
+  margin-top: 16px;
+  padding: 40px 20px 0;
+  border-radius: 48px 48px 0 0;
+  background: #fff;
+}
+.monthly_attendance_wrap .monthly_calendar > h3 {
+  font-size: 24px;
+  font-weight: 800;
+  text-align: center;
+}
+.monthly_attendance_wrap .monthly_calendar > h3 + p {
+  margin-top: 20px;
+  font-size: 13px;
+  font-weight: 800;
+  text-align: center;
+}
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl {
+  margin-top: 20px;
+  border-top: 1px solid #D9D9D9;
+}
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl thead th {
+  padding: 24px 0 14px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl tbody td {
+  padding: 10px 0;
+  font-size: 11px;
+  text-align: center;
+  vertical-align: top;
+}
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl tbody td > div {
+  width: 40px;
+  height: 44px;
+  margin: 0 auto;
+  padding-top: 3px;
+  border: 1px solid #E4E7EC;
+  border-radius: 12px;
+  background: #fff;
+}
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl tbody td > div span {
+  display: block;
+  line-height: 1;
+  min-height: 11px;
+}
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl tbody td > div .icon {
+  width: 20px;
+  height: 20px;
+  margin: 4px auto 0;
+  background: url("../images/common/ico_heart01.svg") no-repeat;
+  background-size: 100%;
+}
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl tbody td > p {
+  margin-top: 4px;
+  color: var(--color-brand1);
 }
 
 .index_table_wrap {
