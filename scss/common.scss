@@ -645,11 +645,10 @@ body.bg_main {background: #F9F9FB;}
         .calendar_cont {
           margin-top: 32px;
           .weekly_unit {
-            // overflow: hidden;
-            height: 118px;
             .inner {
               position: relative;
-              overflow-y: auto;
+              overflow-x: auto;
+              overflow-y: hidden;
               scroll-behavior: smooth;
 
               padding-left: 20px;
@@ -1253,12 +1252,19 @@ body.bg_main {background: #F9F9FB;}
                     > .content1 {}
                     > .content2 {
                       text-align: center;
+                      lottie-player {
+                        width: 200px;
+                        margin: -24px auto 0;
+                      }
                       .text_wrap {
-                        h4 a {
-                          padding: 104px 0 0;
-                          &:after {
-                            top: -20px;
-                            transform: translateY(0);
+                        h4 {
+                          margin-top: -30px;
+                          a {
+                            padding-top: 0;
+                            &:after {
+                              top: -166px;
+                              transform: translateY(0);
+                            }
                           }
                         }
                       }

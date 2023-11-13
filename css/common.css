@@ -574,12 +574,10 @@ body.bg_main {
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont {
   margin-top: 32px;
 }
-#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit {
-  height: 118px;
-}
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner {
   position: relative;
-  overflow-y: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
   scroll-behavior: smooth;
   padding-left: 20px;
 }
@@ -1082,11 +1080,18 @@ body.bg_main {
 #wrap.main_content_wrap #container .status_wrap > ul > li.jelly > .inner > .contents > .content2 {
   text-align: center;
 }
+#wrap.main_content_wrap #container .status_wrap > ul > li.jelly > .inner > .contents > .content2 lottie-player {
+  width: 200px;
+  margin: -24px auto 0;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li.jelly > .inner > .contents > .content2 .text_wrap h4 {
+  margin-top: -30px;
+}
 #wrap.main_content_wrap #container .status_wrap > ul > li.jelly > .inner > .contents > .content2 .text_wrap h4 a {
-  padding: 104px 0 0;
+  padding-top: 0;
 }
 #wrap.main_content_wrap #container .status_wrap > ul > li.jelly > .inner > .contents > .content2 .text_wrap h4 a:after {
-  top: -20px;
+  top: -166px;
   transform: translateY(0);
 }
 #wrap.main_content_wrap #container .status_wrap > ul > li.jelly > .inner > .contents > .content2 .link_wrap {
