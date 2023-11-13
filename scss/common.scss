@@ -761,6 +761,7 @@ body.bg_main {background: #F9F9FB;}
                   }
                   &.today {
                     background: var(--color-brand1);
+                    transition: background 0.3s;
                     > a {
                       .text {
                         strong,
@@ -773,47 +774,59 @@ body.bg_main {background: #F9F9FB;}
                           background: url('../images/common/ico_heart04.svg') no-repeat;
                           background-size: 100%;
                         }
+                        .weekly_heart {height: auto;}
+                        .heart_effect {height: auto;}
                         &.unclicked {
                           background: #fff;
-                          .static {
-                            opacity: 0;
-                            pointer-events: none;
-                          }
+                          // .static {opacity: 0;}
                           .weekly_heart {
                             position: absolute;
                             top: 0;
                             left: 0;
                             width: 100%;
                             height: 100%;
+                            z-index: 100;
+
                             transform:scale(1.4);
                           }
                         }
                         &.clicked {
-                          .heart_effect {
-                            display: block;
+                          // .static {opacity: 0;}
+                          .weekly_heart {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            z-index: 100;
+
+                            transform:scale(1.4);
                           }
+                          .heart_effect {opacity: 1;}
                         }
                         &.played {
                           .static {
-                            opacity: 1;
+                            // opacity: 1;
                             background: url('../images/common/ico_heart03.svg') no-repeat;
                           }
                         }
-                        .weekly_heart {display: block;}
-                        .heart_effect {display: block;}
                         .heart_effect {
                           position: absolute;
                           bottom: 0;
                           left: 0;
                           width: 100%;
+                          height: 40px;
+                          
+                          opacity: 0;
+                          transition: opacity 0.3s;
                         }
                       }
                     }
                   }
                 }
               }
-              .weekly_heart {display: none;}
-              .heart_effect {display: none;}
+              .weekly_heart {height: 0;}
+              .heart_effect {height: 0;}
             }
           }
           .notice_msg {
@@ -1064,8 +1077,8 @@ body.bg_main {background: #F9F9FB;}
                   left: -36px;
                   z-index: -1;
   
-                  width: calc(100% + 72px);
-                  height: calc(100% + 72px);
+                  width: calc(100% + 36px);
+                  height: calc(100% + 36px);
                   background-color: #fff;
                   border-radius: 0;
                 }

@@ -457,18 +457,15 @@ let main = {
       tabTitle.addEventListener('click', (e) => {
         e.preventDefault();
 
-        tabTitle.querySelector(':scope .icon').classList.remove('unclicked');
-        tabTitle.querySelector(':scope .icon').classList.add('clicked');
+        // tabTitle.querySelector(':scope .icon').classList.replace('unclicked', 'clicked');
 
-        let target = tabTitle.querySelector(':scope .heart_effect');
-        target.querySelector('lottie-player').play();
+        // let target = tabTitle.querySelector(':scope .heart_effect');
+        // target.querySelector('lottie-player').play();
         
-        target.querySelector('lottie-player').addEventListener("complete", () => {
-          console.log('111111');
-          tabTitle.querySelector(':scope .icon').classList.remove('clicked');
-          tabTitle.querySelector(':scope .icon').classList.add('played');
-        });
-        
+        // target.querySelector('lottie-player').addEventListener("complete", () => {
+        //   console.log('111111');
+        //   tabTitle.querySelector(':scope .icon').classList.replace('clicked', 'played');
+        // });
       });
     });
 

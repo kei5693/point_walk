@@ -676,6 +676,7 @@ body.bg_main {
 }
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.today {
   background: var(--color-brand1);
+  transition: background 0.3s;
 }
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.today > a .text strong,
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.today > a .text span {
@@ -685,12 +686,14 @@ body.bg_main {
   background: url("../images/common/ico_heart04.svg") no-repeat;
   background-size: 100%;
 }
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.today > a .icon .weekly_heart {
+  height: auto;
+}
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.today > a .icon .heart_effect {
+  height: auto;
+}
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.today > a .icon.unclicked {
   background: #fff;
-}
-#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.today > a .icon.unclicked .static {
-  opacity: 0;
-  pointer-events: none;
 }
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.today > a .icon.unclicked .weekly_heart {
   position: absolute;
@@ -698,32 +701,38 @@ body.bg_main {
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: 100;
+  transform: scale(1.4);
+}
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.today > a .icon.clicked .weekly_heart {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
   transform: scale(1.4);
 }
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.today > a .icon.clicked .heart_effect {
-  display: block;
+  opacity: 1;
 }
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.today > a .icon.played .static {
-  opacity: 1;
   background: url("../images/common/ico_heart03.svg") no-repeat;
-}
-#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.today > a .icon .weekly_heart {
-  display: block;
-}
-#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.today > a .icon .heart_effect {
-  display: block;
 }
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.today > a .icon .heart_effect {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
+  height: 40px;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner .weekly_heart {
-  display: none;
+  height: 0;
 }
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner .heart_effect {
-  display: none;
+  height: 0;
 }
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .notice_msg {
   position: relative;
@@ -929,8 +938,8 @@ body.bg_main {
   top: -36px;
   left: -36px;
   z-index: -1;
-  width: calc(100% + 72px);
-  height: calc(100% + 72px);
+  width: calc(100% + 36px);
+  height: calc(100% + 36px);
   background-color: #fff;
   border-radius: 0;
 }
