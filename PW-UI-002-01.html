@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>리포트</title>
+	<link rel="stylesheet" href="./css/swiper-bundle.min.css">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/common.css">
+
+	<script src="./js/swiper-bundle.min.js"></script>
+  <script src="./js/lottie-player.js"></script>
+</head>
+<body>
+  <div id="wrap">
+    <!-- header -->
+    <div id="header">
+      <div class="title_wrap">
+        <button type="button" class="btn_back">뒤로가기</button>
+        <h1>걸음리포트</h1>
+      </div>
+      <div class="icon_wrap">
+        <button type="button" class="btn_menu"><span>메뉴</span></button>
+      </div>
+    </div>
+    <!-- container -->
+    <div id="container">
+      <!-- walking_report -->
+      <div class="walking_report">
+        <!-- anchor_list -->
+        <ul class="anchor_list">
+          <li><a href="#resultToday">#day</a></li>
+          <li><a href="#resultWeek">#week</a></li>
+          <li><a href="#resultMonth">#month</a></li>
+        </ul>
+
+        <div class="contents">
+          <!-- today -->
+          <div id="resultToday">
+            <h2>Today</h2>
+            <div class="content">
+              <h3>
+                오늘의 걸음 수 6,500<br>
+                어제보다 300걸음 덜 걸었어요
+              </h3>
+              <p>조금 더 걸어보세요</p>
+
+            </div>
+            <div class="content">
+              <h3>
+                오늘 현재 30대 여성 중<br>
+                걸음수 상위 5% 에요.
+              </h3>
+            </div>
+          </div>
+          <!-- week -->
+          <div id="resultWeek">
+            <h2>Week</h2>
+            <div class="content">
+              <h3>
+                지난 7일간<br>
+                하루 평균 5,678걸음이에요.
+              </h3>
+              <p>평균걸음을 높여보세요!</p>
+
+            </div>
+          </div>
+          
+          <!-- month -->
+          <div id="resultMonth">
+            <h2>Month</h2>
+            <div class="content">
+              <h3>
+                정말 잘하고 계세요<br>
+                11월에 3회나 만보를 걸었어요!
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- //walking_report -->
+    </div>
+  </div>
+  <script src="./js/common.js"></script>
+</body>
+</html>
