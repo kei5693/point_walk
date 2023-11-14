@@ -430,7 +430,7 @@ let common = {
 }
 
 let main = {
-  // 메인 : 출석 이벤트 오늘날짜로 스크롤 이동
+  // 메인 : 출석 이벤트 오늘날짜로 스크롤 이동, 클릭 이벤트
   mainWeeklyEvent: function(day){
     if(document.querySelector('.attendance_wrap .calendar_cont') == null) return;
 
@@ -453,21 +453,23 @@ let main = {
     });
     
     // inner 리스트 클릭 이벤트
-    weeklyLi.forEach((tabTitle) => {
+    weeklyLi.forEach((tabTitle, index) => {
       tabTitle.addEventListener('click', (e) => {
         e.preventDefault();
 
-        // 클릭 효과 lottie
-        heartEffect02.querySelectorAll('lottie-player').forEach((lp)=>{
-          lp.play();
-        });
-
-        tabTitle.querySelector(':scope .icon').classList.replace('unclicked', 'clicked');
-
-        // callback
-        heartEffect02.querySelectorAll('lottie-player')[1].addEventListener("complete", () => {
-          tabTitle.closest('li').classList.replace('today', 'complete');
-        });
+        if(day === index){
+          // 클릭 효과 lottie
+          heartEffect02.querySelectorAll('lottie-player').forEach((lp)=>{
+            lp.play();
+          });
+  
+          tabTitle.querySelector(':scope .icon').classList.replace('unclicked', 'clicked');
+  
+          // callback
+          heartEffect02.querySelectorAll('lottie-player')[1].addEventListener("complete", () => {
+            tabTitle.closest('li').classList.replace('today', 'complete');
+          });
+        }
       });
     });
 
@@ -677,6 +679,42 @@ let main = {
     common.animateCounter('.main_content_wrap li.walking .content1 .text_wrap strong', count, 1000);
     target.querySelector(':scope > span').style.width = today+'%';
     target.querySelector(':scope > em').style.width = yesterday+'%';
+  },
+  // 월간 출석
+  monthlyAttendanceEvent: function(today){
+    if(document.querySelector('.monthly_attendance_wrap') == null) return;
+
+    const monthlyAttendance = document.querySelector('.monthly_attendance_wrap .monthly_calendar .calendar_tbl');
+    const monthlyDate = document.querySelectorAll(':scope td a');
+    const heartEffect01 = monthlyAttendance.querySelector(':scope .heart_effect01');
+    const heartEffect02 = monthlyAttendance.querySelector(':scope .heart_effect02');
+
+    monthlyDate.forEach((date, index)=>{
+
+      if(today === index){
+        date.closest('td').classList.add('today');
+
+        date.querySelector(':scope .icon').append(heartEffect01);
+        date.querySelector(':scope .icon').append(heartEffect02);
+
+        date.addEventListener('click', (e)=>{
+          e.preventDefault();
+
+          // 클릭 효과 lottie
+          heartEffect02.querySelectorAll('lottie-player').forEach((lp)=>{
+            lp.play();
+          });
+
+          date.querySelector(':scope .icon').classList.add('clicked');
+
+          //callback
+          heartEffect02.querySelectorAll('lottie-player')[1].addEventListener("complete", () => {
+            date.closest('td').classList.replace('today', 'complete');
+          });
+        });
+      }
+
+    });
   }
 }
 
@@ -898,6 +936,8 @@ function init(){
   main.mainWeeklyEvent(3); // 요일 0 ~ 6(일 ~ 토)
   main.mainSwiper();
   main.mainScrollEvent();
+
+  main.monthlyAttendanceEvent(13); // 오늘 날짜를 숫자로 넘김 0부터 시작하니 원하는 날짜-1 입력
   
   challenge.challengeCategoryListEvent();
   challenge.challengeRewardEvent();

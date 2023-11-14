@@ -5,7 +5,7 @@
   --color-brand2: #D6BBFB;
   --color-brand3: #EAE8FF;
   --color-sec1: #FF2E6D;
-  --color-font1: #111;
+  --color-font1: #000;
   --color-font2: #848A94;
 }
 
@@ -381,7 +381,6 @@ body.active {
   background: #F9F9FB;
   padding-top: 44px;
   color: var(--color-font1);
-  font-size: 20px;
 }
 #wrap.flex_layout {
   display: flex;
@@ -664,6 +663,7 @@ body.active {
 }
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.complete {
   background: var(--color-brand2);
+  border-color: var(--color-brand2);
 }
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.complete > a .text strong,
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.complete > a .text span {
@@ -2062,41 +2062,179 @@ body.active {
   margin-top: 20px;
   border-top: 1px solid #D9D9D9;
 }
-.monthly_attendance_wrap .monthly_calendar .calendar_tbl thead th {
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl th,
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl td {
+  font-family: "HGGGothicssi";
+}
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl > table thead th {
   padding: 24px 0 14px;
   font-size: 14px;
   font-weight: 600;
 }
-.monthly_attendance_wrap .monthly_calendar .calendar_tbl tbody td {
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl > table thead th:nth-child(1) {
+  color: var(--color-sec1);
+}
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl > table thead th:nth-child(7) {
+  color: var(--color-brand1);
+}
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl > table tbody td {
+  height: 64px;
   padding: 10px 0;
   font-size: 11px;
   text-align: center;
   vertical-align: top;
 }
-.monthly_attendance_wrap .monthly_calendar .calendar_tbl tbody td > div {
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl > table tbody td > a {
+  position: relative;
+  display: block;
   width: 40px;
   height: 44px;
   margin: 0 auto;
-  padding-top: 3px;
-  border: 1px solid #E4E7EC;
-  border-radius: 12px;
   background: #fff;
+  border: 1px solid #E9F1FF;
+  border-radius: 12px;
+  transition: background 0.3s;
 }
-.monthly_attendance_wrap .monthly_calendar .calendar_tbl tbody td > div span {
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl > table tbody td > a span {
   display: block;
+  padding-top: 4px;
   line-height: 1;
-  min-height: 11px;
+  text-indent: -2px;
 }
-.monthly_attendance_wrap .monthly_calendar .calendar_tbl tbody td > div .icon {
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl > table tbody td > a .icon {
+  position: relative;
+  margin: 3px auto 0;
+  border-radius: 50%;
   width: 20px;
   height: 20px;
-  margin: 4px auto 0;
+}
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl > table tbody td > a .icon > div {
+  width: 100%;
+  height: 100%;
+}
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl > table tbody td > a .icon .static {
+  display: block;
+  opacity: 1;
+  transition: opacity 0.3s;
+  height: 100%;
   background: url("../images/common/ico_heart01.svg") no-repeat;
   background-size: 100%;
+  border-radius: 50%;
 }
-.monthly_attendance_wrap .monthly_calendar .calendar_tbl tbody td > p {
-  margin-top: 4px;
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl > table tbody td.not_comp > a {
+  background: var(--color-brand2);
+}
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl > table tbody td.not_comp > a span {
+  color: var(--color-font1);
+}
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl > table tbody td.not_comp > a .icon .static {
+  background: url("../images/common/ico_heart02.svg") no-repeat;
+  background-size: 100%;
+}
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl > table tbody td.complete > a {
+  background: var(--color-brand2);
+  border-color: var(--color-brand2);
+}
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl > table tbody td.complete > a span {
+  color: var(--color-font1);
+}
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl > table tbody td.complete > a .icon .static {
+  background: url("../images/common/ico_heart03.svg") no-repeat;
+  background-size: 100%;
+}
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl > table tbody td.complete > a .icon.clicked .heart_effect01 {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl > table tbody td.complete > a .icon.clicked .heart_effect02 {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl > table tbody td.today > a {
+  background: var(--color-brand1);
+}
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl > table tbody td.today > a span {
+  color: #fff;
+}
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl > table tbody td.today > a .icon .static {
+  background: url("../images/common/ico_heart03.svg") no-repeat;
+  background-size: 100%;
+}
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl > table tbody td.today > a .icon .heart_effect02 {
+  z-index: -1;
+}
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl > table tbody td.today > a .icon.clicked .heart_effect01 {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl > table tbody td.today > a .icon.clicked .heart_effect02 {
+  z-index: 0;
+}
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl > table tbody td.bonus > a:after {
+  content: "Bonus!!";
+  position: absolute;
+  bottom: -16px;
+  left: 0;
+  width: 100%;
+  transform-origin: center;
+  font-weight: 600;
   color: var(--color-brand1);
+}
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl > table tbody td.bonus > a .icon {
+  overflow: hidden;
+}
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl > table tbody td.bonus > a .icon .static {
+  background-image: url("../images/common/ico_star01.svg");
+  animation: scaleAni 0.4s infinite alternate;
+}
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl > table tbody td .heart_effect01,
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl > table tbody td .heart_effect02 {
+  left: 0;
+}
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl > table tbody td .heart_effect01 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: scale(1.4);
+}
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl > table tbody td .heart_effect01 lottie-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl > table tbody td .heart_effect01 lottie-player + lottie-player {
+  transform: scale(1.2);
+}
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl > table tbody td .heart_effect02 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-origin: 50% 100%;
+}
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl > table tbody td .heart_effect02 lottie-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: scale(4.5);
+}
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl > table tbody td .heart_effect02 lottie-player + lottie-player {
+  top: -13px;
+  left: -4px;
+  transform: scale(2.5);
+}
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl > .heart_effect01,
+.monthly_attendance_wrap .monthly_calendar .calendar_tbl > .heart_effect02 {
+  position: absolute;
+  bottom: 0;
+  left: 100%;
 }
 
 .index_table_wrap {

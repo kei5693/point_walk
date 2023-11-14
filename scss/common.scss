@@ -7,7 +7,7 @@
   --color-brand3: #EAE8FF;
   --color-sec1: #FF2E6D;
 
-  --color-font1: #111;
+  --color-font1: #000;
   --color-font2: #848A94;
 }
 
@@ -437,7 +437,6 @@ body.active {overflow: hidden;}
   background: #F9F9FB;
   padding-top: 44px;
   color: var(--color-font1);
-        font-size: 20px;
   // 화면
   &.flex_layout {
     display: flex;
@@ -751,6 +750,7 @@ body.active {overflow: hidden;}
                   }
                   &.complete {
                     background: var(--color-brand2);
+                    border-color: var(--color-brand2);
                     > a {
                       .text {
                         strong,
@@ -2455,49 +2455,210 @@ body.active {overflow: hidden;}
     .calendar_tbl {
       margin-top: 20px;
       border-top: 1px solid #D9D9D9;
-      thead {
-        th {
-          padding: 24px 0 14px;
-          font-size: 14px;
-          font-weight: 600;
+      th,
+      td {
+        font-family: 'HGGGothicssi';
+      }
+      > table {
+        thead {
+          th {
+            padding: 24px 0 14px;
+            font-size: 14px;
+            font-weight: 600;
+            &:nth-child(1) {color: var(--color-sec1);}
+            &:nth-child(7) {color: var(--color-brand1);}
+          }
+        }
+        tbody {
+          td {
+            height: 64px;
+            padding: 10px 0;
+            font-size: 11px;
+            text-align: center;
+            vertical-align: top;
+            > a {
+              position: relative;
+
+              display: block;
+              width: 40px;
+              height: 44px;
+              margin: 0 auto; 
+              
+              background: #fff;
+              border: 1px solid #E9F1FF;
+              border-radius: 12px;
+              transition: background 0.3s;
+              span {
+                display: block;
+                padding-top: 4px;
+
+                line-height: 1;
+                text-indent: -2px;
+              }
+              .icon {
+                position: relative;
+                margin: 3px auto 0;
+                border-radius: 50%;
+
+                width: 20px;
+                height: 20px;
+                > div {
+                  width: 100%;
+                  height: 100%;
+                }
+                .static {
+                  display: block;
+                  opacity: 1;
+                  transition: opacity 0.3s;
+
+                  height: 100%;
+                  background: url('../images/common/ico_heart01.svg') no-repeat;
+                  background-size: 100%;
+                  border-radius: 50%;
+                }
+              }
+            }
+            &.not_comp {
+              > a {
+                background: var(--color-brand2);
+                span {
+                  color: var(--color-font1);
+                }
+                .icon {
+                  .static {
+                    background: url('../images/common/ico_heart02.svg') no-repeat;
+                    background-size: 100%;
+                  }
+                }
+              }
+            }
+            &.complete {
+              > a {
+                background: var(--color-brand2);
+                border-color: var(--color-brand2);
+                span {
+                  color: var(--color-font1);
+                }
+                .icon {
+                  .static {
+                    background: url('../images/common/ico_heart03.svg') no-repeat;
+                    background-size: 100%;
+                  }
+                  &.clicked {
+                    .heart_effect01 {
+                      opacity: 0;
+                      transition: opacity 0.3s;
+                    }
+                    .heart_effect02 {
+                      opacity: 0;
+                      transition: opacity 0.3s;
+                    }
+                  }
+                }
+              }
+            }
+            &.today {
+              > a {
+                background: var(--color-brand1);
+                span {
+                  color: #fff;
+                }
+                .icon {
+                  .static {
+                    background: url('../images/common/ico_heart03.svg') no-repeat;
+                    background-size: 100%;
+                  }
+                  .heart_effect02 {
+                    z-index: -1;
+                  }
+                  &.clicked {
+                    .heart_effect01 {
+                      opacity: 0;
+                      transition: opacity 0.3s;
+                    }
+                    .heart_effect02 {
+                      z-index: 0;
+                    }
+                  }
+                }
+              }
+            }
+            &.bonus > a {
+              &:after {
+                content: 'Bonus!!';
+                position: absolute;
+                bottom: -16px;
+                left: 0;
+                width: 100%;
+
+                transform-origin: center;
+  
+                font-weight: 600;
+                color: var(--color-brand1);
+              }
+              .icon {
+                overflow: hidden;
+                .static {
+                  background-image: url('../images/common/ico_star01.svg');
+                  animation: scaleAni 0.4s infinite alternate;
+                }
+              }
+            }
+            .heart_effect01,
+            .heart_effect02 {
+              left: 0;
+            }
+            .heart_effect01 {
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              
+              transform:scale(1.4);
+              lottie-player {
+                position: absolute;
+                top: 0;
+                left: 0;
+
+                width: 100%;
+                height: 100%;
+                & + lottie-player {
+                  transform:scale(1.2);
+                }
+              }
+            }
+            .heart_effect02 {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              
+              transform-origin: 50% 100%;
+              lottie-player {
+                position: absolute;
+                top: 0;
+                left: 0;
+                
+                width: 100%;
+                height: 100%;
+                transform:scale(4.5);
+                & + lottie-player {
+                  top: -13px;
+                  left: -4px;
+                  transform:scale(2.5);
+                }
+              }
+            }
+          }
         }
       }
-      tbody {
-        td {
-          padding: 10px 0;
-          font-size: 11px;
-          text-align: center;
-          vertical-align: top;
-          > div {
-            width: 40px;
-            height: 44px;
-            margin: 0 auto; 
-            padding-top: 3px;
-
-            border: 1px solid #E4E7EC;
-            border-radius: 12px;
-            background: #fff;
-            span {
-              display: block;
-              line-height: 1;
-              min-height: 11px;
-            }
-            .icon {
-              width: 20px;
-              height: 20px;
-              
-              margin: 4px auto 0;
-
-              background: url('../images/common/ico_heart01.svg') no-repeat;
-              background-size: 100%;
-              .static {}
-            }
-          }
-          > p {
-            margin-top: 4px;
-            color: var(--color-brand1);
-          }
-        }
+      > .heart_effect01,
+      > .heart_effect02 {
+        position: absolute;
+        bottom: 0;
+        left: 100%;
       }
     }
   }
