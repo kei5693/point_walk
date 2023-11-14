@@ -8,7 +8,7 @@
   --color-sec1: #FF2E6D;
 
   --color-font1: #000;
-  --color-font2: #848A94;
+  --color-font2: #777;
 }
 
 @mixin text_ellipsis {
@@ -320,25 +320,6 @@ body.active {overflow: hidden;}
     color: #fff;
   }
 }
-// 블릿 리스트
-.bull_list {
-  > li {
-    position: relative;
-    padding-left: 14px;
-    font-size: 14px;
-    color: var(--color-font2);
-    &:after {
-      content: "";
-      position: absolute;
-      top: 7px;
-      left: 0;
-      width: 4px;
-      height: 4px;
-      border-radius: 50px;
-      background: #AAA;
-    }
-  }
-}
 // 체크박스 애니메이션
 .inpchk_ani {
   display: inline-block;
@@ -426,12 +407,48 @@ body.active {overflow: hidden;}
       }
     }
   }
+
+}
+// 인포 박스
+.notice_wrap {
+  margin-top: 40px;
+
+  padding: 24px 20px;
+  background-color: #F7F7F7;
+  &.radius {
+    border-radius: 24px;
+    margin: 24px 10px 0;
+    .bull_list > li {
+      font-size: 13px;
+      & + li {margin-top: 4spx;}
+    }
+  }
+}
+// 블릿 리스트
+.bull_list {
+  > li {
+    position: relative;
+    padding-left: 14px;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--color-font2);
+    &:after {
+      content: "";
+      position: absolute;
+      top: 7px;
+      left: 0;
+      width: 4px;
+      height: 4px;
+      border-radius: 50px;
+      background: #AAA;
+    }
+    & + li {margin-top: 8px;}
+  }
 }
 
 
 // 메인
 // body.bg_main {background: #F9F9FB;}
-
 // 전체 레이아웃
 #wrap {
   background: #F9F9FB;
@@ -1585,12 +1602,6 @@ body.active {overflow: hidden;}
     }
   }
 }
-// 포인트워크 진입 - 인포
-.notice_wrap {
-  margin-top: 40px;
-  padding: 24px 20px;
-  background-color: #F7F7F7;
-}
 // 프로필 설정(포인트워크 진입, 설정 동일 레이아웃)
 .profile_wrap {
   padding: 30px 30px 0;
@@ -2445,11 +2456,70 @@ body.active {overflow: hidden;}
       font-size: 24px;
       font-weight: 800;
       text-align: center;
-      & + p {
-        margin-top: 20px;
-        font-size: 13px;
-        font-weight: 800;
-        text-align: center;
+    }
+    > ul {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1;
+      text-align: center;
+      > li {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-size: 14px;
+        font-weight: 400;
+        color: #344054;
+        & + li {
+          padding-left: 9px;
+          &:after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 4px;
+  
+            width: 1px;
+            height: 8px;
+            background: #98A2B3;
+          }
+        }
+        > strong {
+          font-size: 13px;
+          font-weight: 800;
+        }
+        > p {
+          strong {
+            display: inline-block;
+            position: relative;
+            padding-left: 18px;
+
+            font-weight: 600;
+            color: var(--color-brand1);
+            &:after {
+              content: '';
+              position: absolute;
+              top: 50%;
+              left: 2px;
+
+              width: 14px;
+              height: 14px;
+
+              background: url('../images/common/ico_heart05.svg') no-repeat 50%;
+              background-size: 100%;
+
+              transform: translateY(-50%);
+            }
+            &.jelly:after {
+              background-image: url('../images/common/ico_star02.svg');
+            }
+          }
+        }
       }
     }
     .calendar_tbl {

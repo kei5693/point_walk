@@ -6,7 +6,7 @@
   --color-brand3: #EAE8FF;
   --color-sec1: #FF2E6D;
   --color-font1: #000;
-  --color-font2: #848A94;
+  --color-font2: #777;
 }
 
 html {
@@ -282,23 +282,6 @@ body.active {
   color: #fff;
 }
 
-.bull_list > li {
-  position: relative;
-  padding-left: 14px;
-  font-size: 14px;
-  color: var(--color-font2);
-}
-.bull_list > li:after {
-  content: "";
-  position: absolute;
-  top: 7px;
-  left: 0;
-  width: 4px;
-  height: 4px;
-  border-radius: 50px;
-  background: #AAA;
-}
-
 .inpchk_ani {
   display: inline-block;
   width: 80px;
@@ -375,6 +358,43 @@ body.active {
 }
 .tab_menu_wrap .tab_content > div.active {
   display: block;
+}
+
+.notice_wrap {
+  margin-top: 40px;
+  padding: 24px 20px;
+  background-color: #F7F7F7;
+}
+.notice_wrap.radius {
+  border-radius: 24px;
+  margin: 24px 10px 0;
+}
+.notice_wrap.radius .bull_list > li {
+  font-size: 13px;
+}
+.notice_wrap.radius .bull_list > li + li {
+  margin-top: 4spx;
+}
+
+.bull_list > li {
+  position: relative;
+  padding-left: 14px;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-font2);
+}
+.bull_list > li:after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  border-radius: 50px;
+  background: #AAA;
+}
+.bull_list > li + li {
+  margin-top: 8px;
 }
 
 #wrap {
@@ -1345,12 +1365,6 @@ body.active {
   color: var(--color-font2);
 }
 
-.notice_wrap {
-  margin-top: 40px;
-  padding: 24px 20px;
-  background-color: #F7F7F7;
-}
-
 .profile_wrap {
   padding: 30px 30px 0;
 }
@@ -2052,11 +2066,61 @@ body.active {
   font-weight: 800;
   text-align: center;
 }
-.monthly_attendance_wrap .monthly_calendar > h3 + p {
+.monthly_attendance_wrap .monthly_calendar > ul {
   margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 13px;
   font-weight: 800;
+  line-height: 1;
   text-align: center;
+}
+.monthly_attendance_wrap .monthly_calendar > ul > li {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 400;
+  color: #344054;
+}
+.monthly_attendance_wrap .monthly_calendar > ul > li + li {
+  padding-left: 9px;
+}
+.monthly_attendance_wrap .monthly_calendar > ul > li + li:after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  width: 1px;
+  height: 8px;
+  background: #98A2B3;
+}
+.monthly_attendance_wrap .monthly_calendar > ul > li > strong {
+  font-size: 13px;
+  font-weight: 800;
+}
+.monthly_attendance_wrap .monthly_calendar > ul > li > p strong {
+  display: inline-block;
+  position: relative;
+  padding-left: 18px;
+  font-weight: 600;
+  color: var(--color-brand1);
+}
+.monthly_attendance_wrap .monthly_calendar > ul > li > p strong:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  background: url("../images/common/ico_heart05.svg") no-repeat 50%;
+  background-size: 100%;
+  transform: translateY(-50%);
+}
+.monthly_attendance_wrap .monthly_calendar > ul > li > p strong.jelly:after {
+  background-image: url("../images/common/ico_star02.svg");
 }
 .monthly_attendance_wrap .monthly_calendar .calendar_tbl {
   margin-top: 20px;
