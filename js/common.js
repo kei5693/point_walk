@@ -146,10 +146,10 @@ let common = {
   getScrollDirection: function(){
     let prevScrollPos = window.pageYOffset || document.documentElement.scrollTop;
     let scrollDirection;
-  
+
     window.addEventListener('scroll', () => {
       const currentScrollPos = window.pageYOffset || document.documentElement.scrollTop;
-  
+
       if (currentScrollPos > prevScrollPos) {
         scrollDirection = 'down';
       } else if (currentScrollPos < prevScrollPos) {
@@ -157,10 +157,10 @@ let common = {
       } else {
         scrollDirection = 'unchanged';
       }
-  
+
       prevScrollPos = currentScrollPos;
     });
-  
+
     return () => scrollDirection;
   },
   // 공통 - 스크롤 : 스크롤 발생할 타겟, 이동할 대상, 여백
@@ -171,9 +171,9 @@ let common = {
     scrollTarget.scrollTop = scrollValue;
   },
   // 공통 - 스크롤 : 스크롤 값에 맞춰서 class 추가
-  detectScroll: function(target, scrollTop){
+  detectScroll: function(target, scrollTop, interval = 0){
     target.forEach((el)=>{
-      let calcPos = el.offsetTop - window.outerHeight/2;
+      let calcPos = el.offsetTop - interval;
 
       if(scrollTop > calcPos){
         el.classList.add('active');
@@ -924,6 +924,50 @@ let challenge = {
   },
 }
 
+let walkingReport = {
+  anchorEvent: function(){
+    if(document.querySelector('.walking_report') == null) return;
+    const report = document.querySelector('.walking_report');
+    const anchorList = report.querySelectorAll(':scope > .anchor_list > li');
+    const anchorContents = report.querySelectorAll(':scope > .contents > div');
+
+    anchorList.forEach((anchor)=>{
+      anchor.addEventListener('click', (e)=>{
+        e.preventDefault();
+
+        let target = document.querySelector(e.target.getAttribute("href"));
+        let scrollTop = target.offsetTop - 76;
+
+        document.documentElement.scrollTop = scrollTop;
+      });
+    });
+
+
+    const getScrollDirection = common.getScrollDirection();
+    window.addEventListener('scroll', () => {
+      const currentScrollPos = window.pageYOffset || document.documentElement.scrollTop;
+      const direction = getScrollDirection();
+      
+      // console.log(direction);
+
+      anchorContents.forEach((content, index)=>{
+        let calcScroll = content.offsetTop - 76;
+        let calcHeight = content.offsetHeight;
+
+        console.log(currentScrollPos, calcScroll, calcHeight);
+
+        if(currentScrollPos <= calcHeight){
+          // anchorList[index].classList.add('active');
+          console.log(index);
+        } else {
+          
+        }
+      });
+    });
+    // common.detectScroll();
+  },
+}
+
 function init(){
   common.layerButtonToggle();
   common.toastButtonToggle();
@@ -936,11 +980,12 @@ function init(){
   main.mainWeeklyEvent(3); // 요일 0 ~ 6(일 ~ 토)
   main.mainSwiper();
   main.mainScrollEvent();
-
   main.monthlyAttendanceEvent(13); // 0부터 시작하니 원하는 날짜-1 입력
   
   challenge.challengeCategoryListEvent();
   challenge.challengeRewardEvent();
+
+  walkingReport.anchorEvent();
 };
 
 init();

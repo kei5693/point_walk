@@ -3,7 +3,8 @@
 :root {
   --color-brand1: #4E2AF4;
   --color-brand2: #D6BBFB;
-  --color-brand3: #EAE8FF;
+  --color-brand3: #B5FA95;
+  --color-brand4: #EAE8FF;
   --color-sec1: #FF2E6D;
   --color-font1: #000;
   --color-font2: #777;
@@ -446,7 +447,7 @@ body.active {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 999;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -786,7 +787,7 @@ body.active {
   border-top: 0 none;
   border-left: 7px solid transparent;
   border-right: 7px solid transparent;
-  border-bottom: 7px solid var(--color-brand3);
+  border-bottom: 7px solid var(--color-brand4);
 }
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .notice_msg > div {
   display: flex;
@@ -820,7 +821,7 @@ body.active {
 }
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .notice_msg > div p {
   padding: 10px 12px;
-  background: var(--color-brand3);
+  background: var(--color-brand4);
   border-radius: 20px;
   font-size: 14px;
   font-weight: 400;
@@ -2050,6 +2051,9 @@ body.active {
   right: 10px;
 }
 
+.monthly_attendance_wrap {
+  margin-bottom: 24px;
+}
 .monthly_attendance_wrap h2 {
   padding: 20px 20px 0;
   font-size: 20px;
@@ -2299,6 +2303,286 @@ body.active {
   position: absolute;
   bottom: 0;
   left: 100%;
+}
+
+.walking_report {
+  padding: 32px 20px 40px;
+}
+.walking_report > .anchor_list {
+  position: fixed;
+  top: 50px;
+  right: 20px;
+  z-index: 100;
+  width: 100%;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+.walking_report > .anchor_list > li + li {
+  margin-left: 4px;
+}
+.walking_report > .anchor_list > li.active a {
+  background-color: var(--color-brand1);
+  color: #fff;
+}
+.walking_report > .anchor_list > li a {
+  display: block;
+  padding: 0 8px;
+  font-size: 16px;
+  line-height: 24px;
+  border: 1px solid #000;
+  border-radius: 12px;
+  background: #fff;
+}
+.walking_report > .contents > div + div {
+  padding-top: 40px;
+}
+.walking_report > .contents > div > h2 {
+  font-size: 40px;
+  font-weight: 800;
+}
+.walking_report > .contents > div > .content {
+  margin-top: 28px;
+  padding: 32px 16px;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0px 4px 4px 0px rgba(155, 155, 155, 0.2509803922);
+}
+.walking_report > .contents > div > .content + .content {
+  margin-top: 20px;
+}
+.walking_report > .contents > div > .content > h3 {
+  font-size: 24px;
+  font-weight: 600;
+}
+.walking_report > .contents > div > .content > h3 span {
+  color: var(--color-brand1);
+}
+.walking_report > .contents > div > .content > p {
+  font-size: 16px;
+  font-weight: 600;
+  color: #475467;
+}
+.walking_report > .contents > div .graph_cont1 .graph_wrap .graph {
+  margin-top: 72px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.walking_report > .contents > div .graph_cont1 .graph_wrap .graph:before, .walking_report > .contents > div .graph_cont1 .graph_wrap .graph:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #000;
+}
+.walking_report > .contents > div .graph_cont1 .graph_wrap .graph:before {
+  left: 0;
+}
+.walking_report > .contents > div .graph_cont1 .graph_wrap .graph:after {
+  right: 0;
+}
+.walking_report > .contents > div .graph_cont1 .graph_wrap .graph > .inner {
+  flex: 1;
+  height: 2px;
+  background: #000;
+}
+.walking_report > .contents > div .graph_cont1 .graph_wrap .graph > .inner:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #000;
+}
+.walking_report > .contents > div .graph_cont1 .graph_wrap .graph > .inner > span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateX(-50%);
+  transition: left 0.6s;
+  padding-top: 18px;
+  font-size: 13px;
+  font-weight: 800;
+}
+.walking_report > .contents > div .graph_cont1 .graph_wrap .graph > .inner > span:after {
+  content: "";
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  transform: translate(-50%);
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  background: #B5FA95;
+}
+.walking_report > .contents > div .graph_cont1 .graph_wrap .graph > .inner > span.walking2:after {
+  top: -11px;
+  width: 24px;
+  height: 24px;
+  background: #BDB4FE;
+}
+.walking_report > .contents > div .graph_cont1 .graph_wrap > ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 64px;
+  padding: 16px 0;
+  border-radius: 16px;
+  background-color: #F9FAFB;
+}
+.walking_report > .contents > div .graph_cont1 .graph_wrap > ul > li {
+  text-align: center;
+}
+.walking_report > .contents > div .graph_cont1 .graph_wrap > ul > li > span {
+  display: block;
+  position: relative;
+  padding-top: 32px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #475467;
+}
+.walking_report > .contents > div .graph_cont1 .graph_wrap > ul > li > span::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 24px;
+  background: url("../images/report/ico_graph_01.svg") no-repeat;
+  background-size: 100%;
+}
+.walking_report > .contents > div .graph_cont1 .graph_wrap > ul > li:nth-child(2) > span:after {
+  background-image: url("../images/report/ico_graph_02.svg");
+}
+.walking_report > .contents > div .graph_cont1 .graph_wrap > ul > li:nth-child(3) > span:after {
+  background-image: url("../images/report/ico_graph_03.svg");
+}
+.walking_report > .contents > div .graph_cont1 .graph_wrap > ul > li > p {
+  margin-top: 8px;
+  font-size: 20px;
+  font-weight: 800;
+}
+.walking_report > .contents > div .graph_cont1 .graph_wrap > ul > li > p span {
+  color: var(--color-brand1);
+}
+.walking_report > .contents > div .graph_cont2 .graph_wrap > .graph {
+  margin-top: 62px;
+}
+.walking_report > .contents > div .graph_cont2 .graph_wrap > .graph > li {
+  height: 40px;
+  line-height: 40px;
+}
+.walking_report > .contents > div .graph_cont2 .graph_wrap > .graph > li p {
+  position: relative;
+  z-index: 100;
+  display: inline-block;
+  padding: 0 12px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: right;
+}
+.walking_report > .contents > div .graph_cont2 .graph_wrap > .graph > li p:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  background: var(--color-brand3);
+  transition: width 0.3s;
+}
+.walking_report > .contents > div .graph_cont2 .graph_wrap > .graph > li.walking2 {
+  margin-top: 12px;
+  background: none;
+}
+.walking_report > .contents > div .graph_cont2 .graph_wrap > .graph > li.walking2 p {
+  background: none;
+}
+.walking_report > .contents > div .graph_cont2 .graph_wrap > .graph > li.walking2 p:after {
+  background: #BDB4FE;
+}
+.walking_report > .contents > div .graph_cont2 .graph_wrap > .graph > li.walking2:after {
+  display: none;
+}
+.walking_report > .contents > div .graph_cont3 .graph_wrap {
+  margin-top: 64px;
+}
+.walking_report > .contents > div .calendar_cont .calendar {
+  margin-top: 64px;
+}
+.walking_report > .contents > div .calendar_cont .calendar th {
+  padding-bottom: 5px;
+  color: #475467;
+}
+.walking_report > .contents > div .calendar_cont .calendar th, .walking_report > .contents > div .calendar_cont .calendar td {
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "HGGGothicssi";
+  text-align: center;
+}
+.walking_report > .contents > div .calendar_cont .calendar td span {
+  display: inline-block;
+  vertical-align: middle;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  margin: 5px 0;
+  border-radius: 50%;
+  background: #E4E7EC;
+  color: #727376;
+}
+.walking_report > .contents > div .calendar_cont .calendar td span:empty {
+  border: 1px dashed #000;
+  background: none;
+}
+.walking_report > .contents > div .calendar_cont .calendar td span.walking_5 {
+  background: #BDB4FE;
+}
+.walking_report > .contents > div .calendar_cont .calendar td span.walking_10 {
+  background: var(--color-brand3);
+}
+.walking_report > .contents > div .calendar_cont .desc {
+  margin-top: 36px;
+  display: flex;
+  justify-content: right;
+}
+.walking_report > .contents > div .calendar_cont .desc > ul > li + li {
+  margin-top: 10px;
+}
+.walking_report > .contents > div .calendar_cont .desc > ul > li.walking_5 span:after {
+  background: #BDB4FE;
+}
+.walking_report > .contents > div .calendar_cont .desc > ul > li.walking_10 span:after {
+  background: var(--color-brand3);
+}
+.walking_report > .contents > div .calendar_cont .desc > ul > li span {
+  display: inline-block;
+  position: relative;
+  padding-left: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #475467;
+}
+.walking_report > .contents > div .calendar_cont .desc > ul > li span:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 18px;
+  border-radius: 9px;
+  background: #E4E7EC;
 }
 
 .index_table_wrap {

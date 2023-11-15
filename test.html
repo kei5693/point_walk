@@ -22,55 +22,8 @@
 <body>
 	<div id="wrap" class="test_wrap">
 
-		<div class="lottie_player">
-			<lottie-player
-				autoplay
-				loop
-				mode="normal"
-				src="./json/animation_lo2isjhu.json"
-				>
-				
-				<!--
-					controls
-					src="./json/animation_lo2isjhu.json"
-				-->
-			</lottie-player>
-
-			<!-- <lottie-player
-				autoplay
-				loop
-				controls
-				mode="normal"
-				src="./json/lf20_UJNc2t.json"
-			>
-			</lottie-player> -->
-		</div>
-
-		<style>
-			.lottie_player {
-				border: 5px solid #000;
-			}
-		</style>
-
-		<script>
-			const player = document.querySelector("lottie-player");
-			// player.load("./json/lf20_UJNc2t.json");
-
-			player.addEventListener('ready', function(){
-				var svg = player.shadowRoot.querySelector("svg");
-				// svg.setAttribute("viewBox", "0 0 800 800"); 
-
-				svg.setAttribute("viewBox", "-177 150 750 450"); 
-				svg.setAttribute("height", "450");
-			});
 
 
-			
-			// console.log(svg);
-			
-
-			// svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
-		</script>
 
 
 
@@ -124,220 +77,54 @@
 
 
 		<div>
-			<canvas id="myChart"></canvas>
+			<canvas id="myBarChart" width="400" height="200"></canvas>
 		</div>
+
 		<script>
-			const ctx = document.getElementById('myChart');
-			var myChart = new Chart(ctx, {
-				type: 'doughnut',
-				data: {
-					datasets: [{
-						data: [8, 2],
-						backgroundColor: [
-							'red',
-							'transparent',
-						],
-					}, {
-						data: [7, 3],
-						backgroundColor: [
-							'blue',
-							'transparent',
-						],
-						// borderRadius: 60,
-						// borderWidth: 0,
-					},]
-				},
-				options: {
-					responsive: true,
-				},
-				// plugins: [{
-				// 	afterUpdate: function (chart) {
-				// 		const arcs = chart.getDatasetMeta(0).data;
-
-				// 		console.log(chart.getDatasetMeta(0));
-
-				// 		arcs.forEach(function (arc) {
-				// 			arc.round = {
-				// 				x: (chart.chartArea.left + chart.chartArea.right) / 2,
-				// 				y: (chart.chartArea.top + chart.chartArea.bottom) / 2,
-				// 				radius: (arc.outerRadius + arc.innerRadius) / 2,
-				// 				thickness: (arc.outerRadius - arc.innerRadius) / 2,
-				// 				backgroundColor: arc.options.backgroundColor
-				// 			}
-				// 		});
-				// 	},
-				// 	afterDraw: (chart) => {
-				// 		const {
-				// 			ctx,
-				// 			canvas
-				// 		} = chart;
-
-				// 		chart.getDatasetMeta(0).data.forEach(arc => {
-				// 			const startAngle = Math.PI / 2 - arc.startAngle;
-				// 			const endAngle = Math.PI / 2 - arc.endAngle;
-
-				// 			ctx.save();
-				// 			ctx.translate(arc.round.x, arc.round.y);
-				// 			ctx.fillStyle = arc.options.backgroundColor;
-				// 			ctx.beginPath();
-				// 			ctx.arc(arc.round.radius * Math.sin(endAngle), arc.round.radius * Math.cos(endAngle), arc.round.thickness, 0, 2 * Math.PI);
-				// 			ctx.closePath();
-				// 			ctx.fill();
-				// 			ctx.restore();
-				// 		});
-				// 	}
-				// }]
-			});
-		</script>
-
-		<!-- <canvas id="myChart"></canvas>
-		<script>
-			// round corners
-			Chart.pluginService.register({
-				afterUpdate: function (chart) {
-					if (chart.config.options.elements.arc.roundedCornersFor !== undefined) {
-						var arc = chart.getDatasetMeta(0).data[chart.config.options.elements.arc.roundedCornersFor];
-						arc.round = {
-							x: (chart.chartArea.left + chart.chartArea.right) / 2,
-							y: (chart.chartArea.top + chart.chartArea.bottom) / 2,
-							radius: (chart.outerRadius + chart.innerRadius) / 2,
-							thickness: (chart.outerRadius - chart.innerRadius) / 2 - 1,
-							backgroundColor: arc._model.backgroundColor
-						}
-					}
-				},
-
-				afterDraw: function (chart) {
-					if (chart.config.options.elements.arc.roundedCornersFor !== undefined) {
-						var ctx = chart.chart.ctx;
-						var arc = chart.getDatasetMeta(0).data[chart.config.options.elements.arc.roundedCornersFor];
-						var startAngle = Math.PI / 2 - arc._view.startAngle;
-						var endAngle = Math.PI / 2 - arc._view.endAngle;
-
-						ctx.save();
-						ctx.translate(arc.round.x, arc.round.y);
-						console.log(arc.round.startAngle)
-						ctx.fillStyle = arc.round.backgroundColor;
-						ctx.beginPath();
-						ctx.arc(arc.round.radius * Math.sin(startAngle), arc.round.radius * Math.cos(startAngle), arc.round.thickness, 0, 2 * Math.PI);
-						ctx.arc(arc.round.radius * Math.sin(endAngle), arc.round.radius * Math.cos(endAngle), arc.round.thickness, 0, 2 * Math.PI);
-						ctx.closePath();
-						ctx.fill();
-						ctx.restore();
-					}
-				},
-			});
-
-			// write text plugin
-			Chart.pluginService.register({
-				afterUpdate: function (chart) {
-					if (chart.config.options.elements.center) {
-						var helpers = Chart.helpers;
-						var centerConfig = chart.config.options.elements.center;
-						var globalConfig = Chart.defaults.global;
-						var ctx = chart.chart.ctx;
-
-						var fontStyle = helpers.getValueOrDefault(centerConfig.fontStyle, globalConfig.defaultFontStyle);
-						var fontFamily = helpers.getValueOrDefault(centerConfig.fontFamily, globalConfig.defaultFontFamily);
-
-						if (centerConfig.fontSize)
-							var fontSize = centerConfig.fontSize;
-						// figure out the best font size, if one is not specified
-						else {
-							ctx.save();
-							var fontSize = helpers.getValueOrDefault(centerConfig.minFontSize, 1);
-							var maxFontSize = helpers.getValueOrDefault(centerConfig.maxFontSize, 256);
-							var maxText = helpers.getValueOrDefault(centerConfig.maxText, centerConfig.text);
-
-							do {
-								ctx.font = helpers.fontString(fontSize, fontStyle, fontFamily);
-								var textWidth = ctx.measureText(maxText).width;
-
-								// check if it fits, is within configured limits and that we are not simply toggling back and forth
-								if (textWidth < chart.innerRadius * 2 && fontSize < maxFontSize)
-									fontSize += 1;
-								else {
-									// reverse last step
-									fontSize -= 1;
-									break;
-								}
-							} while (true)
-							ctx.restore();
-						}
-
-						// save properties
-						chart.center = {
-							font: helpers.fontString(fontSize, fontStyle, fontFamily),
-							fillStyle: helpers.getValueOrDefault(centerConfig.fontColor, globalConfig.defaultFontColor)
-						};
-					}
-				},
-				afterDraw: function (chart) {
-					if (chart.center) {
-						var centerConfig = chart.config.options.elements.center;
-						var ctx = chart.chart.ctx;
-
-						ctx.save();
-						ctx.font = chart.center.font;
-						ctx.fillStyle = chart.center.fillStyle;
-						ctx.textAlign = 'center';
-						ctx.textBaseline = 'middle';
-						var centerX = (chart.chartArea.left + chart.chartArea.right) / 2;
-						var centerY = (chart.chartArea.top + chart.chartArea.bottom) / 2;
-						ctx.fillText(centerConfig.text, centerX, centerY);
-						ctx.restore();
-					}
-				},
-			})
-
-
-			var config = {
-				type: 'doughnut',
-				data: {
-					labels: [
-						"Red",
-						"Gray"
-					],
-					datasets: [{
-						data: [67, 33],
-						backgroundColor: [
-							"#FF6684",
-							"#ccc"
-						],
-						hoverBackgroundColor: [
-							"#FF6384",
-							"#ccc"
-						]
-					}]
-				},
-				options: {
-					elements: {
-						arc: {
-							roundedCornersFor: 0
-						},
-						center: {
-							// the longest text that could appear in the center
-							maxText: '100%',
-							text: '67%',
-							fontColor: '#FF6684',
-							fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
-							fontStyle: 'normal',
-							// fontSize: 12,
-							// if a fontSize is NOT specified, we will scale (within the below limits) maxText to take up the maximum space in the center
-							// if these are not specified either, we default to 1 and 256
-							minFontSize: 1,
-							maxFontSize: 256,
-						}
-					}
-				}
+			// Sample data for the bar chart
+			const data = {
+				labels: ['January', 'February', 'March', 'April', 'May'],
+				datasets: [{
+					label: 'Monthly Sales',
+					backgroundColor: 'rgba(75, 192, 192, 0.2)',
+					data: [65, 59, 80, 81, 56],
+				}],
 			};
-
-			var ctx = document.getElementById("myChart").getContext("2d");
-			var myChart = new Chart(ctx, config);
-		</script> -->
-
-
-
+		
+			// Configuration for the bar chart
+			const config = {
+				type: 'bar',
+				data: data,
+				options: {
+					scales: {
+						XMLHttpRequest: {
+							grid: {
+								// drawBorder: false,
+								drawOnChartArea: false,
+								// display: false,
+								// drawTicks: false,
+							},
+						},
+						y: {
+							beginAtZero: true,
+							grid: {
+								// drawBorder: false,
+								drawOnChartArea: false,
+								// display: false,
+								// drawTicks: false,
+							},
+						},
+					},
+				},
+			};
+		
+			// Get the canvas element
+			const ctx = document.getElementById('myBarChart').getContext('2d');
+		
+			// Create the bar chart
+			const myBarChart = new Chart(ctx, config);
+		</script>
+		
 
 
 		<!-- circle_progress -->
