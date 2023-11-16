@@ -940,6 +940,21 @@ let walkingReport = {
     // 차트 옵션 로드
     let ctx = document.getElementById('myChart');
 
+    const annotation = {
+      type: 'line',
+      borderColor: 'black',
+      borderDash: [3, 3],
+      borderDashOffset: 0,
+      borderWidth: 1,
+      label: {
+        enabled: true,
+        content: (ctx) => 'Average: ' + average(ctx).toFixed(2),
+        position: 'end'
+      },
+      scaleID: 'y',
+      value: (ctx) => average(ctx)
+    };
+
     let config = {
       type: 'bar',
       data: {
@@ -963,6 +978,11 @@ let walkingReport = {
             anchor: 'end',
             align: 'top',
           },
+          annotation: {
+            annotations: {
+              annotation
+            }
+          }
         },
         scales: {
           x: {
@@ -991,6 +1011,10 @@ let walkingReport = {
     ctx.height = 300;
     let myChart = new Chart(ctx, config);
 
+    function average(ctx) {
+      const values = ctx.chart.data.datasets[0].data;
+      return values.reduce((a, b) => a + b, 0) / values.length;
+    }
 
     // 앵커 클릭 이벤트
     anchorList.forEach((anchor)=>{
@@ -1010,18 +1034,6 @@ let walkingReport = {
     // 스크롤에 맺춰서 앵커 clsss 변경 이벤트
     window.addEventListener('scroll', () => {
       const currentScrollPos = window.pageYOffset || document.documentElement.scrollTop;
-
-      anchorContents.forEach((content, index)=>{
-        let calcScroll = content.offsetTop - 76;
-        let calcHeight = calcScroll + content.offsetHeight
-
-        if(currentScrollPos >= calcScroll && currentScrollPos <= calcHeight){
-          anchorList.forEach((anchor, i) => {
-            anchor.classList.toggle('active', i === index);
-          });
-        }
-      });
-
       // 상태 스크롤 감지
       detectScroll(currentScrollPos);
     });
@@ -1033,8 +1045,7 @@ let walkingReport = {
     }
     // 대상이 정해진 위치에 있는지 감지
     function detectScroll(scrollTop){
-      let graphArr = report.querySelectorAll(':scope .contents [class*="graph_cont"]');
-      const meGraph = document.querySelector('.graph_cont2 .graph_wrap .graph');
+      let graphArr = report.querySelectorAll(':scope .contents .content');
 
       graphArr.forEach((el, index)=>{
         let calcPos = el.offsetTop - window.outerHeight/2;
@@ -1044,14 +1055,22 @@ let walkingReport = {
             todayAni(30, 60);
           } else if(index == 1){
             rankAni(6500, 4200);
-          } else {
+          } else if(index == 2){
             chartUpdate();
+          } else {
+            monthReport();
           }
         }
-        
-        // reset
-        if(scrollTop == 0){
-          //meGraph.classList.remove('animate');
+      });
+
+      anchorContents.forEach((content, index)=>{
+        let calcScroll = content.offsetTop - 76;
+        let calcHeight = calcScroll + content.offsetHeight
+
+        if(scrollTop >= calcScroll && scrollTop <= calcHeight){
+          anchorList.forEach((anchor, i) => {
+            anchor.classList.toggle('active', i === index);
+          });
         }
       });
     }
@@ -1082,6 +1101,52 @@ let walkingReport = {
     function chartUpdate(){
       myChart.data.datasets[0].data = [9873, 6256, 6256, 2123, 4256, 4256, 6500];
       myChart.update();
+    }
+    // 걸음 기록
+    function monthReport(){
+      let days = document.querySelectorAll('#reportMonth .calendar td span:not(:empty)');
+      let walkingDataArr = [
+        11000,
+        5500,
+        5500,
+        5500,
+        12000,
+        3100,
+        5500,
+        3500,
+        3500,
+        3500,
+        11000,
+        5500,
+        5400,
+        5300,
+        12000,
+        3100,
+        5100,
+        3500,
+        5500,
+        5500,
+        3500,
+        3500,
+        3500,
+        3500,
+        3500,
+        3500,
+        3500,
+        3500,
+        3500,
+        3500
+      ];
+
+      days.forEach((day, index)=>{
+        if(walkingDataArr[index] > 3000 && walkingDataArr[index] < 5000){
+          day.classList.add('walking_3');
+        } else if(walkingDataArr[index] > 5000 && walkingDataArr[index] < 10000){
+          day.classList.add('walking_5');
+        } else if(walkingDataArr[index] > 10000){
+          day.classList.add('walking_10');
+        }
+      });
     }
   },
 }

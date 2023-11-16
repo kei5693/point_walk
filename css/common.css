@@ -2553,18 +2553,24 @@ body.active {
   line-height: 32px;
   margin: 5px 0;
   border-radius: 50%;
-  background: #E4E7EC;
+  background: #fff;
   color: #727376;
+  transition: background 0.1s;
 }
 .walking_report > .contents > div .calendar_cont .calendar td span:empty {
   border: 1px dashed #000;
   background: none;
 }
+.walking_report > .contents > div .calendar_cont .calendar td span.walking_3 {
+  background: #E4E7EC;
+}
 .walking_report > .contents > div .calendar_cont .calendar td span.walking_5 {
   background: #BDB4FE;
+  transition-delay: 0.8s;
 }
 .walking_report > .contents > div .calendar_cont .calendar td span.walking_10 {
   background: var(--color-brand3);
+  transition-delay: 1.6s;
 }
 .walking_report > .contents > div .calendar_cont .desc {
   margin-top: 36px;
