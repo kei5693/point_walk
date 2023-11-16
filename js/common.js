@@ -162,6 +162,10 @@ let common = {
     });
 
     return () => scrollDirection;
+
+    // 사용 시
+    // const getScrollDirection = common.getScrollDirection();
+    // const direction = getScrollDirection();
   },
   // 공통 - 스크롤 : 스크롤 발생할 타겟, 이동할 대상, 여백
   scrollToEvent: function(target, interval, gap = 50){
@@ -218,8 +222,9 @@ let common = {
   animateCounter: function(counter, targetValue, duration){
     if(document.querySelector(counter) == null) return;
 
-    const targetCounter = document.querySelector(counter);
-    let startValue = parseInt(targetCounter.innerText);
+    const targetCounter = document.querySelector(counter)
+
+    let startValue = parseInt(targetCounter.innerText === '' ? 0 : targetCounter.innerText);
     let increment = (targetValue - startValue) / duration;
 
     // Update counter
@@ -923,14 +928,71 @@ let challenge = {
     });
   },
 }
-
+// 걸음리포트
 let walkingReport = {
   anchorEvent: function(){
     if(document.querySelector('.walking_report') == null) return;
+
     const report = document.querySelector('.walking_report');
     const anchorList = report.querySelectorAll(':scope > .anchor_list > li');
     const anchorContents = report.querySelectorAll(':scope > .contents > div');
 
+    // 차트 옵션 로드
+    let ctx = document.getElementById('myChart');
+
+    let config = {
+      type: 'bar',
+      data: {
+        labels: ["월", "화", "수", "목", "금", "토", "일"],
+        datasets: [{
+          // data: [9873, 6256, 6256, 2123, 4256, 4256, 6500],
+          data: [],
+          backgroundColor: ['#BDB4FE', '#BDB4FE', '#BDB4FE', '#BDB4FE', '#BDB4FE', '#BDB4FE', '#B5FA95'],
+          borderRadius: 8,
+          borderSkipped: false
+        }],
+      },
+      options: {
+        layout: {
+          padding: {top: 30}
+        },
+        plugins: {
+          legend: {display: false},
+          datalabels: {
+            color: '#4E2AF4',
+            anchor: 'end',
+            align: 'top',
+          },
+        },
+        scales: {
+          x: {
+            grid: {
+              drawBorder: false,
+              drawOnChartArea: false,
+              display: false,
+            },
+          },
+          y: {
+            grid: {
+              drawBorder: false,
+              drawOnChartArea: false,
+              display: false,
+              drawTicks: false,
+            },
+            ticks: {
+              display: false
+            },
+          },
+        },
+        responsive: true,
+      }
+    };
+    Chart.register(ChartDataLabels);
+    ctx.height = 300;
+    let myChart = new Chart(ctx, config);
+
+
+    // 앵커 클릭 이벤트
     anchorList.forEach((anchor)=>{
       anchor.addEventListener('click', (e)=>{
         e.preventDefault();
@@ -942,29 +1004,85 @@ let walkingReport = {
       });
     });
 
+    // 초기 세팅
+    init();
 
-    const getScrollDirection = common.getScrollDirection();
+    // 스크롤에 맺춰서 앵커 clsss 변경 이벤트
     window.addEventListener('scroll', () => {
       const currentScrollPos = window.pageYOffset || document.documentElement.scrollTop;
-      const direction = getScrollDirection();
-      
-      // console.log(direction);
 
       anchorContents.forEach((content, index)=>{
         let calcScroll = content.offsetTop - 76;
-        let calcHeight = content.offsetHeight;
+        let calcHeight = calcScroll + content.offsetHeight
 
-        console.log(currentScrollPos, calcScroll, calcHeight);
-
-        if(currentScrollPos <= calcHeight){
-          // anchorList[index].classList.add('active');
-          console.log(index);
-        } else {
-          
+        if(currentScrollPos >= calcScroll && currentScrollPos <= calcHeight){
+          anchorList.forEach((anchor, i) => {
+            anchor.classList.toggle('active', i === index);
+          });
         }
       });
+
+      // 상태 스크롤 감지
+      detectScroll(currentScrollPos);
     });
-    // common.detectScroll();
+
+    // 초기 세팅
+    function init(){
+      detectScroll(document.documentElement.scrollTop);
+      common.animateCounter('.graph_cont1 > h3 span', 6500, 600);
+    }
+    // 대상이 정해진 위치에 있는지 감지
+    function detectScroll(scrollTop){
+      let graphArr = report.querySelectorAll(':scope .contents [class*="graph_cont"]');
+      const meGraph = document.querySelector('.graph_cont2 .graph_wrap .graph');
+
+      graphArr.forEach((el, index)=>{
+        let calcPos = el.offsetTop - window.outerHeight/2;
+    
+        if(scrollTop > calcPos){
+          if(index == 0){
+            todayAni(30, 60);
+          } else if(index == 1){
+            rankAni(6500, 4200);
+          } else {
+            chartUpdate();
+          }
+        }
+        
+        // reset
+        if(scrollTop == 0){
+          //meGraph.classList.remove('animate');
+        }
+      });
+    }
+    // 어제, 오늘 걸음수 애니메이션
+    function todayAni(today, yesterday){
+      const todayGraph = document.querySelector('.graph_cont1 .walking1');
+      const yesterdayGraph = document.querySelector('.graph_cont1 .walking2')
+
+      todayGraph.style.left = today+'%';
+      yesterdayGraph.style.left = yesterday+'%';
+    }
+    // 상위 분포도 애니메이션(걸음 수 비교로 class 분기)
+    function rankAni(me, average){
+      let condition = ''; 
+      const meGraph = document.querySelector('.graph_cont2 .graph_wrap .graph');
+
+      if(me < average){
+        condition = 'less';
+      } else if(me > average){
+        condition = 'more';
+      } else {
+        condition = 'equal';
+      }
+
+      meGraph.classList.add(condition , 'animate');
+    }
+    // 차트에 데이터 추가
+    function chartUpdate(){
+      myChart.data.datasets[0].data = [9873, 6256, 6256, 2123, 4256, 4256, 6500];
+      myChart.update();
+    }
   },
 }
 

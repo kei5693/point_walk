@@ -2312,7 +2312,7 @@ body.active {
   position: fixed;
   top: 50px;
   right: 20px;
-  z-index: 100;
+  z-index: 999;
   width: 100%;
   display: flex;
   justify-content: right;
@@ -2333,6 +2333,7 @@ body.active {
   border: 1px solid #000;
   border-radius: 12px;
   background: #fff;
+  transition: background 0.2s, color 0.2s;
 }
 .walking_report > .contents > div + div {
   padding-top: 40px;
@@ -2365,6 +2366,7 @@ body.active {
 }
 .walking_report > .contents > div .graph_cont1 .graph_wrap .graph {
   margin-top: 72px;
+  overflow: hidden;
   position: relative;
   display: flex;
   align-items: center;
@@ -2389,6 +2391,7 @@ body.active {
   flex: 1;
   height: 2px;
   background: #000;
+  margin: 12px 0;
 }
 .walking_report > .contents > div .graph_cont1 .graph_wrap .graph > .inner:after {
   content: "";
@@ -2403,8 +2406,9 @@ body.active {
 }
 .walking_report > .contents > div .graph_cont1 .graph_wrap .graph > .inner > span {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 11px;
+  left: -14px;
+  z-index: 100;
   transform: translateX(-50%);
   transition: left 0.6s;
   padding-top: 18px;
@@ -2475,6 +2479,7 @@ body.active {
 }
 .walking_report > .contents > div .graph_cont2 .graph_wrap > .graph {
   margin-top: 62px;
+  overflow: hidden;
 }
 .walking_report > .contents > div .graph_cont2 .graph_wrap > .graph > li {
   height: 40px;
@@ -2485,9 +2490,11 @@ body.active {
   z-index: 100;
   display: inline-block;
   padding: 0 12px;
+  transform: translateX(-100%);
+  transition: transform 0.6s;
   font-size: 16px;
   font-weight: 600;
-  text-align: right;
+  text-align: center;
 }
 .walking_report > .contents > div .graph_cont2 .graph_wrap > .graph > li p:after {
   content: "";
@@ -2503,16 +2510,24 @@ body.active {
 }
 .walking_report > .contents > div .graph_cont2 .graph_wrap > .graph > li.walking2 {
   margin-top: 12px;
-  background: none;
-}
-.walking_report > .contents > div .graph_cont2 .graph_wrap > .graph > li.walking2 p {
-  background: none;
+  width: 50%;
+  text-align: center;
 }
 .walking_report > .contents > div .graph_cont2 .graph_wrap > .graph > li.walking2 p:after {
   background: #BDB4FE;
 }
-.walking_report > .contents > div .graph_cont2 .graph_wrap > .graph > li.walking2:after {
-  display: none;
+.walking_report > .contents > div .graph_cont2 .graph_wrap > .graph.more .walking1 p {
+  width: 70%;
+  text-align: right;
+}
+.walking_report > .contents > div .graph_cont2 .graph_wrap > .graph.equal .walking1 p {
+  width: 50%;
+}
+.walking_report > .contents > div .graph_cont2 .graph_wrap > .graph.animate .walking1 p {
+  transform: translateX(0);
+}
+.walking_report > .contents > div .graph_cont2 .graph_wrap > .graph.animate .walking2 p {
+  transform: translateX(0);
 }
 .walking_report > .contents > div .graph_cont3 .graph_wrap {
   margin-top: 64px;

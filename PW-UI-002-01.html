@@ -39,15 +39,15 @@
           <!-- today -->
           <div id="reportToday">
             <h2>Today</h2>
-            <div class="content graph_cont1" style="display: block;">
-              <h3>오늘의 걸음 수 <span>6,500</span><br>어제보다 300걸음 덜 걸었어요</h3>
+            <div class="content graph_cont1">
+              <h3>오늘의 걸음 수 <span></span><br>어제보다 300걸음 덜 걸었어요</h3>
               <p>조금 더 걸어보세요</p>
 
               <div class="graph_wrap">
                 <div class="graph">
                   <div class="inner">
-                    <span class="walking1" style="left: 40%;">오늘</span>
-                    <span class="walking2" style="left: 60%;">어제</span>
+                    <span class="walking1">오늘</span>
+                    <span class="walking2">어제</span>
                   </div>
                 </div>
 
@@ -67,7 +67,7 @@
                 </ul>
               </div>
             </div>
-            <div class="content graph_cont2" style="display: block;">
+            <div class="content graph_cont2">
               <h3>오늘 현재 30대 여성 중<br>걸음수 <span>상위 5%</span> 에요.</h3>
 
               <div class="graph_wrap">
@@ -82,23 +82,22 @@
           <!-- week -->
           <div id="reportWeek">
             <h2>Week</h2>
-            <div class="content graph_cont3" style="display: block;">
+            <div class="content graph_cont3">
               <h3>지난 7일간<br>하루 평균 5,678걸음이에요.</h3>
               <p>평균걸음을 높여보세요!</p>
 
               <div class="graph_wrap">
                 <div class="graph">
-                  <canvas id="myChart" style="margin: 0 0 -1px -1px;"></canvas>
+                  <canvas id="myChart"></canvas>
                 </div>
               </div>
             </div>
           </div>
           
-          
           <!-- month -->
           <div id="reportMonth">
             <h2>Month</h2>
-            <div class="content calendar_cont" style="display: block;">
+            <div class="content calendar_cont">
               <h3>정말 잘하고 계세요<br><span>11월</span>에 <span>3회</span>나 만보를 걸었어요!</h3>
 
               <div class="calendar">
@@ -189,62 +188,7 @@
   </div>
   <script src="./js/common.js"></script>
   <script>
-
-    Chart.register(ChartDataLabels);
-
-    const ctx = document.getElementById('myChart');
-    ctx.height = 300;
     
-    var myChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ["월", "화", "수", "목", "금", "토", "일"],
-        datasets: [{
-          data: [9873, 6256, 6256, 2123, 4256, 4256, 6500],
-          backgroundColor: ['#BDB4FE', '#BDB4FE', '#BDB4FE', '#BDB4FE', '#BDB4FE', '#BDB4FE', '#B5FA95'],
-          borderRadius: 8,
-          borderSkipped: false
-        }],
-      },
-      options: {
-        layout: {
-          padding: {top: 30}
-        },
-        plugins: {
-          legend: {display: false},
-          datalabels: {
-            color: '#4E2AF4',
-            anchor: 'end',
-            align: 'top',
-            font: {
-              weight: 'bold'
-            }
-          }
-        },
-        scales: {
-          x: {
-            grid: {
-              drawBorder: false,
-              drawOnChartArea: false,
-              display: false,
-              // drawTicks: false,
-            },
-          },
-          y: {
-            grid: {
-              drawBorder: false,
-              drawOnChartArea: false,
-              display: false,
-              drawTicks: false,
-            },
-            ticks: {
-              display: false
-            },
-          },
-        },
-        responsive: true,
-      }
-    });
   </script>
 </body>
 </html>
