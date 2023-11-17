@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-	<title>기부</title>
+	<title>챌린지 상세 : 참여중</title>
 	<link rel="stylesheet" href="./css/swiper-bundle.min.css">
 	<link rel="stylesheet" href="./css/reset.css">
 	<link rel="stylesheet" href="./css/animation.css">
@@ -17,20 +17,149 @@
 	<script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.js"></script>
 </head>
 <body>
-  <div id="wrap">
+  <div id="wrap" class="challenge_layout">
     <!-- header -->
     <div id="header">
       <div class="title_wrap">
         <button type="button" class="btn_back">뒤로가기</button>
-        <h1>기부</h1>
+        <h1>챌린지 상세</h1>
       </div>
 			<div class="icon_wrap">
         <button type="button">설정</button>
       </div>
     </div>
     <!-- container -->
-    <div id="container">
+    <div id="container" class="interval_layout">
+      <!-- 챌린지 -->
+      <div class="challenge_content_wrap">
+        <!-- 챌린지 상세 -->
+        <div class="challenge_detail_wrap">
+          <div class="inner">
+            <!-- 이미지 -->
+            <div class="challenge_visual">
+              <img src="./images/img_dummy.jpg" alt="" />
+            </div>
 
+            <!-- 챌린지 기록 : 상단 고정 -->
+            <div class="challenge_record">
+              <h2>10,000걸음 중 100걸음</h2>
+
+              <div class="inner">
+                <div class="challenge_progress_box">
+                  <div><span>100걸음</span></div>
+                  <span>10,000걸음</span>
+                </div>
+
+                <ul>
+                  <li>100m</li>
+                  <li>10분</li>
+                  <li>9,999kcal</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- 크루 : [챌린지 리더] -->
+            <div class="challenge_crew">
+              <h2>현재 <strong>2</strong>명이 함께하고 있어요!<br>
+                <strong>5</strong>명이되면 챌린지를 시작할 수 있어요
+              </h2>
+
+              <div class="btn">
+                <button type="button" class="btn_view_crew"><span>크루보기v</span></button>
+                <button type="button"><span>+친구초대</span></button>
+              </div>
+            </div>
+
+            <!-- 크루 : [리더: 챌린지 도전~크루원 미충족] -->
+            <div class="challenge_crew">
+              <h2>현재 <strong>2</strong>명이 함께하고 있어요!<br>
+                <strong>5</strong>명이되면 챌린지를 시작할 수 있어요
+              </h2>
+
+              <div class="btn">
+                <button type="button" class="btn_view_crew"><span>크루보기v</span></button>
+                <button type="button"><span>+친구초대</span></button>
+              </div>
+            </div>
+
+            <!-- 크루 : [리더&크루 : 챌린지 달성&종료] -->
+            <div class="challenge_crew">
+              <h2>5명의 크루와 함께했어요!</h2>
+
+              <div class="btn">
+                <button type="button" class="btn_view_crew"><span>크루기록보기 V</span></button>
+              </div>
+            </div>
+
+            <!-- 리워드 -->
+            <div class="challenge_reward">
+              <h2>Reward</h2>
+              <p>각 단계를 클리어하시고 리워드를 받아가세요.</p>
+
+              <ul>
+                <li>
+                  <div>
+                    <h3>1단계 <span>3,000</span> 걸음/km</h3>
+                    <p>3J</p>
+                  </div>
+                  <button type="button" class="complete"><span>받기 완료</span></button>
+                </li>
+                <li>
+                  <div>
+                    <h3>2단계 <span>6,000</span> 걸음/km</h3>
+                    <p>1</p>
+                  </div>
+                  <button type="button"><span>받기</span></button>
+                </li>
+                <li>
+                  <div>
+                    <h3>3단계 <span>9,000</span> 걸음/km</h3>
+                    <p>100</p>
+                  </div>
+                  <button type="button" disabled="disabled"><span>받기 완료</span></button>
+                </li>
+              </ul>
+
+              <button type="button"><span>열기</span></button>
+            </div>
+
+            <!-- 기본정보 : 참여중일 경우 순서 변경됨 -->
+            <div class="challenge_info">
+              <h2>[현대백화점 김포점] 경기도와 함께하는 친구와 하루 6천보 걷기 챌린지</h2>
+              
+              <dl>
+                <dt>기간</dt>
+                <dd>2023.11.12~2023.12.19</dd>
+                <dt>대상</dt>
+                <dd>모든 포인트워크 회원</dd>
+                <dt>목표</dt>
+                <dd>크루원 5명이 기간 내 누적 10만보 달성</dd>
+                <dt>리워드</dt>
+                <dd>챌린지 완료 시 1,000J 지급</dd>
+              </dl>
+            </div>
+
+            <!-- 소개 -->
+            <div class="challenge_intro">
+              <h2>Pick Challenge</h2>
+              <img src="./images/img_dummy.jpg" alt="" />
+              <img src="./images/img_dummy.jpg" alt="" />
+              <img src="./images/img_dummy.jpg" alt="" />
+              <img src="./images/img_dummy.jpg" alt="" />
+              <img src="./images/img_dummy.jpg" alt="" />
+              
+              <div class="banner_box">
+                <img src="./images/img_dummy_banner.jpg" alt="" />
+                <img src="./images/img_dummy_banner.jpg" alt="" />
+                <img src="./images/img_dummy_banner.jpg" alt="" />
+              </div>
+            </div>
+          </div>
+          <button type="button">챌린지 도전</button>
+        </div>
+        <!-- //챌린지 상세 -->
+      </div>
+      <!-- //챌린지 -->
     </div>
   </div>
   <script src="./js/common.js"></script>

@@ -2644,9 +2644,6 @@ body.active {
   font-size: 14px;
   font-weight: 600;
 }
-.index_table_wrap table tbody td:last-child {
-  text-align: center;
-}
 .index_table_wrap table tbody td a:hover {
   color: red;
 }
