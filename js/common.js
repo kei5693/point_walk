@@ -530,28 +530,6 @@ let main = {
       weeklyInner.scrollLeft = pos;
     }
   },
-  // 메인 : 스와이퍼
-  mainSwiper: function(){
-    if(document.querySelector('.main_swipe_menu') == null) return;
-
-    const mainVisualSwipe = new Swiper('.main_swipe_menu .visual_swiper', {
-      roundLengths: true,		// 이미지가 흐리게 나옴 방지
-      loop: true
-    });
-    const mainTextSwipe = new Swiper('.main_swipe_menu .text_swiper', {
-      effect: "fade",
-      speed: 200,
-      loop: true
-    });
-
-    let currentIndex = 0;
-
-    mainVisualSwipe.on('slideChange', function () {
-      currentIndex = this.realIndex;
-      mainTextSwipe.slideTo(currentIndex);
-    });
-
-  },
   // 메인 : 스크롤 이벤트(출석, 스와이퍼, 상태, 툴바)
   mainScrollEvent: function(){
     if(document.querySelector('.main_content_wrap') == null) return;
@@ -559,19 +537,21 @@ let main = {
     // 출석
     const attendance = document.querySelector('.attendance_wrap');
 
-    // 메인 스와이프
-    const mainSwipe = document.querySelector('.main_swipe_menu');
-    const getHeight = mainSwipe.querySelector(':scope > .inner').offsetHeight;
-
     // 상태
     const statusUl = document.querySelector('.status_wrap > ul');
     const statusLi = statusUl.querySelectorAll(':scope > li');
     const progressWrap = statusUl.querySelector(':scope > li.walking .content2 > .progress_wrap > div');
-    
+
     // 툴바
     const toolBar = document.querySelector('.toolbar_wrap');
     const header = document.querySelector('#header');
 
+    // 메인 스와이퍼
+    const mainSwipe = document.querySelector('.main_swipe_menu');
+    const getHeight = mainSwipe.querySelector(':scope > .inner').offsetHeight;
+    let mainVisualSwipe = '';
+  
+    mainSwiper();
     // 상태 스크롤 class 이벤트 
     mainStatusScrollEvent();
 
@@ -586,6 +566,7 @@ let main = {
         if(!mainSwipe.classList.contains('active')){
           mainSwipe.classList.add('active');
           mainSwipe.style.height = getHeight+'px';
+          mainVisualSwipe.autoplay.start();
         } else {
           // 툴바
           currentScrollPos > calcScroll ? toolBar.classList.remove('active') : toolBar.classList.add('active');
@@ -634,20 +615,51 @@ let main = {
         });
       }
     });
+
+    function mainSwiper(){
+      if(document.querySelector('.main_swipe_menu') == null) return;
+  
+      mainVisualSwipe = new Swiper('.main_swipe_menu .visual_swiper', {
+        autoplay: {
+          delay: 2000,
+          disableOnInteraction: false,
+        },
+        roundLengths: true,		// 이미지가 흐리게 나옴 방지
+        loop: true
+      });
+      const mainTextSwipe = new Swiper('.main_swipe_menu .text_swiper', {
+        effect: "fade",
+        speed: 200,
+        loop: true
+      });
+  
+      let currentIndex = 0;
+  
+      mainVisualSwipe.on('slideChange', function () {
+        currentIndex = this.realIndex;
+        mainTextSwipe.slideTo(currentIndex);
+      });
+
+      mainVisualSwipe.autoplay.stop();
+    }
     
     // 메인 스크롤 이벤트 초기화
     function resetMainScrollEvent(){
       attendance.classList.remove('active');
 
+      // 메인 스와이퍼 리셋
       mainSwipe.classList.remove('active');
       mainSwipe.style.height = 0;
+      mainVisualSwipe.autoplay.stop();
 
+      // 툴바 감추기
       toolBar.classList.remove('active');
 
+      // 
       statusLi.forEach((el)=>{el.classList.remove('active')});
     }
 
-    // 메인 : 상태 이벤트
+    // 메인 : 상태 스트롤 대응 이벤트
     function mainStatusScrollEvent(){
       if(document.querySelector('.status_wrap') == null) return;
       
@@ -1106,40 +1118,16 @@ let walkingReport = {
     function monthReport(){
       let days = document.querySelectorAll('#reportMonth .calendar td span:not(:empty)');
       let walkingDataArr = [
-        11000,
-        5500,
-        5500,
-        5500,
-        12000,
-        3100,
-        5500,
-        3500,
-        3500,
-        3500,
-        11000,
-        5500,
-        5400,
-        5300,
-        12000,
-        3100,
-        5100,
-        3500,
-        5500,
-        5500,
-        3500,
-        3500,
-        3500,
-        3500,
-        3500,
-        3500,
-        3500,
-        3500,
-        3500,
-        3500
+        11000,5500,5500,5500,12000,
+        3100,5500,3500,3500,3500,
+        11000,5500,5400,5300,12000,
+        3100,5100,3500,5500,5500,
+        3500,3500,3500,3500,3500,
+        3500,3500,3500,3500,3500
       ];
 
       days.forEach((day, index)=>{
-        if(walkingDataArr[index] > 3000 && walkingDataArr[index] < 5000){
+        if(walkingDataArr[index] > 2000 && walkingDataArr[index] < 5000){
           day.classList.add('walking_3');
         } else if(walkingDataArr[index] > 5000 && walkingDataArr[index] < 10000){
           day.classList.add('walking_5');
@@ -1161,7 +1149,6 @@ function init(){
   
   main.mainInit(99999, 30, 80); // 걸음수, 오늘, 어제
   main.mainWeeklyEvent(3); // 요일 0 ~ 6(일 ~ 토)
-  main.mainSwiper();
   main.mainScrollEvent();
   main.monthlyAttendanceEvent(13); // 0부터 시작하니 원하는 날짜-1 입력
   

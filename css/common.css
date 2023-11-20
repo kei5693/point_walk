@@ -2484,17 +2484,17 @@ body.active {
 .walking_report > .contents > div .graph_cont2 .graph_wrap > .graph > li {
   height: 40px;
   line-height: 40px;
+  transform: translateX(-100%);
+  transition: transform 0.6s;
 }
 .walking_report > .contents > div .graph_cont2 .graph_wrap > .graph > li p {
   position: relative;
   z-index: 100;
   display: inline-block;
   padding: 0 12px;
-  transform: translateX(-100%);
-  transition: transform 0.6s;
   font-size: 16px;
   font-weight: 600;
-  text-align: center;
+  text-align: right;
 }
 .walking_report > .contents > div .graph_cont2 .graph_wrap > .graph > li p:after {
   content: "";
@@ -2510,23 +2510,26 @@ body.active {
 }
 .walking_report > .contents > div .graph_cont2 .graph_wrap > .graph > li.walking2 {
   margin-top: 12px;
-  width: 50%;
-  text-align: center;
+}
+.walking_report > .contents > div .graph_cont2 .graph_wrap > .graph > li.walking2 p {
+  width: 70%;
 }
 .walking_report > .contents > div .graph_cont2 .graph_wrap > .graph > li.walking2 p:after {
   background: #BDB4FE;
 }
 .walking_report > .contents > div .graph_cont2 .graph_wrap > .graph.more .walking1 p {
-  width: 70%;
-  text-align: right;
+  width: 90%;
 }
-.walking_report > .contents > div .graph_cont2 .graph_wrap > .graph.equal .walking1 p {
+.walking_report > .contents > div .graph_cont2 .graph_wrap > .graph.less .walking1 p {
   width: 50%;
 }
-.walking_report > .contents > div .graph_cont2 .graph_wrap > .graph.animate .walking1 p {
+.walking_report > .contents > div .graph_cont2 .graph_wrap > .graph.equal .walking1 p {
+  width: 70%;
+}
+.walking_report > .contents > div .graph_cont2 .graph_wrap > .graph.animate .walking1 {
   transform: translateX(0);
 }
-.walking_report > .contents > div .graph_cont2 .graph_wrap > .graph.animate .walking2 p {
+.walking_report > .contents > div .graph_cont2 .graph_wrap > .graph.animate .walking2 {
   transform: translateX(0);
 }
 .walking_report > .contents > div .graph_cont3 .graph_wrap {
