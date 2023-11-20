@@ -271,6 +271,23 @@ let common = {
       });
     });
   },
+  marqueeEvent(selector, speed) {
+    const parentSelector = document.querySelector(selector);
+    const clone = parentSelector.innerHTML;
+    const firstElement = parentSelector.children[0];
+    let i = 0;
+
+    parentSelector.insertAdjacentHTML('beforeend', clone);
+    parentSelector.insertAdjacentHTML('beforeend', clone);
+  
+    setInterval(function () {
+      firstElement.style.marginLeft = `-${i}px`;
+      if (i > firstElement.clientWidth) {
+        i = 0;
+      }
+      i = i + speed;
+    }, 0);
+  },
 
 
 
@@ -435,6 +452,12 @@ let common = {
 }
 
 let main = {
+  init(){
+    this.mainInit(99999, 30, 80); // 걸음수, 오늘, 어제
+    this.mainWeeklyEvent(3); // 요일 0 ~ 6(일 ~ 토)
+    this.mainScrollEvent();
+    this.monthlyAttendanceEvent(13); // 0부터 시작하니 원하는 날짜-1 입력
+  },
   // 메인 : 출석 이벤트 오늘날짜로 스크롤 이동, 클릭 이벤트
   mainWeeklyEvent: function(day){
     if(document.querySelector('.attendance_wrap .calendar_cont') == null) return;
@@ -736,6 +759,25 @@ let main = {
 }
 
 let challenge = {
+  init: function(){
+    this.challengeNotice();
+    this.challengeCategoryListEvent();
+    this.challengeRewardEvent();
+  },
+  // 챌린지 안내
+  challengeNotice: function(){
+    if(document.querySelector('.challenge_notice > .inner') == null) return;
+
+    common.marqueeEvent('.challenge_notice > .inner', 0.2);
+
+    const notice = document.querySelector('.challenge_notice');
+    const btnClose = notice.querySelector(':scope > button');
+
+    // 클릭으로 닫기
+    btnClose.addEventListener('click', ()=>{
+      notice.classList.add('hide');
+    });
+  },
   // 챌린지 : 목록 - 카테고리 이벤트
   challengeCategoryListEvent: function(){
     if(document.querySelector('.challenge_category') == null) return;
@@ -793,7 +835,7 @@ let challenge = {
     // 탭 전체 width 설정
     function setTabInit(){
       let tabWidth = 0;
-      let gap = 10;
+      let gap = 4;
       
       categoryEl.forEach((el, index)=>{
         if(index == 0 ){
@@ -816,7 +858,7 @@ let challenge = {
     function switchTab(n){
       let posCenter = window.outerWidth / 2;
       let pos = 0;
-      let posLimit = categoryUl.offsetWidth - categoryInner.offsetWidth;
+      let posLimit = categoryUl.offsetWidth - categoryInner.offsetWidth + 20; // 20은 왼쪽 padding-left: 20 때문
 
       if (categoryEl[n].offsetLeft + categoryEl[n].offsetWidth / 2 <= posCenter) {
         pos = 0;
@@ -1147,14 +1189,8 @@ function init(){
   common.tabMenuEvent();
   common.inputBorderEvent();
   
-  main.mainInit(99999, 30, 80); // 걸음수, 오늘, 어제
-  main.mainWeeklyEvent(3); // 요일 0 ~ 6(일 ~ 토)
-  main.mainScrollEvent();
-  main.monthlyAttendanceEvent(13); // 0부터 시작하니 원하는 날짜-1 입력
-  
-  challenge.challengeCategoryListEvent();
-  challenge.challengeRewardEvent();
-
+  main.init();
+  challenge.init();
   walkingReport.anchorEvent();
 };
 
