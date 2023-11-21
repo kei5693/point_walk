@@ -1,3 +1,4 @@
+// 공통
 let common = {
   // 공통 - 팝업 : 버튼으로 팝업 열기
   layerButtonToggle: function(){
@@ -451,6 +452,7 @@ let common = {
   },
 }
 
+// 메인
 let main = {
   init(){
     this.mainInit(99999, 30, 80); // 걸음수, 오늘, 어제
@@ -758,6 +760,7 @@ let main = {
   }
 }
 
+// 챌린지
 let challenge = {
   init: function(){
     this.challengeNotice();
@@ -790,6 +793,7 @@ let challenge = {
     const spreadList = challengeCategory.querySelectorAll('.spread_list li');
 
     const challengeList = document.querySelector('.challenge_list');
+    const btnMarking = challengeList.querySelectorAll(':scope > ul > li > button');
     const btnViewType = challengeList.querySelector('.view_type button');
 
     window.addEventListener("DOMContentLoaded", () => {setTabInit()});
@@ -829,8 +833,11 @@ let challenge = {
 
     // 토글 버튼 이벤트
     toggleBtn.addEventListener('click', ()=>{challengeCategory.classList.toggle('active')});
-
     btnViewType.addEventListener('click', ()=>{challengeList.classList.toggle('active')});
+
+    btnMarking.forEach((btn)=>{
+      btn.addEventListener('click', ()=>{btn.classList.toggle('active')});
+    });
 
     // 탭 전체 width 설정
     function setTabInit(){
@@ -982,6 +989,7 @@ let challenge = {
     });
   },
 }
+
 // 걸음리포트
 let walkingReport = {
   anchorEvent: function(){

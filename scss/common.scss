@@ -18,6 +18,13 @@
   overflow: hidden;
 }
 
+@mixin text_ellipsis2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
 
 html {scroll-behavior: smooth;}
 // 레이어 팝업 오픈 시
@@ -1743,7 +1750,7 @@ body.active {overflow: hidden;}
         width: 20px;
         height: 20px;
 
-        background: #000;;
+        background: #000;
       }
     }
   }
@@ -1897,7 +1904,7 @@ body.active {overflow: hidden;}
         span {
           display: inline-block;
           width: 16px;
-          height: 16px;;
+          height: 16px;
           background: url('../images/common/ico_cross01.svg') no-repeat;
           background-size: 100%;
         }
@@ -1909,6 +1916,9 @@ body.active {overflow: hidden;}
       background: #fff;
       box-shadow: 0px 4px 4px 0px #00000040;
       &.active {
+        > button {
+          transform: translateY(-50%) rotate(180deg);
+        }
         .spread_list {
           max-height: 999px;
           // transition-duration: 0.9s;
@@ -1919,9 +1929,10 @@ body.active {overflow: hidden;}
         position: absolute;
         top: 0;
         right: 50px;
-        width: 50px;
+        width: 30px;
         height: 100%;
-        background: linear-gradient(270.19deg, #F9F9FB 24.69%, rgba(249, 249, 251, 0) 152.84%);
+        // background: linear-gradient(270.19deg, #F9F9FB 10%, rgba(249, 249, 251, 0) 100%);
+        background: linear-gradient(270.19deg, #fff 10%, rgba(249, 249, 251, 0) 100%);
       }
       .inner {
         overflow: auto;
@@ -1930,6 +1941,8 @@ body.active {overflow: hidden;}
 
         display: flex;
         align-items: center;
+
+        padding-right: 21px;
         &::-webkit-scrollbar {
           display: none;
         }
@@ -2001,6 +2014,7 @@ body.active {overflow: hidden;}
         right: 20px;
         z-index: 100;
         transform: translateY(-50%);
+        transform-origin: 50%;
 
         width: 24px;
         height: 24px;
@@ -2037,45 +2051,75 @@ body.active {overflow: hidden;}
       margin-top: 20px;
       &.active {
         .view_type button {
-          background: #000;
-          color: #fff;
+          span {
+            &:before {background-image: url('../images/challenge/ico_view_large.svg');}
+            &:after {content: '크게';}
+          }
         }
         > ul {
+          background: #fff;
           > li {
+            padding: 16px 0;
             & + li {
-              border-top: 1px solid #000;
-              padding-top: 20px;
-              margin-top: 20px;
+              margin-top: 0;
+              border-top: 1px solid #D9D9D9;
             }
             > a {
               display: grid;
-              grid-template-columns: 140px 1fr;
-              grid-gap: 10px;
+              grid-template-columns: 74px 1fr;
+              grid-gap: 4px;
+
+              border-radius: 0;
+
+              padding-top: 32px;
               .visual_box {
-                .status_msg {
-                  top: 0;
-                  right: 0;
+                &:after {
+                  background: linear-gradient(rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 30%);
                 }
               }
               .title_box {
                 position: static;
-                .icon_case {
+                .inner {
                   position: static;
-                  flex-wrap: wrap;
-                  transform: translateY(0);
-                  margin-top: 20px;
-                  span {
-                    flex-shrink: 0;
+                  background: #fff;
+                  padding: 0;
+                  > .type {
+                    top: 0;
+                    left: 0;
                   }
-                  .icon_box {
-                    span {
-                      & + span {
-                        margin-left: 0px;
-                      }
+                  > .location {
+                    p {
+                      padding: 0;
+                      font-size: 12px;
+                      font-weight: 600;
+                      color: #98A2B3;
                     }
                   }
+                  > .title {
+                    margin-top: 4px;
+
+                    font-size: 18px;
+                    font-weight: 800;
+                    color: #000;
+
+                    @include text_ellipsis2();
+                  }
+                  >.desc {
+                    > span {
+                      font-size: 14px;
+                      font-weight: 400;
+                      color: #000;
+                    }
+                    .icon > div em {color: #000;}
+                  }
                 }
+
               }
+            }
+            > button {
+              top: 48px;
+              right: auto;
+              left: 0;
             }
           }
         }
@@ -2083,18 +2127,42 @@ body.active {overflow: hidden;}
       .view_type {
         display: flex;
         justify-content: right;
+        margin-top: 11px;
         button {
-          margin-bottom: 20px;
           padding: 5px 10px;
-          border: 1px solid #000;
-          background: #fff;
-          font-size: 20px;
-          color: #000;
+          background: none;
+
+          font-size: 13px;
+          font-weight: 800;
+          color: var(--color-brand1);
+          span {
+            position: relative;
+            display: inline-block;
+            padding-left: 20px;
+            &:before {
+              content: '';
+              position: absolute;
+              top: 1px;
+              left: 0;
+
+              width: 16px;
+              height: 16px;
+
+              background: url('../images/challenge/ico_view_small.svg') no-repeat;
+              background-size: 100%;
+            }
+            &:after {
+              content: '작게';
+            }
+          }
+          
         }
       }
       > ul {
+        margin-top: 19px;
         > li {
           position: relative;
+          margin: 0 20px;
           &.status {
             > a {
               &:before {display: flex;}
@@ -2131,13 +2199,15 @@ body.active {overflow: hidden;}
               border: 0 none;
             }
           }
-  
           & + li {
-            margin-top: 40px;
+            margin-top: 24px;
           }
           > a {
             display: block;
             position: relative;
+            overflow: hidden;
+            border-radius: 24px;
+
             color: #fff;
             &:after {
               content: '';
@@ -2175,71 +2245,162 @@ body.active {overflow: hidden;}
   
               display: none;
             }
-            > :not(.visual_box) {
-              position: absolute;
-            }
             .visual_box {
               position: relative;
-              img {
-                display: block;
-                width: 100%;
-              }
-              .status_msg {
-                position: absolute;
-                top: 10px;
-                right: 10px;
-    
-                background: #000;
-                padding: 5px 10px;
-              }
-            }
-            .title_box {
-              left: 0;
-              bottom: 0;
-              width: 100%;
-  
-              background: rgba(0,0,0,0.5);
-              padding: 10px 20px;
-              .title {
-                > p {}
-                > strong {
-                  display: block;
-                }
-                > span {
-                  display: block;
-                }
-              }
-              > .icon_case {
+              &:after {
+                content: '';
                 position: absolute;
                 top: 0;
                 left: 0;
                 width: 100%;
-                transform: translateY(calc(-100% - 5px));
-  
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                > span {
-                  border: 1px solid #000;
-                  background: #fff;
-                  color: #000;
-                  padding: 5px;
+                height: 100%;
+                background: linear-gradient(rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 20%);
+              }
+              img {
+                display: block;
+                width: 100%;
+              }
+            }
+            .title_box {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+
+              display: flex;
+              align-items: end;
+              > .inner {
+                flex: 1;
+                padding: 10px 16px 20px;
+
+                background: #000;
+                background: linear-gradient(180deg, rgba(255, 255, 255, 0) -5%, #000 100%);
+                > .type {
+                  position: absolute;
+                  top: 24px;
+                  left: 16px;
+
+                  display: flex;
+                  > span {
+                    padding: 4px 8px;
+                    border-radius: 2px;
+                    
+                    font-size: 12px;
+                    & + span {
+                      margin-left: 4px;
+                    }
+                    &.color1 {
+                      background: var(--color-brand1);
+                      color: #fff;
+                    }
+                    &.color2 {
+                      background: #9E77ED;
+                      color: #fff;
+                    }
+                    &.color3 {
+                      background: #BDB4FE;
+                      color: #000;
+                    }
+                    &.color4 {
+                      background: #EAE8FF;
+                      color: #000;
+                    }
+                  }
                 }
-                > .icon_box {
+                > .location {
                   display: flex;
                   align-items: center;
-                  height: 34px;
-                  span {
-                    border: 1px solid #000;
+                  p {
+                    padding: 6px 16px;
                     background: #fff;
-                    color: #000;
-                    padding: 5px 10px;
-                    & + span {
-                      margin-left: 10px;
+                    border-radius: 12px;
+
+                    font-size: 12px;
+                    font-weight: 600;
+                    line-height: 1;
+                    color: #344054;
+                  }
+                }
+                > .title {
+                  display: block;
+                  margin-top: 14px;
+                  font-size: 20px;
+                  font-weight: 800;
+                  @include text_ellipsis2();
+                }
+                > .desc {
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: end;
+                  > span {
+                    font-size: 13px;
+                    font-weight: 400;
+                    color: #fff;
+                    line-height: 1;
+                  }
+                  > .icon {
+                    display: flex;
+                    align-items: center;
+                    > div {
+                      display: flex;
+                      align-items: center;
+                      &:only-child em {
+                        display: inline-block;
+                      }
+                      span {
+                        display: inline-block;
+                        width: 28px;
+                        height: 28px;
+                        
+                        border-radius: 50%;
+                        font-size: 0;
+                        line-height: 0;
+                      }
+                      em {
+                        display: none;
+                        margin-left: 4px;
+                      }
+                      & + div {
+                        margin-left: -10px;
+                      }
+                      &.ico_jelly span {
+                        background: url('../images/challenge/ico_jelly.svg') no-repeat 50%;
+                        background-size: 100%;
+                      }
+                      &.ico_point span {
+                        background: url('../images/challenge/ico_point.svg') no-repeat 50%;
+                        background-size: 100%;
+                      }
+                      &.ico_coupon span {
+                        background: url('../images/challenge/ico_coupon.svg') no-repeat 50%;
+                        background-size: 100%;
+                      }
                     }
                   }
                 }
               }
+            }
+          }
+          > button {
+            position: absolute;
+            top: 16px;
+            right: 6px;
+
+            padding: 8px;
+            &.active span {
+              background-image: url('../images/common/ico_star04.svg');
+            }
+            span {
+              display: block;
+              width: 16px;
+              height: 16px;
+  
+              background: url('../images/common/ico_star03.svg') no-repeat;
+              background-size: 100%;
+  
+              font-size: 0;
+              line-height: 0;
             }
           }
         }
