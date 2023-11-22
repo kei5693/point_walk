@@ -25,7 +25,9 @@
         <h1>챌린지 상세</h1>
       </div>
 			<div class="icon_wrap">
-        <button type="button">설정</button>
+        <button type="button" class="btn_comments"><span></span></button>
+        <button type="button" class="btn_share"><span></span></button>
+        <button type="button" class="btn_favorite"><span></span></button>
       </div>
     </div>
     <!-- container -->
@@ -34,26 +36,48 @@
       <div class="challenge_content_wrap">
         <!-- 챌린지 상세 -->
         <div class="challenge_detail_wrap">
-          <div class="inner">
-            <!-- 이미지 -->
-            <div class="challenge_visual">
-              <img src="./images/img_dummy.jpg" alt="" />
+          <!-- 안내 -->
+          <div class="challenge_notice">
+            <div class="inner">
+              <p>현재 200명 참가중입니다! 😀</p>
             </div>
-
+            <button type="button"><span>닫기</span></button>
+          </div> 
+          <!-- 이미지 -->
+          <div class="challenge_visual">
+            <img src="./images/img_challenge_detail.jpg" alt="" />
+          </div>
+          <div class="inner">
             <!-- 기본정보 -->
             <div class="challenge_info">
-              <h2>[현대백화점 김포점] 경기도와 함께하는 친구와 하루 6천보 걷기 챌린지</h2>
+              <div class="title">
+                <div>
+                  <h2><span>[더 현대 대전]</span>봄쇼핑만큼 설레는<br>함께하는 산책 6천보 걷기</h2>
+                  <div class="icon_wrap">
+                    <div class="ico_jelly"><span>젤리</span><em>100</em></div>
+                    <div class="ico_point"><span>포인트</span><em>100</em></div>
+                    <div class="ico_coupon"><span>쿠폰</span><em>1</em></div>
+                  </div>
+                </div>
+                <p>2023.11.12~2023.12.19</p>
+              </div>
               
               <dl>
-                <dt>기간</dt>
-                <dd>2023.11.12~2023.12.19</dd>
-                <dt>대상</dt>
-                <dd>모든 포인트워크 회원</dd>
-                <dt>목표</dt>
-                <dd>크루원 5명이 기간 내 누적 10만보 달성</dd>
-                <dt>리워드</dt>
-                <dd>챌린지 완료 시 1,000J 지급</dd>
+                <dt>대상</dt><dd>선착순 1만명 한정</dd>
+                <dt>목표</dt><dd>1만명이서 100만보 달성</dd>
+                <dt>리워드</dt><dd>챌린지 완료 시 각 개인 1,000J 지급</dd>
               </dl>
+
+              <div class="progress_wrap">
+                현재
+                19/100km
+
+                <div class="graph">
+                  <div class="inner">
+                    <span class="walking1" style="left: 30%;">현재</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <!-- 크루 : 참여전 -->
@@ -151,22 +175,16 @@
             </div>
 
             <!-- 소개 -->
-            <div class="challenge_intro">
+            <div class="pick_challenge">
               <h2>Pick Challenge</h2>
-              <img src="./images/img_dummy.jpg" alt="" />
-              <img src="./images/img_dummy.jpg" alt="" />
-              <img src="./images/img_dummy.jpg" alt="" />
-              <img src="./images/img_dummy.jpg" alt="" />
-              <img src="./images/img_dummy.jpg" alt="" />
-              
-              <div class="banner_box">
-                <img src="./images/img_dummy_banner.jpg" alt="" />
-                <img src="./images/img_dummy_banner.jpg" alt="" />
-                <img src="./images/img_dummy_banner.jpg" alt="" />
-              </div>
+              <img src="./images/img_page01.jpg" alt="" />
+              <img src="./images/img_page02.jpg" alt="" />
+              <img src="./images/img_page03.jpg" alt="" />
+              <img src="./images/img_page04.jpg" alt="" />
+              <img src="./images/img_page05.jpg" alt="" />
             </div>
           </div>
-          <button type="button">챌린지 도전</button>
+          <button type="button">챌린지 시작</button>
         </div>
         <!-- //챌린지 상세 -->
 

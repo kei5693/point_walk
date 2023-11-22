@@ -477,17 +477,15 @@ body.active {overflow: hidden;}
   // 챌린지 상세 레이아웃
   &.challenge_layout {
     padding-top: 0;
+    background: none;
     #header {
-      z-index: -1;
-      background-color: transparent;
+      // z-index: -1;
+      // background-color: transparent;
     }
     #container {
       height: 100%;
       overflow-y: auto;
       padding: 70% 0 50px;
-      .challenge_content_wrap .challenge_detail_wrap > .inner .challenge_visual {
-        z-index: -2;
-      }
     }
     // 진행중
     &.ongoing {
@@ -534,18 +532,15 @@ body.active {overflow: hidden;}
       height: 100%;
     }
     button {
-      width: 24px;
-      height: 24px;
+      min-width: 24px;
+      min-height: 24px;
 
       border: 0 none;
 
       font-size: 0;
       line-height: 0;
-      & + button {
-        margin-left:10px;
-      }
     }
-    .title_wrap {
+    > .title_wrap {
       flex: 1;
       display: flex;
       align-items: center;
@@ -581,17 +576,38 @@ body.active {overflow: hidden;}
     > .icon_wrap {
       position: absolute;
       top: 0;
-      right: 20px;
+      right: 12px;
 
       flex-shrink: 0;
 
       display: flex;
       align-items: center;
       button {
-        width: 24px;
-        height: 24px;
-        background: url('../images/common/ico_menu.svg') 50%;
-        background-size: 100%;
+        span {
+          display: inline-block;
+          width: 16px;
+          height: 16px;
+          padding: 8px;
+          box-sizing: content-box;
+        }
+        &.btn_setting span {
+          width: 24px;
+          height: 24px;
+          background: url('../images/common/ico_menu.svg') no-repeat 50%;
+          background-size: 24px;
+        }
+        &.btn_comments span {
+          background: url('../images/challenge/ico_comments.svg') no-repeat 50%;
+          background-size: 16px;
+        }
+        &.btn_share span {
+          background: url('../images/challenge/ico_share.svg') no-repeat 50%;
+          background-size: 16px;
+        }
+        &.btn_favorite span {
+          background: url('../images/challenge/ico_favorite.svg') no-repeat 50%;
+          background-size: 16px;
+        }
       }
     }
   }
@@ -1862,54 +1878,54 @@ body.active {overflow: hidden;}
 .activity_wrap {}
 // 챌린지
 .challenge_content_wrap {
-  // 챌린지 목록
-  .challenge_list_wrap {
-    .challenge_notice {
-      position: relative;
+  .challenge_notice {
+    position: relative;
+    overflow: hidden;
+    height: 36px;
+    transition: height 0.4s;
+    &.hide {height: 0;}
+    .inner {
       overflow: hidden;
+      
+      display: flex;
+      align-items: center;
       height: 36px;
-      transition: height 0.4s;
-      &.hide {height: 0;}
-      .inner {
-        overflow: hidden;
-        
-        display: flex;
-        align-items: center;
-        height: 36px;
-  
-        background: #000;
-        p {
-  
-          font-size: 13px;
-          font-weight: 800;
-          line-height: 1;
-          color: #fff;
-          white-space: nowrap;
-        }
-      }
-      button {
-        position: absolute;
-        top: 50%;
-        right: 20px;
-        transform: translateY(-50%);
 
-        width: 24px;
-        height: 24px;
+      background: #000;
+      p {
 
-        font-size: 0;
-        line-height: 0;
-
-        background: var(--color-brand1);
-        border-radius: 50%;
-        span {
-          display: inline-block;
-          width: 16px;
-          height: 16px;
-          background: url('../images/common/ico_cross01.svg') no-repeat;
-          background-size: 100%;
-        }
+        font-size: 13px;
+        font-weight: 800;
+        line-height: 1;
+        color: #fff;
+        white-space: nowrap;
       }
     }
+    button {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+
+      width: 24px;
+      height: 24px;
+
+      font-size: 0;
+      line-height: 0;
+
+      background: var(--color-brand1);
+      border-radius: 50%;
+      span {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background: url('../images/common/ico_cross01.svg') no-repeat;
+        background-size: 100%;
+      }
+    }
+  }
+  // 챌린지 목록
+  .challenge_list_wrap {
     .challenge_category {
       position: relative;
       padding-right: 50px;
@@ -2341,45 +2357,6 @@ body.active {overflow: hidden;}
                     color: #fff;
                     line-height: 1;
                   }
-                  > .icon {
-                    display: flex;
-                    align-items: center;
-                    > div {
-                      display: flex;
-                      align-items: center;
-                      &:only-child em {
-                        display: inline-block;
-                      }
-                      span {
-                        display: inline-block;
-                        width: 28px;
-                        height: 28px;
-                        
-                        border-radius: 50%;
-                        font-size: 0;
-                        line-height: 0;
-                      }
-                      em {
-                        display: none;
-                        margin-left: 4px;
-                      }
-                      & + div {
-                        margin-left: -10px;
-                      }
-                      &.ico_jelly span {
-                        background: url('../images/challenge/ico_jelly.svg') no-repeat 50%;
-                        background-size: 100%;
-                      }
-                      &.ico_point span {
-                        background: url('../images/challenge/ico_point.svg') no-repeat 50%;
-                        background-size: 100%;
-                      }
-                      &.ico_coupon span {
-                        background: url('../images/challenge/ico_coupon.svg') no-repeat 50%;
-                        background-size: 100%;
-                      }
-                    }
-                  }
                 }
               }
             }
@@ -2522,84 +2499,165 @@ body.active {overflow: hidden;}
   }
   // 챌린지 상세
   .challenge_detail_wrap {
+    .challenge_visual {
+      position: fixed;
+      top: 44px;
+      left: 0;
+      z-index: -2;
+
+      width: 100%;
+      height: 100%;
+      background: #F9F9FB;
+      img {
+        display: block;
+        width: 100%;
+      }
+    }
+    .challenge_notice {
+      position: fixed;
+      top: 44px;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+    }
     > .inner {
-      margin: 0 10px;
-      background: #fff;
-      padding: 20px;
-      border: 1px solid #000;
-      border-bottom: 0 none;
       h2 {
-        font-size: 20px;
+        font-size: 18px;
+        font-weight: 800;
       }
-      > div:not(.challenge_visual) {
-        border-top: 1px solid #000;
-        padding-top: 20px;
-        margin-top: 20px;
-      }
-      > .challenge_visual + .challenge_info,
-      > .challenge_visual + .challenge_record {
-        border-top: 0 none;
-        padding-top: 0;
-        margin-top: 0;
-      }
-      .challenge_visual {
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        img {
-          display: block;
-          width: 100%;
+      > div {
+        padding: 24px;
+        background: #fff;
+        border-radius: 24px;
+        & + div {
+          margin-top: 20px;
+        }
+        &:not(.pick_challenge) {
+          margin-left: 20px;
+          margin-right: 20px;
         }
       }
-      // 기록
-      .challenge_record {
-        // position: fixed;
-        // top: calc(44px + 50px);
-        // left: 10px;
-        // z-index: 100;
-
-        // width: calc(100% - 20px);
-        // margin-top: 0 !important;
-        // padding: 20px !important;
-        // border: 1px solid #000;
-        // background: fixed#fff;
-        > .inner {
-          > ul {
-            margin-top: 20px;
+      // 기본정보
+      .challenge_info {
+        > .title {
+          > div {
             display: flex;
-            justify-content: right;
+            justify-content: space-between;
+            align-items: end;
+            h2 {
+              flex: 1;
+              span {
+                display: block;
+                font-size: 16px;
+                font-weight: 600;
+                color: #667085;
+              }
+              font-size: 20px;
+              font-weight: 800;
+              color: #000;
+            }
+          }
+          > p {
+            margin-top:12px;
+            font-size: 13px;
+            font-weight: 400;
+            color: #000;
+          }
+        }
+        > dl {
+          border-top: 1px solid #D9D9D9;
+          padding-top: 16px;
+          margin-top: 16px;
+
+          display: grid;
+          grid-template-columns: auto 1fr;
+          grid-gap: 12px 8px;
+
+          font-size: 14px;
+          color: #344054;
+          dt {
+            font-weight: 800;
+          }
+          dd {
+            font-weight: 600;
+          }
+        }
+        > .progress_wrap {
+          .graph {
+            margin-top: 0px;
+            overflow: hidden;
+            position: relative;
+            
+            display: flex;
             align-items: center;
-            > li {
-              position: relative;
-              padding-left: 11px;
-              margin-left: 10px;
-              & + li:after {
+            &:before,
+            &:after {
+              content: '';
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+
+              width: 8px;
+              height: 8px;
+
+              border-radius: 50%;
+              background: #000;
+            }
+            &:before {left: 0;}
+            &:after {right: 0;}
+            > .inner {
+              flex: 1;
+              height: 2px;
+              background: #000;
+              margin: 12px 0;
+              &:after {
                 content: '';
                 position: absolute;
-                top: 7px;
-                left: 0;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: #000;
+              }
+              > span {
+                position: absolute;
+                top: 11px;
+                left: -14px;
+                z-index: 100;
+                transform: translateX(-50%);
+                transition: left 0.6s;
 
-                width: 1px;
-                height: 14px;
+                padding-top: 18px;
 
-                background: #868686;
+                font-size: 13px;
+                font-weight: 800;
+                &:after {
+                  content: '';
+                  position: absolute;
+                  top: -7px;
+                  left: 50%;
+                  transform: translate(-50%);
+                  border-radius: 50%;
+
+                  width: 16px;
+                  height: 16px;
+                  background: #B5FA95;
+                }
+                &.walking2:after {
+                  top: -11px;
+                  width: 24px;
+                  height: 24px;
+                  background: #BDB4FE;
+                }
               }
             }
           }
         }
       }
-      // 기본정보
-      .challenge_info {
-        dl {
-          display: grid;
-          grid-template-columns: auto 1fr;
-          grid-gap: 10px;
-        }
-      }
       // 크루
       .challenge_crew {
-        padding: 20px 0;
         &.active > .crew_content {
           max-height: 999px;
         }
@@ -2667,17 +2725,23 @@ body.active {overflow: hidden;}
         }
       }
       // 소개
-      .challenge_intro {
+      .pick_challenge {
+        margin-top: 40px;
+        padding: 0;
+        background: none;
+        h2 {
+          margin: 0 0 32px 20px;
+        }
         > img {
           display: block;
           width: 100%;
         }
-        .banner_box {
-          margin-top: 20px;
-          img + img {
-            margin-top: 10px;
-          }
-        }
+        // .banner_box {
+        //   margin-top: 20px;
+        //   img + img {
+        //     margin-top: 10px;
+        //   }
+        // }
       }
     }
     // 하단 고정 버튼
@@ -2696,6 +2760,45 @@ body.active {overflow: hidden;}
       font-size: 20px;
       color: #000;
       text-align: center;
+    }
+  }
+  .icon_wrap {
+    display: flex;
+    align-items: center;
+    > div {
+      display: flex;
+      align-items: center;
+      &:only-child em {
+        display: inline-block;
+      }
+      span {
+        display: inline-block;
+        width: 28px;
+        height: 28px;
+        
+        border-radius: 50%;
+        font-size: 0;
+        line-height: 0;
+      }
+      em {
+        display: none;
+        margin-left: 4px;
+      }
+      & + div {
+        margin-left: -10px;
+      }
+      &.ico_jelly span {
+        background: url('../images/challenge/ico_jelly.svg') no-repeat 50%;
+        background-size: 100%;
+      }
+      &.ico_point span {
+        background: url('../images/challenge/ico_point.svg') no-repeat 50%;
+        background-size: 100%;
+      }
+      &.ico_coupon span {
+        background: url('../images/challenge/ico_coupon.svg') no-repeat 50%;
+        background-size: 100%;
+      }
     }
   }
 }

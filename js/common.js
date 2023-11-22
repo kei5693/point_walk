@@ -1202,7 +1202,9 @@ function init(){
   walkingReport.anchorEvent();
 };
 
-init();
+window.addEventListener("DOMContentLoaded", () => {
+  init();
+});
 
 
 
