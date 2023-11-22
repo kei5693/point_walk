@@ -1744,7 +1744,9 @@ body.active {
   background: #fff;
 }
 .challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li {
+  overflow: visible;
   padding: 16px 0;
+  border-radius: 0;
 }
 .challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li + li {
   margin-top: 0;
@@ -1759,6 +1761,13 @@ body.active {
 }
 .challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > a .visual_box:after {
   background: linear-gradient(rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 30%);
+  border-radius: 16px;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > a .visual_box img {
+  border-radius: 16px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 82px;
 }
 .challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > a .title_box {
   position: static;
@@ -1771,6 +1780,16 @@ body.active {
 .challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > a .title_box .inner > .type {
   top: 0;
   left: 0;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > a .title_box .inner > .location span {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  background: url("../images/challenge/ico_location.svg") no-repeat 50%;
+  background-size: 100%;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > a .title_box .inner > .location span lottie-player {
+  display: none;
 }
 .challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > a .title_box .inner > .location p {
   padding: 0;
@@ -1799,12 +1818,36 @@ body.active {
 .challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > button {
   top: 48px;
   right: auto;
+  left: 42px;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > .dimmed {
+  left: -20px;
+  width: calc(100% + 40px);
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > .dimmed:after {
+  content: "";
+  position: absolute;
+  top: -1px;
   left: 0;
+  width: 100%;
+  height: 1px;
+  background: #fff;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > .dimmed.crew .inner {
+  top: -58px;
+  transform: translate(-50%, 0);
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > .dimmed.crew .inner:after {
+  top: 120px;
+  left: 64px;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > .dimmed.crew .inner p {
+  margin-top: -15px;
 }
 .challenge_content_wrap .challenge_list_wrap .challenge_list .view_type {
   display: flex;
   justify-content: right;
-  margin-top: 11px;
+  margin: 11px 28px 0 0;
 }
 .challenge_content_wrap .challenge_list_wrap .challenge_list .view_type button {
   padding: 5px 10px;
@@ -1836,37 +1879,9 @@ body.active {
 }
 .challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li {
   position: relative;
+  overflow: hidden;
   margin: 0 20px;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li.status > a:before {
-  display: flex;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li.status > a:after {
-  display: block;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li.status.coming > a:before {
-  content: "COMING \aSOON";
-  color: #fff;
-  border-color: #fff;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li.status.deadline > a:before {
-  content: "마감";
-  color: #fff;
-  border-color: #fff;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li.status.first_come > a:before {
-  content: "선착순 \a마감";
-  color: #fff;
-  border-color: #fff;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li.status.crew > a:before {
-  content: "크루를 기다려요";
-  color: #fff;
-  border-color: #fff;
-  width: auto;
-  height: auto;
-  border-radius: 0;
-  border: 0 none;
+  border-radius: 24px;
 }
 .challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li + li {
   margin-top: 24px;
@@ -1874,39 +1889,7 @@ body.active {
 .challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a {
   display: block;
   position: relative;
-  overflow: hidden;
-  border-radius: 24px;
   color: #fff;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  display: none;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a:before {
-  content: "MISSION \a CLEAR";
-  white-space: pre-wrap;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 100;
-  transform: translate(-50%, -50%);
-  color: red;
-  text-align: center;
-  line-height: 1.2;
-  width: 120px;
-  height: 120px;
-  border: 5px solid red;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  display: none;
 }
 .challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a .visual_box {
   position: relative;
@@ -1949,6 +1932,7 @@ body.active {
   padding: 4px 8px;
   border-radius: 2px;
   font-size: 12px;
+  line-height: 1;
 }
 .challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a .title_box > .inner > .type > span + span {
   margin-left: 4px;
@@ -1972,6 +1956,21 @@ body.active {
 .challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a .title_box > .inner > .location {
   display: flex;
   align-items: center;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a .title_box > .inner > .location span {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  margin-right: -6px;
+  border-radius: 50%;
+  background: #B5FA95;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a .title_box > .inner > .location span lottie-player {
+  position: absolute;
+  top: -10px;
+  left: -2px;
+  width: 48px;
+  height: 48px;
 }
 .challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a .title_box > .inner > .location p {
   padding: 6px 16px;
@@ -2058,6 +2057,67 @@ body.active {
   background-size: 100%;
   font-size: 0;
   line-height: 0;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > .dimmed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > .dimmed.clear .inner lottie-player {
+  width: 60px;
+  margin: 0 auto;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > .dimmed.clear .inner p {
+  color: #EAE8FF;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > .dimmed.deadline .inner lottie-player {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  width: 200px;
+  height: auto;
+  margin: 0 auto;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > .dimmed.deadline .inner p {
+  color: #B5FA95;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > .dimmed.crew .inner {
+  top: 35%;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > .dimmed.crew .inner lottie-player {
+  position: relative;
+  left: 18px;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > .dimmed.crew .inner:after {
+  content: "h";
+  position: absolute;
+  top: 106px;
+  left: 60px;
+  color: #4E2AF4;
+  font-size: 60px;
+  font-weight: 600;
+  line-height: 1;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > .dimmed.crew .inner p {
+  color: #EAE8FF;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > .dimmed .inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > .dimmed .inner p {
+  font-size: 18px;
+  font-weight: 800;
+  text-align: center;
+  white-space: nowrap;
 }
 .challenge_content_wrap .challenge_company .challenge_visual img {
   display: block;
