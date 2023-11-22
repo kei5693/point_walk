@@ -1837,13 +1837,6 @@ body.active {
   top: -58px;
   transform: translate(-50%, 0);
 }
-.challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > .dimmed.crew .inner:after {
-  top: 120px;
-  left: 64px;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > .dimmed.crew .inner p {
-  margin-top: -15px;
-}
 .challenge_content_wrap .challenge_list_wrap .challenge_list .view_type {
   display: flex;
   justify-content: right;
@@ -2093,6 +2086,7 @@ body.active {
 .challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > .dimmed.crew .inner lottie-player {
   position: relative;
   left: 18px;
+  width: 171px;
 }
 .challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > .dimmed.crew .inner:after {
   content: "h";

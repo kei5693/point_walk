@@ -2153,11 +2153,6 @@ body.active {overflow: hidden;}
                 .inner {
                   top: -58px;
                   transform: translate(-50%, 0);
-                  &:after {
-                    top: 120px;
-                    left: 64px;
-                  }
-                  p {margin-top: -15px;}
                 }
               }
             }
@@ -2433,6 +2428,7 @@ body.active {overflow: hidden;}
                 lottie-player {
                   position: relative;
                   left: 18px;
+                  width: 171px;
                 }
                 &:after {
                   content: 'h';
