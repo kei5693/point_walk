@@ -1663,8 +1663,16 @@ body.active {
   border-color: var(--color-brand1);
   color: #fff;
 }
-.challenge_content_wrap .challenge_list_wrap .challenge_category ul > li > a {
+.challenge_content_wrap .challenge_list_wrap .challenge_category ul > li.active a > div img {
+  display: none;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_category ul > li.active a > div img + img {
   display: block;
+  position: static;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_category ul > li > a {
+  display: flex;
+  align-items: center;
   height: 100%;
   padding: 0 8px;
   border-radius: 16px;
@@ -1678,12 +1686,21 @@ body.active {
   white-space: nowrap;
   overflow: hidden;
 }
-.challenge_content_wrap .challenge_list_wrap .challenge_category ul > li > a img {
-  display: inline-block;
-  width: auto;
-  height: 16px;
-  vertical-align: middle;
+.challenge_content_wrap .challenge_list_wrap .challenge_category ul > li > a > div {
   margin-right: 4px;
+  overflow: hidden;
+  position: relative;
+  height: 16px;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_category ul > li > a > div img {
+  display: block;
+  width: auto;
+  height: 100%;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_category ul > li > a > div img + img {
+  position: absolute;
+  top: 100%;
+  left: 0;
 }
 .challenge_content_wrap .challenge_list_wrap .challenge_category ul > li > a span {
   display: inline-block;

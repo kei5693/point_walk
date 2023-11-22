@@ -1967,9 +1967,19 @@ body.active {overflow: hidden;}
             background: var(--color-brand1);
             border-color: var(--color-brand1);
             color: #fff;
+            > div {
+              img {
+                display: none;
+                & + img {
+                  display: block;
+                  position: static;
+                }
+              }
+            }
           }
           > a {
-            display: block;
+            display: flex;
+            align-items: center;
             height: 100%;
 
             padding: 0 8px;
@@ -1983,12 +1993,22 @@ body.active {overflow: hidden;}
             color: #3E4784;
 
             @include text_ellipsis();
-            img {
-              display: inline-block;
-              width: auto;
-              height: 16px;
-              vertical-align: middle;
+            > div {
               margin-right: 4px;
+
+              overflow: hidden;
+              position: relative;
+              height: 16px;
+              img {
+                display: block;
+                width: auto;
+                height: 100%;
+                & + img {
+                  position: absolute;
+                  top: 100%;
+                  left: 0;
+                }
+              }
             }
             span {
               display: inline-block;
