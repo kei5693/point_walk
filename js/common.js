@@ -764,6 +764,7 @@ let main = {
 let challenge = {
   init: function(){
     this.challengeNotice();
+    this.challengeScrollEvent();
     this.challengeCategoryListEvent();
     this.challengeRewardEvent();
   },
@@ -881,6 +882,31 @@ let challenge = {
       // categoryUl.style.transform = `translateX(${pos}px)`;
     }
   },
+  // 챌린지 : 상세 - 스크롤 이벤트
+  challengeScrollEvent: function(){
+    if(document.querySelector('.challenge_detail_wrap') == null) return;
+
+    const challengeInfo = document.querySelector('.challenge_info');
+    const challengeProgress = challengeInfo.querySelector(':scope > .progress_wrap');
+
+    window.addEventListener('scroll', () => {
+      const currentScrollPos = window.pageYOffset || document.documentElement.scrollTop;
+      let calcPos = challengeInfo.offsetTop - currentScrollPos;
+
+      if(calcPos < 116){
+        challengeInfo.classList.add('active');
+        setTimeout(() => {
+          challengeAni(30);
+          common.animateCounter('.challenge_info > .progress_wrap .info > div strong', 30, 600);
+        }, 300);
+      }
+    });
+
+    // 걷기 그래프 애니메이션
+    function challengeAni(current){
+      challengeProgress.querySelector(':scope .graph .inner span').style.left = current+'%';
+    }
+  },
   // 챌린지 : 상세 - 리워드 버튼 이벤트(버튼 클릭 시 스크롤 이동)
   challengeRewardEvent: function () {
     if(document.querySelector('.challenge_detail_wrap .challenge_reward') == null) return
@@ -892,7 +918,7 @@ let challenge = {
     let heights = calcHeight();
   
     // 초기 상태 설정
-    initHeight(rewardBtn, heights);
+    //initHeight(rewardBtn, heights);
 
     // 높이값 계산
     function calcHeight() {
@@ -911,16 +937,6 @@ let challenge = {
     // 클릭 이벤트 + 스크롤 이동
     rewardBtn.addEventListener('click', (e) => {
       initHeight(e.target.closest('button'), heights);
-
-      // 진행전, 진행중 레이아웃이 달라서 스크롤 대상도 다름
-      // // 진행중
-      // if(e.target.closest('.ongoing')){
-      //   common.scrollToEvent('.challenge_content_wrap', challengeReward, 10);
-      // } else {
-      //   // 진행전
-      //   common.scrollToEvent('#container', challengeReward);
-      // }
-
       common.scrollToEvent('html', challengeReward);
     });
   
@@ -957,6 +973,10 @@ let challenge = {
       }
     }
   },
+
+
+
+
   // 챌린지 : 상세 - 진행중 상태 일때 실행되어야함(fixed 메뉴 가변 높이 값 적용)
   // 일단 사용하지 않음 10/31
   challengeLayoutHeight: function(){
