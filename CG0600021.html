@@ -12,9 +12,7 @@
 	<script src="./js/swiper-bundle.min.js"></script>
 	<script src="./js/cdn.jsdelivr.net_npm_chart.js"></script>
 
-	<script src="./js/masonry.pkgd.min.js"></script>
-	<script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
-	<script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.js"></script>
+  <script src="./js/lottie-player.js"></script>
 </head>
 <body>
   <div id="wrap" class="challenge_layout">
@@ -25,143 +23,360 @@
         <h1>챌린지 상세</h1>
       </div>
 			<div class="icon_wrap">
-        <button type="button" class="btn_setting"><span>설정</span></button>
+        <button type="button" class="btn_comments"><span></span></button>
+        <button type="button" class="btn_share"><span></span></button>
+        <button type="button" class="btn_favorite"><span></span></button>
       </div>
     </div>
     <!-- container -->
-    <div id="container" class="interval_layout">
+    <div id="container">
       <!-- 챌린지 -->
       <div class="challenge_content_wrap">
         <!-- 챌린지 상세 -->
         <div class="challenge_detail_wrap">
+          <!-- 이미지 -->
+          <div class="challenge_visual">
+            <img src="./images/img_challenge_detail.jpg" alt="" />
+          </div>
           <div class="inner">
-            <!-- 이미지 -->
-            <div class="challenge_visual">
-              <img src="./images/img_dummy.jpg" alt="" />
-            </div>
-
-            <!-- 챌린지 기록 : 상단 고정 -->
-            <div class="challenge_record">
-              <h2>10,000걸음 중 100걸음</h2>
-
-              <div class="inner">
-                <div class="challenge_progress_box">
-                  <div><span>100걸음</span></div>
-                  <span>10,000걸음</span>
+            <!-- 기본정보 -->
+            <div class="challenge_info">
+              <div class="title">
+                <div>
+                  <h2><span>[더 현대 대전]</span>봄쇼핑만큼 설레는<br>함께하는 산책 6천보 걷기</h2>
+                  <div class="icon_wrap">
+                    <div class="ico_jelly"><span>젤리</span><em>100</em></div>
+                    <div class="ico_point"><span>포인트</span><em>100</em></div>
+                    <div class="ico_coupon"><span>쿠폰</span><em>1</em></div>
+                  </div>
                 </div>
+                <p>2023.11.12~2023.12.19</p>
+              </div>
+              
+              <dl>
+                <dt>대상</dt><dd>선착순 1만명 한정</dd>
+                <dt>목표</dt><dd>1만명이서 100만보 달성</dd>
+                <dt>리워드</dt><dd>챌린지 완료 시 각 개인 1,000J 지급</dd>
+              </dl>
 
-                <ul>
-                  <li>100m</li>
-                  <li>10분</li>
-                  <li>9,999kcal</li>
-                </ul>
+              <div class="progress_wrap">
+                <div class="info">
+                  <strong>현재</strong>
+                  <div><strong>0</strong>/100km</div>
+                </div>
+                <div class="graph">
+                  <div class="inner">
+                    <span class="walking1">현재</span>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <!-- 크루 : [챌린지 리더] -->
-            <div class="challenge_crew">
-              <h2>현재 <strong>2</strong>명이 함께하고 있어요!<br>
-                <strong>5</strong>명이되면 챌린지를 시작할 수 있어요
-              </h2>
+            <!-- 크루 : 참여전 -->
+            <div class="challenge_crew bg1">
+              <h2>Crew Challenges</h2>
+              <div class="title">
+                <h3>크루와<br>함께<br>도전하세요!</h3>
+              </div>
+            </div>
 
-              <div class="btn">
-                <button type="button" class="btn_view_crew"><span>크루보기v</span></button>
-                <button type="button"><span>+친구초대</span></button>
+            <!-- 크루 : [초대받아 진입했으나 선착순 마감된 경우] -->
+            <div class="challenge_crew bg2">
+              <h2>Crew Challenges</h2>
+              <div class="title">
+                <h3>크루모집이<br>마감되었어요.</h3>
+              </div>
+              <p>챌린지 도전 후 크루를 초대해보세요!</p>
+            </div>
+
+            <!-- 크루 : [챌린지 도전 버튼 선택 후 전환 노출] -->
+            <div class="challenge_crew">
+              <h2>Crew Challenges</h2>
+              <div class="title">
+                <h3>함께할 크루 <strong>5</strong>명을 초대하세요!</h3>
+              </div>
+
+              <div class="btn_wrap">
+                <button type="button" class="common_btn"><span>친구초대</span></button>
               </div>
             </div>
 
             <!-- 크루 : [리더: 챌린지 도전~크루원 미충족] -->
             <div class="challenge_crew">
-              <h2>현재 <strong>2</strong>명이 함께하고 있어요!<br>
-                <strong>5</strong>명이되면 챌린지를 시작할 수 있어요
-              </h2>
+              <h2>Crew Challenges</h2>
+              <div class="title">
+                <h3>현재 <strong>2</strong>명이 함께하고 있어요!<br>
+                  <strong>5</strong>명이되면 챌린지를 시작할 수 있어요
+                </h3>
+              </div>
 
-              <div class="btn">
-                <button type="button" class="btn_view_crew"><span>크루보기v</span></button>
-                <button type="button"><span>+친구초대</span></button>
+              <div class="btn_wrap">
+                <button type="button" class="common_btn color"><span>크루보기</span></button>
+                <button type="button" class="common_btn"><span>친구초대</span></button>
+              </div>
+            </div>
+
+            <!-- 크루 : [챌린지 초대받은 사람(챌린치 참여 전)] -->
+            <div class="challenge_crew">
+              <h2>Crew Challenges</h2>
+              <div class="title">
+                <h3>김*대님이 챌린지에 초대했어요!<br>챌린지에 참여하시겠어요?</h3>
+              </div>
+
+              <div class="btn_wrap">
+                <button type="button" class="common_btn"><span>참여할께요</span></button>
+              </div>
+            </div>
+
+            <!-- 크루 : [리더&크루 : 챌린지가 정상적으로 시작~종료 전] -->
+            <div class="challenge_crew">
+              <h2>Crew Challenges</h2>
+              <div class="title">
+                <h3><strong>5</strong>명의 크루와 함께하고 있어요.</h3>
+              </div>
+
+              <div class="btn_wrap">
+                <button type="button" class="common_btn color"><span>크루보기</span></button>
+              </div>
+            </div>
+
+            <!-- 크루 : 미로그인 상태에서 접속 시 노출 -->
+            <div class="challenge_crew">
+              <h2>Crew Challenges</h2>
+              <div class="title">
+                <h3>로그인을 하시면 초대된 챌린지에<br>참여할 수 있어요.</h3>
+              </div>
+
+              <div class="btn_wrap">
+                <button type="button" class="common_btn"><span>로그인</span></button>
               </div>
             </div>
 
             <!-- 크루 : [리더&크루 : 챌린지 달성&종료] -->
             <div class="challenge_crew">
-              <h2>5명의 크루와 함께했어요!</h2>
+              <h2>Crew Challenges</h2>
+              <div class="title">
+                <h3>5명의 크루와 함께했어요!</h3>
+              </div>
 
-              <div class="btn">
-                <button type="button" class="btn_view_crew"><span>크루기록보기 V</span></button>
+              <div class="btn_wrap">
+                <button type="button" class="common_btn color"><span>크루기록보기</span></button>
               </div>
             </div>
 
             <!-- 리워드 -->
             <div class="challenge_reward">
-              <h2>Reward</h2>
-              <p>각 단계를 클리어하시고 리워드를 받아가세요.</p>
+              <h2>Reward<button type="button" data-popup-name='#CG0600020-pop1' onClick="popupEvent();"><span></span></button></h2>
 
-              <ul>
-                <li>
+              <div class="admin_wrap">
+                <strong>어드민에서 등록한 텍스트 제목</strong>
+                <p>어드민에서 등록한 서브텍스트.<br>등록시에만 해당 영역 노출, 미등록 시 미노출</p>
+              </div>
+
+              <div class="notice">
+                <p><span>지도에서 위치와 경로를 확인하세요😄</span></p>
+              </div>
+
+              <ul class="reward_list">
+                <!-- 단계별 보상 step 완료 -->
+                <li class="step">
+                  <p>
+                    <strong>1단계</strong>
+                    <span>2,000</span>걸음/km
+                  </p>
                   <div>
-                    <h3>1단계 <span>3,000</span> 걸음/km</h3>
-                    <p>3J</p>
+                    <P>1단계 완료</P>
+                    <lottie-player autoplay loop mode="normal" src="./json/check.json"></lottie-player>
                   </div>
-                  <button type="button" class="complete"><span>받기 완료</span></button>
                 </li>
-                <li>
+                <li class="step">
+                  <p>
+                    <strong>2단계</strong>
+                    <span>5,000</span>걸음/km
+                  </p>
                   <div>
-                    <h3>2단계 <span>6,000</span> 걸음/km</h3>
-                    <p>1</p>
+                    <P>2단계 완료</P>
+                    <lottie-player autoplay loop mode="normal" src="./json/check.json"></lottie-player>
                   </div>
+                </li>
+                <li class="step">
+                  <p>
+                    <strong>3단계</strong>
+                    <span>10,000</span>걸음/km
+                  </p>
+                  <div>
+                    <P>3단계 완료</P>
+                    <lottie-player autoplay loop mode="normal" src="./json/check.json"></lottie-player>
+                  </div>
+                </li>
+
+                <!-- 단계별 보상 step 받기 -->
+                <li class="step">
+                  <p>
+                    <strong>1단계</strong>
+                    <span>2,000</span>걸음/km
+                  </p>
+                  <button type="button" disabled="disabled"><span>받기</span></button>
+                </li>
+                <li class="step">
+                  <p>
+                    <strong>2단계</strong>
+                    <span>5,000</span>걸음/km
+                  </p>
+                  <button type="button" class="complete" disabled="disabled"><span>받기</span></button>
+                </li>
+                <li class="step">
+                  <p>
+                    <strong>3단계</strong>
+                    <span>10,000</span>걸음/km
+                  </p>
                   <button type="button"><span>받기</span></button>
                 </li>
-                <li>
-                  <div>
-                    <h3>3단계 <span>9,000</span> 걸음/km</h3>
-                    <p>100</p>
+
+                <!-- 최종 달성 attain -->
+                <li class="attain">
+                  <lottie-player autoplay loop mode="normal" src="./json/casino-chip.json"></lottie-player>
+                  <dl>
+                    <dt>최종 달성 시 <span>리워드</span>가 지급됩니다.</dt>
+                    <dd><span>1,000P</span> 경품응모권</dd>
+                  </dl>
+                </li>
+
+                <!-- 일반 보상 : 쿠폰 -->
+                <li class="coupon">
+                  <div class="icon">
+                    <lottie-player autoplay loop mode="normal" src="./json/concert-ticket.json"></lottie-player>
+                    <span>1</span>
                   </div>
-                  <button type="button" disabled="disabled"><span>받기 완료</span></button>
+                  <p>
+                    <strong>폴바셋 사이즈업 쿠폰</strong>
+                    <span>단일조건노출 영역</span>
+                  </p>
+                  <button type="button" disabled="disabled"><span>받기</span></button>
+                </li>
+
+                <!-- 일반 보상 : 젤리 -->
+                <li class="jelly">
+                  <div class="icon">
+                    <lottie-player autoplay loop mode="normal" src="./json/heart.json"></lottie-player>
+                    <span>100</span>
+                  </div>
+                  <p>
+                    <strong>지급유형 젤리 100개</strong>
+                    <span>단일조건노출 영역</span>
+                  </p>
+                  <button type="button"><span>받기</span></button>
+                </li>
+
+                <!-- 일반 보상 : 포인트 -->
+                <li class="point">
+                  <div class="icon">
+                    <lottie-player autoplay loop mode="normal" src="./json/bounce-loader.json"></lottie-player>
+                    <span>100</span>
+                  </div>
+                  <p>
+                    <strong>뱃지명 노출 영역</strong>
+                    <span>단일조건노출 영역</span>
+                  </p>
+                  <button type="button"><span>받기</span></button>
                 </li>
               </ul>
 
-              <button type="button"><span>열기</span></button>
-            </div>
-
-            <!-- 기본정보 : 참여중일 경우 순서 변경됨 -->
-            <div class="challenge_info">
-              <h2>[현대백화점 김포점] 경기도와 함께하는 친구와 하루 6천보 걷기 챌린지</h2>
-              
-              <dl>
-                <dt>기간</dt>
-                <dd>2023.11.12~2023.12.19</dd>
-                <dt>대상</dt>
-                <dd>모든 포인트워크 회원</dd>
-                <dt>목표</dt>
-                <dd>크루원 5명이 기간 내 누적 10만보 달성</dd>
-                <dt>리워드</dt>
-                <dd>챌린지 완료 시 1,000J 지급</dd>
-              </dl>
+              <button type="button">리워드 <span></span></button>
             </div>
 
             <!-- 소개 -->
-            <div class="challenge_intro">
-              <h2>Pick Challenge</h2>
-              <img src="./images/img_dummy.jpg" alt="" />
-              <img src="./images/img_dummy.jpg" alt="" />
-              <img src="./images/img_dummy.jpg" alt="" />
-              <img src="./images/img_dummy.jpg" alt="" />
-              <img src="./images/img_dummy.jpg" alt="" />
-              
-              <div class="banner_box">
-                <img src="./images/img_dummy_banner.jpg" alt="" />
-                <img src="./images/img_dummy_banner.jpg" alt="" />
-                <img src="./images/img_dummy_banner.jpg" alt="" />
-              </div>
+            <div class="pick_challenge">
+              <img src="./images/img_page01.jpg" alt="" />
+              <img src="./images/img_page02.jpg" alt="" />
+              <img src="./images/img_page03.jpg" alt="" />
+              <img src="./images/img_page04.jpg" alt="" />
+              <img src="./images/img_page05.jpg" alt="" />
+
+              <button type="button" class="common_btn large color"><span>자세히 보기</span></button>
             </div>
           </div>
-          <button type="button">챌린지 도전</button>
+          <!-- 버튼 -->
+          <div class="challenge_btn">
+            <button type="button" class="common_btn large"><span>챌린지 시작</span></button>
+          </div>
         </div>
         <!-- //챌린지 상세 -->
+
       </div>
       <!-- //챌린지 -->
     </div>
   </div>
+
+  <!-- 리워드 유의사항 -->
+  <div id="CG0600020-pop1" class="modal_layer_popup">
+    <div class="dimmed_layer"></div>
+    <div class="layer_content_wrap">
+      <div class="layer_content">
+        <!-- header -->
+        <div class="layer_header">
+          <h1>앱 접근 권한 안내</h1>
+        </div>
+        <!-- body -->
+        <div class="layer_body">
+          <!-- access_rights -->
+          <div class="access_rights">
+            <h2>필수 권한</h2>
+            <ul class="icon_list">
+              <li>
+                <strong>신체활동</strong>
+                <p>만보기 걸음 수 체크를 위한 동작 인식</p>
+              </li>
+              <li>
+                <strong>위치</strong>
+                <p>챌린지 진행 시 위치기반 서비스 제공</p>
+              </li>
+            </ul>
+          
+            <h2>선택적 권한</h2>
+            <ul class="icon_list">
+              <li>
+                <strong>주소록</strong>
+                <p>친구 초대, 챌린지 크루 초대하기</p>
+              </li>
+              <li>
+                <strong>카메라</strong>
+                <p>챌린지 진행 시 위치기반 서비스 제공</p>
+              </li>
+              <li>
+                <strong>저장공간</strong>
+                <p>걸음수 타임스탬프 편집 및 저장</p>
+              </li>
+            </ul>
+          </div>
+        
+          <!-- notice_wrap -->
+          <div class="notice_wrap">
+            <ul class="bull_list">
+              <li>접근 권한 변경은 휴대폰 설정 &gt; 애플리케이션 &gt; H.Point에서 변경할 수 있습니다.</li>
+              <li>필수 권한 허용 후 포인트 워크를 이용할 수 있으며, 선택적 권한은 허용되지 않아도 해당 서비스외 이용이 가능합니다.</li>
+            </ul>
+          </div>
+          <!-- //notice_wrap -->
+        </div>
+        <!-- footer -->
+        <div class="layer_footer">
+          <div class="btn_dialog">
+            <button type="button">모두 확인함</button>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="layer_close">close</button>
+      <div class="layer_drag"><span></span></div>
+    </div>
+  </div>
+  <!-- //리워드 유의사항 -->
+
   <script src="./js/common.js"></script>
+  <script>
+    function popupEvent(){
+      common.layerToggle('#CG0600020-pop1');
+    }
+  </script>
 </body>
 </html>
