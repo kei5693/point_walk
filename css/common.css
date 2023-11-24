@@ -421,7 +421,7 @@ body.active {
 }
 #wrap.challenge_layout #container {
   position: relative;
-  z-index: 999;
+  z-index: 500;
   height: 100%;
   padding: 70% 0 100px;
 }
@@ -2145,13 +2145,6 @@ body.active {
   display: block;
   width: 100%;
 }
-.challenge_content_wrap .challenge_detail_wrap .challenge_notice {
-  position: fixed;
-  top: 44px;
-  left: 0;
-  z-index: -1;
-  width: 100%;
-}
 .challenge_content_wrap .challenge_detail_wrap > .inner h2 {
   font-size: 18px;
   font-weight: 800;
@@ -2471,16 +2464,85 @@ body.active {
 .challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li + li {
   margin-top: 12px;
 }
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li > p {
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li.step p strong {
+  display: inline;
+  margin-right: 6px;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li.step > div {
+  display: flex;
+  align-items: center;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li.step > div lottie-player {
+  margin-left: 8px;
+  width: 30px;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li.attain {
+  display: block;
+  padding: 6px 0 20px;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li.attain lottie-player {
+  width: 66px;
+  height: 66px;
+  margin: 0 auto;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li.attain dl {
+  font-size: 15px;
+  font-weight: 800;
+  color: #000;
+  text-align: center;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li.attain dl dt {
+  color: #667085;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li.attain dl dt span {
+  color: var(--color-brand1);
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li.point > .icon lottie-player {
+  position: absolute;
+  top: 0;
+  left: 24px;
+  width: 30px;
+  height: 30px;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li.point > .icon span:after {
+  content: "h";
+  position: absolute;
+  bottom: 0;
+  left: -24px;
+  font-size: 34px;
+  font-weight: 600;
+  color: #000;
+  line-height: 1;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li > .icon {
+  position: relative;
+  width: 66px;
+  height: 66px;
+  margin-left: -16px;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li > .icon span {
+  position: absolute;
+  top: 28px;
+  right: 0;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 4px;
+  background: #EAE8FF;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 22px;
+  color: #000;
+  text-align: center;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li p {
   font-size: 15px;
   font-weight: 800;
   color: #667085;
 }
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li > p strong {
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li p strong {
+  display: block;
   color: #1D2939;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li > p span {
-  margin-left: 8px;
 }
 .challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li > button {
   flex-shrink: 0;
@@ -2488,6 +2550,33 @@ body.active {
   height: 36px;
   background: var(--color-brand1);
   border-radius: 18px;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li > button:disabled {
+  background-color: #DDD;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li > button:disabled span {
+  color: #98A2B3;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li > button.complete {
+  background-color: #DDD;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li > button.complete span {
+  color: #98A2B3;
+  padding-left: 16px;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li > button.complete span:after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 0;
+  width: 14px;
+  height: 10px;
+  background: url("../images/challenge/ico_check.svg") no-repeat 50%;
+  background-size: 100% auto;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li > button span {
+  position: relative;
+  display: inline-block;
   font-size: 14px;
   font-weight: 800;
   line-height: 1;
@@ -2531,9 +2620,6 @@ body.active {
   margin-top: 40px;
   padding: 0;
   background: none;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .pick_challenge h2 {
-  margin: 0 0 32px 20px;
 }
 .challenge_content_wrap .challenge_detail_wrap > .inner .pick_challenge > img {
   display: block;

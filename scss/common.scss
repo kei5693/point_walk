@@ -481,10 +481,9 @@ body.active {overflow: hidden;}
     background: none;
     #container {
       position: relative;
-      z-index: 999;
+      z-index: 500;
       height: 100%;
       padding: 70% 0 100px;
-      // padding: 0 0 100px;
     }
     // 진행중
     &.ongoing {
@@ -2507,18 +2506,10 @@ body.active {overflow: hidden;}
       width: 100%;
       height: 100%;
       background: #F9F9FB;
-            // background: cyan;
       img {
         display: block;
         width: 100%;
       }
-    }
-    .challenge_notice {
-      position: fixed;
-      top: 44px;
-      left: 0;
-      z-index: -1;
-      width: 100%;
     }
     > .inner {
       h2 {
@@ -2853,9 +2844,6 @@ body.active {overflow: hidden;}
           margin-top: 22px;
           overflow: hidden;
           transition: height 0.3s;
-          &.step {
-
-          }
           > li {
             display: flex;
             align-items: center;
@@ -2867,17 +2855,99 @@ body.active {overflow: hidden;}
             border-radius: 16px;
             & + li {margin-top: 12px;}
             &.step {
-
+              p {
+                strong {
+                  display: inline;
+                  margin-right: 6px;
+                }
+              }
+              > div {
+                display: flex;
+                align-items: center;
+                lottie-player {
+                  margin-left: 8px;
+                  width: 30px;
+                }
+              }
             }
-            > p {
+            // 최종 달성
+            &.attain {
+              display: block;
+              padding: 6px 0 20px;
+              lottie-player {
+                width: 66px;
+                height: 66px;
+                margin: 0 auto;
+              }
+              dl {
+                font-size: 15px;
+                font-weight: 800;
+                color: #000;
+                text-align: center;
+                dt {
+                  color: #667085;
+                  span {
+                    color: var(--color-brand1);
+                  }
+                }
+              }
+            }
+            &.coupon {}
+            &.jelly {}
+            &.point {
+              > .icon {
+                lottie-player {
+                  position: absolute;
+                  top: 0;
+                  left: 24px;
+
+                  width: 30px;
+                  height: 30px;
+                }
+                span:after {
+                  content: 'h';
+                  position: absolute;
+                  bottom: 0;
+                  left: -24px;
+
+                  font-size: 34px;
+                  font-weight: 600;
+                  color: #000;
+                  line-height: 1;
+                }
+              }
+            }
+            > .icon {
+              position: relative;
+              width: 66px;
+              height: 66px;
+              margin-left: -16px;
+              span {
+                position: absolute;
+                top: 28px;
+                right: 0;
+
+                min-width: 20px;
+                height: 20px;
+                
+                padding: 0 4px;
+                background: #EAE8FF;
+                border-radius: 10px;
+
+                font-size: 12px;
+                font-weight: 600;
+                line-height: 22px;
+                color: #000;
+                text-align: center;
+              }
+            }
+            p {
               font-size: 15px;
               font-weight: 800;
               color: #667085;
               strong {
+                display: block;
                 color: #1D2939;
-              }
-              span {
-                margin-left: 8px;
               }
             }
             > button {
@@ -2888,10 +2958,37 @@ body.active {overflow: hidden;}
               background: var(--color-brand1);
               border-radius: 18px;
 
-              font-size: 14px;
-              font-weight: 800;
-              line-height: 1;
-              color: #fff;
+              &:disabled {
+                background-color: #DDD;
+                span {color: #98A2B3;}
+              }
+              &.complete {
+                background-color: #DDD;
+                span {
+                  color: #98A2B3;
+                  padding-left: 16px;
+                  &:after {
+                    content: '';
+                    position: absolute;
+                    top: 3px;
+                    left: 0;
+
+                    width: 14px;
+                    height: 10px;
+
+                    background: url('../images/challenge/ico_check.svg') no-repeat 50%;
+                    background-size: 100% auto;
+                  }
+                }
+              }
+              span {
+                position: relative;
+                display: inline-block;
+                font-size: 14px;
+                font-weight: 800;
+                line-height: 1;
+                color: #fff;
+              }
             }
           }
         }
@@ -2907,7 +3004,7 @@ body.active {overflow: hidden;}
           span {
             position: relative;
             padding-right: 26px;
-            &:before {
+            &:before {  
               content: '접기';
             }
             &:after {
@@ -2940,19 +3037,10 @@ body.active {overflow: hidden;}
         margin-top: 40px;
         padding: 0;
         background: none;
-        h2 {
-          margin: 0 0 32px 20px;
-        }
         > img {
           display: block;
           width: 100%;
         }
-        // .banner_box {
-        //   margin-top: 20px;
-        //   img + img {
-        //     margin-top: 10px;
-        //   }
-        // }
       }
     }
     // 하단 고정 버튼

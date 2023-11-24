@@ -916,15 +916,18 @@ let challenge = {
     const rewardLi = rewardUl.querySelectorAll(':scope > li');
     const rewardBtn = challengeReward.querySelector(':scope > button');
     let heights = calcHeight();
+
   
     // 초기 상태 설정
     //initHeight(rewardBtn, heights);
+    btnDownload();
 
     // 높이값 계산
     function calcHeight() {
+      let rewardLi = rewardUl.querySelectorAll(':scope > li');
       let parentHeight = 0;
       let childrenHeight = rewardLi[0].offsetHeight;
-      let gap = 10;
+      let gap = 12;
   
       rewardLi.forEach((li, index) => {
         let value = index > 0 ? li.offsetHeight + gap : li.offsetHeight;
@@ -934,13 +937,16 @@ let challenge = {
       return { parentHeight, childrenHeight };
     }
 
-    // 클릭 이벤트 + 스크롤 이동
+    // 리워드 접기/펴기 클릭 이벤트 + 스크롤 이동
     rewardBtn.addEventListener('click', (e) => {
-      initHeight(e.target.closest('button'), heights);
+      heights = calcHeight();
+
       common.scrollToEvent('html', challengeReward);
+      initHeight(e.target.closest('button'), heights);
     });
+
   
-    // 버튼에 class toggle, ul 높이 값 변경
+    // 리워드 접기/펴기 버튼에 class toggle, ul 높이 값 변경
     function initHeight(target, heights) {
       let condition = target.classList.contains('active');
       let value = 0;
@@ -965,12 +971,23 @@ let challenge = {
     // 리사이즈 대응
     function resizeHeight(heights) {
       let condition = rewardBtn.classList.contains('active');
+      condition ? rewardUl.style.height = heights.childrenHeight + 'px' : rewardUl.style.height = heights.parentHeight + 'px';
+    }
 
-      if (condition) {
-        rewardUl.style.height = heights.childrenHeight + 'px';
-      } else {
-        rewardUl.style.height = heights.parentHeight + 'px';
-      }
+    // 리워드 받기 버튼 이벤트
+    function btnDownload(){
+      rewardLi.forEach((btn)=>{
+        const targetBtn = btn.querySelector('button');
+
+        if (targetBtn) {
+          targetBtn.addEventListener('click', () => {
+            if(!targetBtn.classList.contains('complete')){
+              targetBtn.classList.add('complete');
+              targetBtn.disabled = true;
+            }
+          });
+        }
+      });
     }
   },
 
@@ -1209,21 +1226,19 @@ let walkingReport = {
   },
 }
 
-function init(){
-  common.layerButtonToggle();
-  common.toastButtonToggle();
-  common.designSelect();
-  common.scrollDeformation();
-  common.tabMenuEvent();
-  common.inputBorderEvent();
-  
-  main.init();
-  challenge.init();
-  walkingReport.anchorEvent();
-};
-
-window.addEventListener("DOMContentLoaded", () => {
-  init();
+document.addEventListener("DOMContentLoaded", function() {
+  // setTimeout(() => {
+    common.layerButtonToggle();
+    common.toastButtonToggle();
+    common.designSelect();
+    common.scrollDeformation();
+    common.tabMenuEvent();
+    common.inputBorderEvent();
+    
+    main.init();
+    challenge.init();
+    walkingReport.anchorEvent();
+  // }, 10);
 });
 
 
