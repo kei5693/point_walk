@@ -920,7 +920,7 @@ let challenge = {
 
   
     // 초기 상태 설정
-    //initHeight(rewardBtn, heights);
+    initHeight(rewardBtn, heights);
     btnDownload();
 
     // 높이값 계산
