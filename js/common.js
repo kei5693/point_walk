@@ -915,6 +915,7 @@ let challenge = {
     const rewardUl = challengeReward.querySelector(':scope > ul');
     const rewardLi = rewardUl.querySelectorAll(':scope > li');
     const rewardBtn = challengeReward.querySelector(':scope > button');
+    const pickChallenge = document.querySelector('.challenge_detail_wrap .pick_challenge');
     let heights = calcHeight();
 
   
@@ -989,9 +990,13 @@ let challenge = {
         }
       });
     }
+
+    // 자세히 보기 버튼 이벤트
+    pickChallenge.querySelector(':scope > button').addEventListener('click', ()=>{
+      pickChallenge.classList.add('active');
+      common.scrollToEvent('html', pickChallenge, 0);
+    });
   },
-
-
 
 
   // 챌린지 : 상세 - 진행중 상태 일때 실행되어야함(fixed 메뉴 가변 높이 값 적용)
@@ -1183,8 +1188,8 @@ let walkingReport = {
     }
     // 상위 분포도 애니메이션(걸음 수 비교로 class 분기)
     function rankAni(me, average){
-      let condition = ''; 
       const meGraph = document.querySelector('.graph_cont2 .graph_wrap .graph');
+      let condition = ''; 
 
       if(me < average){
         condition = 'less';
@@ -1214,11 +1219,13 @@ let walkingReport = {
       ];
 
       days.forEach((day, index)=>{
-        if(walkingDataArr[index] > 2000 && walkingDataArr[index] < 5000){
+        const walkingData = walkingDataArr[index];
+
+        if (walkingData > 2000 && walkingData < 5000) {
           day.classList.add('walking_3');
-        } else if(walkingDataArr[index] > 5000 && walkingDataArr[index] < 10000){
+        } else if (walkingData > 5000 && walkingData < 10000) {
           day.classList.add('walking_5');
-        } else if(walkingDataArr[index] > 10000){
+        } else if (walkingData > 10000) {
           day.classList.add('walking_10');
         }
       });

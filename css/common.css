@@ -2620,20 +2620,46 @@ body.active {
   margin-top: 40px;
   padding: 0;
   background: none;
+  position: relative;
+  overflow: hidden;
+  max-height: 300px;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .pick_challenge.active {
+  max-height: none;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .pick_challenge.active > button {
+  display: none;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .pick_challenge:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 300px;
+  background: linear-gradient(rgba(255, 255, 255, 0) 10%, #fff 100%);
 }
 .challenge_content_wrap .challenge_detail_wrap > .inner .pick_challenge > img {
   display: block;
   width: 100%;
 }
+.challenge_content_wrap .challenge_detail_wrap > .inner .pick_challenge > button {
+  position: absolute;
+  bottom: 20px;
+  left: 28px;
+  z-index: 100;
+  max-width: calc(100% - 56px);
+}
 .challenge_content_wrap .challenge_detail_wrap .challenge_btn {
   position: fixed;
-  bottom: 0;
+  bottom: 0px;
   left: 0;
   z-index: 100;
   width: 100%;
   height: 100px;
-  padding: 24px 50px 34px;
+  padding: 24px 0 34px;
   background: #fff;
+  box-shadow: 0 0px 30px 5px rgba(0, 0, 0, 0.3);
 }
 .challenge_content_wrap .challenge_detail_wrap .common_btn {
   display: block;
@@ -2649,6 +2675,14 @@ body.active {
   color: var(--color-brand1);
   background: #fff;
   border: 1px solid var(--color-brand1);
+}
+.challenge_content_wrap .challenge_detail_wrap .common_btn.large {
+  max-width: calc(100% - 56px);
+  height: 58px;
+  margin: 0 auto;
+  border-radius: 0;
+  font-size: 13px;
+  font-weight: 800;
 }
 .challenge_content_wrap .icon_wrap {
   display: flex;
