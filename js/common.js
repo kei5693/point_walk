@@ -767,6 +767,7 @@ let challenge = {
     this.challengeScrollEvent();
     this.challengeCategoryListEvent();
     this.challengeRewardEvent();
+    this.challengeReportAni();
   },
   // 챌린지 안내
   challengeNotice: function(){
@@ -892,19 +893,52 @@ let challenge = {
     window.addEventListener('scroll', () => {
       const currentScrollPos = window.pageYOffset || document.documentElement.scrollTop;
       let calcPos = challengeInfo.offsetTop - currentScrollPos;
+      let calcPos2 = document.querySelector('.challenge_content_wrap').offsetTop - currentScrollPos;
 
       if(calcPos < 116){
+        // 재실행 방지
+        if(challengeInfo.classList.contains('active')) return;
         challengeInfo.classList.add('active');
+
         setTimeout(() => {
           challengeAni(30);
           common.animateCounter('.challenge_info > .progress_wrap .info > div strong', 30, 600);
         }, 300);
       }
     });
-
     // 걷기 그래프 애니메이션
     function challengeAni(current){
       challengeProgress.querySelector(':scope .graph .inner span').style.left = current+'%';
+    }
+  },
+  // 챌린지 : 상세 - 진행중 걸음 기록
+  challengeReportAni: function(){
+    if(document.querySelector('.challenge_report') == null) return;
+
+    const challengeReport = document.querySelector('.challenge_report');
+    const reportGraph = challengeReport.querySelector(':scope .graph_wrap');
+
+    // 재실행 방지
+    if(challengeReport.classList.contains('active')) return;
+    challengeReport.classList.add('active');
+
+    ongoingAni(30, 100);
+    common.animateCounter('.challenge_report .graph_cont > h3 span', 1000, 600);
+
+    // 챌린지 진행중 걸음수 애니메이션
+    function ongoingAni(today, yesterday){
+      const todayGraph = reportGraph.querySelector('.walking1');
+      const yesterdayGraph = reportGraph.querySelector('.walking2');
+
+      if(today == 100) {
+        todayGraph.classList.add('align_right');
+      }
+      if(yesterday == 100) {
+        yesterdayGraph.classList.add('align_right');
+      }
+
+      todayGraph.style.left = today+'%';
+      yesterdayGraph.style.left = yesterday+'%';
     }
   },
   // 챌린지 : 상세 - 리워드 버튼 이벤트(버튼 클릭 시 스크롤 이동)
@@ -912,19 +946,20 @@ let challenge = {
     if(document.querySelector('.challenge_detail_wrap .challenge_reward') == null) return
 
     const challengeReward = document.querySelector('.challenge_detail_wrap .challenge_reward');
+    const rewardToggleCont = challengeReward.querySelector(':scope > .toggle_cont');
+
     const rewardUl = challengeReward.querySelector(':scope > ul');
     const rewardLi = rewardUl.querySelectorAll(':scope > li');
     const rewardBtn = challengeReward.querySelector(':scope > button');
     const pickChallenge = document.querySelector('.challenge_detail_wrap .pick_challenge');
-    let heights = calcHeight();
-
+    let rewardListHeight = calcListHeight();
   
     // 초기 상태 설정
-    initHeight(rewardBtn, heights);
+    setListHeight(rewardBtn, rewardListHeight);
     btnDownload();
 
-    // 높이값 계산
-    function calcHeight() {
+    // 리워드 리스트 높이값 계산
+    function calcListHeight() {
       let rewardLi = rewardUl.querySelectorAll(':scope > li');
       let parentHeight = 0;
       let childrenHeight = rewardLi[0].offsetHeight;
@@ -934,48 +969,80 @@ let challenge = {
         let value = index > 0 ? li.offsetHeight + gap : li.offsetHeight;
         parentHeight += value;
       });
+
+      let toggleEl = rewardToggleCont.querySelectorAll(':scope > div');
+      let toggleHeight = 0;
+      let gap2 = 16; // 패딩 값 16 포함
   
-      return { parentHeight, childrenHeight };
+      toggleEl.forEach((div, index) => {
+        let value = index > 0 ? div.offsetHeight + gap2 : div.offsetHeight;
+        toggleHeight += value;
+      });
+  
+      return { parentHeight, childrenHeight, toggleHeight };
     }
 
     // 리워드 접기/펴기 클릭 이벤트 + 스크롤 이동
     rewardBtn.addEventListener('click', (e) => {
-      heights = calcHeight();
+      rewardListHeight = calcListHeight();
 
-      common.scrollToEvent('html', challengeReward);
-      initHeight(e.target.closest('button'), heights);
+      scrollToEvent('html', challengeReward);
+      setListHeight(e.target.closest('button'), rewardListHeight);
+
+      // Example usage with a callback function
+      // scrollToEvent('html', challengeReward, 50, () => {
+      //   let condition = rewardBtn.classList.contains('active');
+
+      //   if(condition){
+      //     setListHeight(e.target.closest('button'), rewardListHeight);
+      //   } else {
+      //     document.addEventListener("scrollend", () => {
+      //       console.log('Scroll animation completed!');
+      //       setListHeight(e.target.closest('button'), rewardListHeight);
+
+      //     });
+      //   }
+      // });
     });
-
   
     // 리워드 접기/펴기 버튼에 class toggle, ul 높이 값 변경
-    function initHeight(target, heights) {
+    function setListHeight(target, heights){
       let condition = target.classList.contains('active');
-      let value = 0;
+      let value = [0,0];
   
       if (condition) {
         target.classList.remove('active');
-        value = heights.parentHeight;
+        value[0] = heights.parentHeight;
+        value[1] = heights.toggleHeight;
       } else {
         target.classList.add('active');
-        value = heights.childrenHeight;
+        value[0] = heights.childrenHeight;
+        value[1] = 0;
       }
-      
-      rewardUl.style.height = value + 'px';
+      rewardToggleCont.style.height = value[1] + 'px';
+      rewardUl.style.height = value[0] + 'px';
+    }
+
+    function scrollToEvent(target, interval, gap = 50, callback){
+      let scrollTarget = document.querySelector(target);
+      let scrollValue = interval.offsetTop - scrollTarget.offsetTop - gap;
+  
+      // Set the scroll value
+      scrollTarget.scrollTop = scrollValue;
+
+      // Call the callback function if provided
+      if (typeof callback === 'function') {
+        callback();
+      }
     }
 
     // 리사이즈 이벤트
     window.addEventListener('resize', () => {
-      heights = calcHeight();
-      resizeHeight(heights);
+      rewardListHeight = calcListHeight();
+      setListHeight(rewardBtn, rewardListHeight);
     });
 
-    // 리사이즈 대응
-    function resizeHeight(heights) {
-      let condition = rewardBtn.classList.contains('active');
-      condition ? rewardUl.style.height = heights.childrenHeight + 'px' : rewardUl.style.height = heights.parentHeight + 'px';
-    }
-
-    // 리워드 받기 버튼 이벤트
+    // 리워드 받기 버튼 클릭 변화 이벤트
     function btnDownload(){
       rewardLi.forEach((btn)=>{
         const targetBtn = btn.querySelector('button');
@@ -997,6 +1064,10 @@ let challenge = {
       common.scrollToEvent('html', pickChallenge, 0);
     });
   },
+
+
+
+
 
 
   // 챌린지 : 상세 - 진행중 상태 일때 실행되어야함(fixed 메뉴 가변 높이 값 적용)

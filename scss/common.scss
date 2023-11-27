@@ -2745,6 +2745,7 @@ body.active {overflow: hidden;}
         background: none;
         border-radius: 0;
         > h2 {
+          margin-bottom: 16px;
           font-size: 18px;
           font-weight: 800;
           color: #000;
@@ -2759,84 +2760,88 @@ body.active {overflow: hidden;}
             }
           }
         }
-        > .admin_wrap {
-          margin-top: 16px;
-          padding: 24px;
-          background: #EAECF5;
-          border-radius: 17px;
-
-          color: #344054;
-          strong {
-            font-size: 15px;
-            font-weight: 800;
-          }
-          p {
-            margin-top: 12px;
-            font-size: 14px;
-            font-weight: 600;
-          }
-        }
-        > .notice {
-          position: relative;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          min-height: 38px;
-
-          margin-top: 16px;
-          background: #B5FA95;
-          border-radius: 14px;
-          &:after {
-            content: '';
-            position: absolute;
-            bottom: -7px;
-            left: 50%;
-            transform: translateX(-50%);
-            
-            border-top: 7px solid #B5FA95;
-            border-bottom : 0 none;
-            border-left: 7px solid transparent;
-            border-right: 7px solid transparent;
-          }
-          p {
-            position: relative;
-            margin: 9px 16px;
-            padding-left: 18px;
-            &:before {
-              content: '';
-              position: absolute;
-              top: -1px;
-              left: 0;
+        > .toggle_cont {
+          overflow: hidden;
+          height: 0;
+          transition: height 0.3s;
+          > .admin_wrap {
+            padding: 24px;
+            background: #EAECF5;
+            border-radius: 17px;
   
-              width: 16px;
-              height: 16px;
-  
-              background: url('../images/challenge/ico_location02.svg') no-repeat 50%;
-              background-size: 100%;
+            color: #344054;
+            strong {
+              font-size: 15px;
+              font-weight: 800;
+            }
+            p {
+              margin-top: 12px;
+              font-size: 14px;
+              font-weight: 600;
             }
           }
-          span {
-            display: inline-block;
-            
-            font-size: 14px;
-            font-weight: 600;
-            color: #000;
+          > .notice {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 38px;
+  
+            margin-top: 16px;
+            background: #B5FA95;
+            border-radius: 14px;
             &:after {
               content: '';
+              position: absolute;
+              bottom: -7px;
+              left: 50%;
+              transform: translateX(-50%);
+              
+              border-top: 7px solid #B5FA95;
+              border-bottom : 0 none;
+              border-left: 7px solid transparent;
+              border-right: 7px solid transparent;
+            }
+            p {
               position: relative;
-              left: 0;
-
+              margin: 9px 16px;
+              padding-left: 18px;
+              &:before {
+                content: '';
+                position: absolute;
+                top: -1px;
+                left: 0;
+    
+                width: 16px;
+                height: 16px;
+    
+                background: url('../images/challenge/ico_location02.svg') no-repeat 50%;
+                background-size: 100%;
+              }
+            }
+            span {
               display: inline-block;
-              width: 14px;
-              height: 14px;
-
-              vertical-align: middle;
-              margin-left: 2px;
+              
+              font-size: 14px;
+              font-weight: 600;
+              color: #000;
+              &:after {
+                content: '';
+                position: relative;
+                left: 0;
   
-              background: url('../images/challenge/ico_arrow_right.svg') no-repeat 50%;
-              background-size: 100%;
-
-              animation: arrow_right infinite alternate 0.8s;
+                display: inline-block;
+                width: 14px;
+                height: 14px;
+  
+                vertical-align: middle;
+                margin-left: 2px;
+    
+                background: url('../images/challenge/ico_arrow_right.svg') no-repeat 50%;
+                background-size: 100%;
+  
+                animation: arrow_right infinite alternate 0.8s;
+              }
             }
           }
         }
@@ -3044,6 +3049,7 @@ body.active {overflow: hidden;}
         &.active {
           max-height: none;
           > button {display: none;}
+          &:after {display: none;}
         }
         &:after {
           content: '';
@@ -3066,6 +3072,148 @@ body.active {overflow: hidden;}
           z-index: 100;
 
           max-width: calc(100% - 56px);
+        }
+      }
+      // 걸음리포트
+      .challenge_report {
+        .graph_cont {
+          > h3 {
+            font-size: 24px;
+            font-weight: 800;
+            span {
+              color: var(--color-brand1);
+            }
+          }
+          .graph_wrap {
+            .graph {
+              margin-top: 44px;
+              position: relative;
+              
+              display: flex;
+              align-items: center;
+              &:before,
+              &:after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+
+                width: 8px;
+                height: 8px;
+
+                border-radius: 50%;
+                background: #000;
+              }
+              &:before {left: 0;}
+              &:after {right: 0;}
+              > .inner {
+                flex: 1;
+                height: 2px;
+                background: #000;
+                margin: 12px 0;
+                &:after {
+                  content: '';
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  width: 8px;
+                  height: 8px;
+                  border-radius: 50%;
+                  background: #000;
+                }
+                > span {
+                  position: absolute;
+                  left: 0;
+                  z-index: 100;
+                  transform: translateX(-50%);
+                  transition: left 0.6s;
+  
+                  font-size: 13px;
+                  font-weight: 800;
+                  white-space: nowrap;
+                  em {
+                    display: block;
+                  }
+                  &:after {
+                    content: '';
+                    position: absolute;
+                    top: 1px;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    border-radius: 50%;
+  
+                    width: 16px;
+                    height: 16px;
+                    background: #B5FA95;
+                  }
+                  &.walking1 {
+                    z-index: 200;
+                    &.align_right {
+                      em {transform: translate(calc(-50% + 12px), -35px);}
+                    }
+                    em {transform: translateY(-35px);}
+                  }
+                  &.walking2 {
+                    &.align_right {
+                      em {transform: translate(calc(-50% + 12px), 19px);}
+                    }
+                    em {transform: translateY(19px);}
+                    &:after {
+                      width: 24px;
+                      height: 24px;
+                      background: #BDB4FE;
+                    }
+                  }
+                }
+              }
+            }
+            > ul {
+              display: flex;
+              justify-content: space-around;
+              align-items: center;
+
+              margin-top: 64px;
+              padding: 16px 0;
+              border-radius: 16px;
+              background-color: #F9FAFB;
+              > li {
+                text-align: center;
+                > span {
+                  display: block;
+                  position: relative;
+                  padding-top: 32px;
+
+                  font-size: 14px;
+                  font-weight: 600;
+                  color: #475467;
+                  &::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+
+                    width: 24px;
+                    height: 24px;
+
+                    background: url('../images/report/ico_graph_01.svg') no-repeat;
+                    background-size: 100%;
+                  }
+                }
+                &:nth-child(2) > span:after {background-image: url('../images/report/ico_graph_02.svg');}
+                &:nth-child(3) > span:after {background-image: url('../images/report/ico_graph_03.svg');}
+                > p {
+                  margin-top: 8px;
+                  font-size: 20px;
+                  font-weight: 800;
+                  span {
+                    color: var(--color-brand1);
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -3547,9 +3695,7 @@ body.active {overflow: hidden;}
         .graph_wrap {
           .graph {
             margin-top: 72px;
-            overflow: hidden;
             position: relative;
-            
             display: flex;
             align-items: center;
             &:before,
@@ -3585,33 +3731,44 @@ body.active {overflow: hidden;}
               }
               > span {
                 position: absolute;
-                top: 11px;
-                left: -14px;
+                left: 0;
                 z-index: 100;
                 transform: translateX(-50%);
                 transition: left 0.6s;
 
-                padding-top: 18px;
-
                 font-size: 13px;
                 font-weight: 800;
+                white-space: nowrap;
+                em {
+                  display: block;
+                }
                 &:after {
                   content: '';
                   position: absolute;
-                  top: -7px;
+                  top: 1px;
                   left: 50%;
-                  transform: translate(-50%);
+                  transform: translate(-50%, -50%);
                   border-radius: 50%;
 
                   width: 16px;
                   height: 16px;
                   background: #B5FA95;
                 }
-                &.walking2:after {
-                  top: -11px;
-                  width: 24px;
-                  height: 24px;
-                  background: #BDB4FE;
+                &.walking1 {
+                  z-index: 200;
+                  em {
+                    transform: translateY(-35px);
+                  }
+                }
+                &.walking2 {
+                  em {
+                    transform: translateY(19px);
+                  }
+                  &:after {
+                    width: 24px;
+                    height: 24px;
+                    background: #BDB4FE;
+                  }
                 }
               }
             }

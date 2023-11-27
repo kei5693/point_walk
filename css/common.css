@@ -2362,6 +2362,7 @@ body.active {
   border-radius: 0;
 }
 .challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > h2 {
+  margin-bottom: 16px;
   font-size: 18px;
   font-weight: 800;
   color: #000;
@@ -2376,23 +2377,27 @@ body.active {
   background: url("../images/common/ico_noti01.svg") no-repeat 50%;
   background-size: 100%;
 }
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .admin_wrap {
-  margin-top: 16px;
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont {
+  overflow: hidden;
+  height: 0;
+  transition: height 0.3s;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .admin_wrap {
   padding: 24px;
   background: #EAECF5;
   border-radius: 17px;
   color: #344054;
 }
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .admin_wrap strong {
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .admin_wrap strong {
   font-size: 15px;
   font-weight: 800;
 }
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .admin_wrap p {
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .admin_wrap p {
   margin-top: 12px;
   font-size: 14px;
   font-weight: 600;
 }
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .notice {
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .notice {
   position: relative;
   display: flex;
   align-items: center;
@@ -2402,7 +2407,7 @@ body.active {
   background: #B5FA95;
   border-radius: 14px;
 }
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .notice:after {
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .notice:after {
   content: "";
   position: absolute;
   bottom: -7px;
@@ -2413,12 +2418,12 @@ body.active {
   border-left: 7px solid transparent;
   border-right: 7px solid transparent;
 }
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .notice p {
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .notice p {
   position: relative;
   margin: 9px 16px;
   padding-left: 18px;
 }
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .notice p:before {
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .notice p:before {
   content: "";
   position: absolute;
   top: -1px;
@@ -2428,13 +2433,13 @@ body.active {
   background: url("../images/challenge/ico_location02.svg") no-repeat 50%;
   background-size: 100%;
 }
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .notice span {
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .notice span {
   display: inline-block;
   font-size: 14px;
   font-weight: 600;
   color: #000;
 }
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .notice span:after {
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .notice span:after {
   content: "";
   position: relative;
   left: 0;
@@ -2630,6 +2635,9 @@ body.active {
 .challenge_content_wrap .challenge_detail_wrap > .inner .pick_challenge.active > button {
   display: none;
 }
+.challenge_content_wrap .challenge_detail_wrap > .inner .pick_challenge.active:after {
+  display: none;
+}
 .challenge_content_wrap .challenge_detail_wrap > .inner .pick_challenge:after {
   content: "";
   position: absolute;
@@ -2649,6 +2657,141 @@ body.active {
   left: 28px;
   z-index: 100;
   max-width: calc(100% - 56px);
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont > h3 {
+  font-size: 24px;
+  font-weight: 800;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont > h3 span {
+  color: var(--color-brand1);
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap .graph {
+  margin-top: 44px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap .graph:before, .challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap .graph:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #000;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap .graph:before {
+  left: 0;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap .graph:after {
+  right: 0;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap .graph > .inner {
+  flex: 1;
+  height: 2px;
+  background: #000;
+  margin: 12px 0;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap .graph > .inner:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #000;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap .graph > .inner > span {
+  position: absolute;
+  left: 0;
+  z-index: 100;
+  transform: translateX(-50%);
+  transition: left 0.6s;
+  font-size: 13px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap .graph > .inner > span em {
+  display: block;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap .graph > .inner > span:after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  background: #B5FA95;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap .graph > .inner > span.walking1 {
+  z-index: 200;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap .graph > .inner > span.walking1.align_right em {
+  transform: translate(calc(-50% + 12px), -35px);
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap .graph > .inner > span.walking1 em {
+  transform: translateY(-35px);
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap .graph > .inner > span.walking2.align_right em {
+  transform: translate(calc(-50% + 12px), 19px);
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap .graph > .inner > span.walking2 em {
+  transform: translateY(19px);
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap .graph > .inner > span.walking2:after {
+  width: 24px;
+  height: 24px;
+  background: #BDB4FE;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap > ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 64px;
+  padding: 16px 0;
+  border-radius: 16px;
+  background-color: #F9FAFB;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap > ul > li {
+  text-align: center;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap > ul > li > span {
+  display: block;
+  position: relative;
+  padding-top: 32px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #475467;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap > ul > li > span::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 24px;
+  background: url("../images/report/ico_graph_01.svg") no-repeat;
+  background-size: 100%;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap > ul > li:nth-child(2) > span:after {
+  background-image: url("../images/report/ico_graph_02.svg");
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap > ul > li:nth-child(3) > span:after {
+  background-image: url("../images/report/ico_graph_03.svg");
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap > ul > li > p {
+  margin-top: 8px;
+  font-size: 20px;
+  font-weight: 800;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap > ul > li > p span {
+  color: var(--color-brand1);
 }
 .challenge_content_wrap .challenge_detail_wrap .challenge_btn {
   position: fixed;
@@ -3072,7 +3215,6 @@ body.active {
 }
 .walking_report > .contents > div .graph_cont1 .graph_wrap .graph {
   margin-top: 72px;
-  overflow: hidden;
   position: relative;
   display: flex;
   align-items: center;
@@ -3112,28 +3254,38 @@ body.active {
 }
 .walking_report > .contents > div .graph_cont1 .graph_wrap .graph > .inner > span {
   position: absolute;
-  top: 11px;
-  left: -14px;
+  left: 0;
   z-index: 100;
   transform: translateX(-50%);
   transition: left 0.6s;
-  padding-top: 18px;
   font-size: 13px;
   font-weight: 800;
+  white-space: nowrap;
+}
+.walking_report > .contents > div .graph_cont1 .graph_wrap .graph > .inner > span em {
+  display: block;
 }
 .walking_report > .contents > div .graph_cont1 .graph_wrap .graph > .inner > span:after {
   content: "";
   position: absolute;
-  top: -7px;
+  top: 1px;
   left: 50%;
-  transform: translate(-50%);
+  transform: translate(-50%, -50%);
   border-radius: 50%;
   width: 16px;
   height: 16px;
   background: #B5FA95;
 }
+.walking_report > .contents > div .graph_cont1 .graph_wrap .graph > .inner > span.walking1 {
+  z-index: 200;
+}
+.walking_report > .contents > div .graph_cont1 .graph_wrap .graph > .inner > span.walking1 em {
+  transform: translateY(-35px);
+}
+.walking_report > .contents > div .graph_cont1 .graph_wrap .graph > .inner > span.walking2 em {
+  transform: translateY(19px);
+}
 .walking_report > .contents > div .graph_cont1 .graph_wrap .graph > .inner > span.walking2:after {
-  top: -11px;
   width: 24px;
   height: 24px;
   background: #BDB4FE;
