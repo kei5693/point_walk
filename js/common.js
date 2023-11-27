@@ -1008,10 +1008,10 @@ let challenge = {
       rewardUl.style.height = value[0] + 'px';
     }
     // 리사이즈 이벤트
-    window.addEventListener('resize', () => {
-      rewardListHeight = calcListHeight();
-      setListHeight(rewardBtn, rewardListHeight);
-    });
+    // window.addEventListener('resize', () => {
+    //   rewardListHeight = calcListHeight();
+    //   setListHeight(rewardBtn, rewardListHeight);
+    // });
 
     // 리워드 받기 버튼 클릭 변화 이벤트
     function btnDownload(){
