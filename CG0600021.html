@@ -210,7 +210,76 @@
                   </div>
                 </li>
 
+                <!-- 단계별 보상 step 받기 -->
+                <li class="step">
+                  <p>
+                    <strong>1단계</strong>
+                    <span>2,000</span>걸음/km
+                  </p>
+                  <button type="button" disabled="disabled"><span>받기</span></button>
+                </li>
+                <li class="step">
+                  <p>
+                    <strong>2단계</strong>
+                    <span>5,000</span>걸음/km
+                  </p>
+                  <button type="button" class="complete" disabled="disabled"><span>받기</span></button>
+                </li>
+                <li class="step">
+                  <p>
+                    <strong>3단계</strong>
+                    <span>10,000</span>걸음/km
+                  </p>
+                  <button type="button"><span>받기</span></button>
+                </li>
 
+                <!-- 최종 달성 attain -->
+                <li class="attain">
+                  <lottie-player autoplay loop mode="normal" src="./json/casino-chip.json"></lottie-player>
+                  <dl>
+                    <dt>최종 달성 시 <span>리워드</span>가 지급됩니다.</dt>
+                    <dd><span>1,000P</span> 경품응모권</dd>
+                  </dl>
+                </li>
+
+                <!-- 일반 보상 : 쿠폰 -->
+                <li class="coupon">
+                  <div class="icon">
+                    <lottie-player autoplay loop mode="normal" src="./json/concert-ticket.json"></lottie-player>
+                    <span>1</span>
+                  </div>
+                  <p>
+                    <strong>폴바셋 사이즈업 쿠폰</strong>
+                    <span>단일조건노출 영역</span>
+                  </p>
+                  <button type="button" disabled="disabled"><span>받기</span></button>
+                </li>
+
+                <!-- 일반 보상 : 젤리 -->
+                <li class="jelly">
+                  <div class="icon">
+                    <lottie-player autoplay loop mode="normal" src="./json/heart.json"></lottie-player>
+                    <span>100</span>
+                  </div>
+                  <p>
+                    <strong>지급유형 젤리 100개</strong>
+                    <span>단일조건노출 영역</span>
+                  </p>
+                  <button type="button"><span>받기</span></button>
+                </li>
+
+                <!-- 일반 보상 : 포인트 -->
+                <li class="point">
+                  <div class="icon">
+                    <lottie-player autoplay loop mode="normal" src="./json/bounce-loader.json"></lottie-player>
+                    <span>100</span>
+                  </div>
+                  <p>
+                    <strong>뱃지명 노출 영역</strong>
+                    <span>단일조건노출 영역</span>
+                  </p>
+                  <button type="button"><span>받기</span></button>
+                </li>
               </ul>
 
               <button type="button">리워드 <span></span></button>
