@@ -2998,9 +2998,9 @@ body.active {overflow: hidden;}
           }
         }
         > button {
-          margin-top: 20px;
+          margin: 20px auto 0;
           display: block;
-          width: 100%;
+					background-color: red;
 
           font-size: 14px;
           font-weight: 800;

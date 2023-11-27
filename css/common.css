@@ -137,9 +137,7 @@ body.active {
   height: 60px;
   padding: 0 50px;
   cursor: grab;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 .modal_layer_popup .layer_content_wrap .layer_drag span {
   display: block;
@@ -1413,9 +1411,6 @@ body.active {
 .profile_wrap .form_list_wrap .inp_box_list > li > div input:focus-visible {
   outline: none;
 }
-.profile_wrap .form_list_wrap .inp_box_list > li > div input:-moz-placeholder-shown + .btn_delete {
-  display: none;
-}
 .profile_wrap .form_list_wrap .inp_box_list > li > div input:placeholder-shown + .btn_delete {
   display: none;
 }
@@ -1794,8 +1789,7 @@ body.active {
 }
 .challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > a .visual_box img {
   border-radius: 16px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   height: 82px;
 }
 .challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > a .title_box {
@@ -2588,9 +2582,9 @@ body.active {
   color: #fff;
 }
 .challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > button {
-  margin-top: 20px;
+  margin: 20px auto 0;
   display: block;
-  width: 100%;
+  background-color: red;
   font-size: 14px;
   font-weight: 800;
   color: #98A2B3;
@@ -3550,9 +3544,7 @@ body.active {
   font-size: 1.4rem;
   line-height: 1;
   cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 .design_select > .selected {
   display: flex;

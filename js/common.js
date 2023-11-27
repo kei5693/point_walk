@@ -1276,18 +1276,16 @@ let walkingReport = {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  // setTimeout(() => {
-    common.layerButtonToggle();
-    common.toastButtonToggle();
-    common.designSelect();
-    common.scrollDeformation();
-    common.tabMenuEvent();
-    common.inputBorderEvent();
-    
-    main.init();
-    challenge.init();
-    walkingReport.anchorEvent();
-  // }, 10);
+	common.layerButtonToggle();
+	common.toastButtonToggle();
+	common.designSelect();
+	common.scrollDeformation();
+	common.tabMenuEvent();
+	common.inputBorderEvent();
+	
+	main.init();
+	challenge.init();
+	walkingReport.anchorEvent();
 });
 
 
