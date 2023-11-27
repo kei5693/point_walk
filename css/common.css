@@ -2584,7 +2584,6 @@ body.active {
 .challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > button {
   margin: 20px auto 0;
   display: block;
-  background-color: red;
   font-size: 14px;
   font-weight: 800;
   color: #98A2B3;
