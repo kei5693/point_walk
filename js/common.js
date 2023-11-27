@@ -986,7 +986,8 @@ let challenge = {
     rewardBtn.addEventListener('click', (e) => {
       rewardListHeight = calcListHeight();
 
-      scrollToEvent('html', challengeReward);
+      common.scrollToEvent('html', challengeReward);
+      // scrollToEvent('html', challengeReward);
       setListHeight(e.target.closest('button'), rewardListHeight);
 
       // Example usage with a callback function
@@ -1023,18 +1024,18 @@ let challenge = {
       rewardUl.style.height = value[0] + 'px';
     }
 
-    function scrollToEvent(target, interval, gap = 50, callback){
-      let scrollTarget = document.querySelector(target);
-      let scrollValue = interval.offsetTop - scrollTarget.offsetTop - gap;
+    // function scrollToEvent(target, interval, gap = 50, callback){
+    //   let scrollTarget = document.querySelector(target);
+    //   let scrollValue = interval.offsetTop - scrollTarget.offsetTop - gap;
   
-      // Set the scroll value
-      scrollTarget.scrollTop = scrollValue;
+    //   // Set the scroll value
+    //   scrollTarget.scrollTop = scrollValue;
 
-      // Call the callback function if provided
-      if (typeof callback === 'function') {
-        callback();
-      }
-    }
+    //   // Call the callback function if provided
+    //   if (typeof callback === 'function') {
+    //     callback();
+    //   }
+    // }
 
     // 리사이즈 이벤트
     window.addEventListener('resize', () => {
