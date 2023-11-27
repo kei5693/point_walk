@@ -987,23 +987,7 @@ let challenge = {
       rewardListHeight = calcListHeight();
 
       common.scrollToEvent('html', challengeReward);
-      // scrollToEvent('html', challengeReward);
       setListHeight(e.target.closest('button'), rewardListHeight);
-
-      // Example usage with a callback function
-      // scrollToEvent('html', challengeReward, 50, () => {
-      //   let condition = rewardBtn.classList.contains('active');
-
-      //   if(condition){
-      //     setListHeight(e.target.closest('button'), rewardListHeight);
-      //   } else {
-      //     document.addEventListener("scrollend", () => {
-      //       console.log('Scroll animation completed!');
-      //       setListHeight(e.target.closest('button'), rewardListHeight);
-
-      //     });
-      //   }
-      // });
     });
   
     // 리워드 접기/펴기 버튼에 class toggle, ul 높이 값 변경
@@ -1023,20 +1007,6 @@ let challenge = {
       rewardToggleCont.style.height = value[1] + 'px';
       rewardUl.style.height = value[0] + 'px';
     }
-
-    // function scrollToEvent(target, interval, gap = 50, callback){
-    //   let scrollTarget = document.querySelector(target);
-    //   let scrollValue = interval.offsetTop - scrollTarget.offsetTop - gap;
-  
-    //   // Set the scroll value
-    //   scrollTarget.scrollTop = scrollValue;
-
-    //   // Call the callback function if provided
-    //   if (typeof callback === 'function') {
-    //     callback();
-    //   }
-    // }
-
     // 리사이즈 이벤트
     window.addEventListener('resize', () => {
       rewardListHeight = calcListHeight();
