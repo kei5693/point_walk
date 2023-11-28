@@ -137,7 +137,9 @@ body.active {
   height: 60px;
   padding: 0 50px;
   cursor: grab;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .modal_layer_popup .layer_content_wrap .layer_drag span {
   display: block;
@@ -394,6 +396,56 @@ body.active {
 }
 .bull_list > li + li {
   margin-top: 8px;
+}
+
+.download_ani {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+.download_ani.active .inner div {
+  opacity: 1;
+}
+.download_ani.active .inner lottie-player {
+  display: block;
+}
+.download_ani .inner {
+  width: 300px;
+  height: 300px;
+  position: relative;
+}
+.download_ani .inner div {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: -54px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  width: 108px;
+  height: 99px;
+  background: url("../images/challenge/ico_hreart.svg") no-repeat 50%;
+  background-size: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.download_ani .inner div p {
+  font-size: 11px;
+  font-weight: 800;
+  color: #fff;
+}
+.download_ani lottie-player {
+  position: absolute;
+  bottom: 22px;
+  display: none;
 }
 
 #wrap {
@@ -1411,6 +1463,9 @@ body.active {
 .profile_wrap .form_list_wrap .inp_box_list > li > div input:focus-visible {
   outline: none;
 }
+.profile_wrap .form_list_wrap .inp_box_list > li > div input:-moz-placeholder-shown + .btn_delete {
+  display: none;
+}
 .profile_wrap .form_list_wrap .inp_box_list > li > div input:placeholder-shown + .btn_delete {
   display: none;
 }
@@ -1789,7 +1844,8 @@ body.active {
 }
 .challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > a .visual_box img {
   border-radius: 16px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   height: 82px;
 }
 .challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > a .title_box {
@@ -2373,7 +2429,6 @@ body.active {
 }
 .challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont {
   overflow: hidden;
-  height: 0;
   transition: height 0.3s;
 }
 .challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .admin_wrap {
@@ -2445,6 +2500,40 @@ body.active {
   background: url("../images/challenge/ico_arrow_right.svg") no-repeat 50%;
   background-size: 100%;
   animation: arrow_right infinite alternate 0.8s;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .stamp_wrap {
+  margin-top: 22px;
+  padding: 24px;
+  background: #fff;
+  border-radius: 24px;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .stamp_wrap ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .stamp_wrap ul li {
+  background: url("../images/challenge/ico_stamp.svg") no-repeat 50%;
+  background-size: 100% auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 95px;
+  height: 88px;
+  margin: 2px 0;
+  text-align: center;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .stamp_wrap ul li.active {
+  background-image: url("../images/challenge/ico_stamp_on.svg");
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .stamp_wrap ul li.active span {
+  color: var(--color-brand1);
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .stamp_wrap ul li span {
+  transform: translate(-4px, 5px);
+  font-size: 11px;
+  font-weight: 800;
+  color: #000;
 }
 .challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list {
   margin-top: 22px;
@@ -3543,7 +3632,9 @@ body.active {
   font-size: 1.4rem;
   line-height: 1;
   cursor: pointer;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .design_select > .selected {
   display: flex;

@@ -289,7 +289,21 @@ let common = {
       i = i + speed;
     }, 0);
   },
+  downloadAnimation: function(){
+    if(document.querySelector('.download_ani') == null) return;
 
+    let downloadAni = document.querySelector('.download_ani');
+    let lottiePlayer = downloadAni.querySelector('lottie-player');
+
+    downloadAni.classList.add('active');
+    lottiePlayer.play();
+
+    lottiePlayer.addEventListener("complete", () => {
+      //console.log('complete');
+      downloadAni.classList.remove('active');
+      lottiePlayer.stop();
+    });
+  },
 
 
 
@@ -955,7 +969,7 @@ let challenge = {
     let rewardListHeight = calcListHeight();
   
     // 초기 상태 설정
-    setListHeight(rewardBtn, rewardListHeight);
+    //setListHeight(rewardBtn, rewardListHeight);
     btnDownload();
 
     // 리워드 리스트 높이값 계산
@@ -1020,9 +1034,16 @@ let challenge = {
 
         if (targetBtn) {
           targetBtn.addEventListener('click', () => {
+            // 버튼 연타 방지
+            let downloadAni = document.querySelector('.download_ani');
+            if(downloadAni != null && downloadAni.classList.contains('active')) return
+
             if(!targetBtn.classList.contains('complete')){
               targetBtn.classList.add('complete');
               targetBtn.disabled = true;
+
+
+              common.downloadAnimation();
             }
           });
         }

@@ -453,6 +453,66 @@ body.active {overflow: hidden;}
     & + li {margin-top: 8px;}
   }
 }
+// 다운로드 애니메이션
+.download_ani {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  pointer-events: none;
+  &.active {
+    .inner {
+      div {
+        opacity: 1;
+      }
+      lottie-player {display: block;}
+    }
+  }
+  .inner {
+    width: 300px;
+    height: 300px;
+
+    position: relative;
+    div {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      margin-left: -54px;
+      // transform: scale(0);
+      // transition: transform 0.3s;
+      opacity: 0;
+      transition: opacity 0.3s;
+      
+      width: 108px;
+      height: 99px;
+      background: url('../images/challenge/ico_hreart.svg') no-repeat 50%;
+      background-size: 100%;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      text-align: center;
+      p {
+        font-size: 11px;
+        font-weight: 800;
+        color: #fff;
+      }
+    }
+  }
+  lottie-player {
+    position: absolute;
+    bottom: 22px;
+    display: none;
+  }
+}
 
 
 // 메인
@@ -2762,7 +2822,7 @@ body.active {overflow: hidden;}
         }
         > .toggle_cont {
           overflow: hidden;
-          height: 0;
+          // height: 0;
           transition: height 0.3s;
           > .admin_wrap {
             padding: 24px;
@@ -2841,6 +2901,44 @@ body.active {overflow: hidden;}
                 background-size: 100%;
   
                 animation: arrow_right infinite alternate 0.8s;
+              }
+            }
+          }
+          > .stamp_wrap {
+            margin-top: 22px;
+            padding: 24px;
+            background: #fff;
+            border-radius: 24px;
+            ul {
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: space-between;
+              li {
+                background: url('../images/challenge/ico_stamp.svg') no-repeat 50%;
+                background-size: 100% auto;
+                
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                width: 95px;
+                height: 88px;
+                margin: 2px 0;
+
+                text-align: center;
+                &.active {
+                  background-image: url('../images/challenge/ico_stamp_on.svg');
+                  span {
+                    color: var(--color-brand1);
+                  }
+                }
+                span {
+                  transform: translate(-4px, 5px);
+
+                  font-size: 11px;
+                  font-weight: 800;
+                  color: #000;
+                }
               }
             }
           }
