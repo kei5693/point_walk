@@ -2518,10 +2518,13 @@ body.active {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 95px;
+  width: 33.3%;
   height: 88px;
   margin: 2px 0;
   text-align: center;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .stamp_wrap ul li:nth-child(3n+2) {
+  width: 33.4%;
 }
 .challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .stamp_wrap ul li.active {
   background-image: url("../images/challenge/ico_stamp_on.svg");

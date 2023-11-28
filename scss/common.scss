@@ -2921,11 +2921,14 @@ body.active {overflow: hidden;}
                 align-items: center;
                 justify-content: center;
 
-                width: 95px;
+                width: 33.3%;
                 height: 88px;
                 margin: 2px 0;
 
                 text-align: center;
+                &:nth-child(3n+2) {
+                  width: 33.4%;
+                }
                 &.active {
                   background-image: url('../images/challenge/ico_stamp_on.svg');
                   span {
