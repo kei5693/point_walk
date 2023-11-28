@@ -969,7 +969,7 @@ let challenge = {
     let rewardListHeight = calcListHeight();
   
     // 초기 상태 설정
-    //setListHeight(rewardBtn, rewardListHeight);
+    setListHeight(rewardBtn, rewardListHeight);
     btnDownload();
 
     // 리워드 리스트 높이값 계산
