@@ -1040,27 +1040,26 @@ body.active {overflow: hidden;}
         overflow: hidden;
         height: 0;
         transition: height 0.5s;
-        &.active .inner {
-          // animation: bottomToShow 0.5s forwards;
-          // animation-delay: 0.5s;
-        }
         .inner {
           padding-top: 20px;
-          // transform: translateY(100%);
-          // transition: transform 0.5s;
+          position: relative;
+          height: 408px;
           .visual_swiper {
-            z-index: 100;
             .swiper-slide {
-              padding-bottom: 90px;
-            }
-            .swiper-slide > div {
-              max-width: 300px;
-              min-height: 300px;
-              margin: 0 auto;
+              // padding-bottom: 90px;
+              & > div {
+                max-width: 300px;
+                min-height: 300px;
+                margin: 0 auto;
+              }
             }
           }
           .text_swiper {
-            margin-top: -90px;
+            // margin-top: -90px;
+            margin-top: -300px;
+            .swiper-slide {
+              padding-top: 300px
+            }
             .swiper-slide > div {
               max-width: 300px;
               margin: 0 auto;
@@ -1069,8 +1068,11 @@ body.active {overflow: hidden;}
                 font-size: 16px;
                 text-align: center;
               }
-              button {
-                display: block;
+              a {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
                 width: 100%;
                 max-width: 280px;
                 height: 42px;
@@ -4118,9 +4120,22 @@ body.active {overflow: hidden;}
         &.border {
           td {border-top-width: 4px;}
         }
+        &.com {
+          td {background-color: greenyellow;}
+        }
+        &.native td {background-color: darkred;}
+        &.active {
+          td {
+            background-color: cyan;
+            color: red;
+            a {
+              color: red;
+            }
+          }
+        }
       }
       td {
-        padding: 5px 10px;
+        padding: 4px 6px;
         border: 1px solid #000;
 
         font-size: 14px;
@@ -4129,7 +4144,7 @@ body.active {overflow: hidden;}
           // text-align: center;
         }
         a:hover {
-          color:red;
+          // color:red;
         }
       }
     }

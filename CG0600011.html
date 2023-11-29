@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-	<title>제휴사 브릿지</title>
+	<title>챌린지 목록</title>
 	<link rel="stylesheet" href="./css/swiper-bundle.min.css">
 	<link rel="stylesheet" href="./css/reset.css">
 	<link rel="stylesheet" href="./css/animation.css">
@@ -12,19 +12,15 @@
 	<script src="./js/swiper-bundle.min.js"></script>
 	<script src="./js/cdn.jsdelivr.net_npm_chart.js"></script>
 
-	<script src="./js/masonry.pkgd.min.js"></script>
-	<script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
-	<script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.js"></script>
+	<script src="./js/lottie-player.js"></script>
 </head>
-
 <body>
-
   <div id="wrap">
     <!-- header -->
     <div id="header">
       <div class="title_wrap">
         <button type="button" class="btn_back">뒤로가기</button>
-        <h1>제휴사명 챌린지</h1>
+        <h1>챌린지 목록</h1>
       </div>
 
 			<div class="icon_wrap">
@@ -36,139 +32,306 @@
     <div id="container">
       <!-- 챌린지 -->
       <div class="challenge_content_wrap">
-        <!-- 제휴사 브릿지 -->
-        <div class="challenge_company">
-          <div class="challenge_visual">
-            <img src="./images/img_dummy.jpg" alt="" />
+        <!-- 챌린지 목록 -->
+        <div class="challenge_list_wrap">
+          <div class="challenge_notice">
+            <div class="inner">
+              <p>초대받은 챌린지가 있어요! 😀 눌러서 확인해보세요!</p>
+            </div>
+            <button type="button"><span>닫기</span></button>
+          </div> 
+
+          <div class="challenge_category">
+            <div class="inner">
+              <ul>
+                <li class="fixed"><a href="#">전체</a></li>
+                <li class="fixed"><a href="#">My 진행중<span>1</span></a></li>
+                <li class="fixed"><a href="#">받은초대<span>1</span></a></li>
+                <li class="fixed"><a href="#">보낸초대<span>1</span></a></li>
+                <li class="fixed"><a href="#">My 찜 <span>10+</span></a></li>
+
+                <li>
+                  <a href="#">
+                    <div>
+                      <img src="./images/img_challenge_category01.png" alt="gs" />
+                      <img src="./images/img_challenge_category02.png" alt="gs" />
+                    </div>
+                    카테고리1
+                  </a>
+                </li>
+                <li><a href="#">카테고리2</a></li>
+                <li><a href="#">카테고리3</a></li>
+                <li><a href="#">카테고리4</a></li>
+                <li><a href="#">카테고리5</a></li>
+                <li><a href="#">카테고리6</a></li>
+                <li><a href="#">카테고리7</a></li>
+                <li><a href="#">카테고리8</a></li>
+                <li><a href="#">카테고리9</a></li>
+                <li><a href="#">카테고리10</a></li>
+              </ul>
+            </div>
+
+            <button type="button">열기</button>
+
+            <div class="spread_list">
+              <ul>
+                <li class="fixed"><a href="#">전체</a></li>
+                <li class="fixed"><a href="#">My 진행중<span>1</span></a></li>
+                <li class="fixed"><a href="#">받은초대<span>1</span></a></li>
+                <li class="fixed"><a href="#">보낸초대<span>1</span></a></li>
+                <li class="fixed"><a href="#">My 찜 <span>10+</span></a></li>
+
+                <li>
+                  <a href="#">
+                    <div>
+                      <img src="./images/img_challenge_category01.png" alt="gs" />
+                      <img src="./images/img_challenge_category02.png" alt="gs" />
+                    </div>
+                    카테고리1
+                  </a>
+                </li>
+                <li><a href="#">카테고리2</a></li>
+                <li><a href="#">카테고리3</a></li>
+                <li><a href="#">카테고리4</a></li>
+                <li><a href="#">카테고리5</a></li>
+                <li><a href="#">카테고리6</a></li>
+                <li><a href="#">카테고리7</a></li>
+                <li><a href="#">카테고리8</a></li>
+                <li><a href="#">카테고리9</a></li>
+                <li><a href="#">카테고리10</a></li>
+              </ul>
+            </div>
           </div>
 
-          <!-- 레이아웃 확인용 -->
-          <div class="btn_box">
-            <button type="button">가로형 세로형</button>
-          </div>
-          <style>
-            .btn_box {
-              margin: 20px 0;
-              text-align: center;
-            }
-            .btn_box button {
-              padding: 5px 10px;
-              border: 1px solid #000;
-              font-size: 20px;
-            }
-          </style>
-          <script>
-            document.querySelector('.btn_box button').addEventListener('click', ()=>{
-              document.querySelector('.challenge_list').classList.toggle('active');
-            });
-          </script>
-          <!-- //레이아웃 확인용 -->
+          <div class="challenge_list active">
+            <div class="view_type">
+              <button type="button"><span></span>보기</button>
+            </div>
 
-
-          <div class="challenge_list">
             <ul>
               <li>
                 <a href="#">
                   <div class="visual_box">
-                    <img src="./images/img_dummy.jpg" alt="" />
+                    <img src="./images/img_challenge_list01.jpg" alt="" />
                   </div>
-  
+
                   <div class="title_box">
-                    <div class="title">
-                      <p>무신사 스탠다드 강남</p>
-                      <strong>무신사강남점 방문하고 5%할인</strong>
-                      <span>2023.11.12~2023.12.19</span>
-                    </div>
-  
-                    <div class="icon_case">
-                      <div class="icon_box">
-                        <span>1</span>
-                        <span>1</span>
-                        <span>1</span>
-                        <span>1</span>
+                    <div class="inner">
+                      <div class="type">
+                        <span class="color1">선착순참여</span>
+                        <span class="color2">선착순지급</span>
+                      </div>
+
+                      <div class="location">
+                        <span><lottie-player autoplay loop mode="normal" src="./json/map.json"></lottie-player></span>
+                        <p>서울 송파구 올림픽공원</p>
+                      </div>
+
+                      <strong class="title">지금 더 현대 방문하면<br>딥디크 5% 할인 쿠폰 증정</strong>
+
+                      <div class="desc">
+                        <span>2023.11.12~2023.12.19</span>
+
+                        <div class="icon_wrap">
+                          <div class="ico_jelly"><span>젤리</span><em>100</em></div>
+                          <div class="ico_point"><span>포인트</span><em>100</em></div>
+                          <div class="ico_coupon"><span>쿠폰</span><em>1</em></div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </a>
-              </li>
-  
-              <li>
-                <a href="#">
-                  <div class="visual_box">
-                    <img src="./images/img_dummy.jpg" alt="" />
-                  </div>
-  
-                  <div class="title_box">
-                    <div class="title">
-                      <p>무신사 스탠다드 강남</p>
-                      <strong>무신사강남점 방문하고 5%할인</strong>
-                      <span>2023.11.12~2023.12.19</span>
-                    </div>
-  
-                    <div class="icon_case">
-                      <div class="icon_box">
-                        <span>1</span>
-                        <span>1</span>
-                        <span>1</span>
-                        <span>1</span>
-                      </div>
-                    </div>
-                  </div>
-                </a>
+                <button type="button"><span>찜</span></button>
               </li>
               <li>
                 <a href="#">
                   <div class="visual_box">
-                    <img src="./images/img_dummy.jpg" alt="" />
+                    <img src="./images/img_challenge_list02.jpg" alt="" />
                   </div>
-  
+
                   <div class="title_box">
-                    <div class="title">
-                      <p>무신사 스탠다드 강남</p>
-                      <strong>무신사강남점 방문하고 5%할인</strong>
-                      <span>2023.11.12~2023.12.19</span>
-                    </div>
-  
-                    <div class="icon_case">
-                      <div class="icon_box">
-                        <span>1</span>
-                        <span>1</span>
-                        <span>1</span>
-                        <span>1</span>
+                    <div class="inner">
+                      <div class="type">
+                        <span class="color3">당첨자발표</span>
+                        <span class="color4">경품응모</span>
+                      </div>
+
+                      <div class="location">
+                        <span><lottie-player autoplay loop mode="normal" src="./json/map.json"></lottie-player>                        </span>
+                        <p>서울 송파구 올림픽공원</p>
+                      </div>
+
+                      <strong class="title">어반스포츠와 함께하는 <br>한강 걷기 챌린지</strong>
+
+                      <div class="desc">
+                        <span>2023.11.12~2023.12.19</span>
+
+                        <div class="icon_wrap">
+                          <div class="ico_jelly"><span>젤리</span><em>100</em></div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </a>
+                <button type="button"><span>찜</span></button>
               </li>
               <li>
                 <a href="#">
                   <div class="visual_box">
-                    <img src="./images/img_dummy.jpg" alt="" />
+                    <img src="./images/img_challenge_list03.jpg" alt="" />
                   </div>
-  
+
                   <div class="title_box">
-                    <div class="title">
-                      <p>무신사 스탠다드 강남</p>
-                      <strong>무신사강남점 방문하고 5%할인</strong>
-                      <span>2023.11.12~2023.12.19</span>
-                    </div>
-  
-                    <div class="icon_case">
-                      <div class="icon_box">
-                        <span>1</span>
-                        <span>1</span>
-                        <span>1</span>
-                        <span>1</span>
+                    <div class="inner">
+                      <div class="type">
+                        <span class="color1">선착순참여</span>
+                        <span class="color2">선착순지급</span>
+                      </div>
+
+                      <div class="location">
+                        <span><lottie-player autoplay loop mode="normal" src="./json/map.json"></lottie-player>                        </span>
+                        <p>서울 송파구 올림픽공원</p>
+                      </div>
+
+                      <strong class="title">지금 더 현대 방문하면<br>딥디크 5% 할인 쿠폰 증정</strong>
+
+                      <div class="desc">
+                        <span>2023.11.12~2023.12.19</span>
+
+                        <div class="icon_wrap">
+                          <div class="ico_jelly"><span>젤리</span><em>100</em></div>
+                          <div class="ico_point"><span>포인트</span><em>100</em></div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </a>
+                <button type="button"><span>찜</span></button>
               </li>
-  
+              <!-- mission clear -->
+              <li>
+                <a href="#">
+                  <div class="visual_box">
+                    <img src="./images/img_challenge_list01.jpg" alt="" />
+                  </div>
+
+                  <div class="title_box">
+                    <div class="inner">
+                      <div class="type">
+                        <span class="color1">선착순참여</span>
+                        <span class="color2">선착순지급</span>
+                      </div>
+
+                      <div class="location">
+                        <span><lottie-player autoplay loop mode="normal" src="./json/map.json"></lottie-player>                        </span>
+                        <p>서울 송파구 올림픽공원</p>
+                      </div>
+
+                      <strong class="title">지금 더 현대 방문하면<br>딥디크 5% 할인 쿠폰 증정</strong>
+
+                      <div class="desc">
+                        <span>2023.11.12~2023.12.19</span>
+
+                        <div class="icon_wrap">
+                          <div class="ico_jelly"><span>젤리</span><em>100</em></div>
+                          <div class="ico_point"><span>포인트</span><em>100</em></div>
+                          <div class="ico_coupon"><span>쿠폰</span><em>1</em></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                <button type="button"><span>찜</span></button>
+                <div class="dimmed clear">
+                  <div class="inner">
+                    <lottie-player autoplay loop mode="normal" src="./json/goal.json"></lottie-player>
+                    <p>Mission Clear</p>
+                  </div>
+                </div>
+              </li>
+              <!-- 선착순 마감 -->
+              <li>
+                <a href="#">
+                  <div class="visual_box">
+                    <img src="./images/img_challenge_list02.jpg" alt="" />
+                  </div>
+
+                  <div class="title_box">
+                    <div class="inner">
+                      <div class="type">
+                        <span class="color3">당첨자발표</span>
+                        <span class="color4">경품응모</span>
+                      </div>
+
+                      <div class="location">
+                        <span><lottie-player autoplay loop mode="normal" src="./json/map.json"></lottie-player>                        </span>
+                        <p>서울 송파구 올림픽공원</p>
+                      </div>
+
+                      <strong class="title">어반스포츠와 함께하는 <br>한강 걷기 챌린지</strong>
+
+                      <div class="desc">
+                        <span>2023.11.12~2023.12.19</span>
+
+                        <div class="icon_wrap">
+                          <div class="ico_jelly"><span>젤리</span><em>100</em></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                <button type="button"><span>찜</span></button>
+                <div class="dimmed deadline">
+                  <div class="inner">
+                    <lottie-player autoplay loop mode="normal" src="./json/circle-doodle.json"></lottie-player>
+                    <p>선착순 마감</p>
+                  </div>
+                </div>
+              </li>
+              <!-- 크루를 기다려요 -->
+              <li>
+                <a href="#">
+                  <div class="visual_box">
+                    <img src="./images/img_challenge_list01.jpg" alt="" />
+                  </div>
+
+                  <div class="title_box">
+                    <div class="inner">
+                      <div class="type">
+                        <span class="color1">선착순참여</span>
+                        <span class="color2">선착순지급</span>
+                      </div>
+
+                      <div class="location">
+                        <span><lottie-player autoplay loop mode="normal" src="./json/map.json"></lottie-player>                        </span>
+                        <p>서울 송파구 올림픽공원</p>
+                      </div>
+
+                      <strong class="title">지금 더 현대 방문하면<br>딥디크 5% 할인 쿠폰 증정</strong>
+
+                      <div class="desc">
+                        <span>2023.11.12~2023.12.19</span>
+
+                        <div class="icon_wrap">
+                          <div class="ico_jelly"><span>젤리</span><em>100</em></div>
+                          <div class="ico_point"><span>포인트</span><em>100</em></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                <button type="button"><span>찜</span></button>
+                <div class="dimmed crew">
+                  <div class="inner">
+                    <lottie-player autoplay loop mode="normal" src="./json/waiting.json"></lottie-player>
+                    <p>크루의 수락을 기다려요</p>
+                  </div>
+                </div>
+              </li>
             </ul>
           </div>
         </div>
-        <!-- //제휴사 브릿지 -->
+        <!-- //챌린지 목록 -->
       </div>
       <!-- //챌린지 -->
     </div>

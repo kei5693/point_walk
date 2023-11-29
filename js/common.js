@@ -144,13 +144,13 @@ let common = {
     return contentHeight - (scrollY + viewportHeight) < buffer
   },
   // 공통 - 스크롤 : 스크롤 방향 감지
-  getScrollDirection: function(){
+  getScrollDirection: function(callback){
     let prevScrollPos = window.pageYOffset || document.documentElement.scrollTop;
     let scrollDirection;
-
+  
     window.addEventListener('scroll', () => {
       const currentScrollPos = window.pageYOffset || document.documentElement.scrollTop;
-
+  
       if (currentScrollPos > prevScrollPos) {
         scrollDirection = 'down';
       } else if (currentScrollPos < prevScrollPos) {
@@ -158,15 +158,18 @@ let common = {
       } else {
         scrollDirection = 'unchanged';
       }
-
+  
       prevScrollPos = currentScrollPos;
     });
-
+  
     return () => scrollDirection;
 
     // 사용 시
-    // const getScrollDirection = common.getScrollDirection();
-    // const direction = getScrollDirection();
+    // const getDirection = common.getScrollDirection();
+    // window.addEventListener('scroll', () => {
+    //   const currentScrollPos = window.pageYOffset || document.documentElement.scrollTop;
+    //   console.log(getDirection());
+    // });
   },
   // 공통 - 스크롤 : 스크롤 발생할 타겟, 이동할 대상, 여백
   scrollToEvent: function(target, interval, gap = 50){
@@ -589,6 +592,7 @@ let main = {
     const mainSwipe = document.querySelector('.main_swipe_menu');
     const getHeight = mainSwipe.querySelector(':scope > .inner').offsetHeight;
     let mainVisualSwipe = '';
+    let mainTextSwipe = '';
   
     mainSwiper();
     // 상태 스크롤 class 이벤트 
@@ -605,7 +609,7 @@ let main = {
         if(!mainSwipe.classList.contains('active')){
           mainSwipe.classList.add('active');
           mainSwipe.style.height = getHeight+'px';
-          mainVisualSwipe.autoplay.start();
+          //mainVisualSwipe.autoplay.start();
         } else {
           // 툴바
           currentScrollPos > calcScroll ? toolBar.classList.remove('active') : toolBar.classList.add('active');
@@ -659,14 +663,14 @@ let main = {
       if(document.querySelector('.main_swipe_menu') == null) return;
   
       mainVisualSwipe = new Swiper('.main_swipe_menu .visual_swiper', {
-        autoplay: {
-          delay: 2000,
-          disableOnInteraction: false,
-        },
+        // autoplay: {
+        //   delay: 2000,
+        //   disableOnInteraction: false,
+        // },
         roundLengths: true,		// 이미지가 흐리게 나옴 방지
         loop: true
       });
-      const mainTextSwipe = new Swiper('.main_swipe_menu .text_swiper', {
+      mainTextSwipe = new Swiper('.main_swipe_menu .text_swiper', {
         effect: "fade",
         speed: 200,
         loop: true
@@ -674,12 +678,17 @@ let main = {
   
       let currentIndex = 0;
   
-      mainVisualSwipe.on('slideChange', function () {
+      // mainVisualSwipe.on('slideChange', function () {
+      //   currentIndex = this.realIndex;
+      //   mainTextSwipe.slideTo(currentIndex);
+      // });
+
+      mainTextSwipe.on('slideChange', function(){
         currentIndex = this.realIndex;
-        mainTextSwipe.slideTo(currentIndex);
+        mainVisualSwipe.slideTo(currentIndex);
       });
 
-      mainVisualSwipe.autoplay.stop();
+      //mainTextSwipe.autoplay.stop();
     }
     
     // 메인 스크롤 이벤트 초기화
@@ -907,7 +916,6 @@ let challenge = {
     window.addEventListener('scroll', () => {
       const currentScrollPos = window.pageYOffset || document.documentElement.scrollTop;
       let calcPos = challengeInfo.offsetTop - currentScrollPos;
-      let calcPos2 = document.querySelector('.challenge_content_wrap').offsetTop - currentScrollPos;
 
       if(calcPos < 116){
         // 재실행 방지
@@ -957,7 +965,7 @@ let challenge = {
   },
   // 챌린지 : 상세 - 리워드 버튼 이벤트(버튼 클릭 시 스크롤 이동)
   challengeRewardEvent: function () {
-    if(document.querySelector('.challenge_detail_wrap .challenge_reward') == null) return
+    if(document.querySelector('.challenge_detail_wrap .challenge_reward') == null) return;
 
     const challengeReward = document.querySelector('.challenge_detail_wrap .challenge_reward');
     const rewardToggleCont = challengeReward.querySelector(':scope > .toggle_cont');
@@ -1041,7 +1049,6 @@ let challenge = {
             if(!targetBtn.classList.contains('complete')){
               targetBtn.classList.add('complete');
               targetBtn.disabled = true;
-
 
               common.downloadAnimation();
             }
