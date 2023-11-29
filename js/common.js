@@ -609,7 +609,7 @@ let main = {
         if(!mainSwipe.classList.contains('active')){
           mainSwipe.classList.add('active');
           mainSwipe.style.height = getHeight+'px';
-          //mainVisualSwipe.autoplay.start();
+          mainTextSwipe.autoplay.start();
         } else {
           // 툴바
           currentScrollPos > calcScroll ? toolBar.classList.remove('active') : toolBar.classList.add('active');
@@ -663,10 +663,10 @@ let main = {
       if(document.querySelector('.main_swipe_menu') == null) return;
   
       mainVisualSwipe = new Swiper('.main_swipe_menu .visual_swiper', {
-        // autoplay: {
-        //   delay: 2000,
-        //   disableOnInteraction: false,
-        // },
+        autoplay: {
+          delay: 2000,
+          disableOnInteraction: false,
+        },
         roundLengths: true,		// 이미지가 흐리게 나옴 방지
         loop: true
       });
@@ -688,7 +688,7 @@ let main = {
         mainVisualSwipe.slideTo(currentIndex);
       });
 
-      //mainTextSwipe.autoplay.stop();
+      mainTextSwipe.autoplay.stop();
     }
     
     // 메인 스크롤 이벤트 초기화
