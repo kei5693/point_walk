@@ -2447,20 +2447,15 @@ body.active {
   font-size: 14px;
   font-weight: 600;
 }
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .notice {
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .map_view {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 38px;
   margin-top: 16px;
-  background: #B5FA95;
-  border-radius: 14px;
+  padding-bottom: 7px;
 }
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .notice:after {
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .map_view:after {
   content: "";
   position: absolute;
-  bottom: -7px;
+  bottom: 0px;
   left: 50%;
   transform: translateX(-50%);
   border-top: 7px solid #B5FA95;
@@ -2468,28 +2463,32 @@ body.active {
   border-left: 7px solid transparent;
   border-right: 7px solid transparent;
 }
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .notice p {
-  position: relative;
-  margin: 9px 16px;
-  padding-left: 18px;
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .map_view button {
+  display: block;
+  width: 100%;
+  min-height: 38px;
+  background: #B5FA95;
+  border-radius: 14px;
 }
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .notice p:before {
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .map_view button span {
+  display: inline-block;
+  padding-left: 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+}
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .map_view button span:before {
   content: "";
-  position: absolute;
-  top: -1px;
+  position: relative;
+  top: 3px;
   left: 0;
+  display: inline-block;
   width: 16px;
   height: 16px;
   background: url("../images/challenge/ico_location02.svg") no-repeat 50%;
   background-size: 100%;
 }
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .notice span {
-  display: inline-block;
-  font-size: 14px;
-  font-weight: 600;
-  color: #000;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .notice span:after {
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .map_view button span:after {
   content: "";
   position: relative;
   left: 0;
@@ -2883,7 +2882,7 @@ body.active {
   position: fixed;
   bottom: 0px;
   left: 0;
-  z-index: 100;
+  z-index: 400;
   width: 100%;
   height: 100px;
   padding: 24px 0 34px;
