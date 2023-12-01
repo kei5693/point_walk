@@ -1953,7 +1953,7 @@ body.active {
 .challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li {
   position: relative;
   overflow: hidden;
-  margin: 0 20px;
+  margin: 20px;
   border-radius: 24px;
 }
 .challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li + li {

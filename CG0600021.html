@@ -21,7 +21,7 @@
     <div id="header">
       <div class="title_wrap">
         <button type="button" class="btn_back">뒤로가기</button>
-        <h1>챌린지 상세</h1>
+        <h1>챌린지</h1>
       </div>
 			<div class="icon_wrap">
         <button type="button" class="btn_comments"><span></span></button>
@@ -40,6 +40,39 @@
             <img src="./images/img_challenge_detail.jpg" alt="" />
           </div>
           <div class="inner">
+            <!-- 기본정보 -->
+            <div class="challenge_info">
+              <div class="title">
+                <div>
+                  <h2><span>[더 현대 대전]</span>봄쇼핑만큼 설레는<br>함께하는 산책 6천보 걷기</h2>
+                  <div class="icon_wrap">
+                    <div class="ico_jelly"><span>젤리</span><em>100</em></div>
+                    <div class="ico_point"><span>포인트</span><em>100</em></div>
+                    <div class="ico_coupon"><span>쿠폰</span><em>1</em></div>
+                  </div>
+                </div>
+                <p>2023.11.12~2023.12.19</p>
+              </div>
+              
+              <dl>
+                <dt>대상</dt><dd>선착순 1만명 한정</dd>
+                <dt>목표</dt><dd>1만명이서 100만보 달성</dd>
+                <dt>리워드</dt><dd>챌린지 완료 시 각 개인 1,000J 지급</dd>
+              </dl>
+
+              <div class="progress_wrap">
+                <div class="info">
+                  <strong>현재</strong>
+                  <div><strong>0</strong>/100km</div>
+                </div>
+                <div class="graph">
+                  <div class="inner">
+                    <span class="walking1">현재</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <!-- 진행중 걸음 기록 -->
             <div class="challenge_report">
               <div class="graph_cont">
@@ -173,9 +206,11 @@
                   <p>어드민에서 등록한 서브텍스트.<br>등록시에만 해당 영역 노출, 미등록 시 미노출</p>
                 </div>
   
-                <div class="notice">
-                  <p><span>지도에서 위치와 경로를 확인하세요😄</span></p>
+                <!-- 2023-12-01 태그 변경 -->
+                <div class="map_view">
+                  <button><span>지도에서 위치와 경로를 확인하세요😄</span></button>
                 </div>
+                <!-- //2023-12-01 태그 변경 -->
 
                 <div class="stamp_wrap">
                   <ul>
@@ -298,39 +333,6 @@
               </ul>
 
               <button type="button">리워드 <span></span></button>
-            </div>
-
-            <!-- 기본정보 -->
-            <div class="challenge_info">
-              <div class="title">
-                <div>
-                  <h2><span>[더 현대 대전]</span>봄쇼핑만큼 설레는<br>함께하는 산책 6천보 걷기</h2>
-                  <div class="icon_wrap">
-                    <div class="ico_jelly"><span>젤리</span><em>100</em></div>
-                    <div class="ico_point"><span>포인트</span><em>100</em></div>
-                    <div class="ico_coupon"><span>쿠폰</span><em>1</em></div>
-                  </div>
-                </div>
-                <p>2023.11.12~2023.12.19</p>
-              </div>
-              
-              <dl>
-                <dt>대상</dt><dd>선착순 1만명 한정</dd>
-                <dt>목표</dt><dd>1만명이서 100만보 달성</dd>
-                <dt>리워드</dt><dd>챌린지 완료 시 각 개인 1,000J 지급</dd>
-              </dl>
-
-              <div class="progress_wrap">
-                <div class="info">
-                  <strong>현재</strong>
-                  <div><strong>0</strong>/100km</div>
-                </div>
-                <div class="graph">
-                  <div class="inner">
-                    <span class="walking1">현재</span>
-                  </div>
-                </div>
-              </div>
             </div>
 
             <!-- 소개 -->
