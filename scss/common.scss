@@ -1992,12 +1992,17 @@ body.active {overflow: hidden;}
       background: #fff;
       box-shadow: 0px 4px 4px 0px #00000040;
       &.active {
-        > button {
-          transform: translateY(-50%) rotate(180deg);
+        .inner > ul {
+          flex-wrap: wrap;
+          > li {
+            box-sizing: content-box;
+            & + li {
+              margin-left: 4px;
+            }
+          }
         }
-        .spread_list {
-          max-height: 999px;
-          // transition-duration: 0.9s;
+        > button {
+          transform: rotate(180deg);
         }
       }
       &:after {
@@ -2012,13 +2017,14 @@ body.active {overflow: hidden;}
       }
       .inner {
         overflow: auto;
-        height: 56px;
         scroll-behavior: smooth;
 
         display: flex;
         align-items: center;
 
-        padding-right: 21px;
+        // padding-right: 21px;
+        margin-top: 13px;
+        padding-bottom: 13px;
         &::-webkit-scrollbar {
           display: none;
         }
@@ -2026,6 +2032,7 @@ body.active {overflow: hidden;}
           flex-wrap: nowrap;
           align-items: center;
           padding-left: 20px;
+          > li {margin-top: 13px;}
           > li + li {margin-left: 4px;}
         }
       }
@@ -2106,10 +2113,9 @@ body.active {overflow: hidden;}
       }
       > button {
         position: absolute;
-        top: 50%;
+        top: 17px;
         right: 20px;
         z-index: 100;
-        transform: translateY(-50%);
         transform-origin: 50%;
 
         width: 24px;
@@ -2122,26 +2128,26 @@ body.active {overflow: hidden;}
         font-size: 0;
         line-height: 0;
       }
-      .spread_list {
-        position: absolute;
-        top: 52px;
-        left: 0;
-        z-index: 100;
-        width: 100%;
+      // .spread_list {
+      //   position: absolute;
+      //   top: 52px;
+      //   left: 0;
+      //   z-index: 100;
+      //   width: 100%;
 
-        overflow: hidden;
-        max-height: 0;
-        // transition: max-height 0.3s;
-        background: #fff;
-        box-shadow: 0px 4px 4px 0px #00000040;
-        > ul {
-          flex-wrap: wrap;
-          padding: 0 0 20px 16px;
-          > li {
-            margin: 8px 0 0 4px;
-          }
-        }
-      }
+      //   overflow: hidden;
+      //   max-height: 0;
+      //   // transition: max-height 0.3s;
+      //   background: #fff;
+      //   box-shadow: 0px 4px 4px 0px #00000040;
+      //   > ul {
+      //     flex-wrap: wrap;
+      //     padding: 0 0 20px 16px;
+      //     > li {
+      //       margin: 8px 0 0 4px;
+      //     }
+      //   }
+      // }
     }
     .challenge_list {
       margin-top: 20px;

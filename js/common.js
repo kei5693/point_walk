@@ -144,7 +144,7 @@ let common = {
     return contentHeight - (scrollY + viewportHeight) < buffer
   },
   // 공통 - 스크롤 : 스크롤 방향 감지
-  getScrollDirection: function(callback){
+  getScrollDirection: function(){
     let prevScrollPos = window.pageYOffset || document.documentElement.scrollTop;
     let scrollDirection;
   
@@ -661,20 +661,22 @@ let main = {
 
     function mainSwiper(){
       if(document.querySelector('.main_swipe_menu') == null) return;
-  
+      
+      /* 2023-12-04 스크립트 수정 */
       mainVisualSwipe = new Swiper('.main_swipe_menu .visual_swiper', {
-        autoplay: {
-          delay: 2000,
-          disableOnInteraction: false,
-        },
         roundLengths: true,		// 이미지가 흐리게 나옴 방지
         loop: true
       });
       mainTextSwipe = new Swiper('.main_swipe_menu .text_swiper', {
+        autoplay: {
+          delay: 2000,
+          disableOnInteraction: false,
+        },
         effect: "fade",
         speed: 200,
         loop: true
       });
+      /* //2023-12-04 스크립트 수정 */
   
       let currentIndex = 0;
   
@@ -687,8 +689,6 @@ let main = {
         currentIndex = this.realIndex;
         mainVisualSwipe.slideTo(currentIndex);
       });
-
-      mainTextSwipe.autoplay.stop();
     }
     
     // 메인 스크롤 이벤트 초기화
@@ -698,7 +698,7 @@ let main = {
       // 메인 스와이퍼 리셋
       mainSwipe.classList.remove('active');
       mainSwipe.style.height = 0;
-      mainVisualSwipe.autoplay.stop();
+      mainTextSwipe.autoplay.stop(); // 2023-12-04 수정
 
       // 툴바 감추기
       toolBar.classList.remove('active');
@@ -814,18 +814,20 @@ let challenge = {
     const categoryInner = challengeCategory.querySelector('.inner');
     const categoryUl = categoryInner.querySelector('ul');
     const categoryEl = categoryUl.querySelectorAll('li');
-    const toggleBtn = challengeCategory.querySelector('button');
-    const spreadList = challengeCategory.querySelectorAll('.spread_list li');
+    // 2023-12-04 const toggleBtn = challengeCategory.querySelector('button');
+    // 2023-12-04 const spreadList = challengeCategory.querySelectorAll('.spread_list li');
 
     const challengeList = document.querySelector('.challenge_list');
     const btnMarking = challengeList.querySelectorAll(':scope > ul > li > button');
     const btnViewType = challengeList.querySelector('.view_type button');
 
+    let clickIndex = 0;
+
     window.addEventListener("DOMContentLoaded", () => {setTabInit()});
 
     // init
     setActiveTab(categoryEl, 0);
-    setActiveTab(spreadList, 0);
+    // 2023-12-04 setActiveTab(spreadList, 0);
     
     // inner 리스트 클릭 이벤트
     categoryEl.forEach((tabTitle, currentIndex) => {
@@ -835,29 +837,42 @@ let challenge = {
         let condition = challengeCategory.classList.contains('active');
 
         if(!condition){
-          setActiveTab(categoryEl, currentIndex);
-          // setActiveTab(spreadList, currentIndex);
           switchTab(currentIndex);
-        } 
-      });
-    });
-
-    // spread 리스트 클릭 이벤트
-    spreadList.forEach((tabTitle, currentIndex) => {
-      tabTitle.addEventListener('click', (e) => {
-        e.preventDefault();
-
-        let condition = challengeCategory.classList.contains('active');
-
-        if(condition){
-          // setActiveTab(categoryEl, currentIndex);
-          setActiveTab(spreadList, currentIndex);
         }
+        setActiveTab(categoryEl, currentIndex);
+
+        clickIndex = currentIndex;
       });
     });
 
-    // 토글 버튼 이벤트
-    toggleBtn.addEventListener('click', ()=>{challengeCategory.classList.toggle('active')});
+    // 2023-12-04 구조 변경으로 사용하지 않음
+    // spread 리스트 클릭 이벤트
+    // spreadList.forEach((tabTitle, currentIndex) => {
+    //   tabTitle.addEventListener('click', (e) => {
+    //     e.preventDefault();
+
+    //     let condition = challengeCategory.classList.contains('active');
+
+    //     if(condition){
+    //       setActiveTab(spreadList, currentIndex);
+    //     }
+    //   });
+    // });
+
+    // 2023-12-04 토글 버튼 이벤트
+    // toggleBtn.addEventListener('click', ()=>{
+    //   if(!challengeCategory.classList.contains('active')){
+    //     challengeCategory.classList.add('active');
+    //   } else {
+    //     challengeCategory.classList.remove('active');
+
+    //     setTimeout(() => {
+    //       setActiveTab(categoryEl, clickIndex);
+    //       switchTab(clickIndex);
+    //     }, 100);
+    //   }
+    // });
+
     btnViewType.addEventListener('click', ()=>{challengeList.classList.toggle('active')});
 
     btnMarking.forEach((btn)=>{
@@ -900,13 +915,10 @@ let challenge = {
           pos = posLimit
         }
       }
-
-      // console.log(pos);
       categoryInner.scrollLeft = pos;
-      // categoryUl.style.transform = `translateX(${pos}px)`;
     }
   },
-  // 챌린지 : 상세 - 스크롤 이벤트
+  // 챌린지 : 상세 - 기본정보 스크롤 이벤트
   challengeScrollEvent: function(){
     if(document.querySelector('.challenge_detail_wrap') == null) return;
 
@@ -922,31 +934,38 @@ let challenge = {
         if(challengeInfo.classList.contains('active')) return;
         challengeInfo.classList.add('active');
 
-        setTimeout(() => {
-          challengeAni(30);
-          common.animateCounter('.challenge_info > .progress_wrap .info > div strong', 30, 600);
-        }, 300);
+        challengeAni(30);
+        common.animateCounter('.challenge_info > .progress_wrap .info > div strong', 30, 600);
       }
     });
+
     // 걷기 그래프 애니메이션
     function challengeAni(current){
       challengeProgress.querySelector(':scope .graph .inner span').style.left = current+'%';
     }
   },
-  // 챌린지 : 상세 - 진행중 걸음 기록
+  // 챌린지 : 상세 - 진행중 걸음 기록 스크롤 이벤트
   challengeReportAni: function(){
     if(document.querySelector('.challenge_report') == null) return;
 
     const challengeReport = document.querySelector('.challenge_report');
     const reportGraph = challengeReport.querySelector(':scope .graph_wrap');
 
-    // 재실행 방지
-    if(challengeReport.classList.contains('active')) return;
-    challengeReport.classList.add('active');
+    window.addEventListener('scroll', () => {
+      const currentScrollPos = window.pageYOffset || document.documentElement.scrollTop;
+      let calcPos2 = challengeReport.offsetTop - currentScrollPos;
 
-    ongoingAni(30, 100);
-    common.animateCounter('.challenge_report .graph_cont > h3 span', 1000, 600);
+      if(calcPos2 < window.outerHeight/2){
+        // 재실행 방지
+        if(challengeReport.classList.contains('active')) return;
+        challengeReport.classList.add('active');
 
+        ongoingAni(30, 100);
+        common.animateCounter('.challenge_report .graph_cont > h3 span', 1000, 600);
+      }
+    });
+
+    
     // 챌린지 진행중 걸음수 애니메이션
     function ongoingAni(today, yesterday){
       const todayGraph = reportGraph.querySelector('.walking1');
@@ -977,7 +996,7 @@ let challenge = {
     let rewardListHeight = calcListHeight();
   
     // 초기 상태 설정
-    setListHeight(rewardBtn, rewardListHeight);
+    // 2023-12-04 setListHeight(rewardBtn, rewardListHeight);
     btnDownload();
 
     // 리워드 리스트 높이값 계산
@@ -1004,13 +1023,13 @@ let challenge = {
       return { parentHeight, childrenHeight, toggleHeight };
     }
 
-    // 리워드 접기/펴기 클릭 이벤트 + 스크롤 이동
-    rewardBtn.addEventListener('click', (e) => {
-      rewardListHeight = calcListHeight();
+    // 2023-12-04 리워드 접기/펴기 클릭 이벤트 + 스크롤 이동
+    // rewardBtn.addEventListener('click', (e) => {
+    //   rewardListHeight = calcListHeight();
 
-      common.scrollToEvent('html', challengeReward);
-      setListHeight(e.target.closest('button'), rewardListHeight);
-    });
+    //   common.scrollToEvent('html', challengeReward);
+    //   setListHeight(e.target.closest('button'), rewardListHeight);
+    // });
   
     // 리워드 접기/펴기 버튼에 class toggle, ul 높이 값 변경
     function setListHeight(target, heights){

@@ -662,7 +662,7 @@ let main = {
     function mainSwiper(){
       if(document.querySelector('.main_swipe_menu') == null) return;
       
-      /* 2023-12-01 스크립트 수정 */
+      /* 2023-12-04 스크립트 수정 */
       mainVisualSwipe = new Swiper('.main_swipe_menu .visual_swiper', {
         roundLengths: true,		// 이미지가 흐리게 나옴 방지
         loop: true
@@ -676,7 +676,7 @@ let main = {
         speed: 200,
         loop: true
       });
-      /* //2023-12-01 스크립트 수정 */
+      /* //2023-12-04 스크립트 수정 */
   
       let currentIndex = 0;
   
@@ -698,7 +698,7 @@ let main = {
       // 메인 스와이퍼 리셋
       mainSwipe.classList.remove('active');
       mainSwipe.style.height = 0;
-      mainTextSwipe.autoplay.stop(); // 2023-12-01 수정
+      mainTextSwipe.autoplay.stop(); // 2023-12-04 수정
 
       // 툴바 감추기
       toolBar.classList.remove('active');
