@@ -1320,6 +1320,53 @@ let walkingReport = {
   },
 }
 
+// 걸음리포트
+let walkingGuide = {
+  init: function(){
+    this.filterViewEvent();
+    this.popupEvent();
+  },
+  filterViewEvent: function(){
+    if(document.querySelector('.walking_guide_wrap') == null) return;
+
+    const walkingGuide = document.querySelector('.walking_guide_wrap');
+    const filterView = walkingGuide.querySelector(':scope .filter_view');
+    const filter = filterView.querySelector(':scope .design_select');
+    const view = filterView.querySelector(':scope > button');
+
+    view.addEventListener('click', ()=>{
+      let condition = filterView.classList.contains('active');
+
+      condition ? filterView.classList.remove('active') : filterView.classList.add('active')
+    });
+  },
+  popupEvent: function(){
+    if(document.querySelector('.walking_guide_wrap') == null) return;
+
+    const walkingGuide = document.querySelector('.walking_guide_wrap');
+    const guideList = walkingGuide.querySelector(':scope .guide_list');
+    const guideEl = guideList.querySelectorAll(':scope > div');
+
+    guideEl.forEach((el)=>{
+      let btnDownload = el.querySelector(':scope > button');
+
+      el.addEventListener('click', ()=>{
+        popupToggle(el);
+      });
+
+      btnDownload.addEventListener('click', (e)=>{
+        e.stopPropagation();
+        popupToggle(btnDownload);
+      });
+
+      // 팝업 토글
+      function popupToggle(target){
+        console.log(target);
+      }
+    });
+  },
+}
+
 document.addEventListener("DOMContentLoaded", function() {
 	common.layerButtonToggle();
 	common.toastButtonToggle();
@@ -1331,6 +1378,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	main.init();
 	challenge.init();
 	walkingReport.anchorEvent();
+	walkingGuide.init();
 });
 
 
