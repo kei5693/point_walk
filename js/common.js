@@ -123,8 +123,6 @@ let common = {
         }, 2000);
       }
     });
-
-
   },
   // 공통 - 스크롤 : 스크롤 엔드 감지 이벤트(대상은 1개만 있을 경우로 작성 되었다)
   scrollEnd: function(target = document, buffer = 100){
@@ -814,7 +812,7 @@ let challenge = {
     const categoryInner = challengeCategory.querySelector('.inner');
     const categoryUl = categoryInner.querySelector('ul');
     const categoryEl = categoryUl.querySelectorAll('li');
-    // 2023-12-04 const toggleBtn = challengeCategory.querySelector('button');
+    const toggleBtn = challengeCategory.querySelector('button');
     // 2023-12-04 const spreadList = challengeCategory.querySelectorAll('.spread_list li');
 
     const challengeList = document.querySelector('.challenge_list');
@@ -859,19 +857,19 @@ let challenge = {
     //   });
     // });
 
-    // 2023-12-04 토글 버튼 이벤트
-    // toggleBtn.addEventListener('click', ()=>{
-    //   if(!challengeCategory.classList.contains('active')){
-    //     challengeCategory.classList.add('active');
-    //   } else {
-    //     challengeCategory.classList.remove('active');
+    // 토글 버튼 이벤트
+    toggleBtn.addEventListener('click', ()=>{
+      if(!challengeCategory.classList.contains('active')){
+        challengeCategory.classList.add('active');
+      } else {
+        challengeCategory.classList.remove('active');
 
-    //     setTimeout(() => {
-    //       setActiveTab(categoryEl, clickIndex);
-    //       switchTab(clickIndex);
-    //     }, 100);
-    //   }
-    // });
+        setTimeout(() => {
+          setActiveTab(categoryEl, clickIndex);
+          switchTab(clickIndex);
+        }, 100);
+      }
+    });
 
     btnViewType.addEventListener('click', ()=>{challengeList.classList.toggle('active')});
 
