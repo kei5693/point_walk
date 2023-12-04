@@ -176,6 +176,7 @@ body.active {
   padding: 30px 20px;
 }
 .modal_layer_popup.align_center .layer_content_wrap .layer_content .layer_header h1 {
+  padding-bottom: 20px;
   text-align: left;
   font-size: 18px;
   font-weight: 800;
@@ -1506,6 +1507,347 @@ body.active {
   border-color: var(--color-brand1);
 }
 
+.walking_guide_wrap .guide_list.active .view_type button span:before {
+  background-image: url("../images/challenge/ico_view_large.svg");
+}
+.walking_guide_wrap .guide_list.active .view_type button span:after {
+  content: "크게";
+}
+.walking_guide_wrap .guide_list.active > ul {
+  background: #fff;
+}
+.walking_guide_wrap .guide_list.active > ul > li {
+  overflow: visible;
+  padding: 16px 0;
+  border-radius: 0;
+}
+.walking_guide_wrap .guide_list.active > ul > li + li {
+  margin-top: 0;
+  border-top: 1px solid #D9D9D9;
+}
+.walking_guide_wrap .guide_list.active > ul > li > a {
+  display: grid;
+  grid-template-columns: 74px 1fr;
+  grid-gap: 4px;
+  border-radius: 0;
+  padding-top: 32px;
+}
+.walking_guide_wrap .guide_list.active > ul > li > a .visual_box:after {
+  background: linear-gradient(rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 30%);
+  border-radius: 16px;
+}
+.walking_guide_wrap .guide_list.active > ul > li > a .visual_box img {
+  border-radius: 16px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 82px;
+}
+.walking_guide_wrap .guide_list.active > ul > li > a .title_box {
+  position: static;
+}
+.walking_guide_wrap .guide_list.active > ul > li > a .title_box .inner {
+  position: static;
+  background: #fff;
+  padding: 0;
+}
+.walking_guide_wrap .guide_list.active > ul > li > a .title_box .inner > .type {
+  top: 0;
+  left: 0;
+}
+.walking_guide_wrap .guide_list.active > ul > li > a .title_box .inner > .location span {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  background: url("../images/challenge/ico_location.svg") no-repeat 50%;
+  background-size: 100%;
+}
+.walking_guide_wrap .guide_list.active > ul > li > a .title_box .inner > .location span lottie-player {
+  display: none;
+}
+.walking_guide_wrap .guide_list.active > ul > li > a .title_box .inner > .location p {
+  padding: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: #98A2B3;
+}
+.walking_guide_wrap .guide_list.active > ul > li > a .title_box .inner > .title {
+  margin-top: 4px;
+  font-size: 18px;
+  font-weight: 800;
+  color: #000;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.walking_guide_wrap .guide_list.active > ul > li > a .title_box .inner > .desc > span {
+  font-size: 14px;
+  font-weight: 400;
+  color: #000;
+}
+.walking_guide_wrap .guide_list.active > ul > li > a .title_box .inner > .desc .icon > div em {
+  color: #000;
+}
+.walking_guide_wrap .guide_list.active > ul > li > button {
+  top: 48px;
+  right: auto;
+  left: 42px;
+}
+.walking_guide_wrap .guide_list.active > ul > li > .dimmed {
+  left: -20px;
+  width: calc(100% + 40px);
+}
+.walking_guide_wrap .guide_list.active > ul > li > .dimmed:after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #fff;
+}
+.walking_guide_wrap .guide_list.active > ul > li > .dimmed.crew .inner {
+  top: -58px;
+  transform: translate(-50%, 0);
+}
+.walking_guide_wrap .guide_list .view_type {
+  display: flex;
+  justify-content: right;
+  margin: 11px 28px 0 0;
+}
+.walking_guide_wrap .guide_list .view_type button {
+  padding: 5px 10px;
+  background: none;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--color-brand1);
+}
+.walking_guide_wrap .guide_list .view_type button span {
+  position: relative;
+  display: inline-block;
+  padding-left: 20px;
+}
+.walking_guide_wrap .guide_list .view_type button span:before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  background: url("../images/challenge/ico_view_small.svg") no-repeat;
+  background-size: 100%;
+}
+.walking_guide_wrap .guide_list .view_type button span:after {
+  content: "작게";
+}
+.walking_guide_wrap .guide_list > ul {
+  margin-top: 19px;
+}
+.walking_guide_wrap .guide_list > ul > li {
+  position: relative;
+  overflow: hidden;
+  margin: 20px;
+  border-radius: 24px;
+}
+.walking_guide_wrap .guide_list > ul > li + li {
+  margin-top: 24px;
+}
+.walking_guide_wrap .guide_list > ul > li > a {
+  display: block;
+  position: relative;
+  color: #fff;
+}
+.walking_guide_wrap .guide_list > ul > li > a .visual_box {
+  position: relative;
+}
+.walking_guide_wrap .guide_list > ul > li > a .visual_box:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 20%);
+}
+.walking_guide_wrap .guide_list > ul > li > a .visual_box img {
+  display: block;
+  width: 100%;
+}
+.walking_guide_wrap .guide_list > ul > li > a .title_box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: end;
+}
+.walking_guide_wrap .guide_list > ul > li > a .title_box > .inner {
+  flex: 1;
+  padding: 10px 16px 20px;
+  background: #000;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) -5%, #000 100%);
+}
+.walking_guide_wrap .guide_list > ul > li > a .title_box > .inner > .type {
+  position: absolute;
+  top: 24px;
+  left: 16px;
+  display: flex;
+}
+.walking_guide_wrap .guide_list > ul > li > a .title_box > .inner > .type > span {
+  padding: 4px 8px;
+  border-radius: 2px;
+  font-size: 12px;
+  line-height: 1;
+}
+.walking_guide_wrap .guide_list > ul > li > a .title_box > .inner > .type > span + span {
+  margin-left: 4px;
+}
+.walking_guide_wrap .guide_list > ul > li > a .title_box > .inner > .type > span.color1 {
+  background: var(--color-brand1);
+  color: #fff;
+}
+.walking_guide_wrap .guide_list > ul > li > a .title_box > .inner > .type > span.color2 {
+  background: #9E77ED;
+  color: #fff;
+}
+.walking_guide_wrap .guide_list > ul > li > a .title_box > .inner > .type > span.color3 {
+  background: #BDB4FE;
+  color: #000;
+}
+.walking_guide_wrap .guide_list > ul > li > a .title_box > .inner > .type > span.color4 {
+  background: #EAE8FF;
+  color: #000;
+}
+.walking_guide_wrap .guide_list > ul > li > a .title_box > .inner > .location {
+  display: flex;
+  align-items: center;
+}
+.walking_guide_wrap .guide_list > ul > li > a .title_box > .inner > .location span {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  margin-right: -6px;
+  border-radius: 50%;
+  background: #B5FA95;
+}
+.walking_guide_wrap .guide_list > ul > li > a .title_box > .inner > .location span lottie-player {
+  position: absolute;
+  top: -10px;
+  left: -2px;
+  width: 48px;
+  height: 48px;
+}
+.walking_guide_wrap .guide_list > ul > li > a .title_box > .inner > .location p {
+  padding: 6px 16px;
+  background: #fff;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  color: #344054;
+}
+.walking_guide_wrap .guide_list > ul > li > a .title_box > .inner > .title {
+  display: block;
+  margin-top: 14px;
+  font-size: 20px;
+  font-weight: 800;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.walking_guide_wrap .guide_list > ul > li > a .title_box > .inner > .desc {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+.walking_guide_wrap .guide_list > ul > li > a .title_box > .inner > .desc > span {
+  font-size: 13px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 1;
+}
+.walking_guide_wrap .guide_list > ul > li > button {
+  position: absolute;
+  top: 16px;
+  right: 6px;
+  padding: 8px;
+}
+.walking_guide_wrap .guide_list > ul > li > button.active span {
+  background-image: url("../images/common/ico_star04.svg");
+}
+.walking_guide_wrap .guide_list > ul > li > button span {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background: url("../images/common/ico_star03.svg") no-repeat;
+  background-size: 100%;
+  font-size: 0;
+  line-height: 0;
+}
+.walking_guide_wrap .guide_list > ul > li > .dimmed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+.walking_guide_wrap .guide_list > ul > li > .dimmed.clear .inner lottie-player {
+  width: 60px;
+  margin: 0 auto;
+}
+.walking_guide_wrap .guide_list > ul > li > .dimmed.clear .inner p {
+  color: #EAE8FF;
+}
+.walking_guide_wrap .guide_list > ul > li > .dimmed.deadline .inner lottie-player {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  width: 200px;
+  height: auto;
+  margin: 0 auto;
+}
+.walking_guide_wrap .guide_list > ul > li > .dimmed.deadline .inner p {
+  color: #B5FA95;
+}
+.walking_guide_wrap .guide_list > ul > li > .dimmed.crew .inner {
+  top: 35%;
+}
+.walking_guide_wrap .guide_list > ul > li > .dimmed.crew .inner lottie-player {
+  position: relative;
+  left: 18px;
+  width: 171px;
+}
+.walking_guide_wrap .guide_list > ul > li > .dimmed.crew .inner:after {
+  content: "h";
+  position: absolute;
+  top: 106px;
+  left: 60px;
+  color: #4E2AF4;
+  font-size: 60px;
+  font-weight: 600;
+  line-height: 1;
+}
+.walking_guide_wrap .guide_list > ul > li > .dimmed.crew .inner p {
+  color: #EAE8FF;
+}
+.walking_guide_wrap .guide_list > ul > li > .dimmed .inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.walking_guide_wrap .guide_list > ul > li > .dimmed .inner p {
+  font-size: 18px;
+  font-weight: 800;
+  text-align: center;
+  white-space: nowrap;
+}
 .walking_guide_wrap .walking_guide_detail .title h2 {
   font-size: 20px;
 }
