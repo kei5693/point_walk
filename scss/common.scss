@@ -515,6 +515,89 @@ body.active {overflow: hidden;}
     display: none;
   }
 }
+// 디자인셀렉트
+.select_box {
+  display: inline-block;
+  position: relative;
+  z-index: 100;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  user-select: none;
+	> .selected {
+		display: flex;
+		align-items: center;
+		span {
+			position: relative;
+			padding-right: 20px;
+
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--color-brand1);
+			&:after {
+				content: '';
+				position: absolute;
+				top: 50%;
+				right: 0;
+				transform: translateY(-50%);
+
+        width: 16px;
+        height: 16px;
+
+        background: url('../images/common/ico_caret_down.svg') no-repeat 50%;
+        background-size: 100%;
+			}
+		}
+	}
+	> .optionList {
+		display: none;
+
+		position: absolute;
+		top: calc(100% + 4px);
+		right: 0;
+
+    overflow: hidden;
+    background: #F1F0F0;
+    border-radius: 12px;
+		> li {
+			display: flex;
+			align-items: center;
+			height: 34px;
+			padding: 10px;
+			span {
+				position: relative;
+        display: block;
+				padding-left: 20px;
+
+        font-size: 14px;
+        font-weight: 600;
+        color: #000;
+        white-space: nowrap;
+			}
+      & + li {
+        border-top: 1px solid #C2C2C2;
+      }
+		}
+	}
+	&.active {
+		> .optionList {
+			display: block;
+			> li.select span:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+
+        width: 12px;
+        height: 12px;
+
+        background: url('../images/common/ico_check.svg') no-repeat 50%;
+        background-size: 100%;
+			}
+		}
+  }
+}
 
 
 // 메인
@@ -1766,6 +1849,51 @@ body.active {overflow: hidden;}
 }
 // * 걷기가이드
 .walking_guide_wrap {
+  transition: padding 0.3s;
+  // 시간, 거리 아이콘(공통)
+  .desc_box {
+    .inner {
+      display: flex;
+      color: #000;
+      > div {
+        height: 20px;
+        padding: 0 8px;
+        background: #FDB022;
+        border-radius: 2px;
+
+        font-size: 12px;
+        font-weight: 700;
+        color: #000;
+        line-height: 22px;
+        &.distance {
+          background: #7CD4FD;
+          span:after {
+            background: url('../images/guide/ico_distance.svg') no-repeat;
+            background-size: 100%;
+          }
+        }
+        & + div {margin-left: 4px;}
+        span {
+          position: relative;
+          display: inline-block;
+          height: 100%;
+          padding-left: 18px;
+          border-radius: 6px;
+          &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            background: url('../images/guide/ico_time.svg') no-repeat;
+            background-size: 100%;
+          }
+        }
+      }
+    }
+  }
   .guide_list_wrap {
     &.active {
       .filter_view button {
@@ -1774,17 +1902,31 @@ body.active {overflow: hidden;}
           &:after {content: '크게';}
         }
       }
+      .guide_list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 12px 10px;
+        > div {
+          min-height: 244px;
+          .visual_box {
+            height: 100%;
+            img {
+              object-fit: cover;
+              height: 100%;
+            }
+          }
+          .content_box > .inner > .title br {display: none;}
+          & + div {margin-top: 0;}
+        }
+      }
     }
     .filter_view {
       display: flex;
+      align-items: center;
       justify-content: right;
       margin: 11px 28px 0 0;
-      &.active button span {
-        &:before {background-image: url('../images/challenge/ico_view_large.svg');}
-        &:after {content: '크게';}
-      }
       button {
-        padding: 5px 10px;
+        margin-left: 16px;
         background: none;
 
         font-size: 13px;
@@ -1862,44 +2004,6 @@ body.active {overflow: hidden;}
             }
             > .desc_box {
               margin-top: 8px;
-              .inner {
-                display: flex;
-                color: #000;
-                > div {
-                  height: 20px;
-                  padding: 0 8px;
-                  background: #FDB022;
-
-                  font-size: 12px;
-                  font-weight: 700;
-                  color: #000;
-                  line-height: 22px;
-                  &.distance {
-                    background: #7CD4FD;
-                    span:after {
-                      background-color: #03c75a;
-                    }
-                  }
-                  & + div {margin-left: 4px;}
-                  span {
-                    position: relative;
-                    display: inline-block;
-                    height: 100%;
-                    padding-left: 18px;
-                    border-radius: 6px;
-                    &::after {
-                      content: '';
-                      position: absolute;
-                      top: 50%;
-                      left: 0;
-                      transform: translateY(-50%);
-                      width: 12px;
-                      height: 12px;
-                      background: #000;
-                    }
-                  }
-                }
-              }
             }
             > .player_bar {
               position: absolute;
@@ -1939,66 +2043,414 @@ body.active {overflow: hidden;}
       }
     }
   }
-  .walking_guide_detail {
-    .title {
-      h2 {font-size: 20px;}
-      p {}
-    }
-    > p {}
+  .guide_detail_wrap {
+    .layer_content_wrap {
+      padding: 0;
+      .layer_content {
+        padding: 0;
+        .header {
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 999;
+      
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+      
+          width: 100%;
+          height: 44px;
+          padding: 0 20px;
+      
+          background: #F9F9FB;
+          h1 {
+            text-align: left;
+          }
+          > div {
+            height: 100%;
+          }
+          button {
+            min-width: 24px;
+            min-height: 24px;
+      
+            border: 0 none;
+      
+            font-size: 0;
+            line-height: 0;
+          }
+          > .title_wrap {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            h1 {
+              flex: 1;
+              padding: 0 32px;
+      
+              font-size: 18px;
+              font-weight: 800;
+      
+              @include text_ellipsis();
+        
+              font-size: 18px;
+              font-weight: 800;
+              color: var(--color-font1);
+              line-height: 24px;
+            }
+            .btn_back {
+              position: absolute;
+              top: 50%;
+              left: 20px;
+              transform: translateY(-50%);
+      
+              width: 24px;
+              height: 24px;
+              margin-right: 10px;
+      
+              background: url('../images/common/ico_arrow_left01.svg');
+              background-size: 100%;
+              border: 0 none;
+              transform: translateY(-50%) rotate(270deg);
+              transform-origin: center;
+            }
+          }
+          > .icon_wrap {
+            position: absolute;
+            top: 0;
+            right: 12px;
+      
+            flex-shrink: 0;
+      
+            display: flex;
+            align-items: center;
+            button {
+              span {
+                display: inline-block;
+                width: 16px;
+                height: 16px;
+                padding: 8px;
+                box-sizing: content-box;
+              }
+              &.btn_setting span {
+                width: 24px;
+                height: 24px;
+                background: url('../images/common/ico_menu.svg') no-repeat 50%;
+                background-size: 24px;
+              }
+              &.btn_comments span {
+                background: url('../images/challenge/ico_comments.svg') no-repeat 50%;
+                background-size: 16px;
+              }
+              &.btn_share span {
+                background: url('../images/challenge/ico_share.svg') no-repeat 50%;
+                background-size: 16px;
+              }
+              &.btn_favorite span {
+                background: url('../images/challenge/ico_favorite.svg') no-repeat 50%;
+                background-size: 16px;
+              }
+              &.btn_share span {
+                background: url('../images/common/ico_share.svg') no-repeat 50%;
+                background-size: 16px;
+              }
+            }
+          }
+        }
+        .container {
+          position: relative;
+          z-index: 500;
+          padding: 70% 0 120px;
+          > .guide_visual {
+            position: fixed;
+            top: 44px;
+            left: 0;
+            z-index: -2;
+      
+            width: 100%;
+            height: 100%;
+            background: #F9F9FB;
+            img {
+              display: block;
+              width: 100%;
+            }
+          }
+          > .guide_inner {
+            padding: 0 20px;
+            h2 {
+              font-size: 18px;
+              font-weight: 800;
+            }
+            > .guide_title {
+              padding: 24px;
+              background: #fff;
+              border-radius: 24px;
 
-    .control_wrap {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      button {font-size: 20px;}
-      span {}
-      p {}
-    }
-  }
-  .walking_guide_complete {
-    .result_wrap {
-      p {
-        text-align: center;
-      }
-      ul {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-gap: 10px;
-        > li {
-          text-align: center;
-          border: 1px solid #000;
+              color: #000;
+              h2 {
+                margin-top: 8px;
+                font-size: 20px;
+                font-weight: 800;
+              }
+              p {
+                margin-top: 12px;
+                font-size: 13px;
+                font-weight: 400;
+              }
+            }
+            .guide_content {
+              margin-top: 12px;
+            }
+          }
         }
       }
     }
-    .recommend_wrap {}
   }
-  .walking_menu_list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 10px;
-    > li {
-      border: 1px solid #000;
-      box-sizing: border-box;
+  .player_download_wrap {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1100;
+  
+    width: 100%;
+    .download_wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  
+      width: 100%;
+      height: 70px;
+      padding: 0 20px;
+  
+      background: #000;
+      transition: background 0.3s;
+      p {
+        flex: 1;
+        font-size: 14px;
+        font-weight: 600;
+        color: #fff;
+        line-height: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      button {
+        margin-left: 25px;
+        flex-shrink: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+  
+        width: 104px;
+        height: 32px;
+  
+        border-radius: 16px;
+        background: #fff;
+        > div {
+          width: 24px;
+          height: 24px;
+          background: url('../images/common/ico_download.svg') no-repeat 50%;
+          background-size: 100%;
+          lottie-player {
+            display: none;
+          }
+        }
+        > span {
+          display: inline-block;
+          font-size: 14px;
+          font-weight: 700;
+          color: #000;
+          line-height: 1;
+        }
+      }
+    }
+    .player_wrap {
+      position: relative;
+      .player_status {
+        position: relative;
+        display: flex;
+        align-items: center;
+        height: 55px;
 
-      text-align: center;
+        background: #fff;
+        padding: 0 54px 0 20px;
+
+        box-shadow: 0px -4px 4px 0px #75757540;
+        strong {
+          font-size: 14px;
+          font-weight: 800;
+          color: #000;
+        }
+        p {
+          margin-left: 16px;
+          font-size: 14px;
+          font-weight: 600;
+          color: #000;
+          @include text_ellipsis();
+        }
+        button {
+          position: absolute;
+          top: 15px;
+          right: 20px;
+
+          width: 24px;
+          height: 28px;
+          background: url('../images/guide/ico_close.svg') no-repeat 0 4px;
+          background-size: 100%;
+
+          font-size: 0;
+          line-height: 0;
+        }
+      }
+      .player_controll {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        height: 70px;
+        background: #000;
+        padding: 0 20px;
+        .profile {
+          img {
+            width: 40px;
+            height: 40px;
+          }
+        }
+        .controll {
+          display: flex;
+          align-items: center;
+          > button {
+            width: 28px;
+            height: 28px;
+
+            border-radius: 50%;
+            background: #D9D9D9;
+            & + button {
+              margin-left: 20px;
+            }
+            span {
+              display: block;
+              width: 16px;
+              height: 16px;
+              margin: 0 auto;
+
+              font-size: 0;
+              line-height: 0;
+            }
+          }
+          .btn_play_stop {
+            width: 40px;
+            height: 40px;
+            background: var(--color-brand1);
+            span {
+              background: url('../images/guide/ico_play.svg') no-repeat 50%;
+            }
+            &.paused span {
+              background-image: url('../images/guide/ico_pause.svg');
+            }
+          }
+          .btn_next {
+            span {
+              background: url('../images/guide/ico_next.svg') no-repeat 50%;
+            }
+          }
+          .select_box {
+            margin: 0 20px;
+
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #D9D9D9;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            > .selected {
+              span {
+                padding-right: 0;
+                font-size: 12px;
+                font-weight: 800;
+                color: #000;
+                &:after {
+                  display: none;
+                }
+              }
+            }
+            > .optionList {
+              > li {}
+            }
+          }
+          .btn_playlist {
+            margin-left: 32px;
+            background: none;
+            span {
+              display: block;
+              width: 16px;
+              height: 16px;
+              margin: 0 auto;
+
+              background: url('../images/guide/ico_playlist.svg') no-repeat 50%;
+              background-size: 100%;
+            }
+          }
+        }
+      }
+      > button {
+        position: absolute;
+        top: -22px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        width: 54px;
+        height: 24px;
+
+        overflow: hidden;
+        background: #fff;
+        border-radius: 27px 27px 0 0;
+        box-shadow: 0px -4px 4px 0px #75757540;
+        
+        font-size: 0;
+        line-height: 0;
+        span {
+          margin-top: 3px;
+          display: inline-block;
+          width: 24px;
+          height: 24px;
+
+          background: #fff url("../images/common/ico_arrow_left01.svg") no-repeat 50%;
+          background-size: 100%;
+
+          transform: rotate(90deg);
+        }
+      }
     }
   }
-  .btn_align {
-    font-size: 20px;
-    span {
-      display: block;
-      position: relative;
-      padding-left: 26px;
-      &::after {
-        content: '';
-        position: absolute;
-        top: 4px;
-        left: 0;
-
-        width: 20px;
-        height: 20px;
-
-        background: #000;
+  &.downloading {
+    .player_download_wrap {
+      .download_wrap {
+        background: var(--color-brand1);
+        button {
+          > div {
+            background: none;
+            lottie-player {display: block;}
+          }
+          span {
+            color: var(--color-brand1);
+            &:after {
+              display: none;
+              content: ' 중';
+            }
+          }
+        }
+      }
+    }
+  }
+  &.player_show {
+    .guide_detail_wrap .layer_content_wrap .layer_content .container {
+      padding-bottom: 210px;
+    }
+    .player_download_wrap {
+      .download_wrap {}
+      .player_wrap {
+        
       }
     }
   }
@@ -4364,88 +4816,88 @@ body.active {overflow: hidden;}
     border: 1px solid #000;
   }
 }
-// 임시
-.design_select {
-  display: inline-block;
-  position: relative;
-  z-index: 100;
-  min-width: 10.6rem;
-  border: 1px solid #000;
-  font-size: 1.4rem;
-  line-height: 1;
-  cursor: pointer;
-  user-select: none;
-	> .selected {
-		display: flex;
-		align-items: center;
-		height: 3.4rem;
-		padding: 0 1.2rem;
-		border: 1px solid transparent;
-		span {
-			position: relative;
-			width: 100%;
-			padding-right: 1.4rem;
-			&:after {
-				content: '';
-				position: absolute;
-				top: 50%;
-				right: 0;
-				transform: translateY(-50%);
-				border-left: 0.4rem solid transparent;
-				border-right: 0.4rem solid transparent;
-				border-top: 0.6rem solid #000;
-			}
-		}
-	}
-	> .optionList {
-		display: none;
-		position: absolute;
-		top: calc(100% + 1px);
-		left: 0;
-		width: 100%;
-		> li {
-			display: flex;
-			align-items: center;
-			height: 3.4rem;
-			padding: 0 1.2rem;
-			border: 1px solid #e4e4e4;
-			border-top: 0 none;
-			span {
-				position: relative;
-				width: 100%;
-				padding-right: 1.4rem;
-			}
-		}
-	}
-	&.active {
-		> .selected {
-			background-color: #fff;
-			border: 1px solid #e4e4e4;
-			span:after {
-				transform: translateY(-50%) rotate(180deg);
-			}
-		}
-		> .optionList {
-			display: block;
-			&:after {
-				content: '';
-				position: absolute;
-				bottom: 0;
-				left: 0;
-				z-index: -1;
-				width: 100%;
-				height: calc(100% + 3.4rem);
-				box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 4px 8px 3px rgba(0, 0, 0, 0.15);
-			}
-			> li {
-				background-color: #fff;
-				&.select {
-					background: #d7d7d7;
-				}
-			}
-		}
-  }
-}
+// 디자인셀렉트
+// .design_select {
+//   display: inline-block;
+//   position: relative;
+//   z-index: 100;
+//   min-width: 10.6rem;
+//   border: 1px solid #000;
+//   font-size: 1.4rem;
+//   line-height: 1;
+//   cursor: pointer;
+//   user-select: none;
+// 	> .selected {
+// 		display: flex;
+// 		align-items: center;
+// 		height: 3.4rem;
+// 		padding: 0 1.2rem;
+// 		border: 1px solid transparent;
+// 		span {
+// 			position: relative;
+// 			width: 100%;
+// 			padding-right: 1.4rem;
+// 			&:after {
+// 				content: '';
+// 				position: absolute;
+// 				top: 50%;
+// 				right: 0;
+// 				transform: translateY(-50%);
+// 				border-left: 0.4rem solid transparent;
+// 				border-right: 0.4rem solid transparent;
+// 				border-top: 0.6rem solid #000;
+// 			}
+// 		}
+// 	}
+// 	> .optionList {
+// 		display: none;
+// 		position: absolute;
+// 		top: calc(100% + 1px);
+// 		left: 0;
+// 		width: 100%;
+// 		> li {
+// 			display: flex;
+// 			align-items: center;
+// 			height: 3.4rem;
+// 			padding: 0 1.2rem;
+// 			border: 1px solid #e4e4e4;
+// 			border-top: 0 none;
+// 			span {
+// 				position: relative;
+// 				width: 100%;
+// 				padding-right: 1.4rem;
+// 			}
+// 		}
+// 	}
+// 	&.active {
+// 		> .selected {
+// 			background-color: #fff;
+// 			border: 1px solid #e4e4e4;
+// 			span:after {
+// 				transform: translateY(-50%) rotate(180deg);
+// 			}
+// 		}
+// 		> .optionList {
+// 			display: block;
+// 			&:after {
+// 				content: '';
+// 				position: absolute;
+// 				bottom: 0;
+// 				left: 0;
+// 				z-index: -1;
+// 				width: 100%;
+// 				height: calc(100% + 3.4rem);
+// 				box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 4px 8px 3px rgba(0, 0, 0, 0.15);
+// 			}
+// 			> li {
+// 				background-color: #fff;
+// 				&.select {
+// 					background: #d7d7d7;
+// 				}
+// 			}
+// 		}
+//   }
+// }
 .test_wrap {
   display: block !important;
   padding: 30px 0;

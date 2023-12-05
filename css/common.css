@@ -449,6 +449,81 @@ body.active {
   display: none;
 }
 
+.select_box {
+  display: inline-block;
+  position: relative;
+  z-index: 100;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.select_box > .selected {
+  display: flex;
+  align-items: center;
+}
+.select_box > .selected span {
+  position: relative;
+  padding-right: 20px;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--color-brand1);
+}
+.select_box > .selected span:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background: url("../images/common/ico_caret_down.svg") no-repeat 50%;
+  background-size: 100%;
+}
+.select_box > .optionList {
+  display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  overflow: hidden;
+  background: #F1F0F0;
+  border-radius: 12px;
+}
+.select_box > .optionList > li {
+  display: flex;
+  align-items: center;
+  height: 34px;
+  padding: 10px;
+}
+.select_box > .optionList > li span {
+  position: relative;
+  display: block;
+  padding-left: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+  white-space: nowrap;
+}
+.select_box > .optionList > li + li {
+  border-top: 1px solid #C2C2C2;
+}
+.select_box.active > .optionList {
+  display: block;
+}
+.select_box.active > .optionList > li.select span:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background: url("../images/common/ico_check.svg") no-repeat 50%;
+  background-size: 100%;
+}
+
 #wrap {
   background: #F9F9FB;
   padding-top: 44px;
@@ -1507,25 +1582,87 @@ body.active {
   border-color: var(--color-brand1);
 }
 
+.walking_guide_wrap {
+  transition: padding 0.3s;
+}
+.walking_guide_wrap .desc_box .inner {
+  display: flex;
+  color: #000;
+}
+.walking_guide_wrap .desc_box .inner > div {
+  height: 20px;
+  padding: 0 8px;
+  background: #FDB022;
+  border-radius: 2px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #000;
+  line-height: 22px;
+}
+.walking_guide_wrap .desc_box .inner > div.distance {
+  background: #7CD4FD;
+}
+.walking_guide_wrap .desc_box .inner > div.distance span:after {
+  background: url("../images/guide/ico_distance.svg") no-repeat;
+  background-size: 100%;
+}
+.walking_guide_wrap .desc_box .inner > div + div {
+  margin-left: 4px;
+}
+.walking_guide_wrap .desc_box .inner > div span {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  padding-left: 18px;
+  border-radius: 6px;
+}
+.walking_guide_wrap .desc_box .inner > div span::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background: url("../images/guide/ico_time.svg") no-repeat;
+  background-size: 100%;
+}
 .walking_guide_wrap .guide_list_wrap.active .filter_view button span:before {
   background-image: url("../images/challenge/ico_view_large.svg");
 }
 .walking_guide_wrap .guide_list_wrap.active .filter_view button span:after {
   content: "크게";
 }
+.walking_guide_wrap .guide_list_wrap.active .guide_list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 12px 10px;
+}
+.walking_guide_wrap .guide_list_wrap.active .guide_list > div {
+  min-height: 244px;
+}
+.walking_guide_wrap .guide_list_wrap.active .guide_list > div .visual_box {
+  height: 100%;
+}
+.walking_guide_wrap .guide_list_wrap.active .guide_list > div .visual_box img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+}
+.walking_guide_wrap .guide_list_wrap.active .guide_list > div .content_box > .inner > .title br {
+  display: none;
+}
+.walking_guide_wrap .guide_list_wrap.active .guide_list > div + div {
+  margin-top: 0;
+}
 .walking_guide_wrap .guide_list_wrap .filter_view {
   display: flex;
+  align-items: center;
   justify-content: right;
   margin: 11px 28px 0 0;
 }
-.walking_guide_wrap .guide_list_wrap .filter_view.active button span:before {
-  background-image: url("../images/challenge/ico_view_large.svg");
-}
-.walking_guide_wrap .guide_list_wrap .filter_view.active button span:after {
-  content: "크게";
-}
 .walking_guide_wrap .guide_list_wrap .filter_view button {
-  padding: 5px 10px;
+  margin-left: 16px;
   background: none;
   font-size: 13px;
   font-weight: 800;
@@ -1605,45 +1742,6 @@ body.active {
 .walking_guide_wrap .guide_list_wrap > .guide_list > div .content_box > .inner > .desc_box {
   margin-top: 8px;
 }
-.walking_guide_wrap .guide_list_wrap > .guide_list > div .content_box > .inner > .desc_box .inner {
-  display: flex;
-  color: #000;
-}
-.walking_guide_wrap .guide_list_wrap > .guide_list > div .content_box > .inner > .desc_box .inner > div {
-  height: 20px;
-  padding: 0 8px;
-  background: #FDB022;
-  font-size: 12px;
-  font-weight: 700;
-  color: #000;
-  line-height: 22px;
-}
-.walking_guide_wrap .guide_list_wrap > .guide_list > div .content_box > .inner > .desc_box .inner > div.distance {
-  background: #7CD4FD;
-}
-.walking_guide_wrap .guide_list_wrap > .guide_list > div .content_box > .inner > .desc_box .inner > div.distance span:after {
-  background-color: #03c75a;
-}
-.walking_guide_wrap .guide_list_wrap > .guide_list > div .content_box > .inner > .desc_box .inner > div + div {
-  margin-left: 4px;
-}
-.walking_guide_wrap .guide_list_wrap > .guide_list > div .content_box > .inner > .desc_box .inner > div span {
-  position: relative;
-  display: inline-block;
-  height: 100%;
-  padding-left: 18px;
-  border-radius: 6px;
-}
-.walking_guide_wrap .guide_list_wrap > .guide_list > div .content_box > .inner > .desc_box .inner > div span::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  width: 12px;
-  height: 12px;
-  background: #000;
-}
 .walking_guide_wrap .guide_list_wrap > .guide_list > div .content_box > .inner > .player_bar {
   position: absolute;
   bottom: 0;
@@ -1673,57 +1771,362 @@ body.active {
   font-size: 0;
   line-height: 0;
 }
-.walking_guide_wrap .walking_guide_detail .title h2 {
-  font-size: 20px;
+.walking_guide_wrap .guide_detail_wrap .layer_content_wrap {
+  padding: 0;
 }
-.walking_guide_wrap .walking_guide_detail .control_wrap {
+.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content {
+  padding: 0;
+}
+.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 44px;
+  padding: 0 20px;
+  background: #F9F9FB;
+}
+.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .header h1 {
+  text-align: left;
+}
+.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .header > div {
+  height: 100%;
+}
+.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .header button {
+  min-width: 24px;
+  min-height: 24px;
+  border: 0 none;
+  font-size: 0;
+  line-height: 0;
+}
+.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .header > .title_wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .header > .title_wrap h1 {
+  flex: 1;
+  padding: 0 32px;
+  font-size: 18px;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--color-font1);
+  line-height: 24px;
+}
+.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .header > .title_wrap .btn_back {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  background: url("../images/common/ico_arrow_left01.svg");
+  background-size: 100%;
+  border: 0 none;
+  transform: translateY(-50%) rotate(270deg);
+  transform-origin: center;
+}
+.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .header > .icon_wrap {
+  position: absolute;
+  top: 0;
+  right: 12px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .header > .icon_wrap button span {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  padding: 8px;
+  box-sizing: content-box;
+}
+.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .header > .icon_wrap button.btn_setting span {
+  width: 24px;
+  height: 24px;
+  background: url("../images/common/ico_menu.svg") no-repeat 50%;
+  background-size: 24px;
+}
+.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .header > .icon_wrap button.btn_comments span {
+  background: url("../images/challenge/ico_comments.svg") no-repeat 50%;
+  background-size: 16px;
+}
+.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .header > .icon_wrap button.btn_share span {
+  background: url("../images/challenge/ico_share.svg") no-repeat 50%;
+  background-size: 16px;
+}
+.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .header > .icon_wrap button.btn_favorite span {
+  background: url("../images/challenge/ico_favorite.svg") no-repeat 50%;
+  background-size: 16px;
+}
+.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .header > .icon_wrap button.btn_share span {
+  background: url("../images/common/ico_share.svg") no-repeat 50%;
+  background-size: 16px;
+}
+.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .container {
+  position: relative;
+  z-index: 500;
+  padding: 70% 0 120px;
+}
+.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .container > .guide_visual {
+  position: fixed;
+  top: 44px;
+  left: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  background: #F9F9FB;
+}
+.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .container > .guide_visual img {
+  display: block;
+  width: 100%;
+}
+.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .container > .guide_inner {
+  padding: 0 20px;
+}
+.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .container > .guide_inner h2 {
+  font-size: 18px;
+  font-weight: 800;
+}
+.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .container > .guide_inner > .guide_title {
+  padding: 24px;
+  background: #fff;
+  border-radius: 24px;
+  color: #000;
+}
+.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .container > .guide_inner > .guide_title h2 {
+  margin-top: 8px;
+  font-size: 20px;
+  font-weight: 800;
+}
+.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .container > .guide_inner > .guide_title p {
+  margin-top: 12px;
+  font-size: 13px;
+  font-weight: 400;
+}
+.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .container > .guide_inner .guide_content {
+  margin-top: 12px;
+}
+.walking_guide_wrap .player_download_wrap {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1100;
+  width: 100%;
+}
+.walking_guide_wrap .player_download_wrap .download_wrap {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-.walking_guide_wrap .walking_guide_detail .control_wrap button {
-  font-size: 20px;
-}
-.walking_guide_wrap .walking_guide_complete .result_wrap p {
-  text-align: center;
-}
-.walking_guide_wrap .walking_guide_complete .result_wrap ul {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 10px;
-}
-.walking_guide_wrap .walking_guide_complete .result_wrap ul > li {
-  text-align: center;
-  border: 1px solid #000;
-}
-.walking_guide_wrap .walking_menu_list {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 10px;
-}
-.walking_guide_wrap .walking_menu_list > li {
-  border: 1px solid #000;
-  box-sizing: border-box;
-  text-align: center;
-}
-.walking_guide_wrap .btn_align {
-  font-size: 20px;
-}
-.walking_guide_wrap .btn_align span {
-  display: block;
-  position: relative;
-  padding-left: 26px;
-}
-.walking_guide_wrap .btn_align span::after {
-  content: "";
-  position: absolute;
-  top: 4px;
-  left: 0;
-  width: 20px;
-  height: 20px;
+  width: 100%;
+  height: 70px;
+  padding: 0 20px;
   background: #000;
+  transition: background 0.3s;
 }
-
+.walking_guide_wrap .player_download_wrap .download_wrap p {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.walking_guide_wrap .player_download_wrap .download_wrap button {
+  margin-left: 25px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 104px;
+  height: 32px;
+  border-radius: 16px;
+  background: #fff;
+}
+.walking_guide_wrap .player_download_wrap .download_wrap button > div {
+  width: 24px;
+  height: 24px;
+  background: url("../images/common/ico_download.svg") no-repeat 50%;
+  background-size: 100%;
+}
+.walking_guide_wrap .player_download_wrap .download_wrap button > div lottie-player {
+  display: none;
+}
+.walking_guide_wrap .player_download_wrap .download_wrap button > span {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 700;
+  color: #000;
+  line-height: 1;
+}
+.walking_guide_wrap .player_download_wrap .player_wrap {
+  position: relative;
+}
+.walking_guide_wrap .player_download_wrap .player_wrap .player_status {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 55px;
+  background: #fff;
+  padding: 0 54px 0 20px;
+  box-shadow: 0px -4px 4px 0px rgba(117, 117, 117, 0.2509803922);
+}
+.walking_guide_wrap .player_download_wrap .player_wrap .player_status strong {
+  font-size: 14px;
+  font-weight: 800;
+  color: #000;
+}
+.walking_guide_wrap .player_download_wrap .player_wrap .player_status p {
+  margin-left: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.walking_guide_wrap .player_download_wrap .player_wrap .player_status button {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  width: 24px;
+  height: 28px;
+  background: url("../images/guide/ico_close.svg") no-repeat 0 4px;
+  background-size: 100%;
+  font-size: 0;
+  line-height: 0;
+}
+.walking_guide_wrap .player_download_wrap .player_wrap .player_controll {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  background: #000;
+  padding: 0 20px;
+}
+.walking_guide_wrap .player_download_wrap .player_wrap .player_controll .profile img {
+  width: 40px;
+  height: 40px;
+}
+.walking_guide_wrap .player_download_wrap .player_wrap .player_controll .controll {
+  display: flex;
+  align-items: center;
+}
+.walking_guide_wrap .player_download_wrap .player_wrap .player_controll .controll > button {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #D9D9D9;
+}
+.walking_guide_wrap .player_download_wrap .player_wrap .player_controll .controll > button + button {
+  margin-left: 20px;
+}
+.walking_guide_wrap .player_download_wrap .player_wrap .player_controll .controll > button span {
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin: 0 auto;
+  font-size: 0;
+  line-height: 0;
+}
+.walking_guide_wrap .player_download_wrap .player_wrap .player_controll .controll .btn_play_stop {
+  width: 40px;
+  height: 40px;
+  background: var(--color-brand1);
+}
+.walking_guide_wrap .player_download_wrap .player_wrap .player_controll .controll .btn_play_stop span {
+  background: url("../images/guide/ico_play.svg") no-repeat 50%;
+}
+.walking_guide_wrap .player_download_wrap .player_wrap .player_controll .controll .btn_play_stop.paused span {
+  background-image: url("../images/guide/ico_pause.svg");
+}
+.walking_guide_wrap .player_download_wrap .player_wrap .player_controll .controll .btn_next span {
+  background: url("../images/guide/ico_next.svg") no-repeat 50%;
+}
+.walking_guide_wrap .player_download_wrap .player_wrap .player_controll .controll .select_box {
+  margin: 0 20px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #D9D9D9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.walking_guide_wrap .player_download_wrap .player_wrap .player_controll .controll .select_box > .selected span {
+  padding-right: 0;
+  font-size: 12px;
+  font-weight: 800;
+  color: #000;
+}
+.walking_guide_wrap .player_download_wrap .player_wrap .player_controll .controll .select_box > .selected span:after {
+  display: none;
+}
+.walking_guide_wrap .player_download_wrap .player_wrap .player_controll .controll .btn_playlist {
+  margin-left: 32px;
+  background: none;
+}
+.walking_guide_wrap .player_download_wrap .player_wrap .player_controll .controll .btn_playlist span {
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin: 0 auto;
+  background: url("../images/guide/ico_playlist.svg") no-repeat 50%;
+  background-size: 100%;
+}
+.walking_guide_wrap .player_download_wrap .player_wrap > button {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 54px;
+  height: 24px;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 27px 27px 0 0;
+  box-shadow: 0px -4px 4px 0px rgba(117, 117, 117, 0.2509803922);
+  font-size: 0;
+  line-height: 0;
+}
+.walking_guide_wrap .player_download_wrap .player_wrap > button span {
+  margin-top: 3px;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: #fff url("../images/common/ico_arrow_left01.svg") no-repeat 50%;
+  background-size: 100%;
+  transform: rotate(90deg);
+}
+.walking_guide_wrap.downloading .player_download_wrap .download_wrap {
+  background: var(--color-brand1);
+}
+.walking_guide_wrap.downloading .player_download_wrap .download_wrap button > div {
+  background: none;
+}
+.walking_guide_wrap.downloading .player_download_wrap .download_wrap button > div lottie-player {
+  display: block;
+}
+.walking_guide_wrap.downloading .player_download_wrap .download_wrap button span {
+  color: var(--color-brand1);
+}
+.walking_guide_wrap.downloading .player_download_wrap .download_wrap button span:after {
+  display: none;
+  content: " 중";
+}
+.walking_guide_wrap.player_show .guide_detail_wrap .layer_content_wrap .layer_content .container {
+  padding-bottom: 210px;
+}
 .setting_wrap .setting_list > li {
   padding: 20px;
 }
@@ -3791,88 +4194,6 @@ body.active {
   font-size: 20px;
   font-weight: bold;
   border: 1px solid #000;
-}
-
-.design_select {
-  display: inline-block;
-  position: relative;
-  z-index: 100;
-  min-width: 10.6rem;
-  border: 1px solid #000;
-  font-size: 1.4rem;
-  line-height: 1;
-  cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
-}
-.design_select > .selected {
-  display: flex;
-  align-items: center;
-  height: 3.4rem;
-  padding: 0 1.2rem;
-  border: 1px solid transparent;
-}
-.design_select > .selected span {
-  position: relative;
-  width: 100%;
-  padding-right: 1.4rem;
-}
-.design_select > .selected span:after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  border-left: 0.4rem solid transparent;
-  border-right: 0.4rem solid transparent;
-  border-top: 0.6rem solid #000;
-}
-.design_select > .optionList {
-  display: none;
-  position: absolute;
-  top: calc(100% + 1px);
-  left: 0;
-  width: 100%;
-}
-.design_select > .optionList > li {
-  display: flex;
-  align-items: center;
-  height: 3.4rem;
-  padding: 0 1.2rem;
-  border: 1px solid #e4e4e4;
-  border-top: 0 none;
-}
-.design_select > .optionList > li span {
-  position: relative;
-  width: 100%;
-  padding-right: 1.4rem;
-}
-.design_select.active > .selected {
-  background-color: #fff;
-  border: 1px solid #e4e4e4;
-}
-.design_select.active > .selected span:after {
-  transform: translateY(-50%) rotate(180deg);
-}
-.design_select.active > .optionList {
-  display: block;
-}
-.design_select.active > .optionList:after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-  width: 100%;
-  height: calc(100% + 3.4rem);
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 4px 8px 3px rgba(0, 0, 0, 0.15);
-}
-.design_select.active > .optionList > li {
-  background-color: #fff;
-}
-.design_select.active > .optionList > li.select {
-  background: #d7d7d7;
 }
 
 .test_wrap {

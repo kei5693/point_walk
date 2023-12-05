@@ -1320,27 +1320,30 @@ let walkingReport = {
   },
 }
 
-// 걸음리포트
+// 걷기가이드
 let walkingGuide = {
   init: function(){
-    this.filterViewEvent();
-    this.popupEvent();
+    this.filterViewEvent(); 
+    this.detailToggleEvent();
+    this.detailButtonEvent();
   },
+  // 목록 필터 버튼 이벤트
   filterViewEvent: function(){
     if(document.querySelector('.walking_guide_wrap') == null) return;
 
-    const walkingGuide = document.querySelector('.walking_guide_wrap');
-    const filterView = walkingGuide.querySelector(':scope .filter_view');
+    const guideListWrap = document.querySelector('.guide_list_wrap');
+    const filterView = guideListWrap.querySelector(':scope .filter_view');
     const filter = filterView.querySelector(':scope .design_select');
     const view = filterView.querySelector(':scope > button');
 
     view.addEventListener('click', ()=>{
-      let condition = filterView.classList.contains('active');
+      let condition = guideListWrap.classList.contains('active');
 
-      condition ? filterView.classList.remove('active') : filterView.classList.add('active')
+      condition ? guideListWrap.classList.remove('active') : guideListWrap.classList.add('active')
     });
   },
-  popupEvent: function(){
+  // 목록, 다운로드 버튼 클릭 시 상세 팝업 이벤트
+  detailToggleEvent: function(){
     if(document.querySelector('.walking_guide_wrap') == null) return;
 
     const walkingGuide = document.querySelector('.walking_guide_wrap');
@@ -1364,6 +1367,26 @@ let walkingGuide = {
         console.log(target);
       }
     });
+  },
+  // 상세 팝업 하단 다운로드, 플레이어 클릭 이벤트
+  detailButtonEvent: function(){
+    // if(document.querySelector('.player_download_wrap') == null) return;
+
+    // const walkingGuide = document.querySelector('.walking_guide_wrap');
+    // const playerDownloadWrap = document.querySelector('.player_download_wrap');
+    // const btnDownload = playerDownloadWrap.querySelector(':scope > .download_wrap > button');
+
+    // btnDownload.addEventListener('click', ()=>{
+    //   let condition = wrap.classList.contains('downloading');
+
+    //   if(condition){
+    //     // wrap.classList.replace('downloading', 'player_show');
+    //     walkingGuide.classList = 'walking_guide_wrap player_show';
+    //   } else {
+    //     // wrap.classList.add('downloading');
+    //     walkingGuide.classList = 'walking_guide_wrap downloading';
+    //   }
+    // });
   },
 }
 

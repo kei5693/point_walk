@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>리워드 유의사항</title>
+	<link rel="stylesheet" href="./css/swiper-bundle.min.css">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/animation.css">
+	<link rel="stylesheet" href="./css/common.css">
+
+	<script src="./js/swiper-bundle.min.js"></script>
+  <script src="./js/cdn.jsdelivr.net_npm_chart.js"></script>
+  <script src="./js/chartjs-plugin-datalabels.min.js"></script>
+  <script src="./js/chartjs-plugin-annotation.min.js"></script>
+</head>
+<body>
+  <div class="popup_btn_wrap">
+    <button type="button" class="layer_button_toggle" data-popup-name='#CG0600300'>리워드 유의사항</button>
+  </div>
+
+  <!-- 리워드 유의사항 -->
+  <div id="CG0600300" class="modal_layer_popup hide_footer">
+    <div class="dimmed_layer"></div>
+    <div class="layer_content_wrap">
+      <div class="layer_content">
+        <!-- header -->
+        <div class="layer_header">
+          <h1>크루</h1>
+        </div>
+        <!-- body -->
+        <div class="layer_body">
+          <div class="noted_list">
+            <ul>
+              <li><h2>위치정보를 못 잡아요</h2>
+                <p>위치정보가 꺼진 경우 위치확인이 되지 않을 수 있어요. 스마트폰의 위치정보를 설정해주세요.</p>
+              </li>
+              <li><h2>위치도착 확인은 어떻게 하나요?</h2>
+                <p>위치확인 배너나 ‘도착확인‘ 버튼을 선택하시면 지도에서 도착위치 확인이 가능합니다. 목적지의 1km 반경 내에 있다면 ‘도착하셨나요?’ 버튼이 자동 노출됩니다.</p>
+              </li>
+              <li><h2>스탬프는 어떻게 받나요?</h2>
+                <p>각 장소의 위치확인에 성공하면 스탬프가 자동으로 활성화되고 확인할 수 있어요.</p>
+              </li>
+              <li><h2>포인트를 받았다는데 어디서 확인하나요?</h2>
+                <p>포인트워크 내 ‘리워드&gt;포인트내역’에서 확인할 수 있어요.</p>
+              </li>
+              <li><h2>젤리는 어디서 확인하나요?</h2>
+                <p>포인트워크 내 ‘리워드&gt;젤리내역‘에서 확인할 수 있어요.</p>
+              </li>
+              <li><h2>받은 쿠폰은 어디서 확인하나요?</h2>
+                <p>받은 쿠폰은 H.Point APP>혜택>쿠폰’에서 확인하실 수 있어요.</p>
+              </li>
+              <li><h2>젤리와 포인트의 유효기간을 알려주세요.</h2>
+                <p>챌린지에서 받으신 젤리와 포인트는 90일동안 유효합니다. 소멸 전에 사용해주세요.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- footer -->
+        <div class="layer_footer">
+        </div>
+      </div>
+      <button type="button" class="layer_close">close</button>
+      <div class="layer_drag"><span></span></div>
+    </div>
+  </div>
+  <!-- //리워드 유의사항 -->
+  <script src="./js/common.js"></script>
+  <script>
+    setTimeout(() => {
+      common.layerToggle('#CG0600300');
+    }, 300);
+  </script>
+
+</body>
+</html>
