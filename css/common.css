@@ -1771,13 +1771,14 @@ body.active {
   font-size: 0;
   line-height: 0;
 }
-.walking_guide_wrap .guide_detail_wrap .layer_content_wrap {
+
+.guide_detail_wrap .layer_content_wrap {
   padding: 0;
 }
-.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content {
+.guide_detail_wrap .layer_content_wrap .layer_content {
   padding: 0;
 }
-.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .header {
+.guide_detail_wrap .layer_content_wrap .layer_content .header {
   position: absolute;
   top: 0;
   left: 0;
@@ -1790,25 +1791,25 @@ body.active {
   padding: 0 20px;
   background: #F9F9FB;
 }
-.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .header h1 {
+.guide_detail_wrap .layer_content_wrap .layer_content .header h1 {
   text-align: left;
 }
-.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .header > div {
+.guide_detail_wrap .layer_content_wrap .layer_content .header > div {
   height: 100%;
 }
-.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .header button {
+.guide_detail_wrap .layer_content_wrap .layer_content .header button {
   min-width: 24px;
   min-height: 24px;
   border: 0 none;
   font-size: 0;
   line-height: 0;
 }
-.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .header > .title_wrap {
+.guide_detail_wrap .layer_content_wrap .layer_content .header > .title_wrap {
   flex: 1;
   display: flex;
   align-items: center;
 }
-.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .header > .title_wrap h1 {
+.guide_detail_wrap .layer_content_wrap .layer_content .header > .title_wrap h1 {
   flex: 1;
   padding: 0 32px;
   font-size: 18px;
@@ -1821,7 +1822,7 @@ body.active {
   color: var(--color-font1);
   line-height: 24px;
 }
-.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .header > .title_wrap .btn_back {
+.guide_detail_wrap .layer_content_wrap .layer_content .header > .title_wrap .btn_back {
   position: absolute;
   top: 50%;
   left: 20px;
@@ -1835,7 +1836,7 @@ body.active {
   transform: translateY(-50%) rotate(270deg);
   transform-origin: center;
 }
-.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .header > .icon_wrap {
+.guide_detail_wrap .layer_content_wrap .layer_content .header > .icon_wrap {
   position: absolute;
   top: 0;
   right: 12px;
@@ -1843,41 +1844,41 @@ body.active {
   display: flex;
   align-items: center;
 }
-.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .header > .icon_wrap button span {
+.guide_detail_wrap .layer_content_wrap .layer_content .header > .icon_wrap button span {
   display: inline-block;
   width: 16px;
   height: 16px;
   padding: 8px;
   box-sizing: content-box;
 }
-.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .header > .icon_wrap button.btn_setting span {
+.guide_detail_wrap .layer_content_wrap .layer_content .header > .icon_wrap button.btn_setting span {
   width: 24px;
   height: 24px;
   background: url("../images/common/ico_menu.svg") no-repeat 50%;
   background-size: 24px;
 }
-.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .header > .icon_wrap button.btn_comments span {
+.guide_detail_wrap .layer_content_wrap .layer_content .header > .icon_wrap button.btn_comments span {
   background: url("../images/challenge/ico_comments.svg") no-repeat 50%;
   background-size: 16px;
 }
-.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .header > .icon_wrap button.btn_share span {
+.guide_detail_wrap .layer_content_wrap .layer_content .header > .icon_wrap button.btn_share span {
   background: url("../images/challenge/ico_share.svg") no-repeat 50%;
   background-size: 16px;
 }
-.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .header > .icon_wrap button.btn_favorite span {
+.guide_detail_wrap .layer_content_wrap .layer_content .header > .icon_wrap button.btn_favorite span {
   background: url("../images/challenge/ico_favorite.svg") no-repeat 50%;
   background-size: 16px;
 }
-.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .header > .icon_wrap button.btn_share span {
+.guide_detail_wrap .layer_content_wrap .layer_content .header > .icon_wrap button.btn_share span {
   background: url("../images/common/ico_share.svg") no-repeat 50%;
   background-size: 16px;
 }
-.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .container {
+.guide_detail_wrap .layer_content_wrap .layer_content .container {
   position: relative;
   z-index: 500;
-  padding: 70% 0 120px;
+  padding: 70% 0 90px;
 }
-.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .container > .guide_visual {
+.guide_detail_wrap .layer_content_wrap .layer_content .container > .guide_visual {
   position: fixed;
   top: 44px;
   left: 0;
@@ -1886,54 +1887,61 @@ body.active {
   height: 100%;
   background: #F9F9FB;
 }
-.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .container > .guide_visual img {
+.guide_detail_wrap .layer_content_wrap .layer_content .container > .guide_visual img {
   display: block;
   width: 100%;
 }
-.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .container > .guide_inner {
+.guide_detail_wrap .layer_content_wrap .layer_content .container > .guide_inner {
   padding: 0 20px;
 }
-.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .container > .guide_inner h2 {
+.guide_detail_wrap .layer_content_wrap .layer_content .container > .guide_inner h2 {
   font-size: 18px;
   font-weight: 800;
 }
-.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .container > .guide_inner > .guide_title {
+.guide_detail_wrap .layer_content_wrap .layer_content .container > .guide_inner > .guide_title {
   padding: 24px;
   background: #fff;
   border-radius: 24px;
   color: #000;
 }
-.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .container > .guide_inner > .guide_title h2 {
+.guide_detail_wrap .layer_content_wrap .layer_content .container > .guide_inner > .guide_title h2 {
   margin-top: 8px;
   font-size: 20px;
   font-weight: 800;
 }
-.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .container > .guide_inner > .guide_title p {
+.guide_detail_wrap .layer_content_wrap .layer_content .container > .guide_inner > .guide_title p {
   margin-top: 12px;
   font-size: 13px;
   font-weight: 400;
 }
-.walking_guide_wrap .guide_detail_wrap .layer_content_wrap .layer_content .container > .guide_inner .guide_content {
+.guide_detail_wrap .layer_content_wrap .layer_content .container > .guide_inner .guide_content {
   margin-top: 12px;
 }
-.walking_guide_wrap .player_download_wrap {
+
+.player_download_wrap {
   position: fixed;
   bottom: 0;
   left: 0;
   z-index: 1100;
+  transform: translateY(100%);
   width: 100%;
 }
-.walking_guide_wrap .player_download_wrap .download_wrap {
+.player_download_wrap .download_wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  height: 70px;
+  overflow: hidden;
   padding: 0 20px;
   background: #000;
-  transition: background 0.3s;
+  transform: translateY(0);
+  transition: background 0.3s, transform 0.5s;
 }
-.walking_guide_wrap .player_download_wrap .download_wrap p {
+.player_download_wrap .download_wrap p {
   flex: 1;
   font-size: 14px;
   font-weight: 600;
@@ -1943,7 +1951,7 @@ body.active {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.walking_guide_wrap .player_download_wrap .download_wrap button {
+.player_download_wrap .download_wrap button {
   margin-left: 25px;
   flex-shrink: 0;
   display: flex;
@@ -1954,40 +1962,62 @@ body.active {
   border-radius: 16px;
   background: #fff;
 }
-.walking_guide_wrap .player_download_wrap .download_wrap button > div {
+.player_download_wrap .download_wrap button > div {
   width: 24px;
   height: 24px;
   background: url("../images/common/ico_download.svg") no-repeat 50%;
   background-size: 100%;
 }
-.walking_guide_wrap .player_download_wrap .download_wrap button > div lottie-player {
+.player_download_wrap .download_wrap button > div lottie-player {
   display: none;
 }
-.walking_guide_wrap .player_download_wrap .download_wrap button > span {
+.player_download_wrap .download_wrap button > span {
   display: inline-block;
   font-size: 14px;
   font-weight: 700;
   color: #000;
   line-height: 1;
 }
-.walking_guide_wrap .player_download_wrap .player_wrap {
-  position: relative;
+.player_download_wrap .download_wrap.downloading {
+  background: var(--color-brand1);
 }
-.walking_guide_wrap .player_download_wrap .player_wrap .player_status {
+.player_download_wrap .download_wrap.downloading button > div {
+  background: none;
+}
+.player_download_wrap .download_wrap.downloading button > div lottie-player {
+  display: block;
+}
+.player_download_wrap .download_wrap.downloading button span {
+  color: var(--color-brand1);
+}
+.player_download_wrap .download_wrap.downloading button span:after {
+  display: none;
+  content: " 중";
+}
+.player_download_wrap .player_wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  transition: transform 0.5s;
+}
+.player_download_wrap .player_wrap .player_status {
   position: relative;
   display: flex;
   align-items: center;
   height: 55px;
+  margin-top: 25px;
   background: #fff;
   padding: 0 54px 0 20px;
   box-shadow: 0px -4px 4px 0px rgba(117, 117, 117, 0.2509803922);
 }
-.walking_guide_wrap .player_download_wrap .player_wrap .player_status strong {
+.player_download_wrap .player_wrap .player_status strong {
   font-size: 14px;
   font-weight: 800;
   color: #000;
 }
-.walking_guide_wrap .player_download_wrap .player_wrap .player_status p {
+.player_download_wrap .player_wrap .player_status p {
   margin-left: 16px;
   font-size: 14px;
   font-weight: 600;
@@ -1996,7 +2026,7 @@ body.active {
   white-space: nowrap;
   overflow: hidden;
 }
-.walking_guide_wrap .player_download_wrap .player_wrap .player_status button {
+.player_download_wrap .player_wrap .player_status button {
   position: absolute;
   top: 15px;
   right: 20px;
@@ -2007,7 +2037,7 @@ body.active {
   font-size: 0;
   line-height: 0;
 }
-.walking_guide_wrap .player_download_wrap .player_wrap .player_controll {
+.player_download_wrap .player_wrap .player_controll {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -2015,24 +2045,24 @@ body.active {
   background: #000;
   padding: 0 20px;
 }
-.walking_guide_wrap .player_download_wrap .player_wrap .player_controll .profile img {
+.player_download_wrap .player_wrap .player_controll .profile img {
   width: 40px;
   height: 40px;
 }
-.walking_guide_wrap .player_download_wrap .player_wrap .player_controll .controll {
+.player_download_wrap .player_wrap .player_controll .controll {
   display: flex;
   align-items: center;
 }
-.walking_guide_wrap .player_download_wrap .player_wrap .player_controll .controll > button {
+.player_download_wrap .player_wrap .player_controll .controll > button {
   width: 28px;
   height: 28px;
   border-radius: 50%;
   background: #D9D9D9;
 }
-.walking_guide_wrap .player_download_wrap .player_wrap .player_controll .controll > button + button {
+.player_download_wrap .player_wrap .player_controll .controll > button + button {
   margin-left: 20px;
 }
-.walking_guide_wrap .player_download_wrap .player_wrap .player_controll .controll > button span {
+.player_download_wrap .player_wrap .player_controll .controll > button span {
   display: block;
   width: 16px;
   height: 16px;
@@ -2040,21 +2070,27 @@ body.active {
   font-size: 0;
   line-height: 0;
 }
-.walking_guide_wrap .player_download_wrap .player_wrap .player_controll .controll .btn_play_stop {
+.player_download_wrap .player_wrap .player_controll .controll .btn_play_stop {
   width: 40px;
   height: 40px;
   background: var(--color-brand1);
 }
-.walking_guide_wrap .player_download_wrap .player_wrap .player_controll .controll .btn_play_stop span {
+.player_download_wrap .player_wrap .player_controll .controll .btn_play_stop span {
   background: url("../images/guide/ico_play.svg") no-repeat 50%;
 }
-.walking_guide_wrap .player_download_wrap .player_wrap .player_controll .controll .btn_play_stop.paused span {
+.player_download_wrap .player_wrap .player_controll .controll .btn_play_stop.active span {
   background-image: url("../images/guide/ico_pause.svg");
 }
-.walking_guide_wrap .player_download_wrap .player_wrap .player_controll .controll .btn_next span {
+.player_download_wrap .player_wrap .player_controll .controll .btn_next span {
   background: url("../images/guide/ico_next.svg") no-repeat 50%;
 }
-.walking_guide_wrap .player_download_wrap .player_wrap .player_controll .controll .select_box {
+.player_download_wrap .player_wrap .player_controll .controll .btn_loop span {
+  background: url("../images/guide/ico_loop.svg") no-repeat 50%;
+}
+.player_download_wrap .player_wrap .player_controll .controll .btn_loop.active span {
+  background-image: url("../images/guide/ico_loop_on.svg");
+}
+.player_download_wrap .player_wrap .player_controll .controll .select_box {
   margin: 0 20px;
   width: 28px;
   height: 28px;
@@ -2064,20 +2100,26 @@ body.active {
   justify-content: center;
   align-items: center;
 }
-.walking_guide_wrap .player_download_wrap .player_wrap .player_controll .controll .select_box > .selected span {
+.player_download_wrap .player_wrap .player_controll .controll .select_box > .selected span {
   padding-right: 0;
   font-size: 12px;
   font-weight: 800;
   color: #000;
 }
-.walking_guide_wrap .player_download_wrap .player_wrap .player_controll .controll .select_box > .selected span:after {
+.player_download_wrap .player_wrap .player_controll .controll .select_box > .selected span:after {
   display: none;
 }
-.walking_guide_wrap .player_download_wrap .player_wrap .player_controll .controll .btn_playlist {
+.player_download_wrap .player_wrap .player_controll .controll .select_box > .optionList {
+  min-width: 100px;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, calc(-100% - 6px));
+}
+.player_download_wrap .player_wrap .player_controll .controll .btn_playlist {
   margin-left: 32px;
   background: none;
 }
-.walking_guide_wrap .player_download_wrap .player_wrap .player_controll .controll .btn_playlist span {
+.player_download_wrap .player_wrap .player_controll .controll .btn_playlist span {
   display: block;
   width: 16px;
   height: 16px;
@@ -2085,11 +2127,16 @@ body.active {
   background: url("../images/guide/ico_playlist.svg") no-repeat 50%;
   background-size: 100%;
 }
-.walking_guide_wrap .player_download_wrap .player_wrap > button {
+.player_download_wrap .player_wrap .player_controll .controll .btn_playlist.active span {
+  background-image: url("../images/guide/ico_close2.svg");
+}
+.player_download_wrap .player_wrap > button {
   position: absolute;
-  top: -22px;
+  top: 6px;
   left: 50%;
   transform: translateX(-50%);
+  transform-origin: 50%;
+  z-index: 100;
   width: 54px;
   height: 24px;
   overflow: hidden;
@@ -2099,34 +2146,44 @@ body.active {
   font-size: 0;
   line-height: 0;
 }
-.walking_guide_wrap .player_download_wrap .player_wrap > button span {
+.player_download_wrap .player_wrap > button span {
   margin-top: 3px;
   display: inline-block;
   width: 24px;
   height: 24px;
-  background: #fff url("../images/common/ico_arrow_left01.svg") no-repeat 50%;
+  background: #fff url("../images/common/ico_arrow_left01.svg") no-repeat -2px 50%;
   background-size: 100%;
   transform: rotate(90deg);
 }
-.walking_guide_wrap.downloading .player_download_wrap .download_wrap {
-  background: var(--color-brand1);
+.player_download_wrap .player_wrap > button.active span {
+  transform: rotate(270deg);
 }
-.walking_guide_wrap.downloading .player_download_wrap .download_wrap button > div {
-  background: none;
-}
-.walking_guide_wrap.downloading .player_download_wrap .download_wrap button > div lottie-player {
-  display: block;
-}
-.walking_guide_wrap.downloading .player_download_wrap .download_wrap button span {
-  color: var(--color-brand1);
-}
-.walking_guide_wrap.downloading .player_download_wrap .download_wrap button span:after {
+.player_download_wrap.walking_guide .player_wrap > button {
   display: none;
-  content: " 중";
 }
-.walking_guide_wrap.player_show .guide_detail_wrap .layer_content_wrap .layer_content .container {
-  padding-bottom: 210px;
+.player_download_wrap.walking_guide .player_wrap .player_status {
+  padding-right: 20px;
 }
+.player_download_wrap.walking_guide .player_wrap .player_status button {
+  display: none;
+}
+
+#wrap.download_show .player_download_wrap .download_wrap {
+  transform: translateY(-100%);
+}
+#wrap.player_show #container {
+  padding-bottom: 135px;
+}
+#wrap.player_show .guide_detail_wrap .layer_content_wrap .layer_content .container {
+  padding-bottom: 170px;
+}
+#wrap.player_show .player_download_wrap .download_wrap {
+  transform: translateY(0);
+}
+#wrap.player_show .player_download_wrap .player_wrap {
+  transform: translateY(-100%);
+}
+
 .setting_wrap .setting_list > li {
   padding: 20px;
 }

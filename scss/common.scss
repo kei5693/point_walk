@@ -2043,418 +2043,482 @@ body.active {overflow: hidden;}
       }
     }
   }
-  .guide_detail_wrap {
-    .layer_content_wrap {
+}
+// 걷기 가이드 상세
+.guide_detail_wrap {
+  .layer_content_wrap {
+    padding: 0;
+    .layer_content {
       padding: 0;
-      .layer_content {
-        padding: 0;
-        .header {
-          position: absolute;
-          top: 0;
-          left: 0;
-          z-index: 999;
-      
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-      
-          width: 100%;
-          height: 44px;
-          padding: 0 20px;
-      
-          background: #F9F9FB;
-          h1 {
-            text-align: left;
-          }
-          > div {
-            height: 100%;
-          }
-          button {
-            min-width: 24px;
-            min-height: 24px;
-      
-            border: 0 none;
-      
-            font-size: 0;
-            line-height: 0;
-          }
-          > .title_wrap {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            h1 {
-              flex: 1;
-              padding: 0 32px;
-      
-              font-size: 18px;
-              font-weight: 800;
-      
-              @include text_ellipsis();
-        
-              font-size: 18px;
-              font-weight: 800;
-              color: var(--color-font1);
-              line-height: 24px;
-            }
-            .btn_back {
-              position: absolute;
-              top: 50%;
-              left: 20px;
-              transform: translateY(-50%);
-      
-              width: 24px;
-              height: 24px;
-              margin-right: 10px;
-      
-              background: url('../images/common/ico_arrow_left01.svg');
-              background-size: 100%;
-              border: 0 none;
-              transform: translateY(-50%) rotate(270deg);
-              transform-origin: center;
-            }
-          }
-          > .icon_wrap {
-            position: absolute;
-            top: 0;
-            right: 12px;
-      
-            flex-shrink: 0;
-      
-            display: flex;
-            align-items: center;
-            button {
-              span {
-                display: inline-block;
-                width: 16px;
-                height: 16px;
-                padding: 8px;
-                box-sizing: content-box;
-              }
-              &.btn_setting span {
-                width: 24px;
-                height: 24px;
-                background: url('../images/common/ico_menu.svg') no-repeat 50%;
-                background-size: 24px;
-              }
-              &.btn_comments span {
-                background: url('../images/challenge/ico_comments.svg') no-repeat 50%;
-                background-size: 16px;
-              }
-              &.btn_share span {
-                background: url('../images/challenge/ico_share.svg') no-repeat 50%;
-                background-size: 16px;
-              }
-              &.btn_favorite span {
-                background: url('../images/challenge/ico_favorite.svg') no-repeat 50%;
-                background-size: 16px;
-              }
-              &.btn_share span {
-                background: url('../images/common/ico_share.svg') no-repeat 50%;
-                background-size: 16px;
-              }
-            }
-          }
-        }
-        .container {
-          position: relative;
-          z-index: 500;
-          padding: 70% 0 120px;
-          > .guide_visual {
-            position: fixed;
-            top: 44px;
-            left: 0;
-            z-index: -2;
-      
-            width: 100%;
-            height: 100%;
-            background: #F9F9FB;
-            img {
-              display: block;
-              width: 100%;
-            }
-          }
-          > .guide_inner {
-            padding: 0 20px;
-            h2 {
-              font-size: 18px;
-              font-weight: 800;
-            }
-            > .guide_title {
-              padding: 24px;
-              background: #fff;
-              border-radius: 24px;
-
-              color: #000;
-              h2 {
-                margin-top: 8px;
-                font-size: 20px;
-                font-weight: 800;
-              }
-              p {
-                margin-top: 12px;
-                font-size: 13px;
-                font-weight: 400;
-              }
-            }
-            .guide_content {
-              margin-top: 12px;
-            }
-          }
-        }
-      }
-    }
-  }
-  .player_download_wrap {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: 1100;
-  
-    width: 100%;
-    .download_wrap {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-  
-      width: 100%;
-      height: 70px;
-      padding: 0 20px;
-  
-      background: #000;
-      transition: background 0.3s;
-      p {
-        flex: 1;
-        font-size: 14px;
-        font-weight: 600;
-        color: #fff;
-        line-height: 1;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-      button {
-        margin-left: 25px;
-        flex-shrink: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-  
-        width: 104px;
-        height: 32px;
-  
-        border-radius: 16px;
-        background: #fff;
-        > div {
-          width: 24px;
-          height: 24px;
-          background: url('../images/common/ico_download.svg') no-repeat 50%;
-          background-size: 100%;
-          lottie-player {
-            display: none;
-          }
-        }
-        > span {
-          display: inline-block;
-          font-size: 14px;
-          font-weight: 700;
-          color: #000;
-          line-height: 1;
-        }
-      }
-    }
-    .player_wrap {
-      position: relative;
-      .player_status {
-        position: relative;
-        display: flex;
-        align-items: center;
-        height: 55px;
-
-        background: #fff;
-        padding: 0 54px 0 20px;
-
-        box-shadow: 0px -4px 4px 0px #75757540;
-        strong {
-          font-size: 14px;
-          font-weight: 800;
-          color: #000;
-        }
-        p {
-          margin-left: 16px;
-          font-size: 14px;
-          font-weight: 600;
-          color: #000;
-          @include text_ellipsis();
-        }
-        button {
-          position: absolute;
-          top: 15px;
-          right: 20px;
-
-          width: 24px;
-          height: 28px;
-          background: url('../images/guide/ico_close.svg') no-repeat 0 4px;
-          background-size: 100%;
-
-          font-size: 0;
-          line-height: 0;
-        }
-      }
-      .player_controll {
+      .header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 999;
+    
         display: flex;
         justify-content: space-between;
         align-items: center;
-
-        height: 70px;
-        background: #000;
+    
+        width: 100%;
+        height: 44px;
         padding: 0 20px;
-        .profile {
-          img {
-            width: 40px;
-            height: 40px;
-          }
+    
+        background: #F9F9FB;
+        h1 {
+          text-align: left;
         }
-        .controll {
+        > div {
+          height: 100%;
+        }
+        button {
+          min-width: 24px;
+          min-height: 24px;
+    
+          border: 0 none;
+    
+          font-size: 0;
+          line-height: 0;
+        }
+        > .title_wrap {
+          flex: 1;
           display: flex;
           align-items: center;
-          > button {
-            width: 28px;
-            height: 28px;
-
-            border-radius: 50%;
-            background: #D9D9D9;
-            & + button {
-              margin-left: 20px;
-            }
+          h1 {
+            flex: 1;
+            padding: 0 32px;
+    
+            font-size: 18px;
+            font-weight: 800;
+    
+            @include text_ellipsis();
+      
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--color-font1);
+            line-height: 24px;
+          }
+          .btn_back {
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+    
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+    
+            background: url('../images/common/ico_arrow_left01.svg');
+            background-size: 100%;
+            border: 0 none;
+            transform: translateY(-50%) rotate(270deg);
+            transform-origin: center;
+          }
+        }
+        > .icon_wrap {
+          position: absolute;
+          top: 0;
+          right: 12px;
+    
+          flex-shrink: 0;
+    
+          display: flex;
+          align-items: center;
+          button {
             span {
-              display: block;
+              display: inline-block;
               width: 16px;
               height: 16px;
-              margin: 0 auto;
-
-              font-size: 0;
-              line-height: 0;
+              padding: 8px;
+              box-sizing: content-box;
             }
-          }
-          .btn_play_stop {
-            width: 40px;
-            height: 40px;
-            background: var(--color-brand1);
-            span {
-              background: url('../images/guide/ico_play.svg') no-repeat 50%;
+            &.btn_setting span {
+              width: 24px;
+              height: 24px;
+              background: url('../images/common/ico_menu.svg') no-repeat 50%;
+              background-size: 24px;
             }
-            &.paused span {
-              background-image: url('../images/guide/ico_pause.svg');
+            &.btn_comments span {
+              background: url('../images/challenge/ico_comments.svg') no-repeat 50%;
+              background-size: 16px;
             }
-          }
-          .btn_next {
-            span {
-              background: url('../images/guide/ico_next.svg') no-repeat 50%;
+            &.btn_share span {
+              background: url('../images/challenge/ico_share.svg') no-repeat 50%;
+              background-size: 16px;
             }
-          }
-          .select_box {
-            margin: 0 20px;
-
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: #D9D9D9;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            > .selected {
-              span {
-                padding-right: 0;
-                font-size: 12px;
-                font-weight: 800;
-                color: #000;
-                &:after {
-                  display: none;
-                }
-              }
+            &.btn_favorite span {
+              background: url('../images/challenge/ico_favorite.svg') no-repeat 50%;
+              background-size: 16px;
             }
-            > .optionList {
-              > li {}
-            }
-          }
-          .btn_playlist {
-            margin-left: 32px;
-            background: none;
-            span {
-              display: block;
-              width: 16px;
-              height: 16px;
-              margin: 0 auto;
-
-              background: url('../images/guide/ico_playlist.svg') no-repeat 50%;
-              background-size: 100%;
+            &.btn_share span {
+              background: url('../images/common/ico_share.svg') no-repeat 50%;
+              background-size: 16px;
             }
           }
         }
       }
-      > button {
-        position: absolute;
-        top: -22px;
-        left: 50%;
-        transform: translateX(-50%);
-
-        width: 54px;
-        height: 24px;
-
-        overflow: hidden;
-        background: #fff;
-        border-radius: 27px 27px 0 0;
-        box-shadow: 0px -4px 4px 0px #75757540;
-        
-        font-size: 0;
-        line-height: 0;
-        span {
-          margin-top: 3px;
-          display: inline-block;
-          width: 24px;
-          height: 24px;
-
-          background: #fff url("../images/common/ico_arrow_left01.svg") no-repeat 50%;
-          background-size: 100%;
-
-          transform: rotate(90deg);
-        }
-      }
-    }
-  }
-  &.downloading {
-    .player_download_wrap {
-      .download_wrap {
-        background: var(--color-brand1);
-        button {
-          > div {
-            background: none;
-            lottie-player {display: block;}
+      .container {
+        position: relative;
+        z-index: 500;
+        padding: 70% 0 90px;
+        > .guide_visual {
+          position: fixed;
+          top: 44px;
+          left: 0;
+          z-index: -2;
+    
+          width: 100%;
+          height: 100%;
+          background: #F9F9FB;
+          img {
+            display: block;
+            width: 100%;
           }
-          span {
-            color: var(--color-brand1);
-            &:after {
-              display: none;
-              content: ' 중';
+        }
+        > .guide_inner {
+          padding: 0 20px;
+          h2 {
+            font-size: 18px;
+            font-weight: 800;
+          }
+          > .guide_title {
+            padding: 24px;
+            background: #fff;
+            border-radius: 24px;
+
+            color: #000;
+            h2 {
+              margin-top: 8px;
+              font-size: 20px;
+              font-weight: 800;
+            }
+            p {
+              margin-top: 12px;
+              font-size: 13px;
+              font-weight: 400;
             }
           }
+          .guide_content {
+            margin-top: 12px;
+          }
         }
-      }
-    }
-  }
-  &.player_show {
-    .guide_detail_wrap .layer_content_wrap .layer_content .container {
-      padding-bottom: 210px;
-    }
-    .player_download_wrap {
-      .download_wrap {}
-      .player_wrap {
-        
       }
     }
   }
 }
+
+// 플레이어
+.player_download_wrap {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1100;
+  transform: translateY(100%);
+
+  width: 100%;
+  .download_wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    overflow: hidden;
+    padding: 0 20px;
+
+    background: #000;
+    transform: translateY(0);
+    transition: background 0.3s, transform 0.5s;
+    p {
+      flex: 1;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    button {
+      margin-left: 25px;
+      flex-shrink: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: 104px;
+      height: 32px;
+
+      border-radius: 16px;
+      background: #fff;
+      > div {
+        width: 24px;
+        height: 24px;
+        background: url('../images/common/ico_download.svg') no-repeat 50%;
+        background-size: 100%;
+        lottie-player {
+          display: none;
+        }
+      }
+      > span {
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 700;
+        color: #000;
+        line-height: 1;
+      }
+    }
+    &.downloading {
+      background: var(--color-brand1);
+      button {
+        > div {
+          background: none;
+          lottie-player {display: block;}
+        }
+        span {
+          color: var(--color-brand1);
+          &:after {
+            display: none;
+            content: ' 중';
+          }
+        }
+      }
+    }
+  }
+  .player_wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+
+    transition: transform 0.5s;
+    .player_status {
+      position: relative;
+      display: flex;
+      align-items: center;
+      height: 55px;
+
+      margin-top: 25px;
+      background: #fff;
+      padding: 0 54px 0 20px;
+
+      box-shadow: 0px -4px 4px 0px #75757540;
+      strong {
+        font-size: 14px;
+        font-weight: 800;
+        color: #000;
+      }
+      p {
+        margin-left: 16px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #000;
+        @include text_ellipsis();
+      }
+      button {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+
+        width: 24px;
+        height: 28px;
+        background: url('../images/guide/ico_close.svg') no-repeat 0 4px;
+        background-size: 100%;
+
+        font-size: 0;
+        line-height: 0;
+      }
+    }
+    .player_controll {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      height: 70px;
+      background: #000;
+      padding: 0 20px;
+      .profile {
+        img {
+          width: 40px;
+          height: 40px;
+        }
+      }
+      .controll {
+        display: flex;
+        align-items: center;
+        > button {
+          width: 28px;
+          height: 28px;
+
+          border-radius: 50%;
+          background: #D9D9D9;
+          & + button {
+            margin-left: 20px;
+          }
+          span {
+            display: block;
+            width: 16px;
+            height: 16px;
+            margin: 0 auto;
+
+            font-size: 0;
+            line-height: 0;
+          }
+        }
+        .btn_play_stop {
+          width: 40px;
+          height: 40px;
+          background: var(--color-brand1);
+          span {
+            background: url('../images/guide/ico_play.svg') no-repeat 50%;
+          }
+          &.active span {
+            background-image: url('../images/guide/ico_pause.svg');
+          }
+        }
+        .btn_next {
+          span {
+            background: url('../images/guide/ico_next.svg') no-repeat 50%;
+          }
+        }
+        .btn_loop {
+          span {
+            background: url('../images/guide/ico_loop.svg') no-repeat 50%;
+          }
+          &.active span {
+            background-image: url('../images/guide/ico_loop_on.svg');
+          }
+        }
+        .select_box {
+          margin: 0 20px;
+
+          width: 28px;
+          height: 28px;
+          border-radius: 50%;
+          background: #D9D9D9;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          > .selected {
+            span {
+              padding-right: 0;
+              font-size: 12px;
+              font-weight: 800;
+              color: #000;
+              &:after {
+                display: none;
+              }
+            }
+          }
+          > .optionList {
+            min-width: 100px;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, calc(-100% - 6px));
+            > li {}
+          }
+        }
+        .btn_playlist {
+          margin-left: 32px;
+          background: none;
+          span {
+            display: block;
+            width: 16px;
+            height: 16px;
+            margin: 0 auto;
+
+            background: url('../images/guide/ico_playlist.svg') no-repeat 50%;
+            background-size: 100%;
+          }
+          &.active span {
+            background-image: url('../images/guide/ico_close2.svg');
+          }
+        }
+      }
+    }
+    > button {
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      transform-origin: 50%;
+      z-index: 100;
+
+      width: 54px;
+      height: 24px;
+
+      overflow: hidden;
+      background: #fff;
+      border-radius: 27px 27px 0 0;
+      box-shadow: 0px -4px 4px 0px #75757540;
+      
+      font-size: 0;
+      line-height: 0;
+      span {
+        margin-top: 3px;
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+
+        background: #fff url("../images/common/ico_arrow_left01.svg") no-repeat -2px 50%;
+        background-size: 100%;
+
+        transform: rotate(90deg);
+      }
+      &.active span {transform: rotate(270deg);}
+    }
+  }
+  &.walking_guide {
+    .player_wrap {
+      > button {display: none;}
+      .player_status {
+        padding-right: 20px;
+        button {display: none;}
+      }
+    }
+  }
+}
+
+#wrap {
+  &.download_show {
+    .player_download_wrap {
+      .download_wrap {
+        transform: translateY(-100%);
+      }
+    }
+  }
+  &.player_show {
+    #container {padding-bottom: 135px;}
+    .guide_detail_wrap .layer_content_wrap .layer_content .container {
+      padding-bottom: 170px;
+    }
+    .player_download_wrap {
+      .download_wrap {
+        transform: translateY(0);
+      }
+      .player_wrap {
+        transform: translateY(-100%);
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
 // * 설정
 .setting_wrap {
   .setting_list {

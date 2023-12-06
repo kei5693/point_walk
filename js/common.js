@@ -100,6 +100,14 @@ let common = {
       })();
     }
   },
+  // 팝업 닫기
+  layerClose: function(target){
+    const layerPopup = document.querySelector(target);
+
+    document.body.classList.remove('active');
+    layerPopup.classList.remove('active');
+
+  },
   // 공통 - 팝업 : 버튼으로 토스트 팝업 열기
   toastButtonToggle: function(){
     let btnArr = document.querySelectorAll('.toast_button_toggle');
@@ -303,6 +311,89 @@ let common = {
       //console.log('complete');
       downloadAni.classList.remove('active');
       lottiePlayer.stop();
+    });
+  },
+  // 걷기 가이드 팝업 토글(상세, 다운로드버튼 클릭 분기)
+  detailPopupEvent: function(target, eventType){
+    if(document.querySelector('.player_download_wrap') == null) return;
+
+    const playerDownloadWrap = document.querySelector('.player_download_wrap');
+    const downloadWrap = playerDownloadWrap.querySelector(':scope > .download_wrap');
+    const closeGuideDetail = document.querySelector('.guide_detail_wrap .layer_content_wrap .layer_content .header > .title_wrap .btn_back');
+
+    common.layerToggle('#guideDetail');
+
+    if(!wrap.classList.contains('player_show')){
+      wrap.classList = 'download_show';
+    }
+    
+    // 다운로드 버튼 클릭하고 진입 케이스
+    eventType == 'downloading' ? downloadWrap.classList.add('downloading') : downloadWrap.classList.remove('downloading');
+
+    // 걷기가이드 상세 상단 뒤로 가기 버튼 클릭으로 상세 닫기
+    closeGuideDetail.addEventListener('click', ()=>{
+      if(document.querySelector('.guide_detail_wrap').classList.contains('active')) {
+        common.layerToggle('#guideDetail');
+        wrap.classList = '';
+      }
+    });
+  },
+  // 다운로드, 플레이어 클릭 이벤트
+  playerButtonEvent: function(){
+    if(document.querySelector('.player_download_wrap') == null) return;
+
+    const wrap = document.querySelector('#wrap');
+    const playerDownloadWrap = document.querySelector('.player_download_wrap');
+    const downloadWrap = playerDownloadWrap.querySelector(':scope > .download_wrap');
+
+    // 플레이어
+    const playerWrap = playerDownloadWrap.querySelector(':scope > .player_wrap');
+    const btnCloseDetailLayer = playerWrap.querySelector(':scope > button');
+    const btnClosePlayer = playerWrap.querySelector(':scope > .player_status button');
+    const btnPlayerUnit = playerWrap.querySelectorAll(':scope > .player_controll .controll > button');
+
+    if(downloadWrap){
+      const btnDownload = downloadWrap.querySelector(':scope > button');
+      btnDownload.addEventListener('click', ()=>{
+        let condition = downloadWrap.classList.contains('downloading');
+  
+        if(condition){
+          downloadWrap.classList.remove('downloading');
+          wrap.classList = 'player_show';
+        } else {
+          downloadWrap.classList.add('downloading');
+        }
+      });
+
+      // 플레이어 상단 걷기 가이드 열고 닫기 버튼
+      btnCloseDetailLayer.addEventListener('click', ()=>{
+        let condition = btnCloseDetailLayer.classList.contains('active');
+        condition ? btnCloseDetailLayer.classList.remove('active') : btnCloseDetailLayer.classList.add('active');
+        common.layerToggle('#guideDetail');
+      });
+
+      // 플레이어 닫기 버튼
+      btnClosePlayer.addEventListener('click', ()=>{
+        let condition = btnCloseDetailLayer.classList.contains('active');
+
+        condition ? btnCloseDetailLayer.classList.remove('active') : btnCloseDetailLayer.classList.add('active');
+        wrap.classList = '';
+      });
+    }
+
+    // 플레이어 콘트롤 버튼 - play
+    btnPlayerUnit[0].addEventListener('click', ()=>{
+      btnPlayerUnit[0].classList.toggle('active');
+    });
+
+    // 플레이어 콘트롤 버튼 - loop
+    btnPlayerUnit[2].addEventListener('click', ()=>{
+      btnPlayerUnit[2].classList.toggle('active');
+    });
+    
+    // 플레이어 콘트롤 버튼 - playlist
+    btnPlayerUnit[3].addEventListener('click', ()=>{
+      btnPlayerUnit[3].classList.toggle('active');
     });
   },
 
@@ -1325,7 +1416,7 @@ let walkingGuide = {
   init: function(){
     this.filterViewEvent(); 
     this.detailToggleEvent();
-    this.detailButtonEvent();
+    common.playerButtonEvent();
   },
   // 목록 필터 버튼 이벤트
   filterViewEvent: function(){
@@ -1346,6 +1437,7 @@ let walkingGuide = {
   detailToggleEvent: function(){
     if(document.querySelector('.walking_guide_wrap') == null) return;
 
+    const wrap = document.querySelector('#wrap');
     const walkingGuide = document.querySelector('.walking_guide_wrap');
     const guideList = walkingGuide.querySelector(':scope .guide_list');
     const guideEl = guideList.querySelectorAll(':scope > div');
@@ -1353,40 +1445,17 @@ let walkingGuide = {
     guideEl.forEach((el)=>{
       let btnDownload = el.querySelector(':scope > button');
 
+      // 상세 클릭
       el.addEventListener('click', ()=>{
-        popupToggle(el);
+        common.detailPopupEvent(el);
       });
 
+      // 다운로드 버튼 클릭
       btnDownload.addEventListener('click', (e)=>{
         e.stopPropagation();
-        popupToggle(btnDownload);
+        common.detailPopupEvent(btnDownload, 'downloading');
       });
-
-      // 팝업 토글
-      function popupToggle(target){
-        console.log(target);
-      }
     });
-  },
-  // 상세 팝업 하단 다운로드, 플레이어 클릭 이벤트
-  detailButtonEvent: function(){
-    // if(document.querySelector('.player_download_wrap') == null) return;
-
-    // const walkingGuide = document.querySelector('.walking_guide_wrap');
-    // const playerDownloadWrap = document.querySelector('.player_download_wrap');
-    // const btnDownload = playerDownloadWrap.querySelector(':scope > .download_wrap > button');
-
-    // btnDownload.addEventListener('click', ()=>{
-    //   let condition = wrap.classList.contains('downloading');
-
-    //   if(condition){
-    //     // wrap.classList.replace('downloading', 'player_show');
-    //     walkingGuide.classList = 'walking_guide_wrap player_show';
-    //   } else {
-    //     // wrap.classList.add('downloading');
-    //     walkingGuide.classList = 'walking_guide_wrap downloading';
-    //   }
-    // });
   },
 }
 
