@@ -2207,6 +2207,291 @@ body.active {overflow: hidden;}
   }
 }
 
+// 재생목록 팝업
+.playlist_wrap {
+  .layer_content_wrap {
+    padding: 0;
+    .layer_content {
+      padding: 0;
+      .header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 999;
+    
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    
+        width: 100%;
+        height: 44px;
+        padding: 0 20px;
+    
+        background: #F9F9FB;
+        h1 {
+          text-align: left;
+        }
+        > div {
+          height: 100%;
+        }
+        button {
+          min-width: 24px;
+          min-height: 24px;
+    
+          border: 0 none;
+    
+          font-size: 0;
+          line-height: 0;
+        }
+        > .title_wrap {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          h1 {
+            flex: 1;
+            padding: 0 32px;
+    
+            font-size: 18px;
+            font-weight: 800;
+    
+            @include text_ellipsis();
+      
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--color-font1);
+            line-height: 24px;
+          }
+          .btn_back {
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+    
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+    
+            background: url('../images/common/ico_arrow_left01.svg');
+            background-size: 100%;
+            border: 0 none;
+            transform: translateY(-50%) rotate(270deg);
+            transform-origin: center;
+          }
+        }
+        > .icon_wrap {
+          position: absolute;
+          top: 0;
+          right: 12px;
+    
+          flex-shrink: 0;
+    
+          display: flex;
+          align-items: center;
+          button {
+            span {
+              display: inline-block;
+              width: 16px;
+              height: 16px;
+              padding: 8px;
+              box-sizing: content-box;
+            }
+            &.btn_setting span {
+              width: 24px;
+              height: 24px;
+              background: url('../images/common/ico_menu.svg') no-repeat 50%;
+              background-size: 24px;
+            }
+            &.btn_comments span {
+              background: url('../images/challenge/ico_comments.svg') no-repeat 50%;
+              background-size: 16px;
+            }
+            &.btn_share span {
+              background: url('../images/challenge/ico_share.svg') no-repeat 50%;
+              background-size: 16px;
+            }
+            &.btn_favorite span {
+              background: url('../images/challenge/ico_favorite.svg') no-repeat 50%;
+              background-size: 16px;
+            }
+            &.btn_share span {
+              background: url('../images/common/ico_share.svg') no-repeat 50%;
+              background-size: 16px;
+            }
+          }
+        }
+      }
+      .container {
+        position: relative;
+        z-index: 500;
+        padding: 44px 0 90px;
+        .play_list {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          grid-gap: 12px 10px;
+
+          padding: 24px 20px 35px;
+          > div {
+            overflow: hidden;
+            position: relative;
+            border-radius: 24px 24px 0 0;
+            min-height: 244px;
+            .visual_box {
+              position: relative;
+              height: 100%;
+              &:after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 20%);
+              }
+              img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
+            }
+            .content_box {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+    
+              display: flex;
+              align-items: end;
+              > .inner {
+                flex: 1;
+                padding: 0 16px 18px;
+    
+                background: #000;
+                background: linear-gradient(180deg, rgba(255, 255, 255, 0) -5%, #000 100%);
+                > .title {
+                  display: block;
+                  margin-top: 14px;
+    
+                  font-size: 20px;
+                  font-weight: 800;
+                  color: #fff;
+                  @include text_ellipsis2();
+                  br {display: none;}
+                }
+                > .desc_box {
+                  margin-top: 8px;
+                  .inner {
+                    display: flex;
+                    color: #000;
+                    > div {
+                      height: 20px;
+                      padding: 0 8px;
+                      background: #FDB022;
+                      border-radius: 2px;
+              
+                      font-size: 12px;
+                      font-weight: 700;
+                      color: #000;
+                      line-height: 22px;
+                      &.distance {
+                        background: #7CD4FD;
+                        span:after {
+                          background: url('../images/guide/ico_distance.svg') no-repeat;
+                          background-size: 100%;
+                        }
+                      }
+                      & + div {margin-left: 4px;}
+                      span {
+                        position: relative;
+                        display: inline-block;
+                        height: 100%;
+                        padding-left: 18px;
+                        border-radius: 6px;
+                        &::after {
+                          content: '';
+                          position: absolute;
+                          top: 50%;
+                          left: 0;
+                          transform: translateY(-50%);
+                          width: 12px;
+                          height: 12px;
+                          background: url('../images/guide/ico_time.svg') no-repeat;
+                          background-size: 100%;
+                        }
+                      }
+                    }
+                  }
+                }
+                > .player_bar {
+                  position: absolute;
+                  bottom: 0;
+                  left: 0;
+    
+                  width: 100%;
+                  height: 8px;
+                  background-color: #667085;
+                  span {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+    
+                    height: 100%;
+                    background-color: #B5FA95;
+                  }
+                }
+              }
+            }
+            > button {
+              position: absolute;
+              top: 24px;
+              right: 24px;
+              span {
+                display: block;
+                width: 32px;
+                height: 32px;
+    
+                background: url('../images/guide/ico_soundfit_down.svg') no-repeat;
+                background-size: 100%;
+    
+                font-size: 0;
+                line-height: 0;
+              }
+            }
+            &.playing {
+              &:before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 100;
+
+                width: 32px;
+                height: 32px;
+                background: url('../images/common/ico_player_pause.svg') no-repeat 50%;
+                background-size: 100%;
+              }
+              &:after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+              }
+              &.paused:before {
+                background-image: url('../images/common/ico_player_play.svg');
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 // 플레이어
 .player_download_wrap {
   position: fixed;
@@ -2309,11 +2594,17 @@ body.active {overflow: hidden;}
 
       box-shadow: 0px -4px 4px 0px #75757540;
       strong {
+        position: relative;
+        z-index: 10;
+
         font-size: 14px;
         font-weight: 800;
         color: #000;
       }
       p {
+        position: relative;
+        z-index: 10;
+
         margin-left: 16px;
         font-size: 14px;
         font-weight: 600;
@@ -2324,6 +2615,7 @@ body.active {overflow: hidden;}
         position: absolute;
         top: 15px;
         right: 20px;
+        z-index: 10;
 
         width: 24px;
         height: 28px;
@@ -2332,6 +2624,13 @@ body.active {overflow: hidden;}
 
         font-size: 0;
         line-height: 0;
+      }
+      div {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background: #B5FA95;
       }
     }
     .player_controll {
@@ -2474,7 +2773,7 @@ body.active {overflow: hidden;}
       &.active span {transform: rotate(270deg);}
     }
   }
-  &.walking_guide {
+  &.hide_button {
     .player_wrap {
       > button {display: none;}
       .player_status {
@@ -2484,6 +2783,8 @@ body.active {overflow: hidden;}
     }
   }
 }
+
+
 
 #wrap {
   &.download_show {
@@ -4022,10 +4323,20 @@ body.active {overflow: hidden;}
       
       width: 100%;
       height: 100px;
-      padding: 24px 0 34px;
+      padding: 24px 28px 34px;
   
       background: #fff;
       box-shadow: 0 0px 30px 5px rgba(0, 0, 0, 0.3);
+
+      display: flex;
+      button {
+        & + button {
+          margin-left: 8px !important;
+        }
+      }
+      @media screen and (max-width: 320px) {
+        padding: 24px 14px 34px;
+      }
     }
     .common_btn {
       display: block;
@@ -4038,19 +4349,69 @@ body.active {overflow: hidden;}
       font-size: 14px;
       font-weight: 600;
       color: #fff;
+      // 흰색 버튼
       &.color {
         color: var(--color-brand1);
         background: #fff;
         border: 1px solid var(--color-brand1);
       }
+      // 높이가 큰 버튼
       &.large {
-        max-width: calc(100% - 56px);
         height: 58px;
 
         margin: 0 auto;
         border-radius: 0;
         font-size: 13px;
         font-weight: 800;
+      }
+      // 걷기가이드 다운로드
+      &.download {
+        background: #000;
+        span {
+          padding-left: 22px;
+          &:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+
+            width: 18px;
+            height: 18px;
+            background: url('../images/guide/ico_download_guide.svg') no-repeat 50%;
+            background-size: 100%;
+          }
+        }
+      }
+      // 걷기가이드 재생
+      &.player {
+        background: #fff;
+        border: 1px solid #000;
+        span {
+          padding-left: 22px;
+          color: #000;
+          &:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+
+            width: 18px;
+            height: 18px;
+            background: url('../images/guide/ico_play_guide.svg') no-repeat 50%;
+            background-size: 100%;
+          }
+        }
+      }
+      span {
+        position: relative;
+        word-break: keep-all;
+      }
+      // 비활성
+      &:disabled {
+        background: #DDD;
+        color: #98A2B3;
       }
     }
   }
