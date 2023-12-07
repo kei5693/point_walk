@@ -458,7 +458,7 @@ let common = {
           btnCloseDetailLayer.classList.remove('active');
         } else {
           btnCloseDetailLayer.classList.add('active');
-          
+
           common.layerClose('#playlistPopup');
           btnPlayerUnit[3].classList.remove('active');
         }
@@ -471,6 +471,9 @@ let common = {
 
         condition ? btnCloseDetailLayer.classList.remove('active') : btnCloseDetailLayer.classList.add('active');
         wrap.classList.remove('player_show');
+
+        common.layerClose('#playlistPopup');
+        common.layerClose('#guideDetail');
       });
     }
 
