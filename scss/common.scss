@@ -252,6 +252,7 @@ body.active {overflow: hidden;}
   position: fixed;
   bottom: 0;
   left: 0;
+  z-index: 9999;
 
   width: 100%;
 
@@ -268,6 +269,7 @@ body.active {overflow: hidden;}
   .inner {
     margin: 0 20px 20px;
     padding: 20px 30px;
+    background: #fff;
     border: 1px solid #000;
 
     text-align: center;
@@ -3854,7 +3856,6 @@ body.active {overflow: hidden;}
               border-right: 7px solid transparent;
             }
             button {
-
               display: block;
               width: 100%;
               min-height: 38px;
@@ -3912,7 +3913,7 @@ body.active {overflow: hidden;}
               justify-content: space-between;
               li {
                 background: url('../images/challenge/ico_stamp.svg') no-repeat 50%;
-                background-size: 100% auto;
+                background-size: 100% 100%;
                 
                 display: flex;
                 align-items: center;
@@ -4057,6 +4058,7 @@ body.active {overflow: hidden;}
               flex-shrink: 0;
               width: 64px;
               height: 36px;
+              line-height: 1;
 
               background: var(--color-brand1);
               border-radius: 18px;

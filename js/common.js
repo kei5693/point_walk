@@ -406,6 +406,19 @@ let common = {
     const playlistUnit = playlistPopup.querySelectorAll(':scope .play_list > div');
     const closePlaylistPopup = playlistPopup.querySelector(':scope .layer_content_wrap .layer_content .header > .title_wrap .btn_back');
 
+    const playerDownloadWrap = document.querySelector('.player_download_wrap');
+    // 다운로드 버튼
+    const downloadWrap = playerDownloadWrap.querySelector(':scope > .download_wrap');
+
+    // 플레이어
+    const playerWrap = playerDownloadWrap.querySelector(':scope > .player_wrap');
+    // 플레이어 상단 : 걷기 가이드 열고 닫기 버튼
+    const btnCloseDetailLayer = playerWrap.querySelector(':scope > button');
+    // 플레이어 닫기 버튼
+    const btnClosePlayer = playerWrap.querySelector(':scope > .player_status button');
+    // 플레이어 콘트롤 버튼(play, loop, playlist)
+    const btnPlayerUnit = playerWrap.querySelectorAll(':scope > .player_controll .controll > button');
+
     playlistUnit.forEach((playlist)=>{
       playlist.addEventListener('click', ()=>{
         playlist.classList.contains('paused') ? playlist.classList.remove('paused') : playlist.classList.add('paused');
@@ -414,9 +427,19 @@ let common = {
 
     // 재생목록 팝업 닫기
     closePlaylistPopup.addEventListener('click', ()=>{
-      common.layerClose('#playlistPopup');
+      resetPopupBtn();
     });
 
+    function resetPopupBtn(){
+      wrap.classList.remove('player_show');
+      common.layerClose('#guideDetail');
+      closePlayList();
+    }
+    
+    function closePlayList(){
+      common.layerClose('#playlistPopup');
+      btnPlayerUnit[3].classList.remove('active');
+    }
   },
   // 다운로드, 플레이어 클릭 이벤트
   playerButtonEvent: function(){
@@ -429,7 +452,7 @@ let common = {
 
     // 플레이어
     const playerWrap = playerDownloadWrap.querySelector(':scope > .player_wrap');
-    // 플레이어 상단 걷기 가이드 열고 닫기 버튼
+    // 플레이어 상단 : 걷기 가이드 열고 닫기 버튼
     const btnCloseDetailLayer = playerWrap.querySelector(':scope > button');
     // 플레이어 닫기 버튼
     const btnClosePlayer = playerWrap.querySelector(':scope > .player_status button');
@@ -450,7 +473,7 @@ let common = {
         }
       });
 
-      // 플레이어 상단 걷기 가이드 열고 닫기 버튼
+      // 플레이어 상단 : 걷기 가이드 열고 닫기 버튼
       btnCloseDetailLayer.addEventListener('click', ()=>{
         let condition = btnCloseDetailLayer.classList.contains('active');
 
@@ -458,9 +481,7 @@ let common = {
           btnCloseDetailLayer.classList.remove('active');
         } else {
           btnCloseDetailLayer.classList.add('active');
-
-          common.layerClose('#playlistPopup');
-          btnPlayerUnit[3].classList.remove('active');
+          closePlayList();
         }
         common.layerToggle('#guideDetail');
       });
@@ -470,10 +491,7 @@ let common = {
         let condition = btnCloseDetailLayer.classList.contains('active');
 
         condition ? btnCloseDetailLayer.classList.remove('active') : btnCloseDetailLayer.classList.add('active');
-        wrap.classList.remove('player_show');
-
-        common.layerClose('#playlistPopup');
-        common.layerClose('#guideDetail');
+        resetPopupBtn();
       });
     }
 
@@ -490,18 +508,31 @@ let common = {
     // 플레이어 콘트롤 버튼 - playlist
     btnPlayerUnit[3].addEventListener('click', ()=>{
       if(btnPlayerUnit[3].classList.contains('active')){
-        btnPlayerUnit[3].classList.remove('active');
-
-        common.layerClose('#playlistPopup');
-        wrap.classList.remove('player_show');
+        resetPopupBtn();
       } else {
-        btnPlayerUnit[3].classList.add('active');
-
-        common.layerClose('#guideDetail');
-        common.layerOpen('#playlistPopup');
-        btnCloseDetailLayer.classList.remove('active');
+        openPlayList();
       }
     });
+
+    
+    function resetPopupBtn(){
+      wrap.classList.remove('player_show');
+      btnCloseDetailLayer.classList.remove('active');
+      closePlayList();
+    }
+    
+    function openPlayList(){
+      btnPlayerUnit[3].classList.add('active');
+      btnCloseDetailLayer.classList.remove('active');
+      common.layerClose('#guideDetail');
+      common.layerOpen('#playlistPopup');
+    }
+
+    function closePlayList(){
+      btnPlayerUnit[3].classList.remove('active');
+      common.layerClose('#playlistPopup');
+      common.layerClose('#guideDetail');
+    }
   },
 
 
@@ -1563,10 +1594,25 @@ let walkingGuide = {
     if(document.querySelector('.guide_detail_wrap') == null) return;
     const closeGuideDetail = document.querySelector('.guide_detail_wrap .layer_content_wrap .layer_content .header > .title_wrap .btn_back');
 
+    const playerDownloadWrap = document.querySelector('.player_download_wrap');
+    // 플레이어
+    const playerWrap = playerDownloadWrap.querySelector(':scope > .player_wrap');
+    // 플레이어 상단 : 걷기 가이드 열고 닫기 버튼
+    const btnCloseDetailLayer = playerWrap.querySelector(':scope > button');
+    // 플레이어 콘트롤 버튼(play, loop, playlist)
+    const btnPlayerUnit = playerWrap.querySelectorAll(':scope > .player_controll .controll > button');
+
     closeGuideDetail.addEventListener('click', ()=>{
-      common.layerClose('#guideDetail');
-      wrap.classList = '';
+      resetPopupBtn();
     });
+
+    function resetPopupBtn(){
+      wrap.classList.remove('player_show');
+      btnCloseDetailLayer.classList.remove('active');
+      btnPlayerUnit[3].classList.remove('active');
+      common.layerClose('#playlistPopup');
+      common.layerClose('#guideDetail');
+    }
   },
 }
 
