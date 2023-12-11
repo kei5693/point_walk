@@ -534,6 +534,40 @@ let common = {
       common.layerClose('#guideDetail');
     }
   },
+  // 애니메이션 카운트
+  animationCount: function(value){
+    if(document.querySelector('.animation_count') == null) return;
+
+    const animationCountWrap = document.querySelector('.animation_count');
+    const animationNumber = animationCountWrap.querySelector(':scope > p');
+
+    startAni();
+
+    animationNumber.addEventListener("animationend", () => {
+      if(value > 1){
+        value--;
+
+        animationNumber.innerHTML = value;
+        animationNumber.classList.remove('active');
+        
+        setTimeout(() => {animationNumber.classList.add('active')}, 10);
+      } else if(animationNumber.innerHTML == 1){
+        endAni();
+      }
+    });
+
+
+    function startAni(){
+      animationCountWrap.classList.add('active');
+      animationNumber.classList.add('active');
+      animationNumber.innerHTML = value;
+    }
+
+    function endAni(){
+      animationNumber.classList.remove('active');
+      animationCountWrap.classList.remove('active');
+    }
+  },
 
 
 
@@ -1607,7 +1641,7 @@ let walkingGuide = {
     });
 
     function resetPopupBtn(){
-      wrap.classList.remove('player_show');
+      wrap.classList = '';
       btnCloseDetailLayer.classList.remove('active');
       btnPlayerUnit[3].classList.remove('active');
       common.layerClose('#playlistPopup');
@@ -1623,6 +1657,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	common.scrollDeformation();
 	common.tabMenuEvent();
 	common.inputBorderEvent();
+  //common.animationCount(3);
 	
 	main.init();
 	challenge.init();

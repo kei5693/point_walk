@@ -526,6 +526,38 @@ body.active {
   background-size: 100%;
 }
 
+.animation_count {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.animation_count p {
+  font-size: 110px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+}
+.animation_count p.active {
+  animation: countAni 1s forwards;
+}
+.animation_count.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.animation_count.active p {
+  opacity: 1;
+}
+
 #wrap {
   background: #F9F9FB;
   padding-top: 44px;
