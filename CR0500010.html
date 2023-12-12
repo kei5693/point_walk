@@ -15,7 +15,7 @@
   <script src="./js/chartjs-plugin-annotation.min.js"></script>
 </head>
 <body>
-  <div id="wrap">
+  <div id="wrap" class="color_wrap">
     <!-- header -->
     <div id="header">
       <div class="title_wrap">
@@ -33,24 +33,28 @@
 					<li>
 						<h2>프로필 설정</h2>
 						<ul>
-							<li><a href="./MN0100040.html">닉네임 &amp; 키와 몸무게 변경</a></li>
+							<li><a href="#">닉네임 &amp; 키와 몸무게 변경</a></li>
 						</ul>
 					</li>
 					<li>
 						<h2>시스템 설정</h2>
 						<ul>
 							<li>
-								<div>
+								<div class="inpchk_wrap">
 									<h3>걸음 수 활성화</h3>
 									<p>걸음수 측정 기능을 끄시면,<br>포인트워크 이용에 따른 미션혜택을 받으실 수 없습니다.</p>
-									<span class="inpchk_ani"><input type="checkbox" id="inp01" /><label for="inp01"><span>toggle</span></label></span>
+									<span class="inpchk_ani">
+										<input type="checkbox" id="inp01" /><label for="inp01"><span>toggle</span></label>
+									</span>
 								</div>
 							</li>
 							<li>
-								<h3>활동 알림</h3>
-								<div>
+								<div class="inpchk_wrap">
+									<h3>활동 알림</h3>
 									<p>이벤트 미션안내 및 완료알림,<br>7일이상 미출석 알림을 받습니다.</p>
-									<span class="inpchk_ani"><input type="checkbox" id="inp02" /><label for="inp02"><span>toggle</span></label></span>
+									<span class="inpchk_ani">
+										<input type="checkbox" id="inp02" /><label for="inp02"><span>toggle</span></label>
+									</span>
 								</div>
 							</li>
 						</ul>

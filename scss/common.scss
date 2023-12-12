@@ -335,18 +335,16 @@ body.active {overflow: hidden;}
 // 체크박스 애니메이션
 .inpchk_ani {
   display: inline-block;
-  width: 80px;
-  height: 38px;
+  width: 48px;
+  height: 28px;
   
   overflow: hidden;
-  border-radius: 20px;
-  border: 1px solid #000;
-  background-color: #fff;
+  border-radius: 14px;
+  background: #CCC;
   input {
     display: none;
     &:checked + label span {
-      left: calc(100% - 34px);
-      background: cyan;
+      left: calc(100% - 26px);
     }
   }
   label {
@@ -359,14 +357,13 @@ body.active {overflow: hidden;}
       line-height: 0;
 
       position: absolute;
-      top: 4px;
+      top: 3px;
       left: 4px;
 
-      width: 28px;
-      height: 28px;
+      width: 22px;
+      height: 22px;
 
-      background: #dfdfdf;
-      border: 1px solid #000;
+      background: #fff;
       border-radius: 50%;
       transition: left 0.3s, background 0.3s;
     }
@@ -640,8 +637,6 @@ body.active {overflow: hidden;}
 }
 
 
-// 메인
-// body.bg_main {background: #F9F9FB;}
 // 전체 레이아웃
 #wrap {
   background: #F9F9FB;
@@ -1777,6 +1772,36 @@ body.active {overflow: hidden;}
       }
     }
   }
+  // 다운로드 버튼
+  &.download_show {
+    .player_download_wrap {
+      .download_wrap {
+        transform: translateY(-100%);
+      }
+    }
+  }
+  // 플레이어 
+  &.player_show {
+    #container {padding-bottom: 135px;}
+    .guide_detail_wrap .layer_content_wrap .layer_content .container {
+      padding-bottom: 170px;
+    }
+    .player_download_wrap {
+      .download_wrap {
+        transform: translateY(0);
+      }
+      .player_wrap {
+        transform: translateY(-100%);
+      }
+    }
+  }
+  // 배경 흰색
+  &.color_wrap {
+    background: #fff;
+    #header {
+      background: #fff;
+    }
+  }
 }
 // 포인트워크 진입 - 접근 권한
 .access_rights {
@@ -2824,43 +2849,7 @@ body.active {overflow: hidden;}
   }
 }
 
-
-
-#wrap {
-  &.download_show {
-    .player_download_wrap {
-      .download_wrap {
-        transform: translateY(-100%);
-      }
-    }
-  }
-  &.player_show {
-    #container {padding-bottom: 135px;}
-    .guide_detail_wrap .layer_content_wrap .layer_content .container {
-      padding-bottom: 170px;
-    }
-    .player_download_wrap {
-      .download_wrap {
-        transform: translateY(0);
-      }
-      .player_wrap {
-        transform: translateY(-100%);
-      }
-    }
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-// * 설정
+// 설정
 .setting_wrap {
   .setting_list {
     > li {
@@ -2889,16 +2878,21 @@ body.active {overflow: hidden;}
             display: block;
             position: relative;
             font-size: 14px;
+
+            padding-right: 30px;
             &:after {
+              content: '';
               content: '';
               position: absolute;
               top: 50%;
               right: 0;
               transform: translateY(-50%);
-              
+
               width: 20px;
               height: 20px;
-              background: #000;
+
+              background: url('../images/common/ico_arrow_right01.svg') no-repeat;
+              background-size: 100%;
             }
           }
         }
@@ -2907,9 +2901,13 @@ body.active {overflow: hidden;}
           font-size: 14px;
         }
         .inpchk_wrap {
-          position: absolute;
-          top: 10px;
-          right: 0;
+          position: relative;
+          .inpchk_ani {
+            position: absolute;
+            top: 0;
+            right: 0;
+
+          }
         }
       }
     }

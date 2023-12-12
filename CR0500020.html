@@ -28,7 +28,53 @@
     </div>
     <!-- container -->
     <div id="container">
+      <!-- profile_wrap -->
+      <div class="profile_wrap">
+        <!-- form_list_wrap -->
+        <div class="form_list_wrap">
+          <h3>닉네임</h2>
+          <ul class="inp_box_list">
+            <li>
+              <div>
+                <input type="text" placeholder="닉네임을 입력하세요" />
+                <button type="button" class="btn_delete">삭제</button>
+                <a href="#" role="button" class="btn_overlap">중복체크</a>
+              </div>
 
+              <p>이미 사용중인 닉네임입니다.</p>
+              <p class="clear">사용 가능한 닉네임입니다.</p>
+            </li>
+          </ul>
+
+          <h3>신체정보</h2>
+          <ul class="inp_box_list">
+            <li>
+              <div>
+                <input type="number" placeholder="키를 입력하세요" />
+                <button type="button" class="btn_delete">삭제</button>
+                <span>cm</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <input type="number" placeholder="체중을 입력하세요" />
+                <button type="button" class="btn_delete">삭제</button>
+                <span>kg</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <!-- /form_list_wrap -->
+
+        <!-- notice_wrap -->
+        <div class="notice_wrap">
+          <ul class="bull_list">
+            <li>닉네임은 챌린지 초대 및 참여 시, 댓글 작성 시 노출됩니다</li>
+            <li>신체 정보(키, 체중)은 보다 정확한 건강정보 제공을 위해 사용됩니다.</li>
+          </ul>
+        </div>
+        <!-- //notice_wrap -->
+      </div>
     </div>
   </div>
   <script src="./js/common.js"></script>

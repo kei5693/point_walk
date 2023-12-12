@@ -749,16 +749,12 @@ let main = {
     const heartEffect01 = weeklyInner.querySelector(':scope > .heart_effect01');
     const heartEffect02 = weeklyInner.querySelector(':scope > .heart_effect02');
 
-    // 바로 실행하면 오류 발생
-    window.addEventListener("DOMContentLoaded", () => {
-      setTabInit();
-
-      // init
-      setTimeout(() => {
-        setActiveTab(weeklyLi, day);
-        switchTab(day);
-      }, 500);
-    });
+    setTabInit();
+    // init
+    setTimeout(() => {
+      setActiveTab(weeklyLi, day);
+      switchTab(day);
+    }, 500);
     
     // inner 리스트 클릭 이벤트
     weeklyLi.forEach((tabTitle, index) => {
@@ -1084,7 +1080,7 @@ let challenge = {
 
     let clickIndex = 0;
 
-    window.addEventListener("DOMContentLoaded", () => {setTabInit()});
+    setTabInit();
 
     // init
     setActiveTab(categoryEl, 0);

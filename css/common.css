@@ -288,19 +288,17 @@ body.active {
 
 .inpchk_ani {
   display: inline-block;
-  width: 80px;
-  height: 38px;
+  width: 48px;
+  height: 28px;
   overflow: hidden;
-  border-radius: 20px;
-  border: 1px solid #000;
-  background-color: #fff;
+  border-radius: 14px;
+  background: #CCC;
 }
 .inpchk_ani input {
   display: none;
 }
 .inpchk_ani input:checked + label span {
-  left: calc(100% - 34px);
-  background: cyan;
+  left: calc(100% - 26px);
 }
 .inpchk_ani label {
   position: relative;
@@ -312,12 +310,11 @@ body.active {
   font-size: 0;
   line-height: 0;
   position: absolute;
-  top: 4px;
+  top: 3px;
   left: 4px;
-  width: 28px;
-  height: 28px;
-  background: #dfdfdf;
-  border: 1px solid #000;
+  width: 22px;
+  height: 22px;
+  background: #fff;
   border-radius: 50%;
   transition: left 0.3s, background 0.3s;
 }
@@ -1503,6 +1500,27 @@ body.active {
 #wrap.main_content_wrap #container .banner_wrap img + img {
   margin-top: 10px;
 }
+#wrap.download_show .player_download_wrap .download_wrap {
+  transform: translateY(-100%);
+}
+#wrap.player_show #container {
+  padding-bottom: 135px;
+}
+#wrap.player_show .guide_detail_wrap .layer_content_wrap .layer_content .container {
+  padding-bottom: 170px;
+}
+#wrap.player_show .player_download_wrap .download_wrap {
+  transform: translateY(0);
+}
+#wrap.player_show .player_download_wrap .player_wrap {
+  transform: translateY(-100%);
+}
+#wrap.color_wrap {
+  background: #fff;
+}
+#wrap.color_wrap #header {
+  background: #fff;
+}
 
 .access_rights .icon_list {
   margin-top: 24px;
@@ -2480,22 +2498,6 @@ body.active {
   display: none;
 }
 
-#wrap.download_show .player_download_wrap .download_wrap {
-  transform: translateY(-100%);
-}
-#wrap.player_show #container {
-  padding-bottom: 135px;
-}
-#wrap.player_show .guide_detail_wrap .layer_content_wrap .layer_content .container {
-  padding-bottom: 170px;
-}
-#wrap.player_show .player_download_wrap .download_wrap {
-  transform: translateY(0);
-}
-#wrap.player_show .player_download_wrap .player_wrap {
-  transform: translateY(-100%);
-}
-
 .setting_wrap .setting_list > li {
   padding: 20px;
 }
@@ -2524,8 +2526,10 @@ body.active {
   display: block;
   position: relative;
   font-size: 14px;
+  padding-right: 30px;
 }
 .setting_wrap .setting_list > li > ul > li a:after {
+  content: "";
   content: "";
   position: absolute;
   top: 50%;
@@ -2533,15 +2537,19 @@ body.active {
   transform: translateY(-50%);
   width: 20px;
   height: 20px;
-  background: #000;
+  background: url("../images/common/ico_arrow_right01.svg") no-repeat;
+  background-size: 100%;
 }
 .setting_wrap .setting_list > li > ul P {
   margin-top: 10px;
   font-size: 14px;
 }
 .setting_wrap .setting_list > li > ul .inpchk_wrap {
+  position: relative;
+}
+.setting_wrap .setting_list > li > ul .inpchk_wrap .inpchk_ani {
   position: absolute;
-  top: 10px;
+  top: 0;
   right: 0;
 }
 
