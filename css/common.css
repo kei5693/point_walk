@@ -4604,6 +4604,11 @@ body.active {
     display: none;
   }
 }
+@media screen and (max-width: 1024px) {
+  .index_table_wrap {
+    word-break: auto-phrase;
+  }
+}
 
 .popup_btn_wrap {
   display: flex;

@@ -5263,6 +5263,9 @@ body.active {overflow: hidden;}
       display: none;
     }
   }
+  @media screen and (max-width: 1024px) {
+    word-break: auto-phrase;
+  }
 }
 // 검수용 팝업 버튼
 .popup_btn_wrap {
