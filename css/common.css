@@ -4599,6 +4599,11 @@ body.active {
   width: 100%;
   height: 100%;
 }
+@media screen and (max-width: 1024px) {
+  .index_table_wrap .preview_wrap {
+    display: none;
+  }
+}
 
 .popup_btn_wrap {
   display: flex;

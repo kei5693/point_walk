@@ -5259,6 +5259,9 @@ body.active {overflow: hidden;}
       width: 100%;
       height: 100%;
     }
+    @media screen and (max-width: 1024px) {
+      display: none;
+    }
   }
 }
 // 검수용 팝업 버튼
