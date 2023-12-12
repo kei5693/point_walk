@@ -506,6 +506,28 @@
 		</div>
 		<!-- //플레이어, 다운로드 -->
   </div>
+
+	<!-- 테스트용 버튼 -->
+	<button type="button"
+		style="
+		position: fixed;
+    top: 0;
+    left: 50%;
+    z-index: 1000;
+		transform: translateX(0%);
+
+		padding: 5px 10px;
+		border: 1px solid #000;
+		background: #fff;
+    margin: 0 auto;
+    height: 40px;
+
+    font-size: 13px;
+    font-weight: 800;
+    "
+		onClick="common.animationCount(3)">카운트</button>
+	<!-- 운동시작 카운트 -->
+	<div id="animationCount" class="animation_count"><p></p></div>
 	
 
   <script src="./js/common.js"></script>

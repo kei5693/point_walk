@@ -535,7 +535,7 @@ let common = {
     }
   },
   // 애니메이션 카운트
-  animationCount: function(value){
+  animationCount: function(value = 3){
     if(document.querySelector('.animation_count') == null) return;
 
     const animationCountWrap = document.querySelector('.animation_count');
@@ -1384,7 +1384,7 @@ let challenge = {
 
 // 걸음리포트
 let walkingReport = {
-  anchorEvent: function(){
+  anchorEvent: function(dataArr){
     if(document.querySelector('.walking_report') == null) return;
 
     const report = document.querySelector('.walking_report');
@@ -1657,11 +1657,10 @@ document.addEventListener("DOMContentLoaded", function() {
 	common.scrollDeformation();
 	common.tabMenuEvent();
 	common.inputBorderEvent();
-  //common.animationCount(3);
 	
 	main.init();
 	challenge.init();
-	walkingReport.anchorEvent();
+	//walkingReport.anchorEvent();
 	walkingGuide.init();
 });
 
