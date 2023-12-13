@@ -83,6 +83,8 @@ let common = {
         }
   
         const dragStop = () => {
+          if (!isDragging) return;
+          
           isDragging = false;
           layerPopup.classList.remove("dragging");
           const sheetHeight = parseInt(layerContentWrap.style.height);
@@ -90,6 +92,7 @@ let common = {
           sheetHeight < 50 ? hideBottomSheet() : updateSheetHeight(100);
         }
   
+
         layerDrag.addEventListener("mousedown", dragStart);
         document.addEventListener("mousemove", dragging);
         document.addEventListener("mouseup", dragStop);

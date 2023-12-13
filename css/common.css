@@ -72,7 +72,7 @@ body.active {
   transform: translateY(100%);
   transition: 0.5s ease;
   margin: 0 auto;
-  padding: 60px 0 70px;
+  padding: 108px 0 70px;
   border-radius: 10px 10px 0 0;
   background: #fff;
   box-sizing: border-box;
@@ -80,13 +80,22 @@ body.active {
 .modal_layer_popup .layer_content_wrap .layer_content {
   flex: 1;
   overflow-y: auto;
-  padding: 0 30px;
-  font-size: 20px;
+  padding: 0 20px;
+  font-size: 16px;
+}
+.modal_layer_popup .layer_content_wrap .layer_content .layer_header {
+  position: absolute;
+  top: 60px;
+  left: 20px;
+  z-index: 999;
+  width: calc(100% - 20px);
+  background: #fff;
+  padding-bottom: 20px;
 }
 .modal_layer_popup .layer_content_wrap .layer_content .layer_header h1 {
   font-size: 20px;
   font-weight: 800;
-  text-align: center;
+  text-align: left;
 }
 .modal_layer_popup .layer_content_wrap .layer_content .layer_header h1 + p {
   margin-top: 24px;
@@ -94,7 +103,7 @@ body.active {
   color: var(--color-font2);
 }
 .modal_layer_popup .layer_content_wrap .layer_content .layer_body {
-  padding: 32px 0 48px;
+  padding: 34px 0 24px;
 }
 .modal_layer_popup .layer_content_wrap .layer_content .layer_body h2 {
   font-size: 18px;
@@ -119,11 +128,13 @@ body.active {
 }
 .modal_layer_popup .layer_content_wrap .layer_close {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 20px;
-  height: 20px;
-  background: #000;
+  top: 60px;
+  right: 32px;
+  z-index: 999;
+  width: 24px;
+  height: 24px;
+  background: url("../images/common/ico_cross03.svg") no-repeat 50%;
+  background-size: 100%;
   font-size: 0;
   line-height: 0;
 }
@@ -143,10 +154,10 @@ body.active {
 }
 .modal_layer_popup .layer_content_wrap .layer_drag span {
   display: block;
-  width: 40px;
-  height: 4px;
-  background: #C7D0E1;
-  border-radius: 2px;
+  width: 64px;
+  height: 6px;
+  background: #D0D5DD;
+  border-radius: 3px;
 }
 .modal_layer_popup.align_center {
   display: flex;
@@ -174,6 +185,10 @@ body.active {
   display: flex;
   flex-direction: column;
   padding: 30px 20px;
+}
+.modal_layer_popup.align_center .layer_content_wrap .layer_content .layer_header {
+  position: static;
+  width: 100%;
 }
 .modal_layer_popup.align_center .layer_content_wrap .layer_content .layer_header h1 {
   padding-bottom: 20px;
@@ -243,7 +258,7 @@ body.active {
   flex: 1;
   height: 100%;
   background: var(--color-brand1);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 800;
   color: #fff;
 }
@@ -255,6 +270,21 @@ body.active {
   border: 5px solid var(--color-brand1);
   color: var(--color-font3);
   font-weight: 600;
+}
+.btn_dialog button.btn_plus span {
+  position: relative;
+  padding-left: 24px;
+}
+.btn_dialog button.btn_plus span::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background: url("../images/common/ico_add.svg") no-repeat 50%;
+  background-size: 100%;
 }
 .btn_dialog.align_right {
   padding: 0 10px 0 20px;
@@ -363,18 +393,23 @@ body.active {
 
 .notice_wrap {
   margin-top: 40px;
-  padding: 24px 20px;
+  padding: 20px 18px;
   background-color: #F7F7F7;
 }
 .notice_wrap.radius {
   border-radius: 24px;
   margin: 24px 10px 0;
 }
-.notice_wrap.radius .bull_list > li {
-  font-size: 13px;
+.notice_wrap .bull_list > li {
+  font-size: 11px;
+  font-weight: 400;
+  color: #AAA;
 }
-.notice_wrap.radius .bull_list > li + li {
-  margin-top: 4spx;
+.notice_wrap .bull_list > li + li {
+  margin-top: 6px;
+}
+.notice_wrap .bull_list > li:after {
+  top: 5px;
 }
 
 .bull_list > li {
@@ -553,6 +588,221 @@ body.active {
 }
 .animation_count.active p {
   opacity: 1;
+}
+
+.noted_list > ul {
+  padding: 0 8px;
+}
+.noted_list > ul > li h2 {
+  font-size: 16px;
+  font-weight: 800;
+  color: #000;
+}
+.noted_list > ul > li p {
+  margin-top: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #B4B4B4;
+}
+.noted_list > ul > li p strong {
+  font-weight: 800;
+  color: var(--color-brand1);
+}
+.noted_list > ul > li + li {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #D9D9D9;
+}
+
+.crew_list h2 {
+  font-size: 16px;
+  font-weight: 800;
+  color: #000;
+}
+.crew_list > ul > li {
+  position: relative;
+  padding-left: 60px;
+  margin-top: 32px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+}
+.crew_list > ul > li:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #F2F4F7 url("../images/challenge/ico_crew03.svg") no-repeat 50%;
+  background-size: 28px auto;
+}
+.crew_list > ul > li > strong {
+  font-weight: 800;
+}
+.crew_list > ul > li > span {
+  font-size: 13px;
+  color: #667085;
+}
+.crew_list > ul > li > div {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+}
+.crew_list > ul > li > div p em {
+  display: inline-block;
+  height: 20px;
+  padding: 0 4px;
+  border: 1px solid #667085;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 20px;
+  color: #667085;
+  text-align: center;
+}
+.crew_list > ul > li > div p span {
+  margin-left: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #98A2B3;
+}
+.crew_list > ul > li > div p + p {
+  margin-left: 8px;
+}
+.crew_list > ul > li + li {
+  margin-top: 24px;
+}
+.crew_list > ul .leader:after {
+  background-image: url("../images/challenge/ico_crew01.svg");
+}
+.crew_list > ul .leader > p {
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--color-brand1);
+}
+.crew_list > ul .crew:after {
+  background-image: url("../images/challenge/ico_crew02.svg");
+}
+.crew_list > ul + h2 {
+  padding-top: 32px;
+}
+.crew_list .notice_wrap {
+  margin: 32px 8px 0;
+}
+
+.crew_record > ul > li > p strong {
+  font-size: 14px;
+  font-weight: 800;
+  color: #000;
+}
+.crew_record > ul > li > p span {
+  margin-left: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #667085;
+}
+.crew_record > ul > li .challenge_progress_box {
+  position: relative;
+  height: 4px;
+  margin-top: 24px;
+  border-radius: 2px;
+  background: #E4E7EC;
+}
+.crew_record > ul > li .challenge_progress_box span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  transition: width 0.3s;
+  background: var(--color-brand1);
+  border-radius: 2px;
+}
+.crew_record > ul > li .challenge_progress_box span:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(50%, -50%);
+  width: 16px;
+  height: 16px;
+  background: var(--color-brand1);
+  border-radius: 50%;
+}
+.crew_record > ul > li .desc {
+  margin-top: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.crew_record > ul > li .desc p {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--color-brand1);
+}
+.crew_record > ul > li .desc p + p {
+  color: #000;
+}
+.crew_record > ul > li + li {
+  border-top: 1px solid #D9D9D9;
+  margin-top: 24px;
+  padding-top: 24px;
+}
+
+.giveaway_wrap > .title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+}
+.giveaway_wrap > .title dt {
+  font-weight: 800;
+}
+.giveaway_wrap > .title dd {
+  margin-top: 4px;
+}
+.giveaway_wrap > .content {
+  margin-top: 24px;
+  display: flex;
+  justify-content: space-between;
+}
+.giveaway_wrap > .content .visual {
+  width: 64px;
+  height: 64px;
+  margin-right: 35px;
+}
+.giveaway_wrap > .content .desc {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 600;
+  color: #666666;
+}
+.giveaway_wrap > .content .desc > ul {
+  margin-top: 9px;
+}
+.giveaway_wrap > .content .desc > ul > li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.giveaway_wrap > .content .desc > ul > li strong {
+  font-size: 13px;
+}
+.giveaway_wrap > .content .desc > ul > li span {
+  font-size: 12px;
+}
+.giveaway_wrap > .notice_txt {
+  margin-top: 24px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+}
+.giveaway_wrap > .notice_txt dt {
+  font-weight: 800;
+}
+.giveaway_wrap > .notice_txt dd {
+  margin-top: 5px;
 }
 
 #wrap {
@@ -4017,40 +4267,6 @@ body.active {
 .challenge_content_wrap .icon_wrap > div.ico_coupon span {
   background: url("../images/challenge/ico_coupon.svg") no-repeat 50%;
   background-size: 100%;
-}
-
-.challenge_progress_box {
-  overflow: hidden;
-  position: relative;
-  margin-top: 20px;
-  height: 40px;
-  border: 1px solid #000;
-  border-radius: 20px;
-  background: #fff;
-}
-.challenge_progress_box > div {
-  position: relative;
-  z-index: 100;
-  width: 0%;
-  height: 100%;
-  background: cyan;
-  border-radius: 20px;
-}
-.challenge_progress_box > div span {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 100;
-  height: 100%;
-  padding: 0 10px;
-  line-height: 38px;
-  white-space: nowrap;
-}
-.challenge_progress_box > span {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 10px;
 }
 
 .monthly_attendance_wrap {
