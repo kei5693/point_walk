@@ -2606,18 +2606,19 @@ body.active {
   height: 24px;
   font-size: 0;
   line-height: 0;
-  background: var(--color-brand1);
+  background: rgba(255, 255, 255, 0.8);
   border-radius: 50%;
 }
 .challenge_content_wrap .challenge_notice button span {
   display: inline-block;
   width: 16px;
   height: 16px;
-  background: url("../images/common/ico_cross01.svg") no-repeat;
+  background: url("../images/common/ico_cross02.svg") no-repeat;
   background-size: 100%;
 }
 .challenge_content_wrap .challenge_list_wrap .challenge_category {
   position: relative;
+  z-index: 100;
   padding-right: 50px;
   background: #fff;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2509803922);
@@ -2633,6 +2634,9 @@ body.active {
 }
 .challenge_content_wrap .challenge_list_wrap .challenge_category.active > button {
   transform: rotate(180deg);
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_category.active:after {
+  display: none;
 }
 .challenge_content_wrap .challenge_list_wrap .challenge_category:after {
   content: "";
@@ -2674,7 +2678,7 @@ body.active {
   line-height: 30px;
 }
 .challenge_content_wrap .challenge_list_wrap .challenge_category ul > li.fixed a {
-  border-color: #000;
+  border-color: #98A2B3;
   color: #000;
 }
 .challenge_content_wrap .challenge_list_wrap .challenge_category ul > li.active a {
@@ -3092,6 +3096,31 @@ body.active {
   text-align: center;
   white-space: nowrap;
 }
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li.no_data {
+  padding: 150px 50px 200px;
+  margin: -19px 0 0;
+  background: #fff;
+  border-radius: 0;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li.no_data lottie-player {
+  width: 128px;
+  margin: 0 auto;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li.no_data dl {
+  margin-top: 14px;
+  text-align: center;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li.no_data dl dt {
+  font-size: 18px;
+  font-weight: 800;
+  color: #000;
+}
+.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li.no_data dl dd {
+  margin-top: 12px;
+  font-size: 15px;
+  font-weight: 400;
+  color: #555;
+}
 .challenge_content_wrap .challenge_company .challenge_visual img {
   display: block;
   width: 100%;
@@ -3143,7 +3172,7 @@ body.active {
   border-radius: 24px;
 }
 .challenge_content_wrap .challenge_detail_wrap > .inner > div + div {
-  margin-top: 20px;
+  margin-top: 6px;
 }
 .challenge_content_wrap .challenge_detail_wrap > .inner > div:not(.pick_challenge) {
   margin-left: 20px;
@@ -3344,13 +3373,16 @@ body.active {
   background-size: 100%;
 }
 .challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward {
-  margin-top: 16px;
+  margin-top: 6px;
   padding: 0;
   background: none;
   border-radius: 0;
 }
 .challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > h2 {
-  margin-bottom: 16px;
+  margin-bottom: 6px;
+  padding: 16px 25px;
+  background: #fff;
+  border-radius: 8px;
   font-size: 18px;
   font-weight: 800;
   color: #000;
@@ -3386,7 +3418,7 @@ body.active {
 }
 .challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .map_view {
   position: relative;
-  margin-top: 16px;
+  margin-top: 6px;
   padding-bottom: 7px;
 }
 .challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .map_view:after {
@@ -3476,7 +3508,7 @@ body.active {
   color: #000;
 }
 .challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list {
-  margin-top: 22px;
+  margin-top: 6px;
   overflow: hidden;
   transition: height 0.3s;
 }
@@ -3490,7 +3522,7 @@ body.active {
   border-radius: 16px;
 }
 .challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li + li {
-  margin-top: 12px;
+  margin-top: 6px;
 }
 .challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li.step p strong {
   display: inline;
@@ -4276,14 +4308,14 @@ body.active {
 .walking_report > .contents > div > .content + .content {
   margin-top: 20px;
 }
-.walking_report > .contents > div > .content > h3 {
+.walking_report > .contents > div > .content h3 {
   font-size: 24px;
   font-weight: 600;
 }
-.walking_report > .contents > div > .content > h3 span {
+.walking_report > .contents > div > .content h3 span {
   color: var(--color-brand1);
 }
-.walking_report > .contents > div > .content > p {
+.walking_report > .contents > div > .content p {
   font-size: 16px;
   font-weight: 600;
   color: #475467;

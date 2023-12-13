@@ -3000,13 +3000,13 @@ body.active {overflow: hidden;}
       font-size: 0;
       line-height: 0;
 
-      background: var(--color-brand1);
+      background: rgba(255,255,255, 0.8);
       border-radius: 50%;
       span {
         display: inline-block;
         width: 16px;
         height: 16px;
-        background: url('../images/common/ico_cross01.svg') no-repeat;
+        background: url('../images/common/ico_cross02.svg') no-repeat;
         background-size: 100%;
       }
     }
@@ -3015,6 +3015,7 @@ body.active {overflow: hidden;}
   .challenge_list_wrap {
     .challenge_category {
       position: relative;
+      z-index: 100;
       padding-right: 50px;
       background: #fff;
       box-shadow: 0px 4px 4px 0px #00000040;
@@ -3030,6 +3031,9 @@ body.active {overflow: hidden;}
         }
         > button {
           transform: rotate(180deg);
+        }
+        &:after {
+          display: none;
         }
       }
       &:after {
@@ -3070,7 +3074,7 @@ body.active {overflow: hidden;}
           height: 32px;
           line-height: 30px;
           &.fixed a {
-            border-color: #000;
+            border-color: #98A2B3;
             color: #000;
           }
           &.active a {
@@ -3547,6 +3551,31 @@ body.active {overflow: hidden;}
               }
             }
           }
+          &.no_data {
+            padding: 150px 50px 200px;
+            margin: -19px 0 0;
+            background: #fff;
+            border-radius: 0;
+            lottie-player {
+              width: 128px;
+              margin: 0 auto;
+            }
+            dl {
+              margin-top: 14px;
+              text-align: center;
+              dt {
+                font-size: 18px;
+                font-weight: 800;
+                color: #000;
+              }
+              dd {
+                margin-top: 12px;
+                font-size: 15px;
+                font-weight: 400;
+                color: #555;
+              }
+            }
+          }
         }
       }
     }
@@ -3616,7 +3645,7 @@ body.active {overflow: hidden;}
         background: #fff;
         border-radius: 24px;
         & + div {
-          margin-top: 20px;
+          margin-top: 6px;
         }
         &:not(.pick_challenge) {
           margin-left: 20px;
@@ -3835,12 +3864,16 @@ body.active {overflow: hidden;}
       }
       // 리워드
       .challenge_reward {
-        margin-top: 16px;
+        margin-top: 6px;
         padding: 0;
         background: none;
         border-radius: 0;
         > h2 {
-          margin-bottom: 16px;
+          margin-bottom: 6px;
+          padding: 16px 25px;
+          background: #fff;
+          border-radius: 8px;
+
           font-size: 18px;
           font-weight: 800;
           color: #000;
@@ -3877,7 +3910,7 @@ body.active {overflow: hidden;}
           }
           > .map_view {  
             position: relative;
-            margin-top: 16px;
+            margin-top: 6px;
             padding-bottom: 7px;
             &:after {
               content: '';
@@ -3981,7 +4014,7 @@ body.active {overflow: hidden;}
           }
         }
         > .reward_list {
-          margin-top: 22px;
+          margin-top: 6px;
           overflow: hidden;
           transition: height 0.3s;
           > li {
@@ -3993,7 +4026,7 @@ body.active {overflow: hidden;}
             padding: 0 24px;
             background: #fff;
             border-radius: 16px;
-            & + li {margin-top: 12px;}
+            & + li {margin-top: 6px;}
             &.step {
               p {
                 strong {
@@ -4873,14 +4906,14 @@ body.active {overflow: hidden;}
         border-radius: 24px;
         box-shadow: 0px 4px 4px 0px #9B9B9B40;
         & + .content {margin-top: 20px;}
-        > h3 {
+        h3 {
           font-size: 24px;
           font-weight: 600;
           span {
             color: var(--color-brand1);
           }
         }
-        > p {
+        p {
           font-size: 16px;
           font-weight: 600;
           color: #475467;
