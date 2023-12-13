@@ -25,6 +25,8 @@
   -webkit-box-orient: vertical;
 }
 
+// @include text_ellipsis();
+
 
 html {scroll-behavior: smooth;}
 // 레이어 팝업 오픈 시
@@ -3098,7 +3100,7 @@ body.active {overflow: hidden;}
 
             padding: 0 8px;
             border-radius: 16px;
-            border: 1px solid #3E4784;
+            border: 1px solid #9EA5D1;
             background: #fff;
 
             font-size: 14px;
@@ -3972,15 +3974,38 @@ body.active {overflow: hidden;}
             }
           }
           > .stamp_wrap {
-            margin-top: 22px;
-            padding: 24px;
+            margin-top: 16px;
+            padding: 16px 10px;
             background: #fff;
             border-radius: 24px;
+            > p {
+              position: relative;
+              padding-top: 63px;
+
+              font-size: 11px;
+              font-weight: 600;
+              color: #667085;
+              text-align: center;
+              &:after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+
+                width: 45px;
+                height: 55px;
+                background: url('../images/challenge/ico_stamp.png') no-repeat;
+                background-size: 100%;
+              }
+            }
             ul {
+              margin-top: 8px;
               display: flex;
               flex-wrap: wrap;
               justify-content: space-between;
               li {
+                position: relative;
                 background: url('../images/challenge/ico_stamp.svg') no-repeat 50%;
                 background-size: 100% 100%;
                 
@@ -3989,7 +4014,7 @@ body.active {overflow: hidden;}
                 justify-content: center;
 
                 width: 33.3%;
-                height: 88px;
+                height: 100px;
                 margin: 2px 0;
 
                 text-align: center;
@@ -4001,13 +4026,40 @@ body.active {overflow: hidden;}
                   span {
                     color: var(--color-brand1);
                   }
+                  &:after {
+                    background: #EAE8FF;
+                    color: #000;
+                  }
                 }
                 span {
-                  transform: translate(-4px, 5px);
+                  transform: translate(0, -3px);
+                  
+                  max-width: 70px;
+                  @include text_ellipsis2();
 
                   font-size: 11px;
                   font-weight: 800;
                   color: #000;
+                  line-height: 13px;
+
+                }
+                &:after {
+                  content: 'Check!';
+                  position: absolute;
+                  bottom: 23px;
+                  left: 50%;
+                  transform: translateX(-55%);
+
+                  width: 34px;
+                  height: 16px;
+
+                  background: #E4E7EC;
+                  border-radius: 8px;
+
+                  font-size: 9px;
+                  font-weight: 600;
+                  color: #98A2B3;
+                  line-height: 16px;
                 }
               }
             }
@@ -4227,7 +4279,7 @@ body.active {overflow: hidden;}
 
           width: 100%;
           height: 300px;
-          background: linear-gradient(rgba(255, 255, 255, 0) 10%, #fff 100%);;
+          background: linear-gradient(rgba(255, 255, 255, 0) 10%, #fff 100%);
         }
         > img {
           display: block;
