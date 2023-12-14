@@ -927,6 +927,19 @@ body.active {overflow: hidden;}
     }
   }
 }
+// 배너
+.banner_wrap {
+  img {
+    display: block;
+    width: 100%;
+
+    overflow: hidden;
+    border-radius: 16px;
+    & + img {
+      margin-top: 10px;
+    }
+  }
+}
 
 
 // 전체 레이아웃
@@ -2051,16 +2064,6 @@ body.active {overflow: hidden;}
       // 배너
       .banner_wrap {
         margin: 20px;
-        img {
-          display: block;
-          width: 100%;
-
-          overflow: hidden;
-          border-radius: 16px;
-          & + img {
-            margin-top: 10px;
-          }
-        }
       }
     }
   }
@@ -4587,12 +4590,34 @@ body.active {overflow: hidden;}
       // 걸음리포트
       .challenge_report {
         .graph_cont {
+          > h2 {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--color-brand1);
+            span {
+              position: relative;
+              padding-right: 24px;
+              &:after {
+                content: '';
+                position: absolute;
+                top: -9px;
+                right: 0;
+
+                width: 29px;
+                height: 29px;
+                background: url('../images/challenge/ico_flag.svg') no-repeat 50%;
+                background-size: 100%;
+              }
+            }
+          }
           > h3 {
             font-size: 24px;
             font-weight: 800;
-            span {
+            span,
+            strong {
               color: var(--color-brand1);
             }
+
           }
           .graph_wrap {
             .graph {
@@ -4719,6 +4744,65 @@ body.active {overflow: hidden;}
                   font-weight: 800;
                   span {
                     color: var(--color-brand1);
+                  }
+                }
+              }
+            }
+          }
+        }
+        &.clear {
+          .graph_cont h3 span {color: inherit;}
+        }
+      }
+      // 챌린지 추천
+      .challenge_recommend {
+        .inner {
+          overflow-x: auto;
+          &::-webkit-scrollbar {
+            display: none;
+          }
+          ul {
+            display: flex;
+            flex-wrap: nowrap;
+            > li {
+              overflow: hidden;
+              border-radius: 24px;
+              width: 163px;
+              flex-shrink: 0;
+              & + li {
+                margin-left: 8px;
+              }
+              > a {
+                display: block;
+                position: relative;
+                > div {
+                  position: absolute;
+                  bottom: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 158px;
+                  &:after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(178.07deg, rgba(0, 0, 0, 0) 15.42%, rgba(0, 0, 0, 0.7) 69.18%);
+                  }
+                  p {
+                    position: absolute;
+                    bottom: 20px;
+                    left: 0;
+                    z-index: 100;
+                    
+                    width: 100%;
+                    padding: 0 8px;
+  
+                    font-size: 13px;
+                    font-weight: 800;
+                    color: #fff;
+                    @include text_ellipsis2();
                   }
                 }
               }
