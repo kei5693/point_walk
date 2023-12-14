@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-	<title>완료한 챌린지 목록</title>
+	<title>완료한 챌린지</title>
 	<link rel="stylesheet" href="./css/swiper-bundle.min.css">
 	<link rel="stylesheet" href="./css/reset.css">
 	<link rel="stylesheet" href="./css/animation.css">
@@ -13,26 +13,108 @@
   <script src="./js/cdn.jsdelivr.net_npm_chart.js"></script>
   <script src="./js/chartjs-plugin-datalabels.min.js"></script>
   <script src="./js/chartjs-plugin-annotation.min.js"></script>
+  <script src="./js/lottie-player.js"></script>
 </head>
 <body>
-  <div id="wrap">
+  <!-- bg_color : 배경 컬러 fff -->
+  <div id="wrap" class="bg_color">
     <!-- header -->
     <div id="header">
       <div class="title_wrap">
         <button type="button" class="btn_back">뒤로가기</button>
-        <h1>완료한 챌린지 목록</h1>
+        <h1>완료한 챌린지</h1>
       </div>
-			<div class="icon_wrap">
+			<!-- <div class="icon_wrap">
         <button type="button" class="btn_setting"><span>설정</span></button>
-      </div>
+      </div> -->
     </div>
     <!-- container -->
     <div id="container">
-			<!-- activity_wrap -->
-			<div class="activity_wrap">
+      <div class="challenge_content_wrap">
+      <!-- 완료한 챌린지 -->
+      <div class="challenge_completed">
+        <div class="notice_wrap">
+          <ul class="bull_list">
+            <li>챌린지 초대는 무제한으로 보낼 수 있습니다.</li>
+            <li>SMS 발송비용은 본인 부담입니다.</li>
+            <li>챌린지 참여는 수락 선착순입니다.</li>
+          </ul>
+        </div>
 
-			</div>
-			<!-- //activity_wrap -->
+        <div class="tab_menu_wrap">
+          <ul class="tab_title">
+            <li><a href="#">1주일</a></li>
+            <li><a href="#">1개월</a></li>
+            <li><a href="#">3개월</a></li>
+            <li><a href="#">6개월</a></li>
+            <li><a href="#">1년</a></li>
+          </ul>
+  
+          <div class="tab_content">
+            <div class="completed_list">
+              <p>2023.11.12~2023.12.11</p>
+              
+              <ul>
+                <li>
+                  <a href="#">
+                    <div>
+                      <p>MISSION CLEAR</p>
+                    </div>
+                    <strong>[현대백화점 본점]</strong>
+                    <p>아름다운 한강 지키기 플로깅 챌린지</p>
+                    <span>2023.11.12~2023.12.11</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <div>
+                      <span>당첨자발표</span>
+                      <p>MISSION CLEAR</p></h2>
+                    </div>
+                    <strong>[현대백화점 김포점]</strong>
+                    <p>아름다운 한강 지키기 플로깅 챌린지</p>
+                    <span>2023.11.12~2023.12.11</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <strong>[현대백화점 본점]</strong>
+                    <p>아름다운 한강 지키기 플로깅 챌린지</p>
+                    <span>2023.11.12~2023.12.11</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <strong>[현대백화점 본점]</strong>
+                    <p>아름다운 한강 지키기 플로깅 챌린지</p>
+                    <span>2023.11.12~2023.12.11</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <strong>[현대백화점 본점]</strong>
+                    <p>아름다운 한강 지키기 플로깅 챌린지</p>
+                    <span>2023.11.12~2023.12.11</span>
+                  </a>
+                </li>
+              </ul>
+
+              <div class="no_data">
+                <lottie-player autoplay loop mode="normal" src="./json/flag.json"></lottie-player>
+                <dl>
+                  <dt>챌린지 미션에<br>참여한 내역이 없어요!</dt>
+                  <dd>지금 챌린지 참여하고 젤리&H.point 등<br>다양한 혜택을 받으세요!</dd>
+                </dl>
+                <button type="button" class="common_btn large"><span>챌린지 바로가기</span></button>
+              </div>
+            </div>
+          </div>
+  
+          <!-- <p>젤리 내역이 없어요</p> -->
+        </div>
+      </div>
+      <!-- //완료한 챌린지 -->
+      </div>
     </div>
   </div>
   <script src="./js/common.js"></script>

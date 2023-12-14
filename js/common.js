@@ -292,28 +292,30 @@ let common = {
 
     tabMenus.forEach((tabMenu) => {
       const tabTitles = tabMenu.querySelectorAll('.tab_title > li');
-      const tabContents = tabMenu.querySelectorAll('.tab_content > div');
+      // const tabContents = tabMenu.querySelectorAll('.tab_content > div');
       const initialIndex = initIndex || 0;
 
       // init
-      setActiveTab(tabTitles, tabContents, initialIndex);
+      // setActiveTab(tabTitles, tabContents, initialIndex);
+      setActiveTab(tabTitles, initialIndex);
   
       // 클릭 이벤트
       tabTitles.forEach((tabTitle, currentIndex) => {
         tabTitle.addEventListener('click', (e) => {
-          setActiveTab(tabTitles, tabContents, currentIndex);
+          // setActiveTab(tabTitles, tabContents, currentIndex);
+          setActiveTab(tabTitles, currentIndex);
         });
       });
     });
 
-    function setActiveTab(titles, contents, index) {
+    function setActiveTab(titles, index) {
       titles.forEach((title, i) => {
         title.classList.toggle('active', i === index);
       });
     
-      contents.forEach((content, i) => {
-        content.classList.toggle('active', i === index);
-      });
+      // contents.forEach((content, i) => {
+      //   content.classList.toggle('active', i === index);
+      // });
     }
   },
   // 공통 : 숫자 애니메인션 카운터

@@ -64,11 +64,19 @@ body.active {overflow: hidden;}
     .layer_content_wrap {
       max-height: 100%;
       border-radius: 0;
+      padding-top: 88px;
+      .layer_content .layer_header {
+        top: 40px;
+      }
+      .layer_close {
+        top: 40px;
+      }
       .layer_drag {
         display: none;
       }
     }
   }
+
 	// 드래그 중일 때
 	&.dragging {
 		.layer_content_wrap {
@@ -125,6 +133,12 @@ body.active {overflow: hidden;}
             margin-top: 24px;
             font-size: 16px;
             color: var(--color-font2)
+          }
+          span {
+            padding-left: 5px;
+            font-size: 15px;
+            font-weight: 800;
+            color: #667085;
           }
         }
       }
@@ -224,6 +238,7 @@ body.active {overflow: hidden;}
         .layer_header {
           position: static;
           width: 100%;
+          padding-bottom: 0;
           h1 {
             padding-bottom: 20px;
 
@@ -430,27 +445,37 @@ body.active {overflow: hidden;}
 .tab_menu_wrap {
   .tab_title {
     display: flex;
-    justify-content: space-between;
-    border: 1px solid #000;
+    align-items: center;
+    padding: 0 28px;
+
+    border-bottom: 1px solid #D9D9D9;
     > li {
-      flex: 1;
-      text-align: center;
-      &.active a {
-        color: red;
+      & + li {
+        margin-left: 20px;
       }
       > a {
         display: block;
+        position: relative;
+        padding-bottom: 18px;
+
+        font-size: 13px;
+        font-weight: 600;
+        color: #aaa;
+      }
+      &.active a {
+        color: #000;
+        &:after {
+          content: '';
+          position: absolute;
+          bottom: -1px;
+          left: 0;
+          width: 100%;
+          border-bottom: 2px solid var(--color-brand1);
+        }
       }
     }
   }
-  .tab_content {
-    > div {
-      display: none;
-      &.active {
-        display: block;
-      }
-    }
-  }
+  .tab_content {}
 
 }
 // 인포 박스
@@ -596,6 +621,7 @@ body.active {overflow: hidden;}
 		top: calc(100% + 4px);
 		right: 0;
 
+    min-width: 120px;
     overflow: hidden;
     background: #F1F0F0;
     border-radius: 12px;
@@ -636,6 +662,52 @@ body.active {overflow: hidden;}
         background-size: 100%;
 			}
 		}
+  }
+}
+.design_radio {
+  > li + li {margin-top: 28px;}
+  input {
+    display: none;
+    & + label {
+      display: inline-block;
+      position: relative;
+      padding-left: 28px;
+      &:before {
+        content: '';
+        position: absolute;
+        top: 8px;
+        left: 7px;
+        z-index: 100;
+
+        width: 6px;
+        height: 6px;
+
+        background: #fff;
+        border-radius: 50%;
+      }
+      &:after {
+        content: '';
+        position: absolute;
+        top: 1px;
+        left: 0;
+
+        width: 20px;
+        height: 20px;
+
+        background: #ddd;
+        border-radius: 50%;
+
+        font-size: 16px;
+        font-weight: 400;
+        color: #555;
+      }
+    }
+    &:checked + label {
+      color: var(--color-brand1);
+      &:after {
+        background-color: var(--color-brand1);
+      }
+    }
   }
 }
 .animation_count {
@@ -940,6 +1012,101 @@ body.active {overflow: hidden;}
     }
   }
 }
+// 데이터 없음
+.no_data {
+  padding: 150px 28px 200px;
+  margin: -19px 0 0;
+  background: #fff;
+  border-radius: 0;
+  lottie-player {
+    width: 128px;
+    margin: 0 auto;
+  }
+  dl {
+    margin-top: 14px;
+    text-align: center;
+    dt {
+      font-size: 18px;
+      font-weight: 800;
+      color: #000;
+    }
+    dd {
+      margin-top: 12px;
+      font-size: 15px;
+      font-weight: 400;
+      color: #555;
+    }
+  }
+  .common_btn {
+    margin-top: 110px !important;
+  }
+}
+// 이미지 모아보기
+.gathering_image_list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 8px;
+  > li {
+    position: relative;
+    a img {
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+// 댓글 팝업
+.comments_list_wrap {
+  .comments_sort {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+  }
+  .notice_wrap {
+    margin: 32px 8px 0;
+  }
+  .comments_thum {
+    margin-top: 16px;
+    padding: 20px 0 9px;
+    border-top: 1px solid #D9D9D9;
+    border-bottom: 1px solid #D9D9D9;
+    .gathering_image_list {
+      grid-template-columns: repeat(4, 1fr);
+      .btn_more {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        span {
+          position: relative;
+          display: inline-block;
+          padding-right: 16px;
+
+          font-size: 11px;
+          font-weight: 600;
+          color: #fff;
+          line-height: 1;
+          &:after {
+            content: '';
+            position: absolute;
+            top: -1px;
+            right: 0;
+
+            width: 12px;
+            height: 12px;
+            background: url('../images/common/ico_more.svg') no-repeat 50%;
+            background-size: 100%;
+          }
+        }
+      }
+    }
+  }
+}
 
 
 // 전체 레이아웃
@@ -947,6 +1114,12 @@ body.active {overflow: hidden;}
   background: #F9F9FB;
   padding-top: 44px;
   color: var(--color-font1);
+  &.bg_color {
+    background: #fff;
+    #header {
+      background: #fff;
+    }
+  }
   // 화면
   &.flex_layout {
     display: flex;
@@ -3846,31 +4019,6 @@ body.active {overflow: hidden;}
               }
             }
           }
-          &.no_data {
-            padding: 150px 50px 200px;
-            margin: -19px 0 0;
-            background: #fff;
-            border-radius: 0;
-            lottie-player {
-              width: 128px;
-              margin: 0 auto;
-            }
-            dl {
-              margin-top: 14px;
-              text-align: center;
-              dt {
-                font-size: 18px;
-                font-weight: 800;
-                color: #000;
-              }
-              dd {
-                margin-top: 12px;
-                font-size: 15px;
-                font-weight: 400;
-                color: #555;
-              }
-            }
-          }
         }
       }
     }
@@ -4104,6 +4252,9 @@ body.active {overflow: hidden;}
           display: flex;
           align-items: center;
           min-height: 56px;
+          &:only-child {
+            margin-top: 0;
+          }
           h3 {
             flex: 1;
             font-size: 20px;
@@ -4835,82 +4986,6 @@ body.active {overflow: hidden;}
         padding: 24px 14px 34px;
       }
     }
-    .common_btn {
-      display: block;
-      width: 100%;
-      height: 42px;
-
-      background: var(--color-brand1);
-      border-radius: 8px;
-
-      font-size: 14px;
-      font-weight: 600;
-      color: #fff;
-      // 흰색 버튼
-      &.color {
-        color: var(--color-brand1);
-        background: #fff;
-        border: 1px solid var(--color-brand1);
-      }
-      // 높이가 큰 버튼
-      &.large {
-        height: 58px;
-
-        margin: 0 auto;
-        border-radius: 0;
-        font-size: 13px;
-        font-weight: 800;
-      }
-      // 걷기가이드 다운로드
-      &.download {
-        background: #000;
-        span {
-          padding-left: 22px;
-          &:after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
-
-            width: 18px;
-            height: 18px;
-            background: url('../images/guide/ico_download_guide.svg') no-repeat 50%;
-            background-size: 100%;
-          }
-        }
-      }
-      // 걷기가이드 재생
-      &.player {
-        background: #fff;
-        border: 1px solid #000;
-        span {
-          padding-left: 22px;
-          color: #000;
-          &:after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
-
-            width: 18px;
-            height: 18px;
-            background: url('../images/guide/ico_play_guide.svg') no-repeat 50%;
-            background-size: 100%;
-          }
-        }
-      }
-      span {
-        position: relative;
-        word-break: keep-all;
-      }
-      // 비활성
-      &:disabled {
-        background: #DDD;
-        color: #98A2B3;
-      }
-    }
   }
   .icon_wrap {
     display: flex;
@@ -4949,6 +5024,170 @@ body.active {overflow: hidden;}
         background: url('../images/challenge/ico_coupon.svg') no-repeat 50%;
         background-size: 100%;
       }
+    }
+  }
+  // 완료한 챌린지
+  .challenge_completed {
+    margin: 32px 0 40px;
+    .notice_wrap {
+      margin: 0 28px;
+    }
+    .tab_menu_wrap {
+      margin-top: 24px;
+    }
+    .completed_list {
+      > p {
+        margin: 26px 0 0 28px;
+
+        font-size: 12px;
+        font-weight: 400;
+        color: #AAA;
+      }
+      > ul {
+        margin-top: 24px;
+        padding: 0 20px;
+        > li {
+          padding-bottom: 16px;
+          border-bottom: 1px solid #D9D9D9;
+          & + li {
+            padding-top: 16px;
+          }
+          > a {
+            display: block;
+            > div {
+              display: flex;
+              align-items: center;
+              margin-bottom: 8px;
+              > span {
+                display: inline-block;
+                padding: 4px 8px;
+                border-radius: 2px;
+                background: var(--color-brand1);
+
+                font-size: 12px;
+                color: #fff;
+                line-height: 1;
+                & + * {
+                  margin-left: 4px;
+                }
+              }
+              > p {
+                position: relative;
+                padding-right: 24px;
+
+                font-size: 15px;
+                font-weight: 800;
+                color: var(--color-brand1);
+                &:after {
+                  content: "";
+                  position: absolute;
+                  top: -9px;
+                  right: 0;
+
+                  width: 29px;
+                  height: 29px;
+                  background: url('../images/challenge/ico_flag.svg') no-repeat 50%;
+                  background-size: 100%;
+                }
+              }
+            }
+            > strong {
+              font-size: 12px;
+              font-weight: 800;
+              color: #000;
+            }
+            > p {
+              margin-top: 8px;
+              font-size: 14px;
+              font-weight: 400;
+              color: #000;
+            }
+            > span {
+              margin-top: 8px;
+
+              font-size: 12px;
+              font-weight: 400;
+              color: #000;
+            }
+          }
+        }
+      }
+    }
+  }
+  .common_btn {
+    display: block;
+    width: 100%;
+    height: 42px;
+
+    background: var(--color-brand1);
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    // 흰색 버튼
+    &.color {
+      color: var(--color-brand1);
+      background: #fff;
+      border: 1px solid var(--color-brand1);
+    }
+    // 높이가 큰 버튼
+    &.large {
+      height: 58px;
+
+      margin: 0 auto;
+      border-radius: 0;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    // 걷기가이드 다운로드
+    &.download {
+      background: #000;
+      span {
+        padding-left: 22px;
+        &:after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%);
+
+          width: 18px;
+          height: 18px;
+          background: url('../images/guide/ico_download_guide.svg') no-repeat 50%;
+          background-size: 100%;
+        }
+      }
+    }
+    // 걷기가이드 재생
+    &.player {
+      background: #fff;
+      border: 1px solid #000;
+      span {
+        padding-left: 22px;
+        color: #000;
+        &:after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%);
+
+          width: 18px;
+          height: 18px;
+          background: url('../images/guide/ico_play_guide.svg') no-repeat 50%;
+          background-size: 100%;
+        }
+      }
+    }
+    span {
+      position: relative;
+      word-break: keep-all;
+    }
+    // 비활성
+    &:disabled {
+      background: #DDD;
+      color: #98A2B3;
     }
   }
 }

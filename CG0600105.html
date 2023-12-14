@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-	<title>성공</title>
+	<title>완료한 챌린지</title>
 	<link rel="stylesheet" href="./css/swiper-bundle.min.css">
 	<link rel="stylesheet" href="./css/reset.css">
 	<link rel="stylesheet" href="./css/animation.css">
@@ -15,42 +15,94 @@
   <script src="./js/chartjs-plugin-annotation.min.js"></script>
 </head>
 <body>
-  <div class="popup_btn_wrap">
-    <button type="button" class="layer_button_toggle" data-popup-name='#MN0100020-pop1'>성공</button>
-  </div>
+  <!-- bg_color : 배경 컬러 fff -->
+  <div id="wrap" class="bg_color">
+    <!-- header -->
+    <div id="header">
+      <div class="title_wrap">
+        <button type="button" class="btn_back">뒤로가기</button>
+        <h1>완료한 챌린지</h1>
+      </div>
+			<!-- <div class="icon_wrap">
+        <button type="button" class="btn_setting"><span>설정</span></button>
+      </div> -->
+    </div>
+    <!-- container -->
+    <div id="container">
+      <div class="challenge_content_wrap">
+      <!-- 완료한 챌린지 -->
+      <div class="challenge_completed">
+        <div class="notice_wrap">
+          <ul class="bull_list">
+            <li>챌린지 초대는 무제한으로 보낼 수 있습니다.</li>
+            <li>SMS 발송비용은 본인 부담입니다.</li>
+            <li>챌린지 참여는 수락 선착순입니다.</li>
+          </ul>
+        </div>
 
-  <!-- 성공 -->
-  <div id="MN0100020-pop1" class="modal_layer_popup align_center">
-    <div class="dimmed_layer"></div>
-    <div class="layer_content_wrap">
-      <div class="layer_content">
-        <!-- header -->
-        <div class="layer_header">
-          <h1>‘동작 및 피스니스’ 설정이 꺼져 있습니다.</h1>
-        </div>
-        <!-- body -->
-        <div class="layer_body">
-          <p class="popup_sub_txt">
-            사용자의 걸음 수를 측정하기 위해 해당 설정이 켜져 있어야 합니다.
-          </p>
-        </div>
-        <!-- footer -->
-        <div class="layer_footer">
-          <div class="btn_dialog align_right">
-            <button type="button" class="btn_cancel">취소</button>
-            <button type="button" class="btn_confirm">확인</button>
+        <div class="tab_menu_wrap">
+          <ul class="tab_title">
+            <li><a href="#">1주일</a></li>
+            <li><a href="#">1개월</a></li>
+            <li><a href="#">3개월</a></li>
+            <li><a href="#">6개월</a></li>
+            <li><a href="#">1년</a></li>
+          </ul>
+  
+          <div class="tab_content">
+            <div class="completed_list">
+              <p>2023.11.12~2023.12.11</p>
+              
+              <ul>
+                <li>
+                  <a href="#">
+                    <strong>[현대백화점 본점]</strong>
+                    <p>아름다운 한강 지키기 플로깅 챌린지</p>
+                    <span>2023.11.12~2023.12.11</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <div>
+                      <span>당첨자발표</span>
+                    </div>
+                    <strong>[현대백화점 김포점]</strong>
+                    <p>아름다운 한강 지키기 플로깅 챌린지</p>
+                    <span>2023.11.12~2023.12.11</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <strong>[현대백화점 본점]</strong>
+                    <p>아름다운 한강 지키기 플로깅 챌린지</p>
+                    <span>2023.11.12~2023.12.11</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <strong>[현대백화점 본점]</strong>
+                    <p>아름다운 한강 지키기 플로깅 챌린지</p>
+                    <span>2023.11.12~2023.12.11</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <strong>[현대백화점 본점]</strong>
+                    <p>아름다운 한강 지키기 플로깅 챌린지</p>
+                    <span>2023.11.12~2023.12.11</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
+  
+          <!-- <p>젤리 내역이 없어요</p> -->
         </div>
+      </div>
+      <!-- //완료한 챌린지 -->
       </div>
     </div>
   </div>
-  <!-- //성공 -->
   <script src="./js/common.js"></script>
-  <script>
-    setTimeout(() => {
-      common.layerToggle('#MN0100020-pop1');
-    }, 300);
-  </script>
-
 </body>
 </html>
