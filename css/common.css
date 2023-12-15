@@ -334,12 +334,12 @@ body.active {
   display: inline-block;
   width: 48px;
   height: 28px;
-  overflow: hidden;
-  border-radius: 14px;
-  background: #CCC;
 }
 .inpchk_ani input {
   display: none;
+}
+.inpchk_ani input:checked + label {
+  background: var(--color-brand1);
 }
 .inpchk_ani input:checked + label span {
   left: calc(100% - 26px);
@@ -347,8 +347,11 @@ body.active {
 .inpchk_ani label {
   position: relative;
   display: block;
-  width: 100%;
   height: 100%;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #CCC;
+  transition: background 0.3s;
 }
 .inpchk_ani label span {
   font-size: 0;
@@ -360,7 +363,7 @@ body.active {
   height: 22px;
   background: #fff;
   border-radius: 50%;
-  transition: left 0.3s, background 0.3s;
+  transition: left 0.3s;
 }
 
 .design_checkbox input {
@@ -1599,7 +1602,7 @@ body.active {
 }
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.today > a .text strong,
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.today > a .text span {
-  color: #fff;
+  color: #fff !important;
 }
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li.today > a .icon .static {
   background: url("../images/common/ico_heart03.svg") no-repeat;
@@ -2315,13 +2318,15 @@ body.active {
 .profile_wrap .form_list_wrap .inp_box_list > li > div button {
   height: 24px;
   margin-left: 8px;
-  background-color: #000;
   border: 0 none;
   font-size: 0;
   line-height: 0;
 }
 .profile_wrap .form_list_wrap .inp_box_list > li > div button.btn_delete {
   width: 24px;
+  height: 24px;
+  background: url("../images/common/ico_cross05.svg") no-repeat 50%;
+  background-size: 16px;
 }
 .profile_wrap .form_list_wrap .inp_box_list > li > div .btn_overlap {
   line-height: 18px;
@@ -3219,10 +3224,6 @@ body.active {
   font-size: 18px;
   font-weight: 800;
 }
-.setting_wrap .setting_list > li h3 {
-  font-size: 14px;
-  font-weight: 600;
-}
 .setting_wrap .setting_list > li > ul {
   padding-top: 10px;
   margin-top: 10px;
@@ -3254,9 +3255,15 @@ body.active {
   background: url("../images/common/ico_arrow_right01.svg") no-repeat;
   background-size: 100%;
 }
-.setting_wrap .setting_list > li > ul P {
+.setting_wrap .setting_list > li > ul > li h3 {
+  padding-top: 4px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.setting_wrap .setting_list > li > ul > li P {
   margin-top: 10px;
   font-size: 14px;
+  color: #98A2B3;
 }
 .setting_wrap .setting_list > li > ul .inpchk_wrap {
   position: relative;
@@ -3265,6 +3272,23 @@ body.active {
   position: absolute;
   top: 0;
   right: 0;
+}
+.setting_wrap .setting_list > li > ul .inpchk_wrap > div {
+  margin: 15px 0 10px;
+  display: flex;
+  justify-content: right;
+}
+.setting_wrap .setting_list > li > ul .inpchk_wrap > div button {
+  display: block;
+}
+.setting_wrap .setting_list > li > ul .inpchk_wrap > div button span {
+  display: block;
+  color: #D9D9D9;
+  border-bottom: 1px solid #D9D9D9;
+}
+.setting_wrap .setting_list > li > ul .inpchk_wrap > div button.active span {
+  border-bottom-color: var(--color-brand1);
+  color: var(--color-brand1);
 }
 
 .reward_wrap .jelly_reward {

@@ -1,5 +1,15 @@
 // 공통
 let common = {
+  init(){
+    this.layerButtonToggle();
+    this.toastButtonToggle();
+    this.designSelect();
+    this.scrollDeformation();
+    this.tabMenuEvent();
+    this.inputBorderEvent();
+    this.enterReplyEvent();
+    this.headerBtnEvent();
+  },
   // 공통 - 팝업 : 버튼으로 팝업 열기
   layerButtonToggle: function(){
     let btnArr = document.querySelectorAll('.layer_button_toggle');
@@ -1717,15 +1727,7 @@ let walkingGuide = {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-	common.layerButtonToggle();
-	common.toastButtonToggle();
-	common.designSelect();
-	common.scrollDeformation();
-	common.tabMenuEvent();
-	common.inputBorderEvent();
-  common.enterReplyEvent();
-  common.headerBtnEvent();
-	
+	common.init();
 	main.init();
 	challenge.init();
 	//walkingReport.anchorEvent();
