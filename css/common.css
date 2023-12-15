@@ -868,13 +868,16 @@ body.active {
   margin-top: 5px;
 }
 
-.banner_wrap img {
+.banner_wrap a {
+  display: block;
+}
+.banner_wrap a img {
   display: block;
   width: 100%;
   overflow: hidden;
   border-radius: 16px;
 }
-.banner_wrap img + img {
+.banner_wrap a + a {
   margin-top: 10px;
 }
 
@@ -930,7 +933,7 @@ body.active {
   margin: 32px 8px 0;
 }
 .comments_list_wrap .comments_thum {
-  margin-top: 16px;
+  margin: 16px 0 24px;
   padding: 20px 0 9px;
   border-top: 1px solid #D9D9D9;
   border-bottom: 1px solid #D9D9D9;
@@ -967,6 +970,306 @@ body.active {
   height: 12px;
   background: url("../images/common/ico_more.svg") no-repeat 50%;
   background-size: 100%;
+}
+.comments_list_wrap .comments_content .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.comments_list_wrap .comments_content .title > div {
+  display: flex;
+  align-items: center;
+}
+.comments_list_wrap .comments_content .title > div strong {
+  font-size: 14px;
+  font-weight: 800;
+  color: #000;
+}
+.comments_list_wrap .comments_content .title > div span {
+  margin-left: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #98A2B3;
+}
+.comments_list_wrap .comments_content .title button {
+  width: 24px;
+  height: 24px;
+  background: url("../images/common/ico_more02.svg") no-repeat 50%;
+  background-size: 100%;
+  font-size: 0;
+  line-height: 0;
+}
+.comments_list_wrap .comments_content .content.expansion > p {
+  overflow: visible;
+  display: block;
+  -webkit-line-clamp: inherit;
+}
+.comments_list_wrap .comments_content .content.expansion > .btn_more {
+  display: none;
+}
+.comments_list_wrap .comments_content .content > p {
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #344054;
+  word-wrap: break-word;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.comments_list_wrap .comments_content .content > .btn_more {
+  margin-top: 14px;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--color-brand1);
+}
+.comments_list_wrap .comments_content .content > a {
+  display: block;
+  margin-top: 16px;
+}
+.comments_list_wrap .comments_content .reply_wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+}
+.comments_list_wrap .comments_content .reply_wrap > div {
+  display: flex;
+}
+.comments_list_wrap .comments_content .reply_wrap > div button + button {
+  margin-left: 8px;
+}
+.comments_list_wrap .comments_content .reply_wrap > div button span {
+  color: #344054;
+}
+.comments_list_wrap .comments_content .reply_wrap button span {
+  position: relative;
+  display: inline-block;
+  padding-left: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16px;
+}
+.comments_list_wrap .comments_content .reply_wrap button span:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+}
+.comments_list_wrap .comments_content .reply_wrap .btn_bookmark span:after {
+  background: url("../images/common/ico_heart.svg") no-repeat 50%;
+  background-size: 100%;
+}
+.comments_list_wrap .comments_content .reply_wrap .btn_show_comments span:after {
+  background: url("../images/common/ico_comments.svg") no-repeat 50%;
+  background-size: 100%;
+}
+.comments_list_wrap .comments_content .reply_wrap .btn_writing_reply span {
+  color: #000;
+}
+.comments_list_wrap .comments_content .reply_wrap .btn_writing_reply span:after {
+  background: url("../images/common/ico_write.svg") no-repeat 50%;
+  background-size: 100%;
+}
+
+.comments_reply_wrap {
+  display: none;
+  background: #F2F4F7;
+  margin-left: -20px;
+  margin-right: -20px;
+  padding: 0 20px;
+}
+.comments_reply_wrap.active {
+  display: block;
+}
+.comments_reply_wrap .comments_content {
+  padding-top: 24px;
+}
+.comments_reply_wrap .comments_content + .comments_content {
+  border-top: 1px solid #D9D9D9;
+}
+.comments_reply_wrap .comments_content .title > div strong {
+  position: relative;
+  padding-left: 24px;
+}
+.comments_reply_wrap .comments_content .title > div strong:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  background: url("../images/common/ico_reply.svg") no-repeat 50%;
+  background-size: 100%;
+}
+
+.enter_reply_wrap {
+  position: fixed;
+  bottom: -194px;
+  left: 0;
+  z-index: 999;
+  transition: bottom 0.3s;
+  width: 100%;
+  background: #fff;
+}
+.enter_reply_wrap.active {
+  bottom: 0;
+}
+.enter_reply_wrap.active:after {
+  opacity: 1;
+  pointer-events: auto;
+}
+.enter_reply_wrap > .inner {
+  position: relative;
+  z-index: 100;
+  background: #fff;
+}
+.enter_reply_wrap > .inner .info_wrap .status {
+  position: relative;
+}
+.enter_reply_wrap > .inner .info_wrap .status > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 32px;
+  padding: 0 20px;
+  background: rgba(0, 0, 0, 0.8);
+}
+.enter_reply_wrap > .inner .info_wrap .status > div p {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.enter_reply_wrap > .inner .info_wrap .status > div button {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  width: 30px;
+  height: 30px;
+}
+.enter_reply_wrap > .inner .info_wrap .status > div button span {
+  display: block;
+  font-size: 0;
+  line-height: 0;
+  width: 12px;
+  height: 12px;
+  background: url("../images/common/ico_cross04.svg") no-repeat 50%;
+  background-size: 100%;
+}
+.enter_reply_wrap > .inner .info_wrap .status .count {
+  position: absolute;
+  top: -22px;
+  right: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1;
+}
+.enter_reply_wrap > .inner .info_wrap .attachment {
+  display: flex;
+  align-items: center;
+  padding: 0 20px 8px;
+}
+.enter_reply_wrap > .inner .info_wrap .attachment a {
+  position: relative;
+  padding-top: 16px;
+}
+.enter_reply_wrap > .inner .info_wrap .attachment a:after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  right: -8px;
+  width: 16px;
+  height: 16px;
+  background: url("../images/common/ico_cross05.svg") no-repeat 50%;
+  background-size: 100%;
+}
+.enter_reply_wrap > .inner .info_wrap .attachment a img {
+  width: 52px;
+  height: 52px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.enter_reply_wrap > .inner .input_wrap {
+  padding: 0 20px;
+}
+.enter_reply_wrap > .inner .input_wrap .inner {
+  height: 64px;
+  border-top: 1px solid #D9D9D9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.enter_reply_wrap > .inner .input_wrap .inner .btn_attachment {
+  width: 24px;
+  height: 24px;
+  background: url("../images/common/ico_attachment.svg") no-repeat 50%;
+  background-size: 100%;
+  font-size: 0;
+  line-height: 0;
+}
+.enter_reply_wrap > .inner .input_wrap .inner > div {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 8px;
+  font-size: 14px;
+}
+.enter_reply_wrap > .inner .input_wrap .inner > div input {
+  flex: 1;
+  border: 0 none;
+  font-weight: 600;
+  color: #000;
+}
+.enter_reply_wrap > .inner .input_wrap .inner > div input:focus-visible {
+  outline: none;
+}
+.enter_reply_wrap > .inner .input_wrap .inner > div input::-moz-placeholder {
+  color: #D9D9D9;
+}
+.enter_reply_wrap > .inner .input_wrap .inner > div input::placeholder {
+  color: #D9D9D9;
+}
+.enter_reply_wrap > .inner .input_wrap .inner > div input:-moz-placeholder-shown + button {
+  background: #D9D9D9;
+  color: rgba(0, 0, 0, 0.2);
+}
+.enter_reply_wrap > .inner .input_wrap .inner > div input:placeholder-shown + button {
+  background: #D9D9D9;
+  color: rgba(0, 0, 0, 0.2);
+}
+.enter_reply_wrap > .inner .input_wrap .inner > div button {
+  margin-left: 8px;
+  font-weight: 800;
+  min-width: 50px;
+  padding: 0 12px;
+  height: 32px;
+  line-height: 32px;
+  border-radius: 24px;
+  background: var(--color-brand1);
+  color: #fff;
+  transition: background 0.1s;
+}
+.enter_reply_wrap:after {
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
 }
 
 #wrap {
@@ -2382,7 +2685,7 @@ body.active {
 }
 
 .playlist_wrap .layer_content_wrap {
-  padding: 0;
+  padding: 0 !important;
 }
 .playlist_wrap .layer_content_wrap .layer_content {
   padding: 0;

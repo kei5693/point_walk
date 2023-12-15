@@ -573,7 +573,43 @@ let common = {
       animationCountWrap.classList.remove('active');
     }
   },
+  enterReplyShow: function(){
+    if(document.querySelector('.enter_reply_wrap') == null) return;
+    document.querySelector('.enter_reply_wrap').classList.add('active');
+  },
+  enterReplyHide: function(){
+    if(document.querySelector('.enter_reply_wrap') == null) return;
+    document.querySelector('.enter_reply_wrap').classList.remove('active');
+  },
+  enterReplyEvent: function(){
+    if(document.querySelector('.enter_reply_wrap') == null) return;
 
+    const enterReplyWrap = document.querySelector('.enter_reply_wrap');
+    let btnCloseReply = enterReplyWrap.querySelector(':scope > .inner .info_wrap .status button');
+
+    // 입력창 버튼으로 닫기
+    if(btnCloseReply){
+      btnCloseReply.addEventListener('click', ()=> {
+        this.enterReplyHide();
+      });
+    }
+
+    // 입력창 dimmed로 닫기
+    document.querySelector('html').addEventListener('click', (e) => {
+      if (e.target == enterReplyWrap){
+        this.enterReplyHide();
+      }
+    });
+  },
+  headerBtnEvent: function(){
+    const btnComments = document.querySelector('#header .btn_comments');
+
+    if(btnComments){
+      btnComments.addEventListener('click', ()=> {
+        this.enterReplyShow();
+      });
+    }
+  },
 
 
 
@@ -1053,6 +1089,7 @@ let challenge = {
     this.challengeCategoryListEvent();
     this.challengeRewardEvent();
     this.challengeReportAni();
+    this.commentsBtnEvent();
   },
   // 챌린지 안내
   challengeNotice: function(){
@@ -1344,6 +1381,34 @@ let challenge = {
       common.scrollToEvent('html', pickChallenge, 0);
     });
   },
+  commentsBtnEvent: function(){
+    if(document.querySelector('.comments_list_wrap') == null) return;
+    
+    const commentsDetail = document.querySelectorAll('.comments_list_wrap .comments_content');
+    commentsDetail.forEach((comment)=>{
+      // 더보기
+      let btnMore = comment.querySelector(':scope > .content .btn_more');
+      // 답글쓰기
+      let btnWritingReply = comment.querySelector(':scope > .reply_wrap .btn_writing_reply');
+
+      if(btnMore){
+        btnMore.addEventListener('click', ()=>{
+          let target = btnMore.closest('.comments_content').querySelector(':scope .content');
+          target.classList.contains('expansion') ? target.classList.remove('expansion') : target.classList.add('expansion');
+        });
+      } else {
+        // 댓글 상세에서는 댓글 확장
+        comment.querySelector(':scope .content').classList.add('expansion');
+      }
+
+      if(btnWritingReply){
+        btnWritingReply.addEventListener('click', ()=> {
+          common.enterReplyShow();
+        });
+      }
+    });
+  },
+
 
 
 
@@ -1658,6 +1723,8 @@ document.addEventListener("DOMContentLoaded", function() {
 	common.scrollDeformation();
 	common.tabMenuEvent();
 	common.inputBorderEvent();
+  common.enterReplyEvent();
+  common.headerBtnEvent();
 	
 	main.init();
 	challenge.init();
