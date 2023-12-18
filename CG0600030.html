@@ -4,15 +4,21 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<title>목록</title>
-	<link rel="stylesheet" href="./css/swiper-bundle.min.css">
-	<link rel="stylesheet" href="./css/reset.css">
-	<link rel="stylesheet" href="./css/animation.css">
-	<link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/swiper-bundle.min.css">
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/animation.css">
+  <link rel="stylesheet" href="./css/common.css">
 
-	<script src="./js/swiper-bundle.min.js"></script>
-  <script src="./js/cdn.jsdelivr.net_npm_chart.js"></script>
-  <script src="./js/chartjs-plugin-datalabels.min.js"></script>
-  <script src="./js/chartjs-plugin-annotation.min.js"></script>
+  <!-- 제이쿼리 -->
+  <script src="./js/lib/jquery-3.4.1.min.js"></script>
+  <!-- 스와이퍼 -->
+  <script src="./js/lib/swiper-bundle.min.js"></script>
+  <!-- 로티 -->
+  <script src="./js/lib/lottie-player.js"></script>
+  <!-- 차트 라이브러리 + 플러그인 2개 -->
+  <script src="./js/lib/cdn.jsdelivr.net_npm_chart.js"></script>
+  <script src="./js/lib/chartjs-plugin-datalabels.min.js"></script>
+  <script src="./js/lib/chartjs-plugin-annotation.min.js"></script>
 </head>
 <body>
   <div class="popup_btn_wrap">
@@ -204,7 +210,24 @@
     </div>
   </div>
   <!-- //목록 -->
+
+
+
+
+
+  <!-- 공통 -->
   <script src="./js/common.js"></script>
+  <!-- 메인 -->
+  <script src="./js/main.js"></script>
+  <!-- 챌린지 -->
+  <script src="./js/challenge.js"></script>
+  <!-- 걷기가이드 -->
+  <script src="./js/walking_guide.js"></script>
+  <!-- 걸음리포트 : 해당 html(AC0300010)에서 별도로 사용 -->
+  <!-- <script src="./js/walking_report.js"></script> -->
+  <!-- 설정 -->
+  <script src="./js/setup.js"></script>
+  <script src="./js/init.js"></script>
   <script>
     setTimeout(() => {
       common.layerToggle('#layerAccIos');

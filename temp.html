@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>메인팝업</title>
+	<link rel="stylesheet" href="./css/swiper-bundle.min.css">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/animation.css">
+	<link rel="stylesheet" href="./css/common.css">
+
+	<script src="./js/swiper-bundle.min.js"></script>
+  <script src="./js/cdn.jsdelivr.net_npm_chart.js"></script>
+  <script src="./js/chartjs-plugin-datalabels.min.js"></script>
+  <script src="./js/chartjs-plugin-annotation.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <div id="container">
+    <!-- Dynamically generated elements will be added here -->
+  </div>
+
+
+  <script>
+    // Event delegation on the container
+    document.getElementById('container').addEventListener('click', function(event) {
+      // Check if the clicked element is a tag you are interested in
+      if (event.target.tagName === 'BUTTON') {
+        // Your click event handling logic here
+        alert('Button clicked!');
+      }
+    });
+    
+    // Function to dynamically generate tags
+    function addDynamicTag() {
+      const container = document.getElementById('container');
+      const newButton = document.createElement('button');
+      newButton.textContent = 'Click Me';
+    
+      // Add the new tag to the container
+      container.appendChild(newButton);
+    }
+    
+    // Call the function to add a dynamically generated tag
+    addDynamicTag();
+    </script>
+</body>
+</html>
