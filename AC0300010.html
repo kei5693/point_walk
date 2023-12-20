@@ -206,7 +206,7 @@
 
 
 
-
+	<!-- <script src="./js/temp/common_vanilla.js"></script> -->
 
   <!-- 공통 -->
   <script src="./js/common.js"></script>
@@ -222,8 +222,12 @@
   <script src="./js/setup.js"></script>
   <script src="./js/init.js"></script>
   <script>
-    let data ='';
-    walkingReport.anchorEvent(data);
+		$(function () {
+			let data ='';
+			//walkingReport.anchorEvent(data);
+			
+			$('.walking_report').anchorEvent(data);
+		});
   </script>
 
 </body>
