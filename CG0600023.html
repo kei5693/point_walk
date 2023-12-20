@@ -87,8 +87,9 @@
                 <div class="graph_wrap">
                   <div class="graph">
                     <div class="inner">
-                      <span class="walking1"><em>1,000걸음</em></span>
-                      <span class="walking2"><em>10,000걸음</em></span>
+                      <span class="walking1"><em><i>0</i>걸음</em></span>
+                      <!-- <span class="walking2"><em>10,000걸음</em></span> -->
+                      <em>10,000걸음</em>
                     </div>
                   </div>
 
@@ -194,7 +195,7 @@
               </div>
 
               <div class="btn_wrap">
-                <button type="button" class="common_btn color"><span>크루보기</span></button>
+                <button type="button" class="common_btn color" onClick="popupCrew();"><span>크루보기</span></button>
                 <button type="button" class="common_btn"><span>친구초대</span></button>
               </div>
             </div>
@@ -219,7 +220,7 @@
               </div>
 
               <div class="btn_wrap">
-                <button type="button" class="common_btn color"><span>크루보기</span></button>
+                <button type="button" class="common_btn color" onClick="popupCrew();"><span>크루보기</span></button>
               </div>
             </div>
 
@@ -243,7 +244,7 @@
               </div>
 
               <div class="btn_wrap">
-                <button type="button" class="common_btn color"><span>크루기록보기</span></button>
+                <button type="button" class="common_btn color" onClick="popupCrewHistory();"><span>크루기록보기</span></button>
               </div>
             </div>
 
@@ -268,14 +269,15 @@
 
             <!-- 리워드 -->
             <div class="challenge_reward">
-              <h2>Reward<button type="button" data-popup-name='#CG0600020-pop1' onClick="popupEvent();"><span></span></button></h2>
-
-              <div class="toggle_cont">
+              <div class="reward_guide">
+                <h2>Reward<button type="button" data-popup-name='#CG0600020-pop1' onClick="popupEvent();"><span></span></button></h2>
                 <div class="admin_wrap">
                   <strong>어드민에서 등록한 텍스트 제목</strong>
                   <p>어드민에서 등록한 서브텍스트.<br>등록시에만 해당 영역 노출, 미등록 시 미노출</p>
                 </div>
-  
+              </div>
+
+              <div class="toggle_cont">   
                 <!-- 2023-12-04 태그 변경 -->
                 <div class="map_view">
                   <button><span>지도에서 위치와 경로를 확인하세요😄</span></button>
@@ -327,7 +329,8 @@
                   </p>
                   <div>
                     <P>3단계 완료</P>
-                    <lottie-player autoplay loop mode="normal" src="./json/check.json"></lottie-player>
+                    <img src="images/common/ico_check02.svg" alt="">
+                    <!-- <lottie-player autoplay loop mode="normal" src="./json/check.json"></lottie-player> -->
                   </div>
                 </li>
 
@@ -356,11 +359,13 @@
 
                 <!-- 최종 달성 attain -->
                 <li class="attain">
-                  <lottie-player autoplay loop mode="normal" src="./json/casino-chip.json"></lottie-player>
-                  <dl>
-                    <dt>최종 달성 시 <span>리워드</span>가 지급됩니다.</dt>
-                    <dd><span>1,000P</span> 경품응모권</dd>
-                  </dl>
+                  <a href="javascript:;" onClick="eventOpen();">
+                    <lottie-player autoplay loop mode="normal" src="./json/casino-chip.json"></lottie-player>
+                    <dl>
+                      <dt>최종 달성 시 <span>리워드</span>가 지급됩니다.</dt>
+                      <dd><span>1,000P</span> 경품응모권</dd>
+                    </dl>
+                  </a>
                 </li>
 
                 <!-- 일반 보상 : 쿠폰 -->
@@ -421,7 +426,7 @@
           <div class="challenge_btn">
             <!-- <button type="button" class="common_btn large download"><span>걷기가이드 다운로드</span></button> -->
             <!-- <button type="button" class="common_btn large player"><span>걷기가이드 재생</span></button> -->
-            <button type="button" class="common_btn large" onclick="playerOpen()"><span>챌린지 도전</span></button>
+            <button type="button" class="common_btn large" disabled><span>챌린지 완료</span></button>
             <!-- <button type="button" class="common_btn large" disabled="disabled"><span>챌린지 완료</span></button> -->
           </div>
         </div>
@@ -707,6 +712,145 @@
 		<!--// 재생목혹 팝업 -->
   </div>
 
+  <!-- 크루보기 : [리더: 챌린지 도전~크루원 미충족] -->
+  <div id="CG0600301" class="modal_layer_popup">
+    <div class="dimmed_layer"></div>
+    <div class="layer_content_wrap">
+      <div class="layer_content">
+        <!-- header -->
+        <div class="layer_header">
+          <h1>크루보기</h1>
+        </div>
+        <!-- body -->
+        <div class="layer_body">
+          <div class="crew_list">
+            <h2>참여중인 크루</h2>
+            <ul>
+              <li class="leader">
+                <strong>걸어보장</strong>
+                <span>한*만</span>
+                <p>챌린지 리더</p>
+              </li>
+              <li class="crew">
+                <strong>할룽할룽</strong>
+                <span>김*수</span>
+                <div>
+                  <p><em>초대</em><span>2023.10.23</span></p>
+                  <p><em>수락</em><span>2023.10.26</span></p>
+                </div>
+              </li>
+              <li class="crew">
+                <strong>견뎌달려</strong>
+                <span>이*민</span>
+                <div>
+                  <p><em>초대</em><span>2023.10.23</span></p>
+                  <p><em>수락</em><span>2023.10.26</span></p>
+                </div>
+              </li>
+            </ul>
+
+            <h2>참여 대기중인 크루</h2>
+            <p>초대를 보냈으나 아직 참여하지 않았어요!</p>
+            <ul>
+              <li>
+                <strong>내주소록저장명</strong>
+                <span>(010-****-0123)</span>
+                <div>
+                  <p><em>초대</em><span>2023.10.23</span></p>
+                </div>
+              </li>
+              <li>
+                <strong>박현대 과장님</strong>
+                <span>(010-****-0123)</span>
+                <div>
+                  <p><em>초대</em><span>2023.10.23</span></p>
+                </div>
+              </li>
+              <li>
+                <strong>유좌석</strong>
+                <span>(010-****-0123)</span>
+                <div>
+                  <p><em>초대</em><span>2023.10.23</span></p>
+                </div>
+              </li>
+            </ul>
+
+            <div class="notice_wrap">
+              <ul class="bull_list">
+                <li>챌린지 초대는 무제한으로 보낼 수 있습니다.</li>
+                <li>SMS 발송비용은 본인 부담입니다.</li>
+                <li>챌린지 참여는 수락 선착순입니다.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- footer -->
+        <div class="layer_footer">
+          <div class="btn_dialog">
+            <button type="button" class="btn_plus"><span>친구초대</span></button>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="layer_close">close</button>
+      <div class="layer_drag"><span></span></div>
+    </div>
+  </div>
+  <!-- //크루보기 : [리더: 챌린지 도전~크루원 미충족] -->
+
+  <!-- 함께한 크루기록 : [리더&크루 : 챌린지 달성&종료] -->
+  <div id="CG0600302" class="modal_layer_popup hide_footer">
+    <div class="dimmed_layer"></div>
+    <div class="layer_content_wrap">
+      <div class="layer_content">
+        <!-- header -->
+        <div class="layer_header">
+          <h1>함께한 크루 기록</h1>
+        </div>
+        <!-- body -->
+        <div class="layer_body">
+          <div class="crew_list mt0">
+            <ul>             
+              <li class="crew">
+                <strong>할룽할룽</strong>
+                <span>김*수</span>
+                <div>
+                  <p><em class="done">달성완료</em></p>
+                </div>
+              </li>
+              <li class="crew">
+                <strong>견뎌달려</strong>
+                <span>이*민</span>
+                <div>
+                  <p><em class="done">달성완료</em></p>
+                </div>
+              </li>
+              <li class="crew">
+                <strong>할룽할룽</strong>
+                <span>김*수</span>
+                <div>
+                  <p><em >미달성</em></p>
+                </div>
+              </li>
+              <li class="crew">
+                <strong>견뎌달려</strong>
+                <span>이*민</span>
+                <div>
+                  <p><em>미달성</em></p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- footer -->
+        <div class="layer_footer">
+        </div>
+      </div>
+      <button type="button" class="layer_close">close</button>
+      <div class="layer_drag"><span></span></div>
+    </div>
+  </div>
+  <!-- //함께한 크루기록 : [리더&크루 : 챌린지 달성&종료] -->
+
   <!-- 댓글입력 -->
   <div class="enter_reply_wrap">
     <div class="inner">
@@ -800,6 +944,79 @@
   </div>
   <!-- //리워드 유의사항 -->
 
+  <!-- 경품응모 : [리더&크루 : 챌린지 달성&종료] -->
+  <div id="CG0600303" class="modal_layer_popup">
+    <div class="dimmed_layer"></div>
+    <div class="layer_content_wrap">
+      <div class="layer_content">
+        <!-- header -->
+        <div class="layer_header">
+          <h1>경품응모</h1>
+        </div>
+        <!-- body -->
+        <div class="layer_body">  
+
+          <!-- 경품응모 전 -->
+          <div class="giveaway_wrap">
+            <dl class="title">
+              <dt>[현대백화점 김포점]</dt>
+              <dd>경기도와 함께하는 친구와 하루 6천보 걷기 챌린지</dd>
+            </dl>
+            <div class="content">           
+              <div class="desc">
+                <p>경품명 노출</p>
+                <ul>
+                  <li>
+                    <strong>추첨수</strong>
+                    <span>6명</span>
+                  </li>
+                  <li>
+                    <strong>당첨일</strong>
+                    <span>2023.11.12</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!--// 경품응모 전 -->
+
+          <!-- 경품응모 후 -->
+          <div class="giveaway_wrap">
+            <div class="content">           
+              <div class="desc">
+                <p>경품명 노출</p>
+                <ul>
+                  <li>
+                    <strong>추첨수</strong>
+                    <span>6명</span>
+                  </li>
+                  <li>
+                    <strong>당첨일</strong>
+                    <span>2023.11.12</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <dl class="notice_txt">
+              <dt>경품응모가 완료되었어요!</dt>
+              <dd>※ 당첨확인은 ‘My 쿠폰’에서 확인 가능합니다.</dd>
+            </dl>
+          </div>
+          <!--// 경품응모 후 -->
+        </div>
+        <!-- footer -->
+        <div class="layer_footer">
+          <div class="btn_dialog">
+            <button type="button">경품응모하기</button>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="layer_close">close</button>
+      <div class="layer_drag"><span></span></div>
+    </div>
+  </div>
+  <!-- //경품응모 : [리더&크루 : 챌린지 달성&종료] -->
+
   
 
 
@@ -819,54 +1036,20 @@
   <script src="./js/init.js"></script>
   <script>
     function popupEvent(){
-      common.layerToggle('#CG0600300');
+      $.fn.layerToggle('#CG0600300');
     }
-    // 검수용 코드
+    function popupCrew(){
+      $.fn.layerToggle('#CG0600301');
+    }  
+    function popupCrewHistory(){
+      $.fn.layerToggle('#CG0600302');
+    }      
+    function eventOpen(){
+      $.fn.layerToggle('#CG0600303');
+    }
     function playerOpen(){
       wrap.classList.add('player_show');
-    }
-    // 검수용 코드
-    let challenge2 = {
-      // 챌린지 : 상세 - 진행중 걸음 기록 스크롤 이벤트
-      challengeReportAni: function(){
-        if(document.querySelector('.challenge_report') == null) return;
-  
-        const challengeReport = document.querySelector('.challenge_report');
-        const reportGraph = challengeReport.querySelector(':scope .graph_wrap');
-  
-        window.addEventListener('scroll', () => {
-          const currentScrollPos = window.pageYOffset || document.documentElement.scrollTop;
-          let calcPos2 = challengeReport.offsetTop - currentScrollPos;
-  
-          if(calcPos2 < window.outerHeight/2){
-            // 재실행 방지
-            if(challengeReport.classList.contains('active')) return;
-            challengeReport.classList.add('active');
-  
-            ongoingAni(100, 100);
-            common.animateCounter('.challenge_report .graph_cont > h3 span', 1000, 600);
-          }
-        });
-  
-        
-        // 챌린지 진행중 걸음수 애니메이션
-        function ongoingAni(today, yesterday){
-          const todayGraph = reportGraph.querySelector('.walking1');
-          const yesterdayGraph = reportGraph.querySelector('.walking2');
-  
-          if(today == 100) {
-            todayGraph.classList.add('align_right');
-          }
-          if(yesterday == 100) {
-            yesterdayGraph.classList.add('align_right');
-          }
-  
-          todayGraph.style.left = today+'%';
-          yesterdayGraph.style.left = yesterday+'%';
-        }
-      }
-    }
-    challenge2.challengeReportAni()
+    }   
   </script>
 </body>
 </html>

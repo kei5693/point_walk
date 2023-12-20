@@ -1,5 +1,7 @@
 @charset "UTF-8";
 @import "animation.css";
+@import "challenge.css";
+@import "walking_guide.css";
 :root {
   --color-brand1: #4E2AF4;
   --color-brand2: #D6BBFB;
@@ -656,221 +658,6 @@ body.active {
   opacity: 1;
 }
 
-.noted_list > ul {
-  padding: 0 8px;
-}
-.noted_list > ul > li h2 {
-  font-size: 16px;
-  font-weight: 800;
-  color: #000;
-}
-.noted_list > ul > li p {
-  margin-top: 12px;
-  font-size: 11px;
-  font-weight: 600;
-  color: #B4B4B4;
-}
-.noted_list > ul > li p strong {
-  font-weight: 800;
-  color: var(--color-brand1);
-}
-.noted_list > ul > li + li {
-  margin-top: 24px;
-  padding-top: 24px;
-  border-top: 1px solid #D9D9D9;
-}
-
-.crew_list h2 {
-  font-size: 16px;
-  font-weight: 800;
-  color: #000;
-}
-.crew_list > ul > li {
-  position: relative;
-  padding-left: 60px;
-  margin-top: 32px;
-  font-size: 14px;
-  font-weight: 600;
-  color: #000;
-}
-.crew_list > ul > li:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: #F2F4F7 url("../images/challenge/ico_crew03.svg") no-repeat 50%;
-  background-size: 28px auto;
-}
-.crew_list > ul > li > strong {
-  font-weight: 800;
-}
-.crew_list > ul > li > span {
-  font-size: 13px;
-  color: #667085;
-}
-.crew_list > ul > li > div {
-  margin-top: 8px;
-  display: flex;
-  align-items: center;
-}
-.crew_list > ul > li > div p em {
-  display: inline-block;
-  height: 20px;
-  padding: 0 4px;
-  border: 1px solid #667085;
-  border-radius: 10px;
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 20px;
-  color: #667085;
-  text-align: center;
-}
-.crew_list > ul > li > div p span {
-  margin-left: 4px;
-  font-size: 13px;
-  font-weight: 600;
-  color: #98A2B3;
-}
-.crew_list > ul > li > div p + p {
-  margin-left: 8px;
-}
-.crew_list > ul > li + li {
-  margin-top: 24px;
-}
-.crew_list > ul .leader:after {
-  background-image: url("../images/challenge/ico_crew01.svg");
-}
-.crew_list > ul .leader > p {
-  margin-top: 8px;
-  font-size: 13px;
-  color: var(--color-brand1);
-}
-.crew_list > ul .crew:after {
-  background-image: url("../images/challenge/ico_crew02.svg");
-}
-.crew_list > ul + h2 {
-  padding-top: 32px;
-}
-.crew_list .notice_wrap {
-  margin: 32px 8px 0;
-}
-
-.crew_record > ul > li > p strong {
-  font-size: 14px;
-  font-weight: 800;
-  color: #000;
-}
-.crew_record > ul > li > p span {
-  margin-left: 4px;
-  font-size: 13px;
-  font-weight: 600;
-  color: #667085;
-}
-.crew_record > ul > li .challenge_progress_box {
-  position: relative;
-  height: 4px;
-  margin-top: 24px;
-  border-radius: 2px;
-  background: #E4E7EC;
-}
-.crew_record > ul > li .challenge_progress_box span {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  transition: width 0.3s;
-  background: var(--color-brand1);
-  border-radius: 2px;
-}
-.crew_record > ul > li .challenge_progress_box span:after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translate(50%, -50%);
-  width: 16px;
-  height: 16px;
-  background: var(--color-brand1);
-  border-radius: 50%;
-}
-.crew_record > ul > li .desc {
-  margin-top: 6px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.crew_record > ul > li .desc p {
-  font-size: 11px;
-  font-weight: 800;
-  color: var(--color-brand1);
-}
-.crew_record > ul > li .desc p + p {
-  color: #000;
-}
-.crew_record > ul > li + li {
-  border-top: 1px solid #D9D9D9;
-  margin-top: 24px;
-  padding-top: 24px;
-}
-
-.giveaway_wrap > .title {
-  font-size: 16px;
-  font-weight: 600;
-  color: #000;
-}
-.giveaway_wrap > .title dt {
-  font-weight: 800;
-}
-.giveaway_wrap > .title dd {
-  margin-top: 4px;
-}
-.giveaway_wrap > .content {
-  margin-top: 24px;
-  display: flex;
-  justify-content: space-between;
-}
-.giveaway_wrap > .content .visual {
-  width: 64px;
-  height: 64px;
-  margin-right: 35px;
-}
-.giveaway_wrap > .content .desc {
-  flex: 1;
-  font-size: 14px;
-  font-weight: 600;
-  color: #666666;
-}
-.giveaway_wrap > .content .desc > ul {
-  margin-top: 9px;
-}
-.giveaway_wrap > .content .desc > ul > li {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.giveaway_wrap > .content .desc > ul > li strong {
-  font-size: 13px;
-}
-.giveaway_wrap > .content .desc > ul > li span {
-  font-size: 12px;
-}
-.giveaway_wrap > .notice_txt {
-  margin-top: 24px;
-  font-size: 16px;
-  font-weight: 600;
-  color: #000;
-}
-.giveaway_wrap > .notice_txt dt {
-  font-weight: 800;
-}
-.giveaway_wrap > .notice_txt dd {
-  margin-top: 5px;
-}
-
 .banner_wrap a {
   display: block;
 }
@@ -1424,12 +1211,27 @@ body.active {
 #wrap #footer:empty {
   height: auto;
 }
+#wrap.main_content_wrap:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 85%;
+  background: linear-gradient(179.94deg, #EAE8FF 13.17%, rgba(234, 232, 255, 0) 99.95%);
+}
+#wrap.main_content_wrap #header {
+  background: #eae8ff;
+}
 #wrap.main_content_wrap #header .title_wrap h1 {
   text-align: center;
 }
 #wrap.main_content_wrap #container {
+  overflow: hidden;
+  z-index: 100;
+  position: relative;
   padding-top: 30px;
-  padding-bottom: 110px;
+  padding-bottom: 100px;
 }
 #wrap.main_content_wrap #container .attendance_wrap.active .calendar_cont .weekly_unit .inner > ul > li > a {
   padding: 8px 0;
@@ -1453,9 +1255,9 @@ body.active {
   padding: 0 20px;
 }
 #wrap.main_content_wrap #container .attendance_wrap .title_cont h2 {
-  font-size: 24px;
+  font-size: 16px;
   font-weight: 600;
-  line-height: 34px;
+  line-height: 24px;
 }
 #wrap.main_content_wrap #container .attendance_wrap .title_cont > div {
   position: absolute;
@@ -1482,7 +1284,36 @@ body.active {
   background-size: 100%;
 }
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont {
-  margin-top: 32px;
+  margin-top: 24px;
+}
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .attendance_link {
+  margin: 24px 0 0 20px;
+  display: flex;
+}
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .attendance_link a {
+  padding: 10px;
+  height: 34px;
+  border-radius: 17px;
+  background: #fff;
+}
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .attendance_link a span {
+  position: relative;
+  display: block;
+  padding-right: 15px;
+}
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .attendance_link a span:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 10px;
+  background: url("../images/common/ico_arrow_right02.svg") no-repeat 50%;
+  background-size: 100%;
+}
+#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit {
+  margin-top: 16px;
 }
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner {
   position: relative;
@@ -1682,7 +1513,7 @@ body.active {
   border-top: 0 none;
   border-left: 7px solid transparent;
   border-right: 7px solid transparent;
-  border-bottom: 7px solid var(--color-brand4);
+  border-bottom: 7px solid #fff;
 }
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .notice_msg > div {
   display: flex;
@@ -1691,125 +1522,422 @@ body.active {
   max-width: 92%;
   min-height: 40px;
   margin: 16px auto 0;
-  padding-bottom: 26px;
-}
-#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .notice_msg > div:before, #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .notice_msg > div:after {
-  content: "";
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  width: 10px;
-  height: 1px;
-  background: #000;
-}
-#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .notice_msg > div:before {
-  margin-left: -2px;
-  transform: rotate(0);
-  transform-origin: left top;
-  animation: scrollInfoLeft 1s infinite linear;
-}
-#wrap.main_content_wrap #container .attendance_wrap .calendar_cont .notice_msg > div:after {
-  margin-left: 2px;
-  transform: rotate(0);
-  transform-origin: right top;
-  animation: scrollInfoRight 1s infinite linear;
 }
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .notice_msg > div p {
   padding: 10px 12px;
-  background: var(--color-brand4);
+  background: #fff;
   border-radius: 20px;
   font-size: 14px;
   font-weight: 400;
   color: var(--color-font1);
 }
 #wrap.main_content_wrap #container .main_swipe_menu {
-  overflow: hidden;
-  height: 0;
-  transition: height 0.5s;
-}
-#wrap.main_content_wrap #container .main_swipe_menu .inner {
   padding-top: 20px;
+  padding-bottom: 30px;
   position: relative;
-  height: 408px;
 }
-#wrap.main_content_wrap #container .main_swipe_menu .inner .visual_swiper .swiper-slide > div {
-  max-width: 300px;
-  min-height: 300px;
-  margin: 0 auto;
+#wrap.main_content_wrap #container .main_swipe_menu .banner_swiper {
+  overflow: visible;
+  margin: 0 20px;
 }
-#wrap.main_content_wrap #container .main_swipe_menu .inner .text_swiper {
-  margin-top: -300px;
+#wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-slide > div {
+  position: relative;
+  height: 160px;
+  padding: 24px 0 0 16px;
+  border-radius: 24px;
 }
-#wrap.main_content_wrap #container .main_swipe_menu .inner .text_swiper .swiper-slide {
-  padding-top: 300px;
+#wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-slide > div > a {
+  display: block;
 }
-#wrap.main_content_wrap #container .main_swipe_menu .inner .text_swiper .swiper-slide > div {
-  max-width: 300px;
-  margin: 0 auto;
-  background: #F9F9FB;
-}
-#wrap.main_content_wrap #container .main_swipe_menu .inner .text_swiper .swiper-slide > div p {
-  font-size: 16px;
-  text-align: center;
-}
-#wrap.main_content_wrap #container .main_swipe_menu .inner .text_swiper .swiper-slide > div a {
-  display: flex;
-  justify-content: center;
+#wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-slide > div > a .text > em {
+  position: relative;
+  z-index: 10;
+  display: inline-flex;
   align-items: center;
-  width: 100%;
-  max-width: 280px;
-  height: 42px;
-  margin: 24px auto 0;
-  background: var(--color-brand1);
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 400;
+  justify-content: center;
+  height: 34px;
+  padding: 10px;
+  border-radius: 17px;
+  background: #fff;
+}
+#wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-slide > div > a .text > em span {
+  position: relative;
+  display: inline-block;
+  padding-right: 15px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #000;
+}
+#wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-slide > div > a .text > em span:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 10px;
+  background: url("../images/common/ico_arrow_right02.svg") no-repeat 50%;
+  background-size: 100%;
+}
+#wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-slide > div > a .text > strong {
+  margin-top: 12px;
+  display: block;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.2;
   color: #fff;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+#wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-slide > div > a .visual {
+  position: absolute;
+}
+#wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-slide > div > a .visual img {
+  width: auto;
+}
+#wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-slide > div > a .visual img + img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-slide > div.banner_01 {
+  background: #B692F6;
+}
+#wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-slide > div.banner_01 .visual {
+  right: 17px;
+  bottom: -13px;
+}
+#wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-slide > div.banner_01 .visual img {
+  height: 128px;
+  animation: mainBannerAni2 0.5s infinite alternate;
+}
+#wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-slide > div.banner_01 .visual img + img {
+  top: -18px;
+  left: -80px;
+  height: 95px;
+  animation: mainBannerAni1 0.5s infinite alternate;
+}
+#wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-slide > div.banner_02 {
+  background: #FEC84B;
+}
+#wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-slide > div.banner_02 .visual {
+  right: 8px;
+  bottom: -7px;
+}
+#wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-slide > div.banner_02 .visual img {
+  height: 110px;
+  animation: mainBannerAni2 0.5s infinite alternate;
+}
+#wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-slide > div.banner_02 .visual img + img {
+  left: -50px;
+  top: -28px;
+  height: 82px;
+  animation: mainBannerAni1 0.5s infinite alternate;
+}
+#wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-slide > div.banner_03 {
+  background: #FAA7E0;
+}
+#wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-slide > div.banner_03 .visual {
+  right: 15px;
+  bottom: -11px;
+}
+#wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-slide > div.banner_03 .visual img {
+  height: 127px;
+  animation: mainBannerAni2 0.5s infinite alternate;
+}
+#wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-slide > div.banner_03 .visual img + img {
+  top: -26px;
+  left: -34px;
+  height: 69px;
+  animation: mainBannerAni1 0.5s infinite alternate;
+}
+#wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-slide > div.banner_04 {
+  background: #C7D7FE;
+}
+#wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-slide > div.banner_04 .visual {
+  right: 1px;
+  bottom: -30px;
+}
+#wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-slide > div.banner_04 .visual img {
+  height: 133px;
+  animation: mainBannerAni2 0.5s infinite alternate;
+}
+#wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-slide > div.banner_04 .visual img + img {
+  left: -18px;
+  top: -34px;
+  height: 82px;
+  animation: mainBannerAni1 0.5s infinite alternate;
+}
+#wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-slide > div.banner_05 {
+  background: #D9D6FE;
+}
+#wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-slide > div.banner_05 .visual {
+  right: -18px;
+  bottom: 0px;
+}
+#wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-slide > div.banner_05 .visual img {
+  height: 175px;
+}
+#wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-slide > div.banner_06 {
+  background: #FEB273;
+}
+#wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-slide > div.banner_06 .visual {
+  right: 24px;
+  bottom: -11px;
+}
+#wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-slide > div.banner_06 .visual img {
+  height: 151px;
+}
+#wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-pagination {
+  width: auto;
+  left: 16px;
+}
+#wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-pagination .swiper-pagination-bullet {
+  width: 20px;
+  height: 4px;
+  margin: 0 2px;
+  border-radius: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+#wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background: #fff;
 }
 #wrap.main_content_wrap #container .status_wrap {
   margin-top: 24px;
+}
+#wrap.main_content_wrap #container .status_wrap .main_status {
+  background: #fff;
+  border-radius: 24px;
+  padding: 16px 16px 20px;
+  margin: 0 20px;
+}
+#wrap.main_content_wrap #container .status_wrap .main_status .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+}
+#wrap.main_content_wrap #container .status_wrap .main_status .title > div > span {
+  font-size: 13px;
+  font-weight: 400;
+  color: #000;
+}
+#wrap.main_content_wrap #container .status_wrap .main_status .title > div > em {
+  display: block;
+  margin-top: 8px;
+}
+#wrap.main_content_wrap #container .status_wrap .main_status .title > div > em strong {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--color-brand1);
+}
+#wrap.main_content_wrap #container .status_wrap .main_status .title > div > em span {
+  margin-left: 8px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #000;
+  position: relative;
+  padding-right: 15px;
+}
+#wrap.main_content_wrap #container .status_wrap .main_status .title > div > em span:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 10px;
+  background: url(../images/common/ico_arrow_right02.svg) no-repeat 50%;
+  background-size: 100%;
+}
+#wrap.main_content_wrap #container .status_wrap .main_status .title > div > p {
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--color-brand1);
+}
+#wrap.main_content_wrap #container .status_wrap .main_status .title > img {
+  width: 117px;
+  height: 117px;
+}
+#wrap.main_content_wrap #container .status_wrap .main_status .graph_cont {
+  position: relative;
+  margin-top: 12px;
+  padding: 18px 18px 13px;
+  border-radius: 16px;
+  background: #F9F5FF;
+}
+#wrap.main_content_wrap #container .status_wrap .main_status .graph_cont > ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 228px;
+  margin: 0 auto;
+}
+#wrap.main_content_wrap #container .status_wrap .main_status .graph_cont > ul > li {
+  text-align: center;
+}
+#wrap.main_content_wrap #container .status_wrap .main_status .graph_cont > ul > li.active > div:after {
+  z-index: -1;
+}
+#wrap.main_content_wrap #container .status_wrap .main_status .graph_cont > ul > li.active > div > div {
+  opacity: 1;
+}
+#wrap.main_content_wrap #container .status_wrap .main_status .graph_cont > ul > li.clicked > div:after {
+  z-index: 100;
+  background-image: url("../images/common/ico_heart07.svg");
+}
+#wrap.main_content_wrap #container .status_wrap .main_status .graph_cont > ul > li.clicked .heart_effect02 {
+  z-index: 10;
+}
+#wrap.main_content_wrap #container .status_wrap .main_status .graph_cont > ul > li.complete > div > div {
+  display: none;
+}
+#wrap.main_content_wrap #container .status_wrap .main_status .graph_cont > ul > li > div {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  background: #fff;
+  border-radius: 50%;
+}
+#wrap.main_content_wrap #container .status_wrap .main_status .graph_cont > ul > li > div:after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../images/common/ico_heart06.svg") no-repeat 50%;
+  background-size: 28px 26px;
+}
+#wrap.main_content_wrap #container .status_wrap .main_status .graph_cont > ul > li > div > div {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+}
+#wrap.main_content_wrap #container .status_wrap .main_status .graph_cont > ul > li > div > div.heart_effect01 {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#wrap.main_content_wrap #container .status_wrap .main_status .graph_cont > ul > li > div > div.heart_effect01 lottie-player {
+  width: 100%;
+  height: 100%;
+}
+#wrap.main_content_wrap #container .status_wrap .main_status .graph_cont > ul > li > div > div.heart_effect01 lottie-player + lottie-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: scale(1.2);
+}
+#wrap.main_content_wrap #container .status_wrap .main_status .graph_cont > ul > li > div > div.heart_effect02 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+#wrap.main_content_wrap #container .status_wrap .main_status .graph_cont > ul > li > div > div.heart_effect02 lottie-player {
+  transform: scale(4.5);
+  width: 100%;
+  height: 100%;
+}
+#wrap.main_content_wrap #container .status_wrap .main_status .graph_cont > ul > li > div > div.heart_effect02 lottie-player + lottie-player {
+  position: absolute;
+  top: -19px;
+  left: -4px;
+  transform: scale(2.5);
+}
+#wrap.main_content_wrap #container .status_wrap .main_status .graph_cont > ul > li > span {
+  display: block;
+  margin-top: 28px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-brand1);
+}
+#wrap.main_content_wrap #container .status_wrap .main_status .graph_cont > .graph {
+  position: absolute;
+  bottom: 34px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 226px;
+  height: 8px;
+  background: #E4E7EC;
+  border-radius: 4px;
+}
+#wrap.main_content_wrap #container .status_wrap .main_status .graph_cont > .graph span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: var(--color-brand1);
+  border-radius: 4px;
+  transition: width 0.3s;
+}
+#wrap.main_content_wrap #container .status_wrap > ul {
+  margin-top: 16px;
 }
 #wrap.main_content_wrap #container .status_wrap > ul > li {
   margin: 0 20px;
   padding: 16px;
   background: #fff;
   border-radius: 16px;
-  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.2509803922);
 }
 #wrap.main_content_wrap #container .status_wrap > ul > li + li {
-  margin-top: 8px;
+  margin-top: 16px;
 }
 #wrap.main_content_wrap #container .status_wrap > ul > li > .inner {
   overflow: hidden;
 }
-#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > h3 {
-  font-size: 16px;
-  font-weight: 800;
-}
 #wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents {
   position: relative;
   margin-top: 0px;
-  transition: height 0.5s, transform 0.5s;
 }
-#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .text_wrap h4 {
-  font-size: 16px;
-  font-weight: 600;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .text_wrap h4 a {
-  display: block;
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content1 a,
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .link_wrap a {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   position: relative;
   padding-right: 32px;
   font-size: 16px;
   font-weight: 600;
-  text-align: right;
+  text-align: left;
 }
-#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .text_wrap h4 a strong {
-  display: inline-block;
-  font-size: 38px;
-  font-weight: 600;
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content1 a img,
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .link_wrap a img {
+  width: 58px;
+  height: 58px;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content1 a > div,
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .link_wrap a > div {
+  flex: 1;
+  margin-left: 10px;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content1 a > div > span,
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .link_wrap a > div > span {
+  font-size: 11px;
+  font-weight: 400;
   color: var(--color-brand1);
 }
-#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .text_wrap h4 a:after {
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content1 a > div > span strong,
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .link_wrap a > div > span strong {
+  margin-right: 4px;
+  font-size: 20px;
+  font-weight: 800;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content1 a > div > p,
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .link_wrap a > div > p {
+  margin-top: 4px;
+  font-size: 13px;
+  font-weight: 400;
+  color: #000;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content1 a:after,
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .link_wrap a:after {
   content: "";
   position: absolute;
   top: 50%;
@@ -1820,241 +1948,297 @@ body.active {
   background: url("../images/common/ico_arrow_right01.svg") no-repeat;
   background-size: 100%;
 }
-#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .text_wrap p {
-  margin-top: 3px;
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content1 {
+  padding: 0 8px;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 {
+  display: none;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2.lottie {
+  text-align: center;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2.lottie .text_wrap h4 {
   font-size: 14px;
+  font-weight: 400;
+  color: var(--color-brand1);
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2.lottie .text_wrap h4 strong {
+  font-size: 20px;
+  font-weight: 800;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2.lottie .text_wrap p {
+  margin-top: 5px;
+  font-size: 13px;
   font-weight: 400;
   color: #475467;
 }
-#wrap.main_content_wrap #container .status_wrap > ul > li.animate.active > .inner > .contents {
-  transform: translateX(-100%);
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.animate > .inner > .contents > div {
-  position: absolute;
-  top: 0;
-  width: 100%;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.animate > .inner > .contents > .content1 {
-  left: 0;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.animate > .inner > .contents > .content2 {
-  left: 100%;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.animate > .inner > .contents > .content2 .text_wrap {
-  text-align: center;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.animate > .inner > .contents > .content2 .text_wrap h4 a {
-  padding: 24px 0 0;
-  text-align: center;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.animate > .inner > .contents > .content2 .text_wrap h4 a:after {
-  top: -20px;
-  transform: translateY(0);
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.animate_background {
-  position: relative;
-  background-color: rgb(255, 255, 255);
-  transition: all 0.3s;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.animate_background:after {
-  content: "";
-  position: absolute;
-  top: 6px;
-  left: 6px;
-  z-index: -1;
-  width: calc(100% - 12px);
-  height: calc(100% - 12px);
-  background-color: #fff;
-  border-radius: 16px;
-  transition: all 0.3s;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.animate_background.active {
-  background-color: rgb(249, 249, 251);
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.animate_background.active:after {
-  top: -36px;
-  left: -36px;
-  z-index: -1;
-  width: calc(100% + 36px);
-  height: calc(100% + 36px);
-  background-color: #fff;
-  border-radius: 0;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents > .content1 {
-  display: flex;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents > .content1 .text_wrap {
-  flex-shrink: 0;
-  min-width: 140px;
-  margin-left: 36px;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents > .content2 {
-  text-align: center;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents > .content2 .progress_wrap {
-  margin: 47px 26px 52px;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents > .content2 .progress_wrap .desc {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 8px;
-  margin-top: 8px;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents > .content2 .progress_wrap .desc span {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--color-brand1);
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents .progress_wrap {
-  position: relative;
-  height: 48px;
-  flex: 1;
-  display: flex;
-  align-items: end;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents .progress_wrap:after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 8px;
-  background: var(--color-brand2);
-  border-radius: 4px;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents .progress_wrap > div {
-  position: relative;
-  width: 100%;
-  height: 8px;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents .progress_wrap > div > span,
-#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents .progress_wrap > div > em {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  border-radius: 4px;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents .progress_wrap > div > span {
-  width: 0;
-  z-index: 200;
-  background: #B5FA95;
-  transition: width 1s;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents .progress_wrap > div > span:before {
-  content: "";
-  position: absolute;
-  top: -10px;
-  right: 0;
-  transform: translateX(50%);
-  width: 10px;
-  height: 6px;
-  background: url("../images/common/ico_arrow_down01.svg") no-repeat;
-  background-size: 100%;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents .progress_wrap > div > span span {
-  position: absolute;
-  top: -38px;
-  right: 0;
-  transform: translateX(46%);
-  white-space: nowrap;
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--color-brand1);
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents .progress_wrap > div > em {
-  left: 1px;
-  width: 0;
-  z-index: 100;
-  background: var(--color-brand1);
-  transition: width 1s;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents .btn_wrap {
-  margin: 23px 14px 0;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents .btn_wrap > p {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--color-brand1);
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.walking > .inner > .contents .btn_wrap > button {
-  margin-top: 8px;
-  display: block;
-  width: 100%;
-  height: 42px;
-  background: var(--color-brand1);
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 600;
-  color: #fff;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.jelly > .inner > .contents > .content2 {
-  text-align: center;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.jelly > .inner > .contents > .content2 lottie-player {
-  width: 200px;
-  margin: -24px auto 0;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.jelly > .inner > .contents > .content2 .text_wrap h4 {
-  margin-top: -30px;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.jelly > .inner > .contents > .content2 .text_wrap h4 a {
-  padding-top: 0;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.jelly > .inner > .contents > .content2 .text_wrap h4 a:after {
-  top: -166px;
-  transform: translateY(0);
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.jelly > .inner > .contents > .content2 .link_wrap {
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2.lottie .link_wrap {
   margin-top: 32px;
+  padding: 16px 16px 16px 8px;
+  background: #F8F9FC;
+  border-radius: 17px;
 }
-#wrap.main_content_wrap #container .status_wrap > ul > li.jelly > .inner > .contents > .content2 .link_wrap > li {
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2.lottie .link_wrap > li {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-#wrap.main_content_wrap #container .status_wrap > ul > li.jelly > .inner > .contents > .content2 .link_wrap > li + li {
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2.lottie .link_wrap > li + li {
   border-top: 1px solid #E4E7EC;
   padding-top: 16px;
   margin-top: 16px;
 }
-#wrap.main_content_wrap #container .status_wrap > ul > li.jelly > .inner > .contents > .content2 .link_wrap > li p {
-  font-size: 16px;
-  font-weight: 600;
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list {
+  margin-top: 24px;
 }
-#wrap.main_content_wrap #container .status_wrap > ul > li.jelly > .inner > .contents > .content2 .link_wrap > li a {
-  flex-shrink: 0;
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li + li {
+  margin-top: 24px;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > a {
   display: block;
   position: relative;
-  padding-right: 28px;
-  font-size: 16px;
-  font-weight: 600;
+  color: #fff;
 }
-#wrap.main_content_wrap #container .status_wrap > ul > li.jelly > .inner > .contents > .content2 .link_wrap > li a:after {
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > a .visual_box {
+  position: relative;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > a .visual_box:after {
   content: "";
   position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 20%);
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > a .visual_box img {
+  display: block;
+  width: 100%;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > a .title_box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: end;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > a .title_box > .inner {
+  flex: 1;
+  padding: 10px 16px 20px;
+  background: #000;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) -5%, #000 100%);
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > a .title_box > .inner > .type {
+  position: absolute;
+  top: 24px;
+  left: 16px;
+  display: flex;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > a .title_box > .inner > .type > span {
+  padding: 4px 8px;
+  border-radius: 2px;
+  font-size: 12px;
+  line-height: 1;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > a .title_box > .inner > .type > span + span {
+  margin-left: 4px;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > a .title_box > .inner > .type > span.color1 {
+  background: var(--color-brand1);
+  color: #fff;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > a .title_box > .inner > .type > span.color2 {
+  background: #9E77ED;
+  color: #fff;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > a .title_box > .inner > .type > span.color3 {
+  background: #BDB4FE;
+  color: #000;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > a .title_box > .inner > .type > span.color4 {
+  background: #EAE8FF;
+  color: #000;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > a .title_box > .inner > .location {
+  display: flex;
+  align-items: center;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > a .title_box > .inner > .location span {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  margin-right: -6px;
+  border-radius: 50%;
+  background: #B5FA95;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > a .title_box > .inner > .location span lottie-player {
+  position: absolute;
+  top: -10px;
+  left: -2px;
+  width: 48px;
+  height: 48px;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > a .title_box > .inner > .location p {
+  padding: 6px 16px;
+  background: #fff;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  color: #344054;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > a .title_box > .inner > .title {
+  display: block;
+  margin-top: 14px;
+  font-size: 20px;
+  font-weight: 800;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > a .title_box > .inner > .desc {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > a .title_box > .inner > .desc > span {
+  font-size: 13px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 1;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > button {
+  position: absolute;
+  top: 16px;
+  right: 6px;
+  padding: 8px;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > button.active span {
+  background-image: url("../images/common/ico_star04.svg");
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > button span {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background: url("../images/common/ico_star03.svg") no-repeat;
+  background-size: 100%;
+  font-size: 0;
+  line-height: 0;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > .dimmed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > .dimmed.clear .inner lottie-player {
+  width: 60px;
+  margin: 0 auto;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > .dimmed.clear .inner p {
+  color: #EAE8FF;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > .dimmed.deadline .inner lottie-player {
+  position: absolute;
   top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  width: 20px;
-  height: 20px;
-  background: url("../images/common/ico_arrow_right01.svg") no-repeat;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  width: 200px;
+  height: auto;
+  margin: 0 auto;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > .dimmed.deadline .inner p {
+  color: #B5FA95;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > .dimmed.crew .inner {
+  top: 35%;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > .dimmed.crew .inner lottie-player {
+  position: relative;
+  left: 18px;
+  width: 171px;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > .dimmed.crew .inner:after {
+  content: "h";
+  position: absolute;
+  top: 106px;
+  left: 60px;
+  color: #4E2AF4;
+  font-size: 60px;
+  font-weight: 600;
+  line-height: 1;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > .dimmed.crew .inner p {
+  color: #EAE8FF;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > .dimmed .inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > .dimmed .inner p {
+  font-size: 18px;
+  font-weight: 800;
+  text-align: center;
+  white-space: nowrap;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list .icon_wrap {
+  display: flex;
+  align-items: center;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list .icon_wrap > div {
+  display: flex;
+  align-items: center;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list .icon_wrap > div:only-child em {
+  display: inline-block;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list .icon_wrap > div span {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 0;
+  line-height: 0;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list .icon_wrap > div em {
+  display: none;
+  margin-left: 4px;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list .icon_wrap > div + div {
+  margin-left: -10px;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list .icon_wrap > div.ico_jelly span {
+  background: url("../images/challenge/ico_jelly.svg") no-repeat 50%;
   background-size: 100%;
 }
-#wrap.main_content_wrap #container .status_wrap > ul > li.jelly > .inner > .contents > .content2 .link_wrap > li a strong {
-  font-size: 24px;
-  font-weight: 600;
-  color: var(--color-brand1);
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list .icon_wrap > div.ico_point span {
+  background: url("../images/challenge/ico_point.svg") no-repeat 50%;
+  background-size: 100%;
 }
-#wrap.main_content_wrap #container .status_wrap > ul > li.participate > .inner h3 {
-  transition: padding-left 0.3s;
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list .icon_wrap > div.ico_coupon span {
+  background: url("../images/challenge/ico_coupon.svg") no-repeat 50%;
+  background-size: 100%;
 }
-#wrap.main_content_wrap #container .status_wrap > ul > li.participate > .inner .contents {
-  transition-duration: 0.3s, 0.5s;
+#wrap.main_content_wrap #container .status_wrap > ul > li.jelly .content2.lottie .text_wrap lottie-player {
+  width: 200px;
+  margin: -24px auto 0;
 }
-#wrap.main_content_wrap #container .status_wrap > ul > li.participate > .inner .contents .content1 .text_wrap {
-  transition: padding-right 0.3s;
+#wrap.main_content_wrap #container .status_wrap > ul > li.jelly .content2.lottie .text_wrap h4 {
+  margin-top: -30px;
 }
 #wrap.main_content_wrap #container .status_wrap > ul > li.participate > .inner .contents .content2 {
   overflow: hidden;
@@ -2142,34 +2326,25 @@ body.active {
   background: url("../images/challenge/ico_jelly.svg") no-repeat;
   background-size: 100%;
 }
-#wrap.main_content_wrap #container .status_wrap > ul > li.participate.active {
-  margin: 44px 0;
-  padding: 16px 0;
-  background: #fff;
-  box-shadow: none;
-  border-radius: 0;
+#wrap.main_content_wrap #container .status_wrap > ul > li.clear .content2.lottie {
+  display: block;
 }
-#wrap.main_content_wrap #container .status_wrap > ul > li.participate.active > .inner h3 {
-  padding-left: 36px;
+#wrap.main_content_wrap #container .status_wrap > ul > li.clear .content2.lottie .text_wrap lottie-player {
+  width: 200px;
+  margin: 13px auto 0;
 }
-#wrap.main_content_wrap #container .status_wrap > ul > li.participate.active > .inner .contents .content1 .text_wrap {
-  padding-right: 36px;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.completed.active {
-  margin-bottom: 52px;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li.badge > .inner > .contents > .content1 .text_wrap h4 a {
-  color: var(--color-brand1);
+#wrap.main_content_wrap #container .status_wrap > ul > li.clear .content2.lottie .text_wrap h4 {
+  margin-top: 13px;
 }
 #wrap.main_content_wrap #container .toolbar_wrap {
   position: fixed;
   bottom: 0;
   left: 0;
-  z-index: 100;
+  z-index: 200;
   transform: translateY(0);
   transition: transform 0.4s;
   width: 100%;
-  height: 106px;
+  height: 82px;
   padding: 16px 14% 0;
   background: #fff;
   box-shadow: 0px -2px 4px 0px rgba(0, 0, 0, 0.1019607843);
@@ -2213,9 +2388,6 @@ body.active {
   font-weight: 800;
   line-height: 1;
   color: #828282;
-}
-#wrap.main_content_wrap #container .banner_wrap {
-  margin: 20px;
 }
 #wrap.download_show .player_download_wrap .download_wrap {
   transform: translateY(-100%);
@@ -2351,342 +2523,6 @@ body.active {
 }
 .profile_wrap .form_list_wrap .inp_box_list > li.active > div {
   border-color: var(--color-brand1);
-}
-
-.walking_guide_wrap {
-  transition: padding 0.3s;
-}
-.walking_guide_wrap .desc_box .inner {
-  display: flex;
-  color: #000;
-}
-.walking_guide_wrap .desc_box .inner > div {
-  height: 20px;
-  padding: 0 8px;
-  background: #FDB022;
-  border-radius: 2px;
-  font-size: 12px;
-  font-weight: 700;
-  color: #000;
-  line-height: 22px;
-}
-.walking_guide_wrap .desc_box .inner > div.distance {
-  background: #7CD4FD;
-}
-.walking_guide_wrap .desc_box .inner > div.distance span:after {
-  background: url("../images/guide/ico_distance.svg") no-repeat;
-  background-size: 100%;
-}
-.walking_guide_wrap .desc_box .inner > div + div {
-  margin-left: 4px;
-}
-.walking_guide_wrap .desc_box .inner > div span {
-  position: relative;
-  display: inline-block;
-  height: 100%;
-  padding-left: 18px;
-  border-radius: 6px;
-}
-.walking_guide_wrap .desc_box .inner > div span::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  width: 12px;
-  height: 12px;
-  background: url("../images/guide/ico_time.svg") no-repeat;
-  background-size: 100%;
-}
-.walking_guide_wrap .guide_list_wrap.active .filter_view button span:before {
-  background-image: url("../images/challenge/ico_view_large.svg");
-}
-.walking_guide_wrap .guide_list_wrap.active .filter_view button span:after {
-  content: "크게";
-}
-.walking_guide_wrap .guide_list_wrap.active .guide_list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 12px 10px;
-}
-.walking_guide_wrap .guide_list_wrap.active .guide_list > div {
-  min-height: 244px;
-}
-.walking_guide_wrap .guide_list_wrap.active .guide_list > div .visual_box {
-  height: 100%;
-}
-.walking_guide_wrap .guide_list_wrap.active .guide_list > div .visual_box img {
-  -o-object-fit: cover;
-     object-fit: cover;
-  height: 100%;
-}
-.walking_guide_wrap .guide_list_wrap.active .guide_list > div .content_box > .inner > .title br {
-  display: none;
-}
-.walking_guide_wrap .guide_list_wrap.active .guide_list > div + div {
-  margin-top: 0;
-}
-.walking_guide_wrap .guide_list_wrap .filter_view {
-  display: flex;
-  align-items: center;
-  justify-content: right;
-  margin: 11px 28px 0 0;
-}
-.walking_guide_wrap .guide_list_wrap .filter_view button {
-  margin-left: 16px;
-  background: none;
-  font-size: 13px;
-  font-weight: 800;
-  color: var(--color-brand1);
-}
-.walking_guide_wrap .guide_list_wrap .filter_view button span {
-  position: relative;
-  display: inline-block;
-  padding-left: 20px;
-}
-.walking_guide_wrap .guide_list_wrap .filter_view button span:before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 0;
-  width: 16px;
-  height: 16px;
-  background: url("../images/challenge/ico_view_small.svg") no-repeat;
-  background-size: 100%;
-}
-.walking_guide_wrap .guide_list_wrap .filter_view button span:after {
-  content: "작게";
-}
-.walking_guide_wrap .guide_list_wrap > .guide_list {
-  padding: 24px 20px 35px;
-}
-.walking_guide_wrap .guide_list_wrap > .guide_list > div {
-  overflow: hidden;
-  position: relative;
-  border-radius: 24px 24px 0 0;
-}
-.walking_guide_wrap .guide_list_wrap > .guide_list > div + div {
-  margin-top: 16px;
-}
-.walking_guide_wrap .guide_list_wrap > .guide_list > div .visual_box {
-  position: relative;
-}
-.walking_guide_wrap .guide_list_wrap > .guide_list > div .visual_box:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 20%);
-}
-.walking_guide_wrap .guide_list_wrap > .guide_list > div .visual_box img {
-  display: block;
-  width: 100%;
-}
-.walking_guide_wrap .guide_list_wrap > .guide_list > div .content_box {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: end;
-}
-.walking_guide_wrap .guide_list_wrap > .guide_list > div .content_box > .inner {
-  flex: 1;
-  padding: 0 16px 18px;
-  background: #000;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) -5%, #000 100%);
-}
-.walking_guide_wrap .guide_list_wrap > .guide_list > div .content_box > .inner > .title {
-  display: block;
-  margin-top: 14px;
-  font-size: 20px;
-  font-weight: 800;
-  color: #fff;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-.walking_guide_wrap .guide_list_wrap > .guide_list > div .content_box > .inner > .desc_box {
-  margin-top: 8px;
-}
-.walking_guide_wrap .guide_list_wrap > .guide_list > div .content_box > .inner > .player_bar {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 8px;
-  background-color: #667085;
-}
-.walking_guide_wrap .guide_list_wrap > .guide_list > div .content_box > .inner > .player_bar span {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  background-color: #B5FA95;
-}
-.walking_guide_wrap .guide_list_wrap > .guide_list > div > button {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-}
-.walking_guide_wrap .guide_list_wrap > .guide_list > div > button span {
-  display: block;
-  width: 32px;
-  height: 32px;
-  background: url("../images/guide/ico_soundfit_down.svg") no-repeat;
-  background-size: 100%;
-  font-size: 0;
-  line-height: 0;
-}
-
-.guide_detail_wrap .layer_content_wrap {
-  padding: 0;
-}
-.guide_detail_wrap .layer_content_wrap .layer_content {
-  padding: 0;
-}
-.guide_detail_wrap .layer_content_wrap .layer_content .header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 999;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 44px;
-  padding: 0 20px;
-  background: #F9F9FB;
-}
-.guide_detail_wrap .layer_content_wrap .layer_content .header h1 {
-  text-align: left;
-}
-.guide_detail_wrap .layer_content_wrap .layer_content .header > div {
-  height: 100%;
-}
-.guide_detail_wrap .layer_content_wrap .layer_content .header button {
-  min-width: 24px;
-  min-height: 24px;
-  border: 0 none;
-  font-size: 0;
-  line-height: 0;
-}
-.guide_detail_wrap .layer_content_wrap .layer_content .header > .title_wrap {
-  flex: 1;
-  display: flex;
-  align-items: center;
-}
-.guide_detail_wrap .layer_content_wrap .layer_content .header > .title_wrap h1 {
-  flex: 1;
-  padding: 0 32px;
-  font-size: 18px;
-  font-weight: 800;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  font-size: 18px;
-  font-weight: 800;
-  color: var(--color-font1);
-  line-height: 24px;
-}
-.guide_detail_wrap .layer_content_wrap .layer_content .header > .title_wrap .btn_back {
-  position: absolute;
-  top: 50%;
-  left: 20px;
-  transform: translateY(-50%);
-  width: 24px;
-  height: 24px;
-  margin-right: 10px;
-  background: url("../images/common/ico_arrow_left01.svg");
-  background-size: 100%;
-  border: 0 none;
-  transform: translateY(-50%) rotate(270deg);
-  transform-origin: center;
-}
-.guide_detail_wrap .layer_content_wrap .layer_content .header > .icon_wrap {
-  position: absolute;
-  top: 0;
-  right: 12px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-}
-.guide_detail_wrap .layer_content_wrap .layer_content .header > .icon_wrap button span {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  padding: 8px;
-  box-sizing: content-box;
-}
-.guide_detail_wrap .layer_content_wrap .layer_content .header > .icon_wrap button.btn_setting span {
-  width: 24px;
-  height: 24px;
-  background: url("../images/common/ico_menu.svg") no-repeat 50%;
-  background-size: 24px;
-}
-.guide_detail_wrap .layer_content_wrap .layer_content .header > .icon_wrap button.btn_comments span {
-  background: url("../images/challenge/ico_comments.svg") no-repeat 50%;
-  background-size: 16px;
-}
-.guide_detail_wrap .layer_content_wrap .layer_content .header > .icon_wrap button.btn_share span {
-  background: url("../images/challenge/ico_share.svg") no-repeat 50%;
-  background-size: 16px;
-}
-.guide_detail_wrap .layer_content_wrap .layer_content .header > .icon_wrap button.btn_favorite span {
-  background: url("../images/challenge/ico_favorite.svg") no-repeat 50%;
-  background-size: 16px;
-}
-.guide_detail_wrap .layer_content_wrap .layer_content .header > .icon_wrap button.btn_share span {
-  background: url("../images/common/ico_share.svg") no-repeat 50%;
-  background-size: 16px;
-}
-.guide_detail_wrap .layer_content_wrap .layer_content .container {
-  position: relative;
-  z-index: 500;
-  padding: 70% 0 90px;
-}
-.guide_detail_wrap .layer_content_wrap .layer_content .container > .guide_visual {
-  position: fixed;
-  top: 44px;
-  left: 0;
-  z-index: -2;
-  width: 100%;
-  height: 100%;
-  background: #F9F9FB;
-}
-.guide_detail_wrap .layer_content_wrap .layer_content .container > .guide_visual img {
-  display: block;
-  width: 100%;
-}
-.guide_detail_wrap .layer_content_wrap .layer_content .container > .guide_inner {
-  padding: 0 20px;
-}
-.guide_detail_wrap .layer_content_wrap .layer_content .container > .guide_inner h2 {
-  font-size: 18px;
-  font-weight: 800;
-}
-.guide_detail_wrap .layer_content_wrap .layer_content .container > .guide_inner > .guide_title {
-  padding: 24px;
-  background: #fff;
-  border-radius: 24px;
-  color: #000;
-}
-.guide_detail_wrap .layer_content_wrap .layer_content .container > .guide_inner > .guide_title h2 {
-  margin-top: 8px;
-  font-size: 20px;
-  font-weight: 800;
-}
-.guide_detail_wrap .layer_content_wrap .layer_content .container > .guide_inner > .guide_title p {
-  margin-top: 12px;
-  font-size: 13px;
-  font-weight: 400;
-}
-.guide_detail_wrap .layer_content_wrap .layer_content .container > .guide_inner .guide_content {
-  margin-top: 12px;
 }
 
 .playlist_wrap .layer_content_wrap {
@@ -3185,7 +3021,6 @@ body.active {
   left: 50%;
   transform: translateX(-50%);
   transform-origin: 50%;
-  z-index: 100;
   width: 54px;
   height: 24px;
   overflow: hidden;
@@ -3312,1586 +3147,6 @@ body.active {
   justify-content: space-between;
   padding: 5px;
 }
-.challenge_content_wrap .challenge_notice {
-  position: relative;
-  overflow: hidden;
-  height: 36px;
-  transition: height 0.4s;
-}
-.challenge_content_wrap .challenge_notice.hide {
-  height: 0;
-}
-.challenge_content_wrap .challenge_notice .inner {
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  height: 36px;
-  background: #000;
-}
-.challenge_content_wrap .challenge_notice .inner p {
-  font-size: 13px;
-  font-weight: 800;
-  line-height: 1;
-  color: #fff;
-  white-space: nowrap;
-}
-.challenge_content_wrap .challenge_notice button {
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
-  width: 24px;
-  height: 24px;
-  font-size: 0;
-  line-height: 0;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 50%;
-}
-.challenge_content_wrap .challenge_notice button span {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background: url("../images/common/ico_cross02.svg") no-repeat;
-  background-size: 100%;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_category {
-  position: relative;
-  z-index: 100;
-  padding-right: 50px;
-  background: #fff;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2509803922);
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_category.active .inner > ul {
-  flex-wrap: wrap;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_category.active .inner > ul > li {
-  box-sizing: content-box;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_category.active .inner > ul > li + li {
-  margin-left: 4px;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_category.active > button {
-  transform: rotate(180deg);
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_category.active:after {
-  display: none;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_category:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 50px;
-  width: 30px;
-  height: 100%;
-  background: linear-gradient(270.19deg, #fff 10%, rgba(249, 249, 251, 0) 100%);
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_category .inner {
-  overflow: auto;
-  scroll-behavior: smooth;
-  display: flex;
-  align-items: center;
-  margin-top: 13px;
-  padding-bottom: 13px;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_category .inner::-webkit-scrollbar {
-  display: none;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_category .inner > ul {
-  flex-wrap: nowrap;
-  align-items: center;
-  padding-left: 20px;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_category .inner > ul > li {
-  margin-top: 13px;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_category .inner > ul > li + li {
-  margin-left: 4px;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_category ul {
-  display: flex;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_category ul > li {
-  max-width: calc(100% - 20px);
-  height: 32px;
-  line-height: 30px;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_category ul > li.fixed a {
-  border-color: #98A2B3;
-  color: #000;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_category ul > li.active a {
-  background: var(--color-brand1);
-  border-color: var(--color-brand1);
-  color: #fff;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_category ul > li.active a > div img {
-  display: none;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_category ul > li.active a > div img + img {
-  display: block;
-  position: static;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_category ul > li > a {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  padding: 0 8px;
-  border-radius: 16px;
-  border: 1px solid #9EA5D1;
-  background: #fff;
-  font-size: 14px;
-  font-weight: 800;
-  white-space: nowrap;
-  color: #3E4784;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_category ul > li > a > div {
-  margin-right: 4px;
-  overflow: hidden;
-  position: relative;
-  height: 16px;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_category ul > li > a > div img {
-  display: block;
-  width: auto;
-  height: 100%;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_category ul > li > a > div img + img {
-  position: absolute;
-  top: 100%;
-  left: 0;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_category ul > li > a span {
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  margin-left: 4px;
-  border-radius: 50%;
-  background: #EAE8FF;
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--color-brand1);
-  line-height: 26px;
-  text-align: center;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_category > button {
-  position: absolute;
-  top: 17px;
-  right: 20px;
-  z-index: 100;
-  transform-origin: 50%;
-  width: 24px;
-  height: 24px;
-  background: #D0D5DD url("../images/common/ico_arrow_down02.svg") no-repeat 50%;
-  border-radius: 50%;
-  background-size: 16px;
-  font-size: 0;
-  line-height: 0;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list {
-  margin-top: 20px;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list.active .view_type button span:before {
-  background-image: url("../images/challenge/ico_view_large.svg");
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list.active .view_type button span:after {
-  content: "크게";
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul {
-  background: #fff;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li {
-  overflow: visible;
-  padding: 16px 0;
-  border-radius: 0;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li + li {
-  margin-top: 0;
-  border-top: 1px solid #D9D9D9;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > a {
-  display: grid;
-  grid-template-columns: 74px 1fr;
-  grid-gap: 4px;
-  border-radius: 0;
-  padding-top: 32px;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > a .visual_box:after {
-  background: linear-gradient(rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 30%);
-  border-radius: 16px;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > a .visual_box img {
-  border-radius: 16px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  height: 82px;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > a .title_box {
-  position: static;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > a .title_box .inner {
-  position: static;
-  background: #fff;
-  padding: 0;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > a .title_box .inner > .type {
-  top: 0;
-  left: 0;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > a .title_box .inner > .location span {
-  width: 16px;
-  height: 16px;
-  margin: 0;
-  background: url("../images/challenge/ico_location.svg") no-repeat 50%;
-  background-size: 100%;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > a .title_box .inner > .location span lottie-player {
-  display: none;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > a .title_box .inner > .location p {
-  padding: 0;
-  font-size: 12px;
-  font-weight: 600;
-  color: #98A2B3;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > a .title_box .inner > .title {
-  margin-top: 4px;
-  font-size: 18px;
-  font-weight: 800;
-  color: #000;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > a .title_box .inner > .desc > span {
-  font-size: 14px;
-  font-weight: 400;
-  color: #000;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > a .title_box .inner > .desc .icon > div em {
-  color: #000;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > button {
-  top: 48px;
-  right: auto;
-  left: 42px;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > .dimmed {
-  left: -20px;
-  width: calc(100% + 40px);
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > .dimmed:after {
-  content: "";
-  position: absolute;
-  top: -1px;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: #fff;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list.active > ul > li > .dimmed.crew .inner {
-  top: -58px;
-  transform: translate(-50%, 0);
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list .view_type {
-  display: flex;
-  justify-content: right;
-  margin: 11px 28px 0 0;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list .view_type button {
-  padding: 5px 10px;
-  background: none;
-  font-size: 13px;
-  font-weight: 800;
-  color: var(--color-brand1);
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list .view_type button span {
-  position: relative;
-  display: inline-block;
-  padding-left: 20px;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list .view_type button span:before {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 0;
-  width: 16px;
-  height: 16px;
-  background: url("../images/challenge/ico_view_small.svg") no-repeat;
-  background-size: 100%;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list .view_type button span:after {
-  content: "작게";
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul {
-  margin-top: 19px;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li {
-  position: relative;
-  overflow: hidden;
-  margin: 20px;
-  border-radius: 24px;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li + li {
-  margin-top: 24px;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a {
-  display: block;
-  position: relative;
-  color: #fff;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a .visual_box {
-  position: relative;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a .visual_box:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 20%);
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a .visual_box img {
-  display: block;
-  width: 100%;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a .title_box {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: end;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a .title_box > .inner {
-  flex: 1;
-  padding: 10px 16px 20px;
-  background: #000;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) -5%, #000 100%);
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a .title_box > .inner > .type {
-  position: absolute;
-  top: 24px;
-  left: 16px;
-  display: flex;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a .title_box > .inner > .type > span {
-  padding: 4px 8px;
-  border-radius: 2px;
-  font-size: 12px;
-  line-height: 1;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a .title_box > .inner > .type > span + span {
-  margin-left: 4px;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a .title_box > .inner > .type > span.color1 {
-  background: var(--color-brand1);
-  color: #fff;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a .title_box > .inner > .type > span.color2 {
-  background: #9E77ED;
-  color: #fff;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a .title_box > .inner > .type > span.color3 {
-  background: #BDB4FE;
-  color: #000;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a .title_box > .inner > .type > span.color4 {
-  background: #EAE8FF;
-  color: #000;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a .title_box > .inner > .location {
-  display: flex;
-  align-items: center;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a .title_box > .inner > .location span {
-  position: relative;
-  width: 30px;
-  height: 30px;
-  margin-right: -6px;
-  border-radius: 50%;
-  background: #B5FA95;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a .title_box > .inner > .location span lottie-player {
-  position: absolute;
-  top: -10px;
-  left: -2px;
-  width: 48px;
-  height: 48px;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a .title_box > .inner > .location p {
-  padding: 6px 16px;
-  background: #fff;
-  border-radius: 12px;
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 1;
-  color: #344054;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a .title_box > .inner > .title {
-  display: block;
-  margin-top: 14px;
-  font-size: 20px;
-  font-weight: 800;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a .title_box > .inner > .desc {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > a .title_box > .inner > .desc > span {
-  font-size: 13px;
-  font-weight: 400;
-  color: #fff;
-  line-height: 1;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > button {
-  position: absolute;
-  top: 16px;
-  right: 6px;
-  padding: 8px;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > button.active span {
-  background-image: url("../images/common/ico_star04.svg");
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > button span {
-  display: block;
-  width: 16px;
-  height: 16px;
-  background: url("../images/common/ico_star03.svg") no-repeat;
-  background-size: 100%;
-  font-size: 0;
-  line-height: 0;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > .dimmed {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 100;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > .dimmed.clear .inner lottie-player {
-  width: 60px;
-  margin: 0 auto;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > .dimmed.clear .inner p {
-  color: #EAE8FF;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > .dimmed.deadline .inner lottie-player {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: -1;
-  width: 200px;
-  height: auto;
-  margin: 0 auto;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > .dimmed.deadline .inner p {
-  color: #B5FA95;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > .dimmed.crew .inner {
-  top: 35%;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > .dimmed.crew .inner lottie-player {
-  position: relative;
-  left: 18px;
-  width: 171px;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > .dimmed.crew .inner:after {
-  content: "h";
-  position: absolute;
-  top: 106px;
-  left: 60px;
-  color: #4E2AF4;
-  font-size: 60px;
-  font-weight: 600;
-  line-height: 1;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > .dimmed.crew .inner p {
-  color: #EAE8FF;
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > .dimmed .inner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.challenge_content_wrap .challenge_list_wrap .challenge_list > ul > li > .dimmed .inner p {
-  font-size: 18px;
-  font-weight: 800;
-  text-align: center;
-  white-space: nowrap;
-}
-.challenge_content_wrap .challenge_company .challenge_visual img {
-  display: block;
-  width: 100%;
-}
-.challenge_content_wrap .challenge_company .challenge_list {
-  margin-top: 40px;
-}
-.challenge_content_wrap .challenge_company .challenge_list.active > ul {
-  display: block;
-}
-.challenge_content_wrap .challenge_company .challenge_list.active > ul > li + li {
-  margin-top: 20px;
-}
-.challenge_content_wrap .challenge_company .challenge_list > ul {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
-}
-.challenge_content_wrap .challenge_company .challenge_list > ul > li + li {
-  margin-top: 0;
-}
-.challenge_content_wrap .challenge_company .challenge_list > ul > li > a .title_box {
-  position: static;
-}
-.challenge_content_wrap .challenge_company .challenge_list > ul > li > a .title_box .icon_case {
-  position: static;
-  transform: translateY(0);
-}
-.challenge_content_wrap .challenge_detail_wrap .challenge_visual {
-  position: fixed;
-  top: 44px;
-  left: 0;
-  z-index: -2;
-  width: 100%;
-  height: 100%;
-  background: #F9F9FB;
-}
-.challenge_content_wrap .challenge_detail_wrap .challenge_visual img {
-  display: block;
-  width: 100%;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner h2 {
-  font-size: 18px;
-  font-weight: 800;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner > div {
-  padding: 24px;
-  background: #fff;
-  border-radius: 24px;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner > div + div {
-  margin-top: 6px;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner > div:not(.pick_challenge) {
-  margin-left: 20px;
-  margin-right: 20px;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_info > .title > div {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_info > .title > div h2 {
-  flex: 1;
-  font-size: 20px;
-  font-weight: 800;
-  color: #000;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_info > .title > div h2 span {
-  display: block;
-  font-size: 16px;
-  font-weight: 600;
-  color: #667085;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_info > .title > p {
-  margin-top: 12px;
-  font-size: 13px;
-  font-weight: 400;
-  color: #000;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_info > dl {
-  border-top: 1px solid #D9D9D9;
-  padding-top: 16px;
-  margin-top: 16px;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-gap: 12px 8px;
-  font-size: 14px;
-  color: #344054;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_info > dl dt {
-  font-weight: 800;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_info > dl dd {
-  font-weight: 600;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_info > .progress_wrap {
-  margin-top: 16px;
-  padding: 16px 16px 20px;
-  background: #F2F4F7;
-  border-radius: 9px;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_info > .progress_wrap .info {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_info > .progress_wrap .info > strong {
-  font-size: 14px;
-  font-weight: 800;
-  color: #344054;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_info > .progress_wrap .info > div {
-  margin-top: 7px;
-  font-size: 13px;
-  font-weight: 600;
-  color: #000;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_info > .progress_wrap .info > div strong {
-  font-size: 15px;
-  font-weight: 800;
-  color: var(--color-brand1);
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_info > .progress_wrap .graph {
-  margin-top: 10px;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_info > .progress_wrap .graph:before, .challenge_content_wrap .challenge_detail_wrap > .inner .challenge_info > .progress_wrap .graph:after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #000;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_info > .progress_wrap .graph:before {
-  left: 0;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_info > .progress_wrap .graph:after {
-  right: 0;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_info > .progress_wrap .graph > .inner {
-  flex: 1;
-  height: 2px;
-  background: #000;
-  margin: 12px 0;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_info > .progress_wrap .graph > .inner:after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #000;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_info > .progress_wrap .graph > .inner > span {
-  position: absolute;
-  top: 11px;
-  left: -14px;
-  z-index: 100;
-  transform: translateX(-50%);
-  transition: left 0.6s;
-  padding-top: 18px;
-  font-size: 13px;
-  font-weight: 800;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_info > .progress_wrap .graph > .inner > span:after {
-  content: "";
-  position: absolute;
-  top: -7px;
-  left: 50%;
-  transform: translate(-50%);
-  border-radius: 50%;
-  width: 16px;
-  height: 16px;
-  background: #B5FA95;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_info > .progress_wrap .graph > .inner > span.walking2:after {
-  top: -11px;
-  width: 24px;
-  height: 24px;
-  background: #BDB4FE;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_crew h2 {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--color-brand1);
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_crew > .title {
-  margin-top: 12px;
-  display: flex;
-  align-items: center;
-  min-height: 56px;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_crew > .title:only-child {
-  margin-top: 0;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_crew > .title h3 {
-  flex: 1;
-  font-size: 20px;
-  font-weight: 800;
-  color: #000;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_crew > .title h3 strong {
-  color: var(--color-brand1);
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_crew > p {
-  margin-top: 14px;
-  font-size: 13px;
-  font-weight: 600;
-  color: #667085;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_crew > .btn_wrap {
-  margin-top: 12px;
-  display: flex;
-  justify-content: center;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_crew > .btn_wrap button + button {
-  margin-left: 10px;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_crew.bg1 {
-  position: relative;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_crew.bg1:after {
-  content: "";
-  position: absolute;
-  top: 24px;
-  right: 13px;
-  width: 145px;
-  height: 123px;
-  background: url("../images/img_crew01.png") no-repeat 50%;
-  background-size: 100%;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_crew.bg2 {
-  position: relative;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_crew.bg2:after {
-  content: "";
-  position: absolute;
-  top: 12px;
-  right: 0;
-  width: 171px;
-  height: 161px;
-  background: url("../images/img_crew02.png") no-repeat 50%;
-  background-size: 100%;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward {
-  margin-top: 6px;
-  padding: 0;
-  background: none;
-  border-radius: 0;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > h2 {
-  margin-bottom: 6px;
-  padding: 16px 25px;
-  background: #fff;
-  border-radius: 8px;
-  font-size: 18px;
-  font-weight: 800;
-  color: #000;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > h2 button {
-  padding: 4px;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > h2 button span {
-  display: block;
-  width: 16px;
-  height: 16px;
-  background: url("../images/common/ico_noti01.svg") no-repeat 50%;
-  background-size: 100%;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont {
-  overflow: hidden;
-  transition: height 0.3s;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .admin_wrap {
-  padding: 24px;
-  background: #EAECF5;
-  border-radius: 17px;
-  color: #344054;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .admin_wrap strong {
-  font-size: 15px;
-  font-weight: 800;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .admin_wrap p {
-  margin-top: 12px;
-  font-size: 14px;
-  font-weight: 600;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .map_view {
-  position: relative;
-  margin-top: 6px;
-  padding-bottom: 7px;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .map_view:after {
-  content: "";
-  position: absolute;
-  bottom: 0px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-top: 7px solid #B5FA95;
-  border-bottom: 0 none;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .map_view button {
-  display: block;
-  width: 100%;
-  min-height: 38px;
-  background: #B5FA95;
-  border-radius: 14px;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .map_view button span {
-  display: inline-block;
-  padding-left: 18px;
-  font-size: 14px;
-  font-weight: 600;
-  color: #000;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .map_view button span:before {
-  content: "";
-  position: relative;
-  top: 3px;
-  left: 0;
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background: url("../images/challenge/ico_location02.svg") no-repeat 50%;
-  background-size: 100%;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .map_view button span:after {
-  content: "";
-  position: relative;
-  left: 0;
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  vertical-align: middle;
-  margin-left: 2px;
-  background: url("../images/challenge/ico_arrow_right.svg") no-repeat 50%;
-  background-size: 100%;
-  animation: arrow_right infinite alternate 0.8s;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .stamp_wrap {
-  margin-top: 16px;
-  padding: 16px 10px;
-  background: #fff;
-  border-radius: 24px;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .stamp_wrap > p {
-  position: relative;
-  padding-top: 63px;
-  font-size: 11px;
-  font-weight: 600;
-  color: #667085;
-  text-align: center;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .stamp_wrap > p:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 45px;
-  height: 55px;
-  background: url("../images/challenge/ico_stamp.png") no-repeat;
-  background-size: 100%;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .stamp_wrap ul {
-  margin-top: 8px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .stamp_wrap ul li {
-  position: relative;
-  background: url("../images/challenge/ico_stamp.svg") no-repeat 50%;
-  background-size: 100% 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 33.3%;
-  height: 100px;
-  margin: 2px 0;
-  text-align: center;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .stamp_wrap ul li:nth-child(3n+2) {
-  width: 33.4%;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .stamp_wrap ul li.active {
-  background-image: url("../images/challenge/ico_stamp_on.svg");
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .stamp_wrap ul li.active span {
-  color: var(--color-brand1);
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .stamp_wrap ul li.active:after {
-  background: #EAE8FF;
-  color: #000;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .stamp_wrap ul li span {
-  transform: translate(0, -3px);
-  max-width: 70px;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  font-size: 11px;
-  font-weight: 800;
-  color: #000;
-  line-height: 13px;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .stamp_wrap ul li:after {
-  content: "Check!";
-  position: absolute;
-  bottom: 23px;
-  left: 50%;
-  transform: translateX(-55%);
-  width: 34px;
-  height: 16px;
-  background: #E4E7EC;
-  border-radius: 8px;
-  font-size: 9px;
-  font-weight: 600;
-  color: #98A2B3;
-  line-height: 16px;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list {
-  margin-top: 6px;
-  overflow: hidden;
-  transition: height 0.3s;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 80px;
-  padding: 0 24px;
-  background: #fff;
-  border-radius: 16px;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li + li {
-  margin-top: 6px;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li.step p strong {
-  display: inline;
-  margin-right: 6px;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li.step > div {
-  display: flex;
-  align-items: center;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li.step > div lottie-player {
-  margin-left: 8px;
-  width: 30px;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li.attain {
-  display: block;
-  padding: 6px 0 20px;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li.attain lottie-player {
-  width: 66px;
-  height: 66px;
-  margin: 0 auto;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li.attain dl {
-  font-size: 15px;
-  font-weight: 800;
-  color: #000;
-  text-align: center;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li.attain dl dt {
-  color: #667085;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li.attain dl dt span {
-  color: var(--color-brand1);
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li.point > .icon lottie-player {
-  position: absolute;
-  top: 0;
-  left: 24px;
-  width: 30px;
-  height: 30px;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li.point > .icon span:after {
-  content: "h";
-  position: absolute;
-  bottom: 0;
-  left: -24px;
-  font-size: 34px;
-  font-weight: 600;
-  color: #000;
-  line-height: 1;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li > .icon {
-  position: relative;
-  width: 66px;
-  height: 66px;
-  margin-left: -16px;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li > .icon span {
-  position: absolute;
-  top: 28px;
-  right: 0;
-  min-width: 20px;
-  height: 20px;
-  padding: 0 4px;
-  background: #EAE8FF;
-  border-radius: 10px;
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 22px;
-  color: #000;
-  text-align: center;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li p {
-  font-size: 15px;
-  font-weight: 800;
-  color: #667085;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li p strong {
-  display: block;
-  color: #1D2939;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li > button {
-  flex-shrink: 0;
-  width: 64px;
-  height: 36px;
-  line-height: 1;
-  background: var(--color-brand1);
-  border-radius: 18px;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li > button:disabled {
-  background-color: #DDD;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li > button:disabled span {
-  color: #98A2B3;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li > button.complete {
-  background-color: #DDD;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li > button.complete span {
-  color: #98A2B3;
-  padding-left: 16px;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li > button.complete span:after {
-  content: "";
-  position: absolute;
-  top: 3px;
-  left: 0;
-  width: 14px;
-  height: 10px;
-  background: url("../images/challenge/ico_check.svg") no-repeat 50%;
-  background-size: 100% auto;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .reward_list > li > button span {
-  position: relative;
-  display: inline-block;
-  font-size: 14px;
-  font-weight: 800;
-  line-height: 1;
-  color: #fff;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > button {
-  margin: 20px auto 0;
-  display: block;
-  font-size: 14px;
-  font-weight: 800;
-  color: #98A2B3;
-  text-align: center;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > button span {
-  position: relative;
-  padding-right: 26px;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > button span:before {
-  content: "접기";
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > button span:after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  transform-origin: center;
-  width: 24px;
-  height: 24px;
-  background: url("../images/challenge/ico_arrow_up.svg") no-repeat 50%;
-  background-size: 100%;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > button.active span:before {
-  content: "열기";
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > button.active span:after {
-  transform: translateY(-50%) rotate(180deg);
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .pick_challenge {
-  margin-top: 40px;
-  padding: 0;
-  background: none;
-  position: relative;
-  overflow: hidden;
-  max-height: 300px;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .pick_challenge.active {
-  max-height: none;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .pick_challenge.active > button {
-  display: none;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .pick_challenge.active:after {
-  display: none;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .pick_challenge:after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 300px;
-  background: linear-gradient(rgba(255, 255, 255, 0) 10%, #fff 100%);
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .pick_challenge > img {
-  display: block;
-  width: 100%;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .pick_challenge > button {
-  position: absolute;
-  bottom: 20px;
-  left: 28px;
-  z-index: 100;
-  max-width: calc(100% - 56px);
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont > h2 {
-  font-size: 15px;
-  font-weight: 800;
-  color: var(--color-brand1);
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont > h2 span {
-  position: relative;
-  padding-right: 24px;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont > h2 span:after {
-  content: "";
-  position: absolute;
-  top: -9px;
-  right: 0;
-  width: 29px;
-  height: 29px;
-  background: url("../images/challenge/ico_flag.svg") no-repeat 50%;
-  background-size: 100%;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont > h3 {
-  font-size: 24px;
-  font-weight: 800;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont > h3 span,
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont > h3 strong {
-  color: var(--color-brand1);
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap .graph {
-  margin-top: 44px;
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap .graph:before, .challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap .graph:after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #000;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap .graph:before {
-  left: 0;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap .graph:after {
-  right: 0;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap .graph > .inner {
-  flex: 1;
-  height: 2px;
-  background: #000;
-  margin: 12px 0;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap .graph > .inner:after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #000;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap .graph > .inner > span {
-  position: absolute;
-  left: 0;
-  z-index: 100;
-  transform: translateX(-50%);
-  transition: left 0.6s;
-  font-size: 13px;
-  font-weight: 800;
-  white-space: nowrap;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap .graph > .inner > span em {
-  display: block;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap .graph > .inner > span:after {
-  content: "";
-  position: absolute;
-  top: 1px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  width: 16px;
-  height: 16px;
-  background: #B5FA95;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap .graph > .inner > span.walking1 {
-  z-index: 200;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap .graph > .inner > span.walking1.align_right em {
-  transform: translate(calc(-50% + 12px), -35px);
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap .graph > .inner > span.walking1 em {
-  transform: translateY(-35px);
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap .graph > .inner > span.walking2.align_right em {
-  transform: translate(calc(-50% + 12px), 19px);
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap .graph > .inner > span.walking2 em {
-  transform: translateY(19px);
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap .graph > .inner > span.walking2:after {
-  width: 24px;
-  height: 24px;
-  background: #BDB4FE;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap > ul {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-top: 64px;
-  padding: 16px 0;
-  border-radius: 16px;
-  background-color: #F9FAFB;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap > ul > li {
-  text-align: center;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap > ul > li > span {
-  display: block;
-  position: relative;
-  padding-top: 32px;
-  font-size: 14px;
-  font-weight: 600;
-  color: #475467;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap > ul > li > span::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 24px;
-  height: 24px;
-  background: url("../images/report/ico_graph_01.svg") no-repeat;
-  background-size: 100%;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap > ul > li:nth-child(2) > span:after {
-  background-image: url("../images/report/ico_graph_02.svg");
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap > ul > li:nth-child(3) > span:after {
-  background-image: url("../images/report/ico_graph_03.svg");
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap > ul > li > p {
-  margin-top: 8px;
-  font-size: 20px;
-  font-weight: 800;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report .graph_cont .graph_wrap > ul > li > p span {
-  color: var(--color-brand1);
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_report.clear .graph_cont h3 span {
-  color: inherit;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_recommend .inner {
-  overflow-x: auto;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_recommend .inner::-webkit-scrollbar {
-  display: none;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_recommend .inner ul {
-  display: flex;
-  flex-wrap: nowrap;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_recommend .inner ul > li {
-  overflow: hidden;
-  border-radius: 24px;
-  width: 163px;
-  flex-shrink: 0;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_recommend .inner ul > li + li {
-  margin-left: 8px;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_recommend .inner ul > li > a {
-  display: block;
-  position: relative;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_recommend .inner ul > li > a > div {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 158px;
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_recommend .inner ul > li > a > div:after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(178.07deg, rgba(0, 0, 0, 0) 15.42%, rgba(0, 0, 0, 0.7) 69.18%);
-}
-.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_recommend .inner ul > li > a > div p {
-  position: absolute;
-  bottom: 20px;
-  left: 0;
-  z-index: 100;
-  width: 100%;
-  padding: 0 8px;
-  font-size: 13px;
-  font-weight: 800;
-  color: #fff;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-.challenge_content_wrap .challenge_detail_wrap .challenge_btn {
-  position: fixed;
-  bottom: 0px;
-  left: 0;
-  z-index: 400;
-  width: 100%;
-  height: 100px;
-  padding: 24px 28px 34px;
-  background: #fff;
-  box-shadow: 0 0px 30px 5px rgba(0, 0, 0, 0.3);
-  display: flex;
-}
-.challenge_content_wrap .challenge_detail_wrap .challenge_btn button + button {
-  margin-left: 8px !important;
-}
-@media screen and (max-width: 320px) {
-  .challenge_content_wrap .challenge_detail_wrap .challenge_btn {
-    padding: 24px 14px 34px;
-  }
-}
-.challenge_content_wrap .icon_wrap {
-  display: flex;
-  align-items: center;
-}
-.challenge_content_wrap .icon_wrap > div {
-  display: flex;
-  align-items: center;
-}
-.challenge_content_wrap .icon_wrap > div:only-child em {
-  display: inline-block;
-}
-.challenge_content_wrap .icon_wrap > div span {
-  display: inline-block;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  font-size: 0;
-  line-height: 0;
-}
-.challenge_content_wrap .icon_wrap > div em {
-  display: none;
-  margin-left: 4px;
-}
-.challenge_content_wrap .icon_wrap > div + div {
-  margin-left: -10px;
-}
-.challenge_content_wrap .icon_wrap > div.ico_jelly span {
-  background: url("../images/challenge/ico_jelly.svg") no-repeat 50%;
-  background-size: 100%;
-}
-.challenge_content_wrap .icon_wrap > div.ico_point span {
-  background: url("../images/challenge/ico_point.svg") no-repeat 50%;
-  background-size: 100%;
-}
-.challenge_content_wrap .icon_wrap > div.ico_coupon span {
-  background: url("../images/challenge/ico_coupon.svg") no-repeat 50%;
-  background-size: 100%;
-}
-.challenge_content_wrap .challenge_completed {
-  margin: 32px 0 40px;
-}
-.challenge_content_wrap .challenge_completed .notice_wrap {
-  margin: 0 28px;
-}
-.challenge_content_wrap .challenge_completed .tab_menu_wrap {
-  margin-top: 24px;
-}
-.challenge_content_wrap .challenge_completed .completed_list > p {
-  margin: 26px 0 0 28px;
-  font-size: 12px;
-  font-weight: 400;
-  color: #AAA;
-}
-.challenge_content_wrap .challenge_completed .completed_list > ul {
-  margin-top: 24px;
-  padding: 0 20px;
-}
-.challenge_content_wrap .challenge_completed .completed_list > ul > li {
-  padding-bottom: 16px;
-  border-bottom: 1px solid #D9D9D9;
-}
-.challenge_content_wrap .challenge_completed .completed_list > ul > li + li {
-  padding-top: 16px;
-}
-.challenge_content_wrap .challenge_completed .completed_list > ul > li > a {
-  display: block;
-}
-.challenge_content_wrap .challenge_completed .completed_list > ul > li > a > div {
-  display: flex;
-  align-items: center;
-  margin-bottom: 8px;
-}
-.challenge_content_wrap .challenge_completed .completed_list > ul > li > a > div > span {
-  display: inline-block;
-  padding: 4px 8px;
-  border-radius: 2px;
-  background: var(--color-brand1);
-  font-size: 12px;
-  color: #fff;
-  line-height: 1;
-}
-.challenge_content_wrap .challenge_completed .completed_list > ul > li > a > div > span + * {
-  margin-left: 4px;
-}
-.challenge_content_wrap .challenge_completed .completed_list > ul > li > a > div > p {
-  position: relative;
-  padding-right: 24px;
-  font-size: 15px;
-  font-weight: 800;
-  color: var(--color-brand1);
-}
-.challenge_content_wrap .challenge_completed .completed_list > ul > li > a > div > p:after {
-  content: "";
-  position: absolute;
-  top: -9px;
-  right: 0;
-  width: 29px;
-  height: 29px;
-  background: url("../images/challenge/ico_flag.svg") no-repeat 50%;
-  background-size: 100%;
-}
-.challenge_content_wrap .challenge_completed .completed_list > ul > li > a > strong {
-  font-size: 12px;
-  font-weight: 800;
-  color: #000;
-}
-.challenge_content_wrap .challenge_completed .completed_list > ul > li > a > p {
-  margin-top: 8px;
-  font-size: 14px;
-  font-weight: 400;
-  color: #000;
-}
-.challenge_content_wrap .challenge_completed .completed_list > ul > li > a > span {
-  margin-top: 8px;
-  font-size: 12px;
-  font-weight: 400;
-  color: #000;
-}
-.challenge_content_wrap .common_btn {
-  display: block;
-  width: 100%;
-  height: 42px;
-  background: var(--color-brand1);
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 600;
-  color: #fff;
-}
-.challenge_content_wrap .common_btn.color {
-  color: var(--color-brand1);
-  background: #fff;
-  border: 1px solid var(--color-brand1);
-}
-.challenge_content_wrap .common_btn.large {
-  height: 58px;
-  margin: 0 auto;
-  border-radius: 0;
-  font-size: 13px;
-  font-weight: 800;
-}
-.challenge_content_wrap .common_btn.download {
-  background: #000;
-}
-.challenge_content_wrap .common_btn.download span {
-  padding-left: 22px;
-}
-.challenge_content_wrap .common_btn.download span:after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  width: 18px;
-  height: 18px;
-  background: url("../images/guide/ico_download_guide.svg") no-repeat 50%;
-  background-size: 100%;
-}
-.challenge_content_wrap .common_btn.player {
-  background: #fff;
-  border: 1px solid #000;
-}
-.challenge_content_wrap .common_btn.player span {
-  padding-left: 22px;
-  color: #000;
-}
-.challenge_content_wrap .common_btn.player span:after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  width: 18px;
-  height: 18px;
-  background: url("../images/guide/ico_play_guide.svg") no-repeat 50%;
-  background-size: 100%;
-}
-.challenge_content_wrap .common_btn span {
-  position: relative;
-  word-break: keep-all;
-}
-.challenge_content_wrap .common_btn:disabled {
-  background: #DDD;
-  color: #98A2B3;
-}
-
 .monthly_attendance_wrap {
   margin-bottom: 24px;
 }

@@ -1,0 +1,390 @@
+:root {
+  --color-brand1: #4E2AF4;
+  --color-brand2: #D6BBFB;
+  --color-brand3: #B5FA95;
+  --color-brand4: #EAE8FF;
+  --color-sec1: #FF2E6D;
+
+  --color-font1: #000;
+  --color-font2: #777;
+}
+
+@mixin text_ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+@mixin text_ellipsis2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+@mixin text_ellipsis3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+// @include text_ellipsis();
+
+// * 걷기가이드
+.walking_guide_wrap {
+  transition: padding 0.3s;
+  // 시간, 거리 아이콘(공통)
+  .desc_box {
+    .inner {
+      display: flex;
+      color: #000;
+      > div {
+        height: 20px;
+        padding: 0 8px;
+        background: #FDB022;
+        border-radius: 2px;
+
+        font-size: 12px;
+        font-weight: 700;
+        color: #000;
+        line-height: 22px;
+        &.distance {
+          background: #7CD4FD;
+          span:after {
+            background: url('../images/guide/ico_distance.svg') no-repeat;
+            background-size: 100%;
+          }
+        }
+        & + div {margin-left: 4px;}
+        span {
+          position: relative;
+          display: inline-block;
+          height: 100%;
+          padding-left: 18px;
+          border-radius: 6px;
+          &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            background: url('../images/guide/ico_time.svg') no-repeat;
+            background-size: 100%;
+          }
+        }
+      }
+    }
+  }
+  .guide_list_wrap {
+    &.active {
+      .filter_view button {
+        span {
+          &:before {background-image: url('../images/challenge/ico_view_large.svg');}
+          &:after {content: '크게';}
+        }
+      }
+      .guide_list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 12px 10px;
+        > div {
+          min-height: 244px;
+          .visual_box {
+            height: 100%;
+            img {
+              object-fit: cover;
+              height: 100%;
+            }
+          }
+          .content_box > .inner > .title br {display: none;}
+          & + div {margin-top: 0;}
+        }
+      }
+    }
+    .filter_view {
+      display: flex;
+      align-items: center;
+      justify-content: right;
+      margin: 11px 28px 0 0;
+      button {
+        margin-left: 16px;
+        background: none;
+
+        font-size: 13px;
+        font-weight: 800;
+        color: var(--color-brand1);
+        span {
+          position: relative;
+          display: inline-block;
+          padding-left: 20px;
+          &:before {
+            content: '';
+            position: absolute;
+            top: 1px;
+            left: 0;
+
+            width: 16px;
+            height: 16px;
+
+            background: url('../images/challenge/ico_view_small.svg') no-repeat;
+            background-size: 100%;
+          }
+          &:after {
+            content: '작게';
+          }
+        }
+        
+      }
+    }
+    > .guide_list {
+      padding: 24px 20px 35px;
+      > div {
+        overflow: hidden;
+        position: relative;
+        border-radius: 24px 24px 0 0;
+        & + div {margin-top: 16px;}
+        .visual_box {
+          position: relative;
+          &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 20%);
+          }
+          img {
+            display: block;
+            width: 100%;
+          }
+        }
+        .content_box {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+
+          display: flex;
+          align-items: end;
+          > .inner {
+            flex: 1;
+            padding: 0 16px 18px;
+
+            background: #000;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0) -5%, #000 100%);
+            > .title {
+              display: block;
+              margin-top: 14px;
+
+              font-size: 20px;
+              font-weight: 800;
+              color: #fff;
+              @include text_ellipsis2();
+            }
+            > .desc_box {
+              margin-top: 8px;
+            }
+            > .player_bar {
+              position: absolute;
+              bottom: 0;
+              left: 0;
+
+              width: 100%;
+              height: 8px;
+              background-color: #667085;
+              span {
+                position: absolute;
+                top: 0;
+                left: 0;
+
+                height: 100%;
+                background-color: #B5FA95;
+              }
+            }
+          }
+        }
+        > button {
+          position: absolute;
+          top: 24px;
+          right: 24px;
+          span {
+            display: block;
+            width: 32px;
+            height: 32px;
+
+            background: url('../images/guide/ico_soundfit_down.svg') no-repeat;
+            background-size: 100%;
+
+            font-size: 0;
+            line-height: 0;
+          }
+        }
+      }
+    }
+  }
+}
+// 걷기 가이드 상세
+.guide_detail_wrap {
+  .layer_content_wrap {
+    padding: 0;
+    .layer_content {
+      padding: 0;
+      .header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 999;
+    
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    
+        width: 100%;
+        height: 44px;
+        padding: 0 20px;
+    
+        background: #F9F9FB;
+        h1 {
+          text-align: left;
+        }
+        > div {
+          height: 100%;
+        }
+        button {
+          min-width: 24px;
+          min-height: 24px;
+    
+          border: 0 none;
+    
+          font-size: 0;
+          line-height: 0;
+        }
+        > .title_wrap {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          h1 {
+            flex: 1;
+            padding: 0 32px;
+    
+            font-size: 18px;
+            font-weight: 800;
+    
+            @include text_ellipsis();
+      
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--color-font1);
+            line-height: 24px;
+          }
+          .btn_back {
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+    
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+    
+            background: url('../images/common/ico_arrow_left01.svg');
+            background-size: 100%;
+            border: 0 none;
+            transform: translateY(-50%) rotate(270deg);
+            transform-origin: center;
+          }
+        }
+        > .icon_wrap {
+          position: absolute;
+          top: 0;
+          right: 12px;
+    
+          flex-shrink: 0;
+    
+          display: flex;
+          align-items: center;
+          button {
+            span {
+              display: inline-block;
+              width: 16px;
+              height: 16px;
+              padding: 8px;
+              box-sizing: content-box;
+            }
+            &.btn_setting span {
+              width: 24px;
+              height: 24px;
+              background: url('../images/common/ico_menu.svg') no-repeat 50%;
+              background-size: 24px;
+            }
+            &.btn_comments span {
+              background: url('../images/challenge/ico_comments.svg') no-repeat 50%;
+              background-size: 16px;
+            }
+            &.btn_share span {
+              background: url('../images/challenge/ico_share.svg') no-repeat 50%;
+              background-size: 16px;
+            }
+            &.btn_favorite span {
+              background: url('../images/challenge/ico_favorite.svg') no-repeat 50%;
+              background-size: 16px;
+            }
+            &.btn_share span {
+              background: url('../images/common/ico_share.svg') no-repeat 50%;
+              background-size: 16px;
+            }
+          }
+        }
+      }
+      .container {
+        position: relative;
+        z-index: 500;
+        padding: 70% 0 90px;
+        > .guide_visual {
+          position: fixed;
+          top: 44px;
+          left: 0;
+          z-index: -2;
+    
+          width: 100%;
+          height: 100%;
+          background: #F9F9FB;
+          img {
+            display: block;
+            width: 100%;
+          }
+        }
+        > .guide_inner {
+          padding: 0 20px;
+          h2 {
+            font-size: 18px;
+            font-weight: 800;
+          }
+          > .guide_title {
+            padding: 24px;
+            background: #fff;
+            border-radius: 24px;
+
+            color: #000;
+            h2 {
+              margin-top: 8px;
+              font-size: 20px;
+              font-weight: 800;
+            }
+            p {
+              margin-top: 12px;
+              font-size: 13px;
+              font-weight: 400;
+            }
+          }
+          .guide_content {
+            margin-top: 12px;
+          }
+        }
+      }
+    }
+  }
+}

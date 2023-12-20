@@ -74,3 +74,12 @@
 	90%,
 	100% {transform: scale(1);}
 }
+
+@keyframes mainBannerAni1 {
+	0% {transform: translate(0, 0);}
+	100% {transform: translate(5px, 5px);}
+}
+@keyframes mainBannerAni2 {
+	0% {transform: translate(0, 0);}
+	100% {transform: translate(-5px, -5px);}
+}

@@ -47,6 +47,9 @@
 
         <!-- 달력 -->
         <div class="calendar_cont">
+          <div class="attendance_link">
+            <a href="#"><span>12월</span></a>
+          </div>
           <!-- 주단위 -->
           <div class="weekly_unit">
             <div class="inner">
@@ -110,34 +113,13 @@
               </ul>
 
               <div class="heart_effect01">
-                <lottie-player
-                  loop
-                  mode="normal"
-                  src="./json/heart_effect1-1.json"
-                  >
-                </lottie-player>
-
-                <lottie-player
-                  loop
-                  mode="normal"
-                  src="./json/heart_effect1-2.json"
-                  >
-                </lottie-player>
+                <lottie-player loop mode="normal" src="./json/heart_effect1-1.json"></lottie-player>
+                <lottie-player loop mode="normal" src="./json/heart_effect1-2.json"></lottie-player>
               </div>
 
               <div class="heart_effect02">
-                <lottie-player
-                  loop
-                  mode="normal"
-                  src="./json/heart_effect2-1.json"
-                  >
-                </lottie-player>
-                
-                <lottie-player
-                  mode="normal"
-                  src="./json/heart_effect2-2.json"
-                  >
-                </lottie-player>
+                <lottie-player loop mode="normal" src="./json/heart_effect2-1.json"></lottie-player>
+                <lottie-player mode="normal" src="./json/heart_effect2-2.json"></lottie-player>
               </div>
             </div>
           </div>
@@ -154,108 +136,187 @@
 
       <!-- 스와이프 -->
       <div class="main_swipe_menu">
-        <div class="inner">
-          <!-- 이미지 : 스와이프 변경 시 텍스트 스와이프에 인덕스 값 전달 -->
-          <div class="swiper visual_swiper">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide"><div><img src="./images/img_dummy02.jpg" alt="" /></div></div>
-              <div class="swiper-slide"><div><img src="./images/img_dummy03.jpg" alt="" /></div></div>
-              <div class="swiper-slide"><div><img src="./images/img_dummy02.jpg" alt="" style="filter: hue-rotate(45deg);" /></div></div>
-              <div class="swiper-slide"><div><img src="./images/img_dummy03.jpg" alt="" style="filter: hue-rotate(100deg);" /></div></div>
-            </div>
-          </div>
-          <!-- 텍스트 -->
-          <div class="swiper text_swiper">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <div>
-                  <p>1.걷기가이드와 함께 걸어보세요</p>
-                  <a href="#"><span>걷기 가이드 체험하기</span></a>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div>
-                  <p>2.지금 순간을 타임스탬프로 남겨보세요</p>
-                  <a href="#"><span>걷기 가이드 체험하기</span></a>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div>
-                  <p>3.걷기가이드와 함께 걸어보세요</p>
-                  <a href="#"><span>걷기 가이드 체험하기</span></a>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div>
-                  <p>4.지금 순간을 타임스탬프로 남겨보세요</p>
-                  <a href="#"><span>걷기 가이드 체험하기</span></a>
-                </div>
+        <div class="swiper banner_swiper">
+          <div class="swiper-wrapper">
+            <!-- 1 -->
+            <div class="swiper-slide">
+              <div class="banner_01">
+                <a href="#">
+                  <div class="text">
+                    <em><span>걷기가이드</span></em>
+                    <strong>걷기가이드와<br>함께 걸어보세요!</strong>
+                  </div>
+
+                  <div class="visual">
+                    <img src="./images/main/img_banner_0101.png" alt="" />
+                    <img src="./images/main/img_banner_0102.png" alt="" />
+                  </div>
+                </a>
               </div>
             </div>
+            <!-- 2 -->
+            <div class="swiper-slide">
+              <div class="banner_02">
+                <a href="#">
+                  <div class="text">
+                    <em><span>타임스탬프</span></em>
+                    <strong>지금 순간을<br>타임스탬프로!</strong>
+                  </div>
+
+                  <div class="visual">
+                    <img src="./images/main/img_banner_0201.png" alt="" />
+                    <img src="./images/main/img_banner_0202.png" alt="" />
+                  </div>
+                </a>
+              </div>
+            </div>
+            <!-- 3 -->
+            <div class="swiper-slide">
+              <div class="banner_03">
+                <a href="#">
+                  <div class="text">
+                    <em><span>리포트</span></em>
+                    <strong>어제의 나와 싸운다!<br>리포트로 알아보세요~</strong>
+                  </div>
+
+                  <div class="visual">
+                    <img src="./images/main/img_banner_0301.png" alt="" />
+                    <img src="./images/main/img_banner_0302.png" alt="" />
+                  </div>
+                </a>
+              </div>
+            </div>
+            <!-- 4 -->
+            <div class="swiper-slide">
+              <div class="banner_04">
+                <a href="#">
+                  <div class="text">
+                    <em><span>리포트</span></em>
+                    <strong>만보도전<br>어떠세요?!</strong>
+                  </div>
+
+                  <div class="visual">
+                    <img src="./images/main/img_banner_0401.png" alt="" />
+                    <img src="./images/main/img_banner_0402.png" alt="" />
+                  </div>
+                </a>
+              </div>
+            </div>
+            <!-- 5 -->
+            <div class="swiper-slide">
+              <div class="banner_05">
+                <a href="#">
+                  <div class="text">
+                    <em><span>점방문 챌린지</span></em>
+                    <strong>현백방문만 하면<br>추가 젤리가 쏟아져요</strong>
+                  </div>
+
+                  <div class="visual">
+                    <img src="./images/main/img_banner_0501.png" alt="" />
+                  </div>
+                </a>
+              </div>
+            </div>
+            <!-- 2 -->
+            <div class="swiper-slide">
+              <div class="banner_06">
+                <a href="#">
+                  <div class="text">
+                    <em><span>리워드 확인</span></em>
+                    <strong>젤리활용백서!<br>H.Point로 교환하세요~</strong>
+                  </div>
+
+                  <div class="visual">
+                    <img src="./images/main/img_banner_0601.png" alt="" />
+                  </div>
+                </a>
+              </div>
+            </div>
           </div>
+          <div class="swiper-pagination"></div>
         </div>
       </div>
       <!-- //스와이프 -->
 
       <!-- 상태 -->
       <div class="status_wrap">
-        <ul>
-          <!-- 걸음 -->
-          <li class="walking animate">
-            <div class="inner">
-              <h3>걸음</h3>
-
-              <div class="contents">
-                <div class="content1">
-                  <div class="progress_wrap">
-                    <div>
-                      <span></span>
-                      <em></em>
-                    </div>
-                  </div> 
-    
-                  <div class="text_wrap">
-                    <h4><a href="#"><strong></strong></a></h4>
-                  </div>
-                </div>
-    
-                <div class="content2">
-                  <div class="text_wrap">
-                    <h4><a href="#">오늘 <strong>99,999</strong> 걸음 걷는중</a></h4>
-                    <p>어제의 나를 이겼어요! 더 화이팅!</p>
-                  </div>
-    
-                  <div class="progress_wrap">
-                    <div>
-                      <span><span>+1day 500</span></span>
-                      <em></em>
-                      <div class="desc">
-                        <span>10km, 600kal</span>
-                        <span>10,000걸음</span>
-                      </div>
-                    </div>
-                  </div>
-    
-                  <div class="btn_wrap">
-                    <p>3,000걸음 달성!</p>
-                    <button type="button">30젤리 받기</button>
-                  </div>
-                </div>
-              </div>
+        <!-- 걷기 현황 -->
+        <div class="main_status">
+          <div class="title">
+            <div>
+              <span>김현대님</span>
+              <em><strong>3,757</strong><span>걸음 걷는중</span></em>
+              <p>10,000걸음 달성까지 파이팅!</p>
             </div>
-          </li>
-          <!-- 젤리 -->
-          <li class="jelly animate">
-            <div class="inner">
-              <h3>젤리</h3>
-              
-              <div class="contents">
-                <div class="content1">
-                  <div class="text_wrap">
-                    <h4><a href="#"><strong>500,000</strong></a></h4>
+            <img src="./images/img_dummy.jpg" alt="" />
+          </div>
+
+          <div class="graph_cont">
+            <ul>
+              <li class="active">
+                <div>
+                  <div class="heart_effect01">
+                    <lottie-player autoplay loop mode="normal" src="./json/heart_effect1-1.json"></lottie-player>
+                    <lottie-player autoplay loop mode="normal" src="./json/heart_effect1-2.json"></lottie-player>
+                  </div>
+    
+                  <div class="heart_effect02">
+                    <lottie-player loop mode="normal" src="./json/heart_effect2-1.json"></lottie-player>
+                    <lottie-player mode="normal" src="./json/heart_effect2-2.json"></lottie-player>
                   </div>
                 </div>
-                <div class="content2">
+                <span>2,000보</span>
+              </li>
+              <li class="active">
+                <div>
+                  <div class="heart_effect01">
+                    <lottie-player autoplay loop mode="normal" src="./json/heart_effect1-1.json"></lottie-player>
+                    <lottie-player autoplay loop mode="normal" src="./json/heart_effect1-2.json"></lottie-player>
+                  </div>
+    
+                  <div class="heart_effect02">
+                    <lottie-player loop mode="normal" src="./json/heart_effect2-1.json"></lottie-player>
+                    <lottie-player mode="normal" src="./json/heart_effect2-2.json"></lottie-player>
+                  </div>
+                </div>
+                <span>5,000보</span>
+              </li>
+              <li>
+                <div>
+                  <div class="heart_effect01">
+                    <lottie-player autoplay loop mode="normal" src="./json/heart_effect1-1.json"></lottie-player>
+                    <lottie-player loop mode="normal" src="./json/heart_effect1-2.json"></lottie-player>
+                  </div>
+    
+                  <div class="heart_effect02">
+                    <lottie-player loop mode="normal" src="./json/heart_effect2-1.json"></lottie-player>
+                    <lottie-player mode="normal" src="./json/heart_effect2-2.json"></lottie-player>
+                  </div>
+                </div>
+                <span>10,000보</span>
+              </li>
+            </ul>
+            <div class="graph"><span></span></div>
+          </div>
+        </div>
+
+        <ul>
+          <!-- 젤리 -->
+          <li class="jelly">
+            <div class="inner">              
+              <div class="contents">
+                <div class="content1">
+                  <a href="#">
+                    <img src="./images/main/img_bonus01.png" alt="" />
+                    <div>
+                      <span><strong>20,000</strong>젤리</span>
+                      <p>젤리로 H.Point 교환하기</p>
+                    </div>
+                  </a>
+                </div>
+
+                <!-- 로티 있는 스타일 lottie -->
+                <div class="content2 lottie">
                   <div class="text_wrap">
                     <lottie-player
                       autoplay
@@ -264,18 +325,28 @@
                       src="./json/heart_effect2-2.json"
                       >
                     </lottie-player>
-                    <h4><a href="#"><strong>51,234</strong> 젤리</a></h4>
+                    <h4><strong>51,234</strong> 젤리</h4>
                     <p>사라진 젤리는 돌아오지 않아요~<br>서둘러 교환하세요!</p>
                   </div>
 
                   <ul class="link_wrap">
                     <li>
-                      <p>30일 뒤 사라져요</p>
-                      <a href="#"><strong>6,000</strong> 젤리</a>
+                      <a href="#">
+                        <img src="./images/main/img_bonus04.png" alt="" />
+                        <div>
+                          <span><strong>600</strong>젤리</span>
+                          <p>30일 뒤 소멸</p>
+                        </div>
+                      </a>
                     </li>
                     <li>
-                      <p>H.Point로 교환하세요</p>
-                      <a href="#"><strong>51,200</strong> 젤리</a>
+                      <a href="#">
+                        <img src="./images/main/img_bonus05.png" alt="" />
+                        <div>
+                          <span><strong>51,200</strong>젤리</span>
+                          <p>H.point로 교환가능</p>
+                        </div>
+                      </a>
                     </li>
                   </ul>
                 </div>
@@ -283,152 +354,153 @@
             </div>
           </li>
           <!-- 참여 가능한 챌린지 -->
-          <li class="participate animate_background">
+          <li class="participate">
             <div class="inner">
-              <h3>참여 가능한 챌린지</h3>
-
               <div class="contents">
                 <div class="content1">
-                  <div class="text_wrap">
-                    <h4><a href="#"><strong>100</strong></a></h4>
+                  <a href="#">
+                    <img src="./images/main/img_bonus02.png" alt="" />
+                    <div>
+                      <span><strong>100</strong>챌린지 진행중</span>
+                      <p>챌린지 참여하고 리워드 받기</p>
+                    </div>
+                  </a>
+                </div>
+
+                <div class="content2">
+                  <div class="challenge_list">
+                    <ul>
+                      <li>
+                        <a href="#">
+                          <div class="visual_box">
+                            <img src="./images/img_challenge_list01.jpg" alt="" />
+                          </div>
+        
+                          <div class="title_box">
+                            <div class="inner">
+                              <div class="type">
+                                <span class="color1">선착순참여</span>
+                                <span class="color2">선착순지급</span>
+                              </div>
+        
+                              <div class="location">
+                                <span><lottie-player autoplay loop mode="normal" src="./json/map.json"></lottie-player></span>
+                                <p>서울 송파구 올림픽공원</p>
+                              </div>
+        
+                              <strong class="title">지금 더 현대 방문하면<br>딥디크 5% 할인 쿠폰 증정</strong>
+        
+                              <div class="desc">
+                                <span>2023.11.12~2023.12.19</span>
+        
+                                <div class="icon_wrap">
+                                  <div class="ico_jelly"><span>젤리</span><em>100</em></div>
+                                  <div class="ico_point"><span>포인트</span><em>100</em></div>
+                                  <div class="ico_coupon"><span>쿠폰</span><em>1</em></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                        <button type="button"><span>찜</span></button>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <div class="visual_box">
+                            <img src="./images/img_challenge_list02.jpg" alt="" />
+                          </div>
+        
+                          <div class="title_box">
+                            <div class="inner">
+                              <div class="type">
+                                <span class="color3">당첨자발표</span>
+                                <span class="color4">경품응모</span>
+                              </div>
+        
+                              <div class="location">
+                                <span><lottie-player autoplay loop mode="normal" src="./json/map.json"></lottie-player>                        </span>
+                                <p>서울 송파구 올림픽공원</p>
+                              </div>
+        
+                              <strong class="title">어반스포츠와 함께하는 <br>한강 걷기 챌린지</strong>
+        
+                              <div class="desc">
+                                <span>2023.11.12~2023.12.19</span>
+        
+                                <div class="icon_wrap">
+                                  <div class="ico_jelly"><span>젤리</span><em>100</em></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                        <button type="button"><span>찜</span></button>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <div class="visual_box">
+                            <img src="./images/img_challenge_list03.jpg" alt="" />
+                          </div>
+        
+                          <div class="title_box">
+                            <div class="inner">
+                              <div class="type">
+                                <span class="color1">선착순참여</span>
+                                <span class="color2">선착순지급</span>
+                              </div>
+        
+                              <div class="location">
+                                <span><lottie-player autoplay loop mode="normal" src="./json/map.json"></lottie-player>                        </span>
+                                <p>서울 송파구 올림픽공원</p>
+                              </div>
+        
+                              <strong class="title">지금 더 현대 방문하면<br>딥디크 5% 할인 쿠폰 증정</strong>
+        
+                              <div class="desc">
+                                <span>2023.11.12~2023.12.19</span>
+        
+                                <div class="icon_wrap">
+                                  <div class="ico_jelly"><span>젤리</span><em>100</em></div>
+                                  <div class="ico_point"><span>포인트</span><em>100</em></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                        <button type="button"><span>찜</span></button>
+                      </li>
+                    </ul>
                   </div>
                 </div>
-                <div class="content2">
-                  <ul>
-                    <li>
-                      <a href="#">
-                        <!-- thumb -->
-                        <div class="thumb">
-                          <img src="./images/img_dummy05.jpg" alt="" />
-                        </div>
-                        <!-- desc -->
-                        <div class="desc">
-                          <!-- info -->
-                          <div class="info">
-                            <div class="title">
-                              <span>선착순 지급</span>
-                              <span>찜 100</span>
-                            </div>
-
-                            <div class="page">
-                              <strong>1/20</strong>
-                            </div>
-                          </div>
-                          <!-- cont -->
-                          <div class="cont">
-                            <h5>어반스포츠와 함께하는 한강 걷기 챌린지</h5>
-                            <p>함께 걷는 우리, 가을을 물들이다</p>
-                            <span>2023.11.12~2023.12.19</span>
-
-                            <div class="icon">
-                              <span class="jelly"></span>
-                            </div>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <!-- thumb -->
-                        <div class="thumb">
-                          <img src="./images/img_dummy06.jpg" alt="" />
-                        </div>
-                        <!-- desc -->
-                        <div class="desc">
-                          <!-- info -->
-                          <div class="info">
-                            <div class="title">
-                              <span>선착순 지급</span>
-                              <span>찜 100</span>
-                            </div>
-
-                            <div class="page">
-                              <strong>1/20</strong>
-                            </div>
-                          </div>
-                          <!-- cont -->
-                          <div class="cont">
-                            <h5>어반스포츠와 함께하는 한강 걷기 챌린지</h5>
-                            <p>함께 걷는 우리, 가을을 물들이다</p>
-                            <span>2023.11.12~2023.12.19</span>
-
-                            <div class="icon">
-                              <span class="crew"></span>
-                              <span class="jelly"></span>
-                            </div>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <!-- thumb -->
-                        <div class="thumb">
-                          <img src="./images/img_dummy07.jpg" alt="" />
-                        </div>
-                        <!-- desc -->
-                        <div class="desc">
-                          <!-- info -->
-                          <div class="info">
-                            <div class="title">
-                              <span>선착순 지급</span>
-                              <span>찜 100</span>
-                            </div>
-
-                            <div class="page">
-                              <strong>1/20</strong>
-                            </div>
-                          </div>
-                          <!-- cont -->
-                          <div class="cont">
-                            <h5>어반스포츠와 함께하는 한강 걷기 챌린지</h5>
-                            <p>함께 걷는 우리, 가을을 물들이다</p>
-                            <span>2023.11.12~2023.12.19</span>
-
-                            <div class="icon">
-                              <span class="jelly"></span>
-                            </div>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
               </div>
-
             </div>
           </li>
           <!-- 완료한 챌린지 -->
-          <li class="completed animate animate_background">
+          <li class="clear">
             <div class="inner">
-              <h3>완료한 챌린지</h3>
               <div class="contents">
                 <div class="content1">
-                  <div class="text_wrap">
-                    <h4><a href="#"><strong>99</strong></a></h4>
-                  </div>
-                </div>
-                <div class="content2">
-                  <div class="text_wrap">
-                    <h4><a href="#">현재<strong>99</strong> 개의 챌린지 완료!</a></h4>
+                  <a href="#">
+                    <img src="./images/main/img_bonus03.png" alt="" />
                     <div>
-                      000000000
+                      <span><strong>0</strong> 건 완료한 챌린지</span>
+                      <p>챌린지 참여하고 리워드 받기</p>
                     </div>
-                    <p>와~ 챌린지 왕이세요!</p>
-                  </div>
+                  </a>
                 </div>
-              </div>
-            </div>
-          </li>
-          <!-- 뱃지 -->
-          <li class="badge">
-            <div class="inner">
-              <h3>뱃지</h3>
-  
-              <div class="contents">
-                <div class="content1">
+                
+                <!-- 로티 있는 스타일 lottie -->
+                <div class="content2 lottie">
                   <div class="text_wrap">
-                    <h4><a href="#">뱃지 원정대에 합류하세요!</a></h4>
+                    <lottie-player
+                      autoplay
+                      loop
+                      mode="normal"
+                      src="./json/flag2.json"
+                      >
+                    </lottie-player>
+                    <h4><strong>0</strong> 건</h4>
+                    <p>챌린지 도전 하실거죠?</p>
                   </div>
                 </div>
               </div>
@@ -437,14 +509,8 @@
         </ul>
       </div>
       <!-- //상태 -->
+      
 
-      <!-- 배너 -->
-      <div class="banner_wrap">
-        <a href="#"><img src="./images/img_dummy04.jpg" alt=""></a>
-        <a href="#"><img src="./images/img_dummy04.jpg" alt=""></a>
-        <a href="#"><img src="./images/img_dummy04.jpg" alt=""></a>
-      </div>
-      <!-- //배너 -->
 
       <!-- 툴바 -->
       <div class="toolbar_wrap">
@@ -460,7 +526,7 @@
 
 
 
-
+  <!-- <script src="./js/temp/common_vanilla.js"></script> -->
 
   <!-- 공통 -->
   <script src="./js/common.js"></script>

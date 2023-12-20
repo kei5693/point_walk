@@ -900,32 +900,32 @@ let main = {
 		const header = document.querySelector('#header');
 
 		// 메인 스와이퍼
-		const mainSwipe = document.querySelector('.main_swipe_menu');
-		const getHeight = mainSwipe.querySelector(':scope > .inner').offsetHeight;
+		//const mainSwipe = document.querySelector('.main_swipe_menu');
+		//const getHeight = mainSwipe.querySelector(':scope > .inner').offsetHeight;
 		let mainVisualSwipe = '';
 		let mainTextSwipe = '';
 
-		mainSwiper();
+		//mainSwiper();
 		// 상태 스크롤 class 이벤트 
 		mainStatusScrollEvent();
 
 		window.addEventListener('scroll', () => {
 			const currentScrollPos = window.pageYOffset || document.documentElement.scrollTop;
-			let calcScroll = mainSwipe.offsetTop + mainSwipe.offsetHeight - header.offsetHeight;
-			let calcPos = mainSwipe.offsetTop - window.outerHeight / 2;
+			//let calcScroll = mainSwipe.offsetTop + mainSwipe.offsetHeight - header.offsetHeight;
+			//let calcPos = mainSwipe.offsetTop - window.outerHeight / 2;
 
 			// 스크롤 감지(스와이퍼, 툴바)
-			if (currentScrollPos > calcPos) {
-				// 메인 스와이퍼 
-				if (!mainSwipe.classList.contains('active')) {
-					mainSwipe.classList.add('active');
-					mainSwipe.style.height = getHeight + 'px';
-					mainTextSwipe.autoplay.start();
-				} else {
-					// 툴바
-					currentScrollPos > calcScroll ? toolBar.classList.remove('active') : toolBar.classList.add('active');
-				}
-			}
+			// if (currentScrollPos > calcPos) {
+			// 	// 메인 스와이퍼 
+			// 	if (!mainSwipe.classList.contains('active')) {
+			// 		mainSwipe.classList.add('active');
+			// 		mainSwipe.style.height = getHeight + 'px';
+			// 		mainTextSwipe.autoplay.start();
+			// 	} else {
+			// 		// 툴바
+			// 		currentScrollPos > calcScroll ? toolBar.classList.remove('active') : toolBar.classList.add('active');
+			// 	}
+			// }
 
 			// 출석
 			currentScrollPos > 10 ? attendance.classList.add('active') : resetMainScrollEvent();
@@ -1007,9 +1007,9 @@ let main = {
 			attendance.classList.remove('active');
 
 			// 메인 스와이퍼 리셋
-			mainSwipe.classList.remove('active');
-			mainSwipe.style.height = 0;
-			mainTextSwipe.autoplay.stop(); // 2023-12-04 수정
+			//mainSwipe.classList.remove('active');
+			//mainSwipe.style.height = 0;
+			//mainTextSwipe.autoplay.stop(); // 2023-12-04 수정
 
 			// 툴바 감추기
 			toolBar.classList.remove('active');

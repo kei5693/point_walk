@@ -1,309 +1,274 @@
-// 메인
-let main = {
-  init(){
-    this.mainInit(99999, 30, 80); // 걸음수, 오늘, 어제
-    this.mainWeeklyEvent(3); // 요일 0 ~ 6(일 ~ 토)
-    this.mainScrollEvent();
-    this.monthlyAttendanceEvent(13); // 0부터 시작하니 원하는 날짜-1 입력
-  },
-  // 메인 : 출석 이벤트 오늘날짜로 스크롤 이동, 클릭 이벤트
-  mainWeeklyEvent: function(day){
-    if(document.querySelector('.attendance_wrap .calendar_cont') == null) return;
+$(function () {
+	// 메인 : 출석 이벤트 오늘날짜로 스크롤 이동, 클릭 이벤트
+	$.fn.mainWeeklyEvent = function (day) {
+		if ($('.attendance_wrap .calendar_cont').length === 0) return;
 
-    const attendance = document.querySelector('.attendance_wrap .calendar_cont');
-    const weeklyInner = attendance.querySelector(':scope > .weekly_unit .inner');
-    const weeklyUl = weeklyInner.querySelector(':scope > ul');
-    const weeklyLi = weeklyUl.querySelectorAll('li');
-    const heartEffect01 = weeklyInner.querySelector(':scope > .heart_effect01');
-    const heartEffect02 = weeklyInner.querySelector(':scope > .heart_effect02');
+		const attendance = $('.attendance_wrap .calendar_cont');
+		const weeklyInner = attendance.find('> .weekly_unit .inner');
+		const weeklyUl = weeklyInner.find('> ul');
+		const weeklyLi = weeklyUl.find('li');
+		let heartEffect01 = weeklyInner.find('> .heart_effect01');
+		let heartEffect02 = weeklyInner.find('> .heart_effect02');
 
-    setTabInit();
-    // init
-    setTimeout(() => {
-      setActiveTab(weeklyLi, day);
-      switchTab(day);
-    }, 500);
-    
-    // inner 리스트 클릭 이벤트
-    weeklyLi.forEach((tabTitle, index) => {
-      tabTitle.addEventListener('click', (e) => {
-        e.preventDefault();
+		setTabInit();
+		// init
+		setTimeout(() => {
+			setActiveTab(weeklyLi, day);
+			switchTab(day);
+		}, 500);
 
-        if(day === index){
-          // 클릭 효과 lottie
-          heartEffect02.querySelectorAll('lottie-player').forEach((lp)=>{
-            lp.play();
-          });
-  
-          tabTitle.querySelector(':scope .icon').classList.replace('unclicked', 'clicked');
-  
-          // callback
-          heartEffect02.querySelectorAll('lottie-player')[1].addEventListener("complete", () => {
-            tabTitle.closest('li').classList.replace('today', 'complete');
-          });
-        }
-      });
-    });
+		// inner 리스트 클릭 이벤트
+		weeklyLi.on('click', function (e) {
+			e.preventDefault();
 
-    // 탭 전체 width 설정
-    function setTabInit(){
-      let tabWidth = 20; // 우측 간격 20 필요해서 추가
-      let gap = 16;
-      
-      weeklyLi.forEach((el, index)=>{
-        if(index == 0 ){
-          tabWidth += (el.offsetWidth);
-        } else {
-          tabWidth += (el.offsetWidth + gap);
-        }
-      });
+			if (day === $(this).index()) {
+				// 클릭 효과 lottie
+				heartEffect02.find('lottie-player').each(function () {
+					$(this).get(0).play();
+				});
 
-      weeklyUl.style.width = tabWidth+'px';
-    }
-    // 클릭한 대상에 active
-    function setActiveTab(titles, index) {
-      titles.forEach((title, i) => {
-        title.classList.toggle('today', i === index);
+				$(this).find('> a .icon').removeClass('unclicked').addClass('clicked');
 
-        // today에 lottie 적용
-        if(i === index){
-          title.querySelector(':scope > a .icon').classList.add('unclicked');
-          title.querySelector(':scope > a .icon').append(heartEffect01);
-          title.querySelector(':scope > a .icon').append(heartEffect02);
+				// callback
+				heartEffect02.find('lottie-player').eq(1).on('complete', function () {
+					$(this).closest('li').removeClass('today').addClass('complete');
+				});
+			}
+		});
 
-          setTimeout(() => {
-            heartEffect01.querySelectorAll('lottie-player').forEach((lp)=>{
-              lp.play();
-            });
-          }, 10);
-        }
-      });
-    }
-    // 클릭한 대상으로 scroll 이동 이벤트
-    function switchTab(n){
-      let posCenter = window.outerWidth / 2;
-      let pos = 0;
-      let posLimit = weeklyUl.offsetWidth - weeklyInner.offsetWidth + 20; // inner에 패딩 20있어서 추가
+		// 탭 전체 width 설정
+		function setTabInit() {
+			let tabWidth = 20; // 우측 간격 20 필요해서 추가
+			let gap = 16;
 
-      if (weeklyLi[n].offsetLeft + weeklyLi[n].offsetWidth / 2 <= posCenter) {
-        pos = 0;
-      } else {
-        pos = (weeklyLi[n].offsetLeft + weeklyLi[n].offsetWidth / 2) - posCenter;
-        if (pos > posLimit) {
-          pos = posLimit
-        }
-      }
+			weeklyLi.each(function (index, el) {
+				if (index == 0) {
+					tabWidth += ($(el).outerWidth());
+				} else {
+					tabWidth += ($(el).outerWidth() + gap);
+				}
+			});
 
-      weeklyInner.scrollLeft = pos;
-    }
-  },
-  // 메인 : 스크롤 이벤트(출석, 스와이퍼, 상태, 툴바)
-  mainScrollEvent: function(){
-    if(document.querySelector('.main_content_wrap') == null) return;
+			weeklyUl.width(tabWidth);
+		}
 
-    // 출석
-    const attendance = document.querySelector('.attendance_wrap');
+		// 클릭한 대상에 active
+		function setActiveTab(titles, index) {
+			titles.each(function (i, title) {
+				$(title).toggleClass('today', i === index);
 
-    // 상태
-    const statusUl = document.querySelector('.status_wrap > ul');
-    const statusLi = statusUl.querySelectorAll(':scope > li');
-    const progressWrap = statusUl.querySelector(':scope > li.walking .content2 > .progress_wrap > div');
+				// today에 lottie 적용
+				if (i === index) {
+					const icon = $(title).find('> a .icon');
+					icon.addClass('unclicked');
 
-    // 툴바
-    const toolBar = document.querySelector('.toolbar_wrap');
-    const header = document.querySelector('#header');
+					heartEffect01 = heartEffect01.clone();
+					heartEffect02 = heartEffect02.clone();
 
-    // 메인 스와이퍼
-    const mainSwipe = document.querySelector('.main_swipe_menu');
-    const getHeight = mainSwipe.querySelector(':scope > .inner').offsetHeight;
-    let mainVisualSwipe = '';
-    let mainTextSwipe = '';
-  
-    mainSwiper();
-    // 상태 스크롤 class 이벤트 
-    mainStatusScrollEvent();
+					icon.append(heartEffect01);
+					icon.append(heartEffect02);
 
-    window.addEventListener('scroll', () => {
-      const currentScrollPos = window.pageYOffset || document.documentElement.scrollTop;
-      let calcScroll = mainSwipe.offsetTop + mainSwipe.offsetHeight - header.offsetHeight; 
-      let calcPos = mainSwipe.offsetTop - window.outerHeight/2;
+					setTimeout(() => {
+						icon.find('.heart_effect01 lottie-player').each(function () {
+							$(this).get(0).play();
+						});
+					}, 10);
+				}
+			});
+		}
 
-      // 스크롤 감지(스와이퍼, 툴바)
-      if(currentScrollPos > calcPos){
-        // 메인 스와이퍼 
-        if(!mainSwipe.classList.contains('active')){
-          mainSwipe.classList.add('active');
-          mainSwipe.style.height = getHeight+'px';
-          mainTextSwipe.autoplay.start();
-        } else {
-          // 툴바
-          currentScrollPos > calcScroll ? toolBar.classList.remove('active') : toolBar.classList.add('active');
-        }
-      }
+		// 클릭한 대상으로 scroll 이동 이벤트
+		function switchTab(n) {
+			const posCenter = window.outerWidth / 2;
+			let pos = 0;
+			let gap = 16; // 간격 16
+			const posLimit = weeklyUl.outerWidth() - weeklyInner.outerWidth() + 20; // inner에 패딩 20있어서 추가
 
-      // 출석
-      currentScrollPos > 10 ? attendance.classList.add('active') : resetMainScrollEvent();
-      
-      // 상태 스크롤 감지
-      detectScroll(statusLi, currentScrollPos);
+			if (weeklyLi.eq(n).position().left + gap + weeklyLi.eq(n).outerWidth() / 2 <= posCenter) {
+				pos = 0;
+			} else {
+				pos = (weeklyLi.eq(n).position().left + gap + weeklyLi.eq(n).outerWidth() / 2) - posCenter;
+				if (pos > posLimit) {
+					pos = posLimit;
+				}
+			}
 
-      // 상태 스크롤 class 이벤트
-      mainStatusScrollEvent();
+			weeklyInner.scrollLeft(pos);
+		}
+	};
 
-      function detectScroll(target, scrollTop){
-        target.forEach((el)=>{
-          let calcPos = el.offsetTop - window.outerHeight/2;
-    
-          if(scrollTop > calcPos){
-            el.classList.add('active');
-    
-            // 애니메이션 동작 후에 실행
-            el.addEventListener("transitionend", () => {
-              if(el.classList.contains('active') && el.classList.contains('walking')){
-                setTimeout(() => {mainAni(30, 80)}, 300);
-              }
-            }, {once: false});
-          }
-    
-          if(scrollTop == 0){
-            el.classList.remove('active');
-            resetMainAni();
-          }
-    
-          // 걷기 그래프 애니메이션
-          function mainAni(today, yesterday){
-            progressWrap.querySelector(':scope > span').style.width = today+'%';
-            progressWrap.querySelector(':scope > em').style.width = yesterday+'%';
-          }
-          // 걷기 그래프 초기화
-          function resetMainAni(){
-            progressWrap.querySelector(':scope > span').style.width = '0%';
-            progressWrap.querySelector(':scope > em').style.width = '0%';
-          }
-        });
-      }
-    });
 
-    function mainSwiper(){
-      if(document.querySelector('.main_swipe_menu') == null) return;
-      
-      /* 2023-12-04 스크립트 수정 */
-      mainVisualSwipe = new Swiper('.main_swipe_menu .visual_swiper', {
-        roundLengths: true,		// 이미지가 흐리게 나옴 방지
-        loop: true
-      });
-      mainTextSwipe = new Swiper('.main_swipe_menu .text_swiper', {
-        autoplay: {
-          delay: 2000,
-          disableOnInteraction: false,
-        },
-        effect: "fade",
-        speed: 200,
-        loop: true
-      });
-      /* //2023-12-04 스크립트 수정 */
-  
-      let currentIndex = 0;
-  
-      // mainVisualSwipe.on('slideChange', function () {
-      //   currentIndex = this.realIndex;
-      //   mainTextSwipe.slideTo(currentIndex);
-      // });
+	// 메인 : 보너스 받기, 스크롤에 그래프 이벤트
+	$.fn.mainBonusEvent = function () {
+		const mainStatus = $('.main_content_wrap .main_status');
+		const bonusCont = mainStatus.find('.graph_cont > ul > li');
+		const graph = mainStatus.find('.graph_cont > .graph span');
 
-      mainTextSwipe.on('slideChange', function(){
-        currentIndex = this.realIndex;
-        mainVisualSwipe.slideTo(currentIndex);
-      });
-    }
-    
-    // 메인 스크롤 이벤트 초기화
-    function resetMainScrollEvent(){
-      attendance.classList.remove('active');
+		// 보너스 받기
+		bonusCont.on('click', function (){
+			if ($(this).hasClass('active')) {
 
-      // 메인 스와이퍼 리셋
-      mainSwipe.classList.remove('active');
-      mainSwipe.style.height = 0;
-      mainTextSwipe.autoplay.stop(); // 2023-12-04 수정
+				let heartEffect01 = $(this).find('.heart_effect01');
+				let heartEffect02 = $(this).find('.heart_effect02');
 
-      // 툴바 감추기
-      toolBar.classList.remove('active');
+				$(this).addClass('clicked');
 
-      // 
-      statusLi.forEach((el)=>{el.classList.remove('active')});
-    }
+				heartEffect01.hide();
 
-    // 메인 : 상태 스트롤 대응 이벤트
-    function mainStatusScrollEvent(){
-      if(document.querySelector('.status_wrap') == null) return;
-      
-      const statusContents = document.querySelectorAll('.status_wrap > ul > li');
-  
-      statusContents.forEach((li)=>{
-        // 걸음, 젤리, 완료한 챌린지
-        if(li.classList.contains('animate')){
-          let contents = li.querySelector(':scope > .inner > .contents');
-          let content1 = contents.querySelector(':scope .content1').offsetHeight;
-          let content2 = contents.querySelector(':scope .content2').offsetHeight;
-          let heightValue = li.classList.contains('active') ? content2+'px' : content1+'px';
-  
-          contents.style.height = heightValue;
-        }
+				// 클릭 효과 lottie
+				heartEffect02.find('lottie-player').each(function () {
+					$(this).get(0).play();
+				});
 
-        // 참여가능한 챌린지
-        if(li.classList.contains('participate')){
-          let contents = li.querySelector(':scope > .inner > .contents');
-          let content1 = contents.querySelector(':scope .content1').offsetHeight;
-          let content2 = contents.querySelector(':scope .content2').offsetHeight;
-          let heightValue = li.classList.contains('active') ? content2+content1+'px' : content1+'px';
+				// callback
+				heartEffect02.find('lottie-player').eq(1).on('complete', function () {
+					$(this).closest('li').removeClass('active').addClass('complete');
+				});
+			}
+		});
 
-          contents.style.height = heightValue;
-        }
-      });
-    }
-  },
-  // 메인 최초 로드 시 애니메이션(걸음수, 오늘, 어제)
-  mainInit: function(count, today, yesterday){
-    if(document.querySelector('.main_content_wrap .status_wrap') == null) return;
+		// 스크롤에 그래프 이벤트
+		$(window).on('scroll', function (){
+			if ($('.main_status').length === 0) return;
 
-    const target = document.querySelector('.main_content_wrap .status_wrap li.walking .content1 > .progress_wrap > div');
-    common.animateCounter('.main_content_wrap li.walking .content1 .text_wrap strong', count, 1000);
-    target.querySelector(':scope > span').style.width = today+'%';
-    target.querySelector(':scope > em').style.width = yesterday+'%';
-  },
-  // 월간 출석 클릭 이벤트
-  monthlyAttendanceEvent: function(today){
-    if(document.querySelector('.monthly_attendance_wrap') == null) return;
+			const currentScrollPos = $(window).scrollTop();
+			let calcPos = $('.main_status').offset().top - $(window).outerHeight() / 2;
 
-    const monthlyAttendance = document.querySelector('.monthly_attendance_wrap .monthly_calendar .calendar_tbl');
-    const monthlyDate = document.querySelectorAll(':scope td a');
-    const heartEffect01 = monthlyAttendance.querySelector(':scope .heart_effect01');
-    const heartEffect02 = monthlyAttendance.querySelector(':scope .heart_effect02');
+			// active
+			if (currentScrollPos > calcPos) {
+				mainAni(60);
+			}
 
-    monthlyDate.forEach((date, index)=>{
+			// reset
+			if (currentScrollPos == 0) {
+				mainAni(0);
+			}
+		});
 
-      if(today === index){
-        setTimeout(() => {
-          date.closest('td').classList.add('today');
-  
-          date.querySelector(':scope .icon').append(heartEffect01);
-          date.querySelector(':scope .icon').append(heartEffect02);
-        }, 300);
+		function mainAni(value) {
+			graph.css('width', value + '%');
+		}
+	};
 
-        date.addEventListener('click', (e)=>{
-          e.preventDefault();
-          // 클릭 효과 lottie
-          heartEffect02.querySelectorAll('lottie-player').forEach((lp)=>{
-            lp.play();
-          });
 
-          date.querySelector(':scope .icon').classList.add('clicked');
+	// 메인 : 챌린지 목록 찜 버튼 이벤트
+	$.fn.mainBtnEvent = function () {
+		$(document).on('click', '.main_content_wrap .challenge_list > ul > li > button', function (e) {
+			$(this).toggleClass('active');
+		});
+	};
 
-          //callback
-          heartEffect02.querySelectorAll('lottie-player')[1].addEventListener("complete", () => {
-            date.closest('td').classList.replace('today', 'complete');
-          });
-        });
-      }
-    });
-  }
-}
+
+	// 메인 : 스크롤 이벤트(출석, 스와이퍼, 상태, 툴바)
+	$.fn.mainScrollEvent = function(){
+		if ($('.main_content_wrap').length === 0) return;
+
+		// 출석
+		const attendance = $('.attendance_wrap');
+
+		// 상태
+		const statusUl = $('.status_wrap > ul');
+		const statusLi = statusUl.find('> li');
+
+		// 메인 스와이퍼
+		if ($('.main_swipe_menu').length === 0) return;
+		let mainVisualSwipe = new Swiper('.main_swipe_menu .banner_swiper', {
+			autoplay: {
+				delay: 2000,
+				disableOnInteraction: false,
+			},
+			spaceBetween: 20,
+			roundLengths: true,// 이미지가 흐리게 나옴 방지
+			loop: true,
+			pagination: {
+				el: ".swiper-pagination",
+			},
+		});
+
+		$(window).on('scroll', function () {
+			const currentScrollPos = $(window).scrollTop();
+
+			// 출석 스크롤 따리서 높이 조정
+			currentScrollPos > 10 ? attendance.addClass('active') : resetMainScrollEvent();
+
+			// 메인 하단 챌린지 메뉴 스크롤 이벤트
+			detectScroll(statusLi, currentScrollPos);
+
+			// 메인 하단 챌린지 메뉴 스크롤 이벤트
+			function detectScroll(target, scrollTop) {
+				target.each(function () {
+					let calcPos = $(this).offset().top - $(window).outerHeight() / 10 * 5;
+
+					if (scrollTop > calcPos && !$(this).hasClass('clear')) {
+						$(this).addClass('active').find('> .inner > .contents > .content2').slideDown();
+					}
+
+					if (scrollTop == 0) {
+						$(this).removeClass('active');
+						resetScroll();
+					}
+				});
+
+				function resetScroll(){
+					$('.status_wrap > ul > li').each(function(){
+						if(!$(this).hasClass('clear')){
+							$(this).find('> .inner > .contents > .content2').slideUp();
+						}
+					});
+
+				}
+			}
+		});
+
+		// 메인 스크롤 이벤트 초기화
+		function resetMainScrollEvent() {
+			attendance.removeClass('active');
+
+			// Reset Status Li
+			statusLi.removeClass('active');
+		}
+	};
+
+
+	// 월간 출석 클릭 이벤트
+	$.fn.monthlyAttendanceEvent = function (today) {
+		if (this.length === 0 || !this.hasClass('monthly_attendance_wrap')) return;
+
+		const monthlyAttendance = this.find('.monthly_calendar .calendar_tbl');
+		const monthlyDate = this.find('.monthly_calendar .calendar_tbl td a');
+		let heartEffect01 = this.find('.monthly_calendar .calendar_tbl .heart_effect01');
+		let heartEffect02 = this.find('.monthly_calendar .calendar_tbl .heart_effect02');
+
+		monthlyDate.each(function (index) {
+			if (today === index) {
+				const date = $(this);
+
+				setTimeout(() => {
+					date.closest('td').addClass('today');
+
+					heartEffect01 = heartEffect01.clone();
+					heartEffect02 = heartEffect02.clone();
+
+					date.find('.icon').append(heartEffect01);
+					date.find('.icon').append(heartEffect02);
+				}, 300);
+
+				date.on('click', function (e) {
+					e.preventDefault();
+
+					// 클릭 효과 lottie
+					heartEffect02.find('lottie-player').each(function () {
+						$(this).get(0).play();
+					});
+
+					date.find('.icon').addClass('clicked');
+
+					// callback
+					heartEffect02.find('lottie-player').eq(1).on('complete', function () {
+						date.closest('td').removeClass('today').addClass('complete');
+					});
+				});
+			}
+		});
+	};
+});
