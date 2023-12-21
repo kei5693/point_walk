@@ -21,298 +21,103 @@
   <script src="./js/lib/chartjs-plugin-annotation.min.js"></script>
 </head>
 <body>
-  <div id="wrap">
+  <div id="wrap" class="color_wrap">
     <!-- header -->
     <div id="header">
       <div class="title_wrap">
         <button type="button" class="btn_back">뒤로가기</button>
         <h1>젤리 내역</h1>
       </div>
-			<div class="icon_wrap">
-        <button type="button" class="btn_setting"><span>설정</span></button>
-      </div>
     </div>
     <!-- container -->
     <div id="container">
 			<!-- reward_wrap -->
-			<div class="reward_wrap">
-				<!-- jelly_point_detail -->
-				<div class="jelly_point_detail tab_menu_wrap">
-					<ul class="tab_title">
-						<li><a href="#">1주일</a></li>
-						<li><a href="#">1개월</a></li>
-						<li><a href="#">3개월</a></li>
-						<li><a href="#">6개월</a></li>
-						<li><a href="#">1년</a></li>
-					</ul>
+      <div class="reward_wrap">
+				<!-- 젤리 내역 -->
+				<div class="jelly_reward_wrap">
+					<div class="tab_menu_wrap">
+						<ul class="tab_title">
+							<li><a href="#">1주일</a></li>
+							<li><a href="#">1개월</a></li>
+							<li><a href="#">3개월</a></li>
+							<li><a href="#">6개월</a></li>
+							<li><a href="#">1년</a></li>
+						</ul>
+		
+						<div class="tab_content">
+							<div class="jelly_reward_list">
+								<p>2023.11.12~2023.12.11</p>
 
-					<div class="tab_content">
-						<!-- 1주일 -->
-						<div>
-							<p>1주일 2023.09.13 2023.09.20</p>
-							<table>
-								<colgroup>
-									<col>
-									<col>
-								</colgroup>
-								<tbody>
-									<tr>
-										<td>
-											젤리 적립
-											일일미션
-											2023.09.13
-										</td>
-										<td>+55 J</td>
-									</tr>
-									<tr>
-										<td>
-											젤리 소멸
-											일일미션
-											2023.09.13
-										</td>
-										<td>-99 J</td>
-									</tr>
-									<tr>
-										<td>
-											H.Point 교환
-											일일미션
-											2023.09.13
-										</td>
-										<td>-1,000 J</td>
-									</tr>
-									<tr>
-										<td>
-											젤리 소멸
-											일일미션
-											2023.09.13
-										</td>
-										<td>+55 J</td>
-									</tr>
-									<tr>
-										<td>
-											젤리 소멸
-											일일미션
-											2023.09.13
-										</td>
-										<td>+55 J</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<!-- 1개월 -->
-						<div>
-							<p>1개월 2023.09.13 2023.09.20</p>
-							<table>
-								<colgroup>
-									<col>
-									<col>
-								</colgroup>
-								<tbody>
-									<tr>
-										<td>
-											젤리 적립
-											일일미션
-											2023.09.13
-										</td>
-										<td>+55 J</td>
-									</tr>
-									<tr>
-										<td>
-											젤리 소멸
-											일일미션
-											2023.09.13
-										</td>
-										<td>-99 J</td>
-									</tr>
-									<tr>
-										<td>
-											H.Point 교환
-											일일미션
-											2023.09.13
-										</td>
-										<td>-1,000 J</td>
-									</tr>
-									<tr>
-										<td>
-											젤리 소멸
-											일일미션
-											2023.09.13
-										</td>
-										<td>+55 J</td>
-									</tr>
-									<tr>
-										<td>
-											젤리 소멸
-											일일미션
-											2023.09.13
-										</td>
-										<td>+55 J</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<!-- 3개월 -->
-						<div>
-							<p>3개월 2023.09.13 2023.09.20</p>
-							<table>
-								<colgroup>
-									<col>
-									<col>
-								</colgroup>
-								<tbody>
-									<tr>
-										<td>
-											젤리 적립
-											일일미션
-											2023.09.13
-										</td>
-										<td>+55 J</td>
-									</tr>
-									<tr>
-										<td>
-											젤리 소멸
-											일일미션
-											2023.09.13
-										</td>
-										<td>-99 J</td>
-									</tr>
-									<tr>
-										<td>
-											H.Point 교환
-											일일미션
-											2023.09.13
-										</td>
-										<td>-1,000 J</td>
-									</tr>
-									<tr>
-										<td>
-											젤리 소멸
-											일일미션
-											2023.09.13
-										</td>
-										<td>+55 J</td>
-									</tr>
-									<tr>
-										<td>
-											젤리 소멸
-											일일미션
-											2023.09.13
-										</td>
-										<td>+55 J</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<!-- 6개월 -->
-						<div>
-							<p>6개월 2023.09.13 2023.09.20</p>
-							<table>
-								<colgroup>
-									<col>
-									<col>
-								</colgroup>
-								<tbody>
-									<tr>
-										<td>
-											젤리 적립
-											일일미션
-											2023.09.13
-										</td>
-										<td>+55 J</td>
-									</tr>
-									<tr>
-										<td>
-											젤리 소멸
-											일일미션
-											2023.09.13
-										</td>
-										<td>-99 J</td>
-									</tr>
-									<tr>
-										<td>
-											H.Point 교환
-											일일미션
-											2023.09.13
-										</td>
-										<td>-1,000 J</td>
-									</tr>
-									<tr>
-										<td>
-											젤리 소멸
-											일일미션
-											2023.09.13
-										</td>
-										<td>+55 J</td>
-									</tr>
-									<tr>
-										<td>
-											젤리 소멸
-											일일미션
-											2023.09.13
-										</td>
-										<td>+55 J</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<!-- 1년 -->
-						<div>
-							<p>1년 2023.09.13 2023.09.20</p>
-							<table>
-								<colgroup>
-									<col>
-									<col>
-								</colgroup>
-								<tbody>
-									<tr>
-										<td>
-											젤리 적립
-											일일미션
-											2023.09.13
-										</td>
-										<td>+55 J</td>
-									</tr>
-									<tr>
-										<td>
-											젤리 소멸
-											일일미션
-											2023.09.13
-										</td>
-										<td>-99 J</td>
-									</tr>
-									<tr>
-										<td>
-											H.Point 교환
-											일일미션
-											2023.09.13
-										</td>
-										<td>-1,000 J</td>
-									</tr>
-									<tr>
-										<td>
-											젤리 소멸
-											일일미션
-											2023.09.13
-										</td>
-										<td>+55 J</td>
-									</tr>
-									<tr>
-										<td>
-											젤리 소멸
-											일일미션
-											2023.09.13
-										</td>
-										<td>+55 J</td>
-									</tr>
-								</tbody>
-							</table>
+								<ul>
+									<li>
+										<p><strong>[적립]</strong><span>2023.11.1</span></p>
+										<div>
+											<span>일일미션 2,000걸음</span>
+											<strong>+34<span>J</span></strong>
+										</div>
+									</li>
+									<li>
+										<p><strong>[소멸]</strong><span>2023.11.1</span></p>
+										<div>
+											<span>소멸</span>
+											<strong class="minus">-12<span>J</span></strong>
+										</div>
+									</li>
+									<li>
+										<p><strong>[적립]</strong><span>2023.11.1</span></p>
+										<div>
+											<span>챌린지</span>
+											<strong>+104<span>J</span></strong>
+										</div>
+									</li>
+									<li>
+										<p><strong>[적립]</strong><span>2023.11.1</span></p>
+										<div>
+											<span>H.point교환</span>
+											<strong>+20<span>J</span></strong>
+										</div>
+									</li>
+									<li>
+										<p><strong>[적립]</strong><span>2023.11.1</span></p>
+										<div>
+											<span>H.point교환</span>
+											<strong>+20<span>J</span></strong>
+										</div>
+									</li>
+									<li>
+										<p><strong>[적립]</strong><span>2023.11.1</span></p>
+										<div>
+											<span>H.point교환</span>
+											<strong>+20<span>J</span></strong>
+										</div>
+									</li>
+									<li>
+										<p><strong>[소멸]</strong><span>2023.11.1</span></p>
+										<div>
+											<span>소멸</span>
+											<strong class="minus">-12<span>J</span></strong>
+										</div>
+									</li>
+									<li>
+										<p><strong>[적립]</strong><span>2023.11.1</span></p>
+										<div>
+											<span>H.point교환</span>
+											<strong>+20<span>J</span></strong>
+										</div>
+									</li>
+									<li class="no_result">
+										<div>
+											<p>젤리내역이 없어요.</p>
+										</div>
+									</li>
+								</ul>
+
+								<button type="button" class="btn_more"><span>더보기</span></button>
+							</div>
 						</div>
 					</div>
-
-					<p>젤리 내역이 없어요</p>
 				</div>
-				<!-- //jelly_point_detail -->
-			</div>
+      </div>
 			<!-- //reward_wrap -->
     </div>
   </div>

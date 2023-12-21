@@ -21,21 +21,86 @@
   <script src="./js/lib/chartjs-plugin-annotation.min.js"></script>
 </head>
 <body>
-  <div id="wrap">
+  <div id="wrap" class="color_wrap">
     <!-- header -->
     <div id="header">
       <div class="title_wrap">
         <button type="button" class="btn_back">뒤로가기</button>
         <h1>다운로드 관리</h1>
-      </div>
-			<div class="icon_wrap">
-        <button type="button" class="btn_setting"><span>설정</span></button>
-      </div>
+      </div>			
     </div>
     <!-- container -->
     <div id="container">
+      <div class="downloadset_wrap">
 
+        <div class="check_all">
+          <span class="design_checkbox">
+            <input type="checkbox" id="check01" /><label for="check01"><span>전체선택</span></label>
+          </span>
+        </div>
+
+        <!-- 데이터 없을때 -->
+        <!-- <div class="no_list">다운로드 받은 파일이 없습니다.</div> -->
+        <!-- 데이터 없을때 -->
+
+        <ul class="check_list">
+          <li>
+            <div>
+              <span class="design_checkbox">
+                <input type="checkbox" id="check02" /><label for="check02"><span>플로킹과 함께 걷는 가이드</span></label>
+              </span>
+              <i>138MB</i>
+            </div>
+            <span>2023.12.16</span>
+          </li>
+          <li>
+            <div>
+              <span class="design_checkbox">
+                <input type="checkbox" id="check03" checked /><label for="check03"><span>플로킹과 함께 걷는 플로킹과 함께 걷는 플로킹과 함께 걷는 가이드</span></label>
+              </span>
+              <i>500MB</i>
+            </div>
+            <span>2023.12.16</span>
+          </li>
+          <li>
+            <div>
+              <span class="design_checkbox">
+                <input type="checkbox" id="check04" checked /><label for="check04"><span>플로킹과 함께 걷는 가이드</span></label>
+              </span>
+              <i>138MB</i>
+            </div>
+            <span>2023.12.16</span>
+          </li>
+          <li>
+            <div>
+              <span class="design_checkbox">
+                <input type="checkbox" id="check05" /><label for="check05"><span>플로킹과 함께 걷는 가이드</span></label>
+              </span>
+              <i>138MB</i>
+            </div>
+            <span>2023.12.16</span>
+          </li>
+          <li>
+            <div>
+              <span class="design_checkbox">
+                <input type="checkbox" id="check06" /><label for="check06"><span>플로킹과 함께 걷는 가이드</span></label>
+              </span>
+              <i>138MB</i>
+            </div>
+            <span>2023.12.16</span>
+          </li>
+        </ul>     
+      </div>
     </div>
+
+    <div id="footer">
+      <div class="btn_dialog full">
+        <button type="button" class="btn_cancel">취소</button>
+        <!-- <button type="button" disabled>삭제</button> -->
+        <button type="button">삭제</button>
+      </div>
+    </div>
+
   </div>
 
 

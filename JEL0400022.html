@@ -32,29 +32,28 @@
       <div class="layer_content">
         <!-- header -->
         <div class="layer_header">
-          <h1>‘동작 및 피스니스’ 설정이 꺼져 있습니다.</h1>
+          
         </div>
         <!-- body -->
         <div class="layer_body">
           <p class="popup_sub_txt">
-            사용자의 걸음 수를 측정하기 위해 해당 설정이 켜져 있어야 합니다.
+            H.Point 교환에 실패했어요.<br>다시 시도해 주세요.
           </p>
         </div>
         <!-- footer -->
         <div class="layer_footer">
           <div class="btn_dialog align_right">
-            <button type="button" class="btn_cancel">취소</button>
-            <button type="button" class="btn_confirm">확인</button>
+            <button type="button" class="btn_confirm">열기</button>
           </div>
         </div>
       </div>
     </div>
   </div>
   <!-- //교환실패 -->
-
-
-
-
+  
+  
+  
+  
 
   <!-- 공통 -->
   <script src="./js/common.js"></script>
@@ -71,9 +70,9 @@
   <script src="./js/init.js"></script>
   <script>
     setTimeout(() => {
-      common.layerToggle('#MN0100020-pop1');
+      $.fn.layerToggle('#MN0100020-pop1');
     }, 300);
   </script>
-
-</body>
-</html>
+  
+  </body>
+  </html>

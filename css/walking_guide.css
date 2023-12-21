@@ -199,6 +199,31 @@
   line-height: 0;
 }
 
+.walk_detail_wrap.modal_layer_popup.fullscreen .layer_content_wrap {
+  background: green;
+}
+.walk_detail_wrap.modal_layer_popup .layer_content_wrap .layer_content .layer_header {
+  background:transparent;
+}
+.walk_detail_wrap.modal_layer_popup .layer_content_wrap .layer_close {
+  background: url(../images/common/ico_cross04.svg) no-repeat 50%;
+  background-size: 100%;
+}
+.walk_detail_wrap .layer_header h1 {
+  opacity: 0;
+}
+#wrap.download_show .player_download_wrap .player_wrap {
+  transform: translateY(-100%);
+}
+
+#wrap .player_download_wrap .player_wrap .player_status {
+  padding-right: 20px;
+}
+#wrap .player_download_wrap .player_wrap .player_status span {
+  color: #98A2B3;
+  margin-left: auto;
+} 
+
 .guide_detail_wrap .layer_content_wrap {
   padding: 0;
 }

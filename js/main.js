@@ -81,7 +81,7 @@ $(function () {
 		function switchTab(n) {
 			const posCenter = window.outerWidth / 2;
 			let pos = 0;
-			let gap = 16; // 간격 16
+			let gap = 0;
 			const posLimit = weeklyUl.outerWidth() - weeklyInner.outerWidth() + 20; // inner에 패딩 20있어서 추가
 
 			if (weeklyLi.eq(n).position().left + gap + weeklyLi.eq(n).outerWidth() / 2 <= posCenter) {
@@ -98,7 +98,7 @@ $(function () {
 	};
 
 
-	// 메인 : 보너스 받기, 스크롤에 그래프 이벤트
+	// 메인 : 보너스 받기, 스크롤에 그래프 이벤트(챌린지에서 동일 이벤트 있어서 사용 안함)
 	$.fn.mainBonusEvent = function () {
 		const mainStatus = $('.main_content_wrap .main_status');
 		const bonusCont = mainStatus.find('.graph_cont > ul > li');
@@ -174,7 +174,7 @@ $(function () {
 		if ($('.main_swipe_menu').length === 0) return;
 		let mainVisualSwipe = new Swiper('.main_swipe_menu .banner_swiper', {
 			autoplay: {
-				delay: 2000,
+				delay: 20000,
 				disableOnInteraction: false,
 			},
 			spaceBetween: 20,
@@ -199,7 +199,8 @@ $(function () {
 				target.each(function () {
 					let calcPos = $(this).offset().top - $(window).outerHeight() / 10 * 5;
 
-					if (scrollTop > calcPos && !$(this).hasClass('clear')) {
+					// if (scrollTop > calcPos && !$(this).hasClass('clear')) {
+					if (scrollTop > calcPos) {
 						$(this).addClass('active').find('> .inner > .contents > .content2').slideDown();
 					}
 
@@ -236,10 +237,15 @@ $(function () {
 
 		const monthlyAttendance = this.find('.monthly_calendar .calendar_tbl');
 		const monthlyDate = this.find('.monthly_calendar .calendar_tbl td a');
+		
 		let heartEffect01 = this.find('.monthly_calendar .calendar_tbl .heart_effect01');
 		let heartEffect02 = this.find('.monthly_calendar .calendar_tbl .heart_effect02');
 
 		monthlyDate.each(function (index) {
+			$(this).on('click', function (e) {
+				e.preventDefault();
+			});
+
 			if (today === index) {
 				const date = $(this);
 
@@ -256,17 +262,28 @@ $(function () {
 				date.on('click', function (e) {
 					e.preventDefault();
 
-					// 클릭 효과 lottie
-					heartEffect02.find('lottie-player').each(function () {
-						$(this).get(0).play();
-					});
+					if($(this).closest('td').hasClass('today')){
+						date.find('.icon').addClass('clicked');
+	
+						// 클릭 효과 lottie
+						heartEffect02.find('lottie-player').each(function () {
+							$(this).get(0).play();
+						});
+						// callback
+						heartEffect02.find('lottie-player').eq(1).on('complete', function () {
+							// 토요일인가 평일인가
+							if($(this).closest('td').index() == 6){
+								date.closest('td').removeClass('today').addClass('bonus');
+							} else {
+								date.closest('td').removeClass('today').addClass('complete');
+							}
+						});
+					}
 
-					date.find('.icon').addClass('clicked');
-
-					// callback
-					heartEffect02.find('lottie-player').eq(1).on('complete', function () {
-						date.closest('td').removeClass('today').addClass('complete');
-					});
+					// 오늘 보너스 받고, 전체 보너스받기로 전환
+					if($(this).closest('td').hasClass('bonus')){
+						date.closest('td').removeClass('bonus').addClass('complete');
+					}
 				});
 			}
 		});

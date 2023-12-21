@@ -272,6 +272,7 @@ $(function () {
     });
   };
   // $('셀렉터').animateCounter(1000, 1000);
+  // 셀렉터에 해당하는 태그가 1개 이상이면 에러
 
   // 프로필 설정 : 인풋 포커스, 인풋 값 삭제
   $('.inp_box_list > li').each(function () {

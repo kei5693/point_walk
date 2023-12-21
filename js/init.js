@@ -15,9 +15,9 @@ $(function () {
 	// main
 	$.fn.mainWeeklyEvent(3); // 요일 0 ~ 6(일 ~ 토)
 	$.fn.mainBonusEvent();
-	$.fn.mainBtnEvent();
+	//$.fn.mainBtnEvent();
 	$.fn.mainScrollEvent();
 
 	// 월간 출석 클릭 이벤트
-	$('.monthly_attendance_wrap').monthlyAttendanceEvent(13);
+	$('.monthly_attendance_wrap').monthlyAttendanceEvent(15);
 });

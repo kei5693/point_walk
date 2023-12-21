@@ -21,42 +21,109 @@
   <script src="./js/lib/chartjs-plugin-annotation.min.js"></script>
 </head>
 <body>
-  <div id="wrap">
+  <div id="wrap" class="color_wrap">
     <!-- header -->
     <div id="header">
       <div class="title_wrap">
         <button type="button" class="btn_back">뒤로가기</button>
         <h1>포인트 적립/교환 내역</h1>
       </div>
-      <div class="icon_wrap">
-        <button type="button" class="btn_setting"><span>설정</span></button>
-      </div>
     </div>
     <!-- container -->
     <div id="container">
-      <!-- reward_wrap -->
+			<!-- reward_wrap -->
       <div class="reward_wrap">
         <div class="notice_wrap">
           <ul class="bull_list">
-            <li>유효기간 경과로 소멸이 예상되는 젤리입니다.</li>
-            <li>30일 내의 포인트 적립/교환 내역만 조회됩니다.</li>
+            <li>포인트워크에서 받은 H.Point 내역이 제공됩니다.</li>
           </ul>
         </div>
+				<!-- 포인트 적립/교환 내역 -->
+				<div class="jelly_reward_wrap">
+					<div class="tab_menu_wrap">
+						<ul class="tab_title">
+							<li><a href="#">1주일</a></li>
+							<li><a href="#">1개월</a></li>
+							<li><a href="#">3개월</a></li>
+							<li><a href="#">6개월</a></li>
+							<li><a href="#">1년</a></li>
+						</ul>
+		
+						<div class="tab_content">
+							<div class="jelly_reward_list">
+								<p>2023.11.12~2023.12.11</p>
 
-        <div>
-          <span>소멸예정</span>
-          <p><span>1,525</span> J</p>
-        </div>
+								<ul>
+									<li>
+										<p><strong>[적립]</strong><span>2023.11.1</span></p>
+										<div>
+											<span>일일미션 2,000걸음</span>
+											<strong>+34<span>J</span></strong>
+										</div>
+									</li>
+									<li>
+										<p><strong>[소멸]</strong><span>2023.11.1</span></p>
+										<div>
+											<span>소멸</span>
+											<strong class="minus">-12<span>J</span></strong>
+										</div>
+									</li>
+									<li>
+										<p><strong>[적립]</strong><span>2023.11.1</span></p>
+										<div>
+											<span>챌린지</span>
+											<strong>+104<span>J</span></strong>
+										</div>
+									</li>
+									<li>
+										<p><strong>[적립]</strong><span>2023.11.1</span></p>
+										<div>
+											<span>H.point교환</span>
+											<strong>+20<span>J</span></strong>
+										</div>
+									</li>
+									<li>
+										<p><strong>[적립]</strong><span>2023.11.1</span></p>
+										<div>
+											<span>H.point교환</span>
+											<strong>+20<span>J</span></strong>
+										</div>
+									</li>
+									<li>
+										<p><strong>[적립]</strong><span>2023.11.1</span></p>
+										<div>
+											<span>H.point교환</span>
+											<strong>+20<span>J</span></strong>
+										</div>
+									</li>
+									<li>
+										<p><strong>[소멸]</strong><span>2023.11.1</span></p>
+										<div>
+											<span>소멸</span>
+											<strong class="minus">-12<span>J</span></strong>
+										</div>
+									</li>
+									<li>
+										<p><strong>[적립]</strong><span>2023.11.1</span></p>
+										<div>
+											<span>H.point교환</span>
+											<strong>+20<span>J</span></strong>
+										</div>
+									</li>
+									<li class="no_result">
+										<div>
+											<p>포인트워크에서 받은/교환한<br>포인트내역이 없어요.</p>
+										</div>
+									</li>
+								</ul>
 
-        <div class="notice_wrap">
-          <ul class="bull_list">
-            <li>적립된 젤리는 90일 경과 후 소멸됩니다.</li>
-            <li>유효기간 경과로 소멸된 젤리는 복원이 불가합니다.</li>
-            <li>명시된 날짜에 젤리가 소멸됩니다.</li>
-          </ul>
-        </div>
+								<button type="button" class="btn_more"><span>더보기</span></button>
+							</div>
+						</div>
+					</div>
+				</div>
       </div>
-      <!-- //reward_wrap -->
+			<!-- //reward_wrap -->
     </div>
   </div>
 

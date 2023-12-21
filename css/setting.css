@@ -1,0 +1,267 @@
+@charset "UTF-8";
+:root {
+  --color-brand1: #4E2AF4;
+  --color-brand2: #D6BBFB;
+  --color-brand3: #B5FA95;
+  --color-brand4: #EAE8FF;
+  --color-sec1: #FF2E6D;
+  --color-font1: #000;
+  --color-font2: #777;
+}
+
+/* 포인트 워크 설정 */
+
+.setting_wrap {
+    padding: 30px;
+}
+.setting_wrap .setting_list > li + li {
+  padding: 20px 0 0;
+}
+.setting_wrap .setting_list > li h2 {
+  font-size: 13px;
+  font-weight: 800;
+}
+.setting_wrap .setting_list > li > ul {
+  margin-top: 10px;
+  border-top: 1px solid #000;
+  position: relative;
+}
+.setting_wrap .setting_list > li > ul > li {
+  position: relative;
+  padding: 20px 0;
+}
+.setting_wrap .setting_list > li > ul > li + li {
+  border-top: 1px solid #b8b8b8;
+}
+.setting_wrap .setting_list > li > ul > li a {
+  display: block;
+  position: relative;
+  font-size: 13px;
+  padding-right: 30px;
+}
+.setting_wrap .setting_list > li > ul > li a:after {
+  content: "";
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background: url("../images/common/ico_arrow_right01.svg") no-repeat;
+  background-size: 100%;
+}
+.setting_wrap .setting_list > li > ul > li h3 {
+  padding-top: 4px;
+  font-size: 13px;
+  font-weight: 400;
+}
+.setting_wrap .setting_list > li > ul > li P {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #98A2B3;
+}
+.setting_wrap .setting_list > li > ul .inpchk_wrap {
+  position: relative;
+}
+.setting_wrap .setting_list > li > ul .inpchk_wrap .inpchk_ani {
+  position: absolute;
+  top: -5px;
+  right: 0;
+}
+.setting_wrap .setting_list > li > ul .inpchk_wrap > div {
+  margin: 15px 0 0;
+  display: flex;
+  justify-content: right;
+}
+.setting_wrap .setting_list > li > ul .inpchk_wrap > div button {
+  display: block;
+}
+.setting_wrap .setting_list > li > ul .inpchk_wrap > div button span {
+  display: block;
+  color: #D9D9D9;
+  border-bottom: 1px solid #D9D9D9;
+  font-weight: 600;
+  font-size: 11px;
+}
+.setting_wrap .setting_list > li > ul .inpchk_wrap > div button.active span {
+  border-bottom-color: var(--color-brand1);
+  color: var(--color-brand1);
+}
+
+
+/* 프로필 등록 */
+
+.profile_wrap {
+    padding: 30px;
+}
+.profile_wrap > p.ment {
+    font-size: 13px;
+    color: #aaa;
+}
+  .profile_wrap .form_list_wrap h3 {
+    font-size: 16px;
+    font-weight: 800;
+    margin-top: 40px;
+}
+.profile_wrap .form_list_wrap .inp_box_list {
+    margin-top: 16px;
+}
+
+  .profile_wrap .form_list_wrap .inp_box_list + .notice_wrap {
+    margin-top: 24px;
+  }
+  .profile_wrap .form_list_wrap .inp_box_list > li > div {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    padding: 0 20px;
+    background: #fff;
+    border: 1px solid #EEE;
+    transition: border-color 0.2s ease;
+  }
+  .profile_wrap .form_list_wrap .inp_box_list > li > div input {
+    flex: 1;
+    height: 100%;
+    border: 0 none;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .profile_wrap .form_list_wrap .inp_box_list > li > div input:focus-visible {
+    outline: none;
+  }
+  .profile_wrap .form_list_wrap .inp_box_list > li > div input:-moz-placeholder-shown + .btn_delete {
+    display: none;
+  }
+  .profile_wrap .form_list_wrap .inp_box_list > li > div input:placeholder-shown + .btn_delete {
+    display: none;
+  }
+  .profile_wrap .form_list_wrap .inp_box_list > li > div button {
+    height: 24px;
+    margin-left: 8px;
+    border: 0 none;
+    font-size: 0;
+    line-height: 0;
+  }
+  .profile_wrap .form_list_wrap .inp_box_list > li > div button.btn_delete {
+    width: 24px;
+    height: 24px;
+    background: url("../images/common/ico_cross06.svg") no-repeat 50%;
+  }
+  .profile_wrap .form_list_wrap .inp_box_list > li > div .btn_overlap {
+    line-height: 18px;
+    border-bottom: 1px solid #000;
+  }
+  .profile_wrap .form_list_wrap .inp_box_list > li > div a,
+  .profile_wrap .form_list_wrap .inp_box_list > li > div span {
+    font-size: 16px;
+    line-height: inherit;
+    margin-left: 8px;
+  }
+  .profile_wrap .form_list_wrap .inp_box_list > li > p {
+    margin-top: 5px;
+    font-size: 16px;
+    color: red;
+  }
+  .profile_wrap .form_list_wrap .inp_box_list > li > p.clear {
+    color: blue;
+  }
+  .profile_wrap .form_list_wrap .inp_box_list > li + li {
+    margin-top: 8px;
+  }
+  .profile_wrap .form_list_wrap .inp_box_list > li.active > div {
+    border-color: var(--color-brand1);
+  }
+  .profile_wrap .notice_wrap .bull_list > li {
+    font-size: 14px;
+    color: #777;
+}
+
+
+/* 다운로드 관리 */
+
+.downloadset_wrap {
+    padding: 30px;
+}
+
+.downloadset_wrap .design_checkbox input {
+    display: none;
+}
+.downloadset_wrap .design_checkbox input:checked + label:after {
+    background: var(--color-brand1) url('/images/common/ico_check03.svg') no-repeat 50% 70%;
+    border-color: var(--color-brand1);
+}
+.downloadset_wrap .design_checkbox label {
+    position: relative;
+    padding-left: 28px;
+    color: #000;
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+}
+.downloadset_wrap .design_checkbox label:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+}
+.downloadset_wrap .check_all {
+    padding: 10px 0;
+    border-bottom: 1px solid #000;
+}
+.downloadset_wrap .check_all .design_checkbox label {
+    font-weight: 700;
+}
+.downloadset_wrap .check_list li {
+    padding: 20px 0;
+}
+.downloadset_wrap .check_list li > div {
+    display: flex;
+    gap: 10px;
+}
+.downloadset_wrap .check_list li > div > i {
+    margin-left: auto;
+    color: #aaa;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+}
+.downloadset_wrap .check_list li > span {
+    display: inline-block;
+    font-size: 11px;
+    color:#aaa;
+    margin: 6px 0 0 28px;
+}
+.downloadset_wrap .check_list li + li {
+    border-top: 1px solid #eee;
+}
+.downloadset_wrap .no_list {
+    color: #aaa;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh ;
+}
+
+
+/* common.css 에 추가  */
+
+.btn_dialog button:disabled {
+    background: #ddd;
+    color: #fff;
+}
+.btn_dialog.full button + button {
+    margin-left: 0;
+}
+.btn_dialog.full button.btn_cancel {
+    background: #fff;
+    border: 1px solid #ddd;
+    color: #000;
+    font-weight: 700;
+}

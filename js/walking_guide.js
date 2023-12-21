@@ -34,12 +34,12 @@ $(function (){
 
   // 걷기가이드 상세 닫기
   $.fn.detailPopupClose = (function (){
-    const guideDetailWrap = $('.guide_detail_wrap');
+    const guideDetailWrap = $('.walk_detail_wrap');
     
     if (guideDetailWrap.length === 0) return;
     
     const wrap = $('#wrap');
-    const closeGuideDetail = guideDetailWrap.find('.layer_content_wrap .layer_content .header > .title_wrap .btn_back');
+    const closeGuideDetail = guideDetailWrap.find('.layer_content_wrap .layer_close');
     
     const playerDownloadWrap = $('.player_download_wrap');
     // 플레이어

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>걷기가이드 상세</title>
+  <link rel="stylesheet" href="./css/swiper-bundle.min.css">
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/animation.css">
+  <link rel="stylesheet" href="./css/common.css">
+
+  <!-- 제이쿼리 -->
+  <script src="./js/lib/jquery-3.4.1.min.js"></script>
+  <!-- 스와이퍼 -->
+  <script src="./js/lib/swiper-bundle.min.js"></script>
+  <!-- 로티 -->
+  <script src="./js/lib/lottie-player.js"></script>
+  <!-- 차트 라이브러리 + 플러그인 2개 -->
+  <script src="./js/lib/cdn.jsdelivr.net_npm_chart.js"></script>
+  <script src="./js/lib/chartjs-plugin-datalabels.min.js"></script>
+  <script src="./js/lib/chartjs-plugin-annotation.min.js"></script>
+</head>
+<body>
+
+  <div id="wrap" class="download_show">
+
+      <div class="popup_btn_wrap">
+        <button type="button" class="layer_button_toggle" data-popup-name='#layerWalk'>걷기가이드 상세</button>
+      </div>
+
+      <!-- 걷기가이드 상세 -->
+      <!-- fullscreen : 드래그 기능없는 풀페이지 팝업 -->
+      <div id="guideDetail" class="walk_detail_wrap modal_layer_popup fullscreen player_show">
+        <div class="dimmed_layer"></div>
+        <div class="layer_content_wrap">
+          <div class="layer_content">
+            <!-- header -->
+      
+            <!-- body --> <div class="layer_header">
+              <h1>걷기가이드 상세화면</h1>
+            </div>
+            <div class="layer_body">
+      
+      
+            </div>
+            <!-- footer -->
+            <div class="layer_footer">
+            </div>
+          </div>
+          <button type="button" class="layer_close">close</button>
+          <div class="layer_drag"><span></span></div>
+        </div>
+      </div>
+      <!-- //걷기가이드 상세 -->
+      
+        <!-- 플레이어, 다운로드, 걷기 가이드의 경우 스타일 분기 hide_button -->
+        <div class="player_download_wrap">
+            <!-- 다운로드 -->
+            <div class="download_wrap">
+                <p>이장섭코치와 함께 30분 걷기에 도전하세요!</p>
+                <button type="button">
+                    <div><lottie-player autoplay loop mode="normal" src="./json/download.json"></lottie-player></div>
+                    <span>다운로드</span>
+                </button>
+            </div>
+            <!--// 다운로드 -->
+            <!-- 플레이어 -->
+            <div class="player_wrap">
+                <div class="player_status">
+                    <strong>00:00:30</strong>
+                    <p>이장섭코치와 함께 30분 걷기 이장섭코치와 함께 30분 걷기</p>
+                    <!-- <button type="button">닫기</button> -->
+                    <span>00:90:24</span>
+                    <div style="width: 30%;"></div>
+                </div>
+                <div class="player_controll">
+                    <div class="profile">
+                    <img src="./images/img_user.png" alt="" />
+                    </div>
+                    <div class="controll">
+                    <button type="button" class="btn_play_stop"><span>재생</span></button>
+                    <button type="button" class="btn_next"><span>다음</span></button>
+                    <div class="design_select select_box">
+                        <p class="selected"><span>1x</span></p>
+                        <ul class="optionList">
+                        <li class="select"><span>1x</span></li>
+                        <li><span>1.5x</span></li>
+                        <li><span>2x</span></li>
+                        </ul>
+                    </div>
+                    <button type="button" class="btn_loop"><span>반복</span></button>
+                    <button type="button" class="btn_playlist"><span>재생목록</span></button>
+                    </div>
+                </div>
+            </div>
+            <!--// 플레이어 -->
+        </div>
+        <!-- //플레이어, 다운로드 -->
+  </div>
+
+  
+
+
+
+
+
+  <!-- 공통 -->
+  <script src="./js/common.js"></script>
+  <!-- 메인 -->
+  <script src="./js/main.js"></script>
+  <!-- 챌린지 -->
+  <script src="./js/challenge.js"></script>
+  <!-- 걷기가이드 -->
+  <script src="./js/walking_guide.js"></script>
+  <!-- 걸음리포트 : 해당 html(AC0300010)에서 별도로 사용 -->
+  <!-- <script src="./js/walking_report.js"></script> -->
+  <!-- 설정 -->
+  <script src="./js/setup.js"></script>
+  <script src="./js/init.js"></script>
+  <script>
+    setTimeout(() => {
+      $.fn.layerToggle('#guideDetail');
+    }, 300);
+  </script>
+
+</body>
+</html>

@@ -1,6 +1,8 @@
 @import "animation.css";
 @import "challenge.css";
 @import "walking_guide.css";
+@import "setting.css";
+@import "comments.css";
 
 
 :root {
@@ -80,6 +82,80 @@ body.active {overflow: hidden;}
       }
       .layer_drag {
         display: none;
+      }
+    }
+    // 풀페이지 + 일반 페이지 스타일(12월21 기준 사용하지 않음)
+    &.fullpage {
+      .layer_content_wrap {
+        padding-top: 44px;
+        .layer_content {
+          padding: 0;
+          .layer_header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 999;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            width: 100%;
+            height: 44px;
+            padding: 0 20px;
+            background: #fff;
+            .title_wrap {
+              .layer_close {
+                position: absolute;
+                top: 50%;
+                left: 20px;
+                transform: translateY(-50%);
+
+                width: 24px;
+                height: 24px;
+                margin-right: 10px;
+
+                background: url('../images/common/ico_arrow_left01.svg');
+                background-size: 100%;
+                border: 0 none;
+                transform: translateY(-50%);
+                transform-origin: center;
+
+                font-size: 0;
+                line-height: 0;
+              }
+              h1 {
+                flex: 1;
+                padding: 0 32px;
+
+                font-size: 18px;
+                font-weight: 800;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+
+                font-size: 18px;
+                font-weight: 800;
+                color: var(--color-font1);
+                line-height: 24px;
+              }
+            }
+            .icon_wrap {
+              .layer_close {
+                position: static;
+                width: 24px;
+                height: 24px;
+                background: url('../images/common/ico_cross03.svg') no-repeat 50%;
+                background-size: 16px;
+                font-size: 0;
+                line-height: 0;
+              }
+            }
+          }
+          .layer_body {
+            padding: 0;
+          }
+        }
       }
     }
   }
@@ -804,6 +880,21 @@ body.active {overflow: hidden;}
     margin-top: 110px !important;
   }
 }
+// 리워드 데이터 없음
+.no_result {
+  border-bottom: 0 none !important;
+  padding: 0;
+  > div {
+    padding: 150px 0;
+    justify-content: center !important;
+    > p {
+      text-align: center;
+      font-size: 16px;
+      font-weight: 600;
+      color: #aaa;
+    }
+  }
+}
 // 이미지 모아보기
 .gathering_image_list {
   display: grid;
@@ -1194,6 +1285,32 @@ body.active {overflow: hidden;}
     background: rgba(0, 0, 0, 0.5);
   }
 }
+// 플로팅 버튼 레이아웃
+.floating_btn_wrap {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 500;
+
+  width: 100%;
+  padding: 24px 30px 40px;
+  background: #fff;
+  box-shadow: 0px 10px 40px 23px #00000040;
+  button {
+    display: block;
+    width: 100%;
+    height: 58px;
+    background: var(--color-brand1);
+
+    font-size: 13px;
+    font-weight: 800;
+    color: #fff;
+    &:disabled {
+      background: #DDD;
+      color: #98A2B3;
+    }
+  }
+}
 
 // html, body, #wrap {height: 100%;}
 
@@ -1250,6 +1367,9 @@ body.active {overflow: hidden;}
     #container {
       padding-top: 98px;
     }
+  }
+  &.floating_btn_menu {
+    padding-bottom: 122px;
   }
   #header {
     position: fixed;
@@ -1756,7 +1876,7 @@ body.active {overflow: hidden;}
       // 스와이프
       .main_swipe_menu {
         padding-top: 20px;
-        padding-bottom: 30px;
+        padding-bottom: 26px;
         position: relative;
 
         .banner_swiper {
@@ -1884,7 +2004,7 @@ body.active {overflow: hidden;}
                 background: #C7D7FE;
                 .visual {
                   right: 1px;
-                  bottom: -30px;
+                  bottom: -20px;
                   img {
                     height: 133px;
                     animation: mainBannerAni2 0.5s infinite alternate;
@@ -1937,7 +2057,7 @@ body.active {overflow: hidden;}
       }
       // 상태
       .status_wrap {
-        margin-top: 24px;
+        // margin-top: 24px;
         .main_status {
           background: #fff;
           border-radius: 24px;
@@ -2638,6 +2758,9 @@ body.active {overflow: hidden;}
           }
         }
       }
+      .banner_wrap {
+        margin: 16px 20px 0;
+      }
       // 툴바
       .toolbar_wrap {
         position: fixed;
@@ -2766,83 +2889,85 @@ body.active {overflow: hidden;}
     }
   }
 }
+
 // 프로필 설정(포인트워크 진입, 설정 동일 레이아웃)
-.profile_wrap {
-  padding: 30px 30px 0;
-  .form_list_wrap {
-    h3 {
-      font-size: 16px;
-      font-weight: 800;
-    }
-    .inp_box_list {
-      margin-top: 16px;
-      & + h3 {margin-top: 40px;}
-      & + .notice_wrap {margin-top: 24px;}
-      > li {
-        > div {
-          display: flex;
-          align-items: center;
+// .profile_wrap {
+//   padding: 30px 30px 0;
+//   .form_list_wrap {
+//     h3 {
+//       font-size: 16px;
+//       font-weight: 800;
+//     }
+//     .inp_box_list {
+//       margin-top: 16px;
+//       & + h3 {margin-top: 40px;}
+//       & + .notice_wrap {margin-top: 24px;}
+//       > li {
+//         > div {
+//           display: flex;
+//           align-items: center;
     
-          height: 60px;
-          padding: 0 20px;
-          background: #fff;
+//           height: 60px;
+//           padding: 0 20px;
+//           background: #fff;
     
-          border: 1px solid #EEE;
-          transition: border-color 0.2s ease;
-          input {
-            flex: 1;
-            height: 100%;
-            border: 0 none;
+//           border: 1px solid #EEE;
+//           transition: border-color 0.2s ease;
+//           input {
+//             flex: 1;
+//             height: 100%;
+//             border: 0 none;
     
-            font-size: 16px;
-            font-weight: 600;
-            &:focus-visible {
-              outline: none;
-            }
-            &:placeholder-shown + .btn_delete {
-              display: none;
-            }
-          }
-          button {
-            height:24px;
-            margin-left: 8px;
-            border: 0 none;
-            font-size: 0;
-            line-height: 0;
-            &.btn_delete {
-              width: 24px;
-              height: 24px;
-              background: url('../images/common/ico_cross05.svg') no-repeat 50%;
-              background-size: 16px;
-            }
-          }
-          .btn_overlap {
-            line-height: 18px;
-            border-bottom: 1px solid #000;
-          }
-          a,
-          span {
-            font-size: 16px;
-            line-height: inherit;
-            margin-left: 8px;
-          }
-        }
-        > p {
-          margin-top: 5px;
-          font-size: 16px;
-          color: red;
-          &.clear {
-            color: blue
-          }
-        }
-        & + li {margin-top: 8px;}
-        &.active > div {
-          border-color: var(--color-brand1);
-        }
-      }
-    }
-  }
-}
+//             font-size: 16px;
+//             font-weight: 600;
+//             &:focus-visible {
+//               outline: none;
+//             }
+//             &:placeholder-shown + .btn_delete {
+//               display: none;
+//             }
+//           }
+//           button {
+//             height:24px;
+//             margin-left: 8px;
+//             border: 0 none;
+//             font-size: 0;
+//             line-height: 0;
+//             &.btn_delete {
+//               width: 24px;
+//               height: 24px;
+//               background: url('../images/common/ico_cross05.svg') no-repeat 50%;
+//               background-size: 16px;
+//             }
+//           }
+//           .btn_overlap {
+//             line-height: 18px;
+//             border-bottom: 1px solid #000;
+//           }
+//           a,
+//           span {
+//             font-size: 16px;
+//             line-height: inherit;
+//             margin-left: 8px;
+//           }
+//         }
+//         > p {
+//           margin-top: 5px;
+//           font-size: 16px;
+//           color: red;
+//           &.clear {
+//             color: blue
+//           }
+//         }
+//         & + li {margin-top: 8px;}
+//         &.active > div {
+//           border-color: var(--color-brand1);
+//         }
+//       }
+//     }
+//   }
+// }
+
 // 재생목록 팝업
 .playlist_wrap {
   .layer_content_wrap {
@@ -3420,132 +3545,347 @@ body.active {overflow: hidden;}
   }
 }
 
-// 설정
-.setting_wrap {
-  .setting_list {
-    > li {
-      padding: 20px;
-      h2 {
-        font-size: 18px;
-        font-weight: 800;
-      }
-      > ul {
-        padding-top: 10px;
-        margin-top: 10px;
-        border-top: 1px solid #000;
-
-        position: relative;
-        > li {
+// 리워드
+.reward_wrap {
+  padding: 32px 0 40px;
+  .notice_wrap {
+    margin: 0 28px;
+    & + .jelly_reward_wrap {padding-top: 50px;}
+  }
+  // 보유한 젤리
+  .jelly_status {
+    .status_list {
+      margin: 0 30px;
+      > li {
+        padding: 28px 24px 24px;
+        border-radius: 24px;
+        background-color: #fff;
+        box-shadow: 0px 26px 58.5px -23px #00000040;
+        & + li {
+          margin-top: 16px;
+        }
+        > a {
+          display: block;
           position: relative;
-          padding: 10px 0;
-          & + li {
-            border-top: 1px solid #b8b8b8;
-          }
-          a {
-            display: block;
-            position: relative;
-            font-size: 14px;
+          padding-right: 20px;
+          min-height: 46px;
 
-            padding-right: 30px;
-            &:after {
-              content: '';
-              content: '';
-              position: absolute;
-              top: 50%;
-              right: 0;
-              transform: translateY(-50%);
+          font-size: 16px;
+          font-weight: 800;
+          color: #000;
+          &:after {
+            content: "";
+            position: absolute;
+            top: 5px;
+            right: 0;
 
-              width: 20px;
-              height: 20px;
+            width: 7px;
+            height: 12px;
 
-              background: url('../images/common/ico_arrow_right01.svg') no-repeat;
-              background-size: 100%;
-            }
-          }
-          h3 {
-            padding-top: 4px;
-            font-size: 14px;
-            font-weight: 600;
-          }
-          P {
-            margin-top: 10px;
-            font-size: 14px;
-            color: #98A2B3;
+            background: url('../images/common/ico_arrow_right03.svg') no-repeat;
+            background-size: 100% 100%;
           }
         }
-        .inpchk_wrap {
-          position: relative; 
-          .inpchk_ani {
-            position: absolute;
-            top: 0;
-            right: 0;
+        > div {
+          text-align: right;
+
+          strong {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--color-brand1);
+            span {
+              margin-left: 8px;
+              font-size: 13px;
+              font-weight: 400;
+            }
           }
-          > div {
-            margin: 15px 0 10px;
+        }
+        > ul {
+          margin-top: 16px;
+          border-top: 1px solid #F7F7F7;
+          > li {
+            padding-top: 16px;
+
             display: flex;
-            justify-content: right;
-            button {
-              display: block;
+            justify-content: space-between;
+            align-items: center;
+            > span {
+              font-size: 13px;
+              font-weight: 400;
+              color: #B9B9B9;
+            }
+            > strong {
+              font-size: 16px;
+              color: #000;
               span {
-                display: block;
-                color: #D9D9D9;
-                border-bottom: 1px solid #D9D9D9;
+              margin-left: 4px;
+                font-size: 13px;
+                font-weight: 400;
               }
-              &.active span {
-                border-bottom-color: var(--color-brand1);
+            }
+          }
+        }
+      }
+      & + .notice_wrap {
+        margin-top: 40px;
+      }
+    }
+    .banner_wrap {
+      padding: 16px 20px 0;
+    }
+  }
+  // 포인트 교환하기
+  .point_exchange {
+    .exchange_form {
+      padding: 32px 30px 0;
+      > h3 {
+        font-size: 16px;
+        font-weight: 800;
+        color: #000;
+      }
+      > p {
+        margin-top: 8px;
+        font-size: 13px;
+        font-weight: 400;
+        color: #B9B9B9;
+      }
+      > .inp_box_list {
+        margin-top: 16px;
+        & + h3 {margin-top: 32px;}
+        & + .notice_wrap {margin-top: 24px;}
+        > li {
+          > .inp_box {
+            display: flex;
+            align-items: center;
+      
+            height: 60px;
+            padding: 0 20px;
+            background: #fff;
+      
+            border: 1px solid #EEE;
+            transition: border-color 0.2s ease;
+            input {
+              flex: 1;
+              height: 100%;
+              border: 0 none;
+      
+              font-size: 16px;
+              font-weight: 600;
+              &:focus-visible {
+                outline: none;
+              }
+              &:placeholder-shown + .btn_delete {
+                display: none;
+              }
+            }
+            button {
+              height:24px;
+              margin-left: 8px;
+              border: 0 none;
+              font-size: 0;
+              line-height: 0;
+              &.btn_delete {
+                width: 24px;
+                height: 24px;
+                background: url('../images/common/ico_cross06.svg') no-repeat 50%;
+                background-size: 16px;
+              }
+            }
+            .btn_overlap {
+              line-height: 18px;
+              border-bottom: 1px solid #000;
+            }
+            a,
+            span {
+              font-size: 16px;
+              line-height: inherit;
+              margin-left: 8px;
+            }
+            &.disabled {
+              background: rgba(239, 239, 239, 0.3);
+              input {
+                background: none;
+              }
+            }
+          }
+          > p {
+            margin-top: 5px;
+            font-size: 16px;
+            color: red;
+            &.clear {
+              color: blue
+            }
+          }
+          .chk_box {
+            margin-top: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            > P {
+              font-size: 13px;
+              font-weight: 400;
+              color: #B9B9B9;
+              span {
+                margin-left: 8px;
+                font-weight: 800;
                 color: var(--color-brand1);
               }
             }
+            > div {
+              input {
+                display: none;
+                & + label {
+                  display: inline-block;
+                  position: relative;
+                  padding-left: 20px;
+
+                  font-size: 13px;
+                  font-weight: 400;
+                  line-height: 16px;
+                  color: #000;
+                  &:after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+
+                    width: 16px;
+                    height: 16px;
+                    border: 1px solid #eee;
+                    background: #fff;
+                  }
+                }
+                &:checked + label:after {
+                  border: 0 none;
+                  background: var(--color-brand1) url('../images/common/ico_check04.svg') no-repeat 50%;
+                  background-size: 13px 11px;
+                }
+              }
+            }
+          }
+          & + li {margin-top: 40px;}
+          &.active > div {
+            border-color: var(--color-brand1);
           }
         }
       }
+      .point_tbl {
+        margin-top: 24px;
+        border-top: 1px solid #EEE;
+        border-bottom: 1px solid #EEE;
+        text-align: center;
+        th {
+          background: #F7F7F7;
+          height: 48px;
+          &:first-child {
+            border-left: 1px solid #EEE;
+          }
+          &:last-child {
+            border-right: 1px solid #EEE;
+          }
+          & + th {
+            span {
+              position: relative;
+              display: block;
+              border-left: 1px solid #ddd;
+            }
+          }
+        }
+        td {
+          border-top: 1px solid #EEE;
+          height: 32px;
+          & + td {
+            border-left: 1px solid #EEE;
+          }
+        }
+      }
+      & + .notice_wrap {
+        margin-top: 16px;
+      }
     }
   }
-}
-// * 리워드
-.reward_wrap {
-  .jelly_reward {
-    padding: 0 20px;
-    button {
-      font-size: inherit;
-    }
-    .holding_point {
-      > li {
-        > div {
-          > div {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+  // 젤리내역, 포인트 적립/교환내역
+  .jelly_reward_wrap {
+    .jelly_reward_list {
+      > p {
+        margin: 26px 0 0 28px;
   
-            padding: 5px;
-            &:first-child {
-              border: 1px solid #000;
+        font-size: 12px;
+        font-weight: 400;
+        color: #AAA;
+      }
+      > ul {
+        margin-top: 32px;
+        padding: 0 30px;
+        > li {
+          padding-bottom: 16px;
+          border-bottom: 1px solid #D9D9D9;
+          & + li {
+            padding-top: 16px;
+          }
+          > p {
+            font-size: 12px;
+            font-weight: 400;
+            color: #aaa;
+            strong {
+              font-weight: 800;
+              color: #000;
+            }
+            span {
+              margin-left: 4px;
+            }
+          }
+          > div {
+            margin-top: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            > span {
+              font-size: 14px;
+              font-weight: 400;
+              color: #000;
+            }
+            > strong {
+              font-size: 16px;
+              font-weight: 800;
+              color: var(--color-brand1);
+              &.minus {
+                color: #FF003A;
+              }
+              span {
+                margin-left: 2px;
+                font-weight: 400;
+              }
             }
           }
         }
       }
-    }
-    .point_guide {
-      > div {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-  
-        padding: 5px;
+      .btn_more {
+        display: block;
+        width: 100px;
+        height: 30px;
+        margin: 28px auto 0;
+        span {
+          position: relative;
+          padding-right: 20px;
+          font-size: 13px;
+          font-weight: 800;
+          color: #aaa;
+          &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+
+            width: 16px;
+            height: 16px;
+
+            background: url('../images/common/ico_more03.svg') no-repeat 50%;
+            background-size: 100%;
+          }
+        }
       }
     }
-    .donation_banner {
-      img {}
-    }
-    .notice_wrap {
-  
-    }
-  }
-  // 리워드 - H.Point 교환 비율
-  .point_exchange {}
-  // 리워드 - 젤리내역
-  .jelly_point_detail {
-  
   }
 }
 // 월간출석
@@ -3590,7 +3930,7 @@ body.active {overflow: hidden;}
           &:after {
             content: '';
             position: absolute;
-            top: 2px;
+            top: 3px;
             left: 4px;
   
             width: 1px;
@@ -3605,28 +3945,9 @@ body.active {overflow: hidden;}
         > p {
           strong {
             display: inline-block;
-            position: relative;
-            padding-left: 18px;
-
+            padding: 0 2px;
             font-weight: 600;
             color: var(--color-brand1);
-            &:after {
-              content: '';
-              position: absolute;
-              top: 50%;
-              left: 2px;
-
-              width: 14px;
-              height: 14px;
-
-              background: url('../images/common/ico_heart05.svg') no-repeat 50%;
-              background-size: 100%;
-
-              transform: translateY(-50%);
-            }
-            &.jelly:after {
-              background-image: url('../images/common/ico_star02.svg');
-            }
           }
         }
       }
@@ -3651,7 +3972,7 @@ body.active {overflow: hidden;}
         tbody {
           td {
             height: 64px;
-            padding: 10px 0;
+            padding: 48px 0 0;
             font-size: 11px;
             text-align: center;
             vertical-align: top;
@@ -3697,9 +4018,61 @@ body.active {overflow: hidden;}
                 }
               }
             }
+            // 이전, 다음달
+            &.disabled {
+              opacity: 0.8;
+              > div {
+                position: relative;
+  
+                display: block;
+                width: 40px;
+                height: 44px;
+                margin: 0 auto; 
+                
+                background: #fff;
+                border: 1px solid #E9F1FF;
+                border-radius: 12px;
+                transition: background 0.3s;
+                span {
+                  display: block;
+                  padding-top: 4px;
+  
+                  line-height: 1;
+                  text-indent: -2px;
+                }
+                .icon {
+                  position: relative;
+                  margin: 3px auto 0;
+                  border-radius: 50%;
+  
+                  width: 20px;
+                  height: 20px;
+                  > div {
+                    width: 100%;
+                    height: 100%;
+                  }
+                  .static {
+                    display: block;
+                    opacity: 1;
+                    transition: opacity 0.3s;
+  
+                    height: 100%;
+                    background: url('../images/common/ico_heart08.svg') no-repeat;
+                    background-size: 100%;
+                    border-radius: 50%;
+                  }
+                }
+              }
+              &.complete {
+                > div .icon .static {
+                  background-image: url('../images/common/ico_heart09.svg');
+                }
+              }
+            }
+            // 미완
             &.not_comp {
               > a {
-                background: var(--color-brand2);
+                background: #E4E7EC;
                 span {
                   color: var(--color-font1);
                 }
@@ -3710,7 +4083,37 @@ body.active {overflow: hidden;}
                   }
                 }
               }
+              &:last-child > a:after {
+                background: #E4E7EC;
+                color: #fff;
+              }
             }
+            // 토요일 기본 보너스 안내
+            &:last-child {
+              > a {
+                &:after {
+                  content: '보너스';
+                  position: absolute;
+                  bottom: -24px;
+                  left: 0;
+                  width: 100%;
+  
+                  height: 20px;
+                  line-height: 20px;
+  
+                  transform-origin: center;
+    
+                  font-size: 11px;
+                  font-weight: 600;
+
+                  background: #fff;
+                  border: 1px solid #E9F1FF;
+                  color: #D0D5DD;
+                  border-radius: 6px;
+                }
+              }
+            }
+            // 완료
             &.complete {
               > a {
                 background: var(--color-brand2);
@@ -3734,8 +4137,14 @@ body.active {overflow: hidden;}
                     }
                   }
                 }
+                
+              }
+              &:last-child > a:after {
+                background: var(--color-brand2);
+                color: #fff;
               }
             }
+            // 오늘
             &.today {
               > a {
                 background: var(--color-brand1);
@@ -3760,26 +4169,39 @@ body.active {overflow: hidden;}
                     }
                   }
                 }
+                &:after {
+                  background: var(--color-brand1);
+                  color: #fff;
+                }
               }
             }
-            &.bonus > a {
-              &:after {
-                content: 'Bonus!!';
-                position: absolute;
-                bottom: -16px;
-                left: 0;
-                width: 100%;
-
-                transform-origin: center;
-  
-                font-weight: 600;
-                color: var(--color-brand1);
-              }
-              .icon {
-                overflow: hidden;
-                .static {
-                  background-image: url('../images/common/ico_star01.svg');
-                  animation: scaleAni 0.4s infinite alternate;
+            // 보너스 상태
+            &.bonus {
+              > a {
+                background: var(--color-brand2);
+                border-color: var(--color-brand2);
+                span {
+                  color: var(--color-font1);
+                }
+                .icon {
+                  .static {
+                    background: url('../images/common/ico_heart03.svg') no-repeat;
+                    background-size: 100%;
+                  }
+                  &.clicked {
+                    .heart_effect01 {
+                      opacity: 0;
+                      transition: opacity 0.3s;
+                    }
+                    .heart_effect02 {
+                      opacity: 0;
+                      transition: opacity 0.3s;
+                    }
+                  }
+                }
+                &:after {
+                  background: var(--color-brand1);
+                  color: #fff;
                 }
               }
             }
