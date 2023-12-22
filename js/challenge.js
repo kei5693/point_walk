@@ -49,17 +49,15 @@ $(function() {
     // 챌린지 진행중 걸음수 애니메이션
 		function ongoingAni(today, yesterday) {
 			const todayGraph = $('.challenge_report .graph_wrap .walking1');
-			//const yesterdayGraph = $('.challenge_report .graph_wrap .walking2');
 
-			// if (today == 100) {
-			// 	todayGraph.addClass('align_right');
-			// }
-			// if (yesterday == 100) {
-			// 	yesterdayGraph.addClass('align_right');
-			// }
       todayGraph.css('width', today + '%');
-     // yesterdayGraph.css('left', yesterday + '%');		
 		}
+
+    // 챌린지 > 받기 버튼 애니메이션
+    $(document).on('click', '.challenge_reward .reward_list > li > button', function() {
+      $.fn.downloadAnimation();
+      $(this).addClass('complete');
+    })
    
     // 챌린지 > (스크롤시) 애니메이션 실행
     $(window).on('scroll', function() {      
