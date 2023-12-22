@@ -159,6 +159,24 @@ body.active {overflow: hidden;}
       }
     }
   }
+  // 높이 고정 팝업
+  &.fixed_value {
+    .layer_content_wrap {
+      max-height: 100%;
+      height: auto;
+      border-radius: 0;
+      padding-top: 88px;
+      .layer_content .layer_header {
+        top: 40px;
+      }
+      .layer_close {
+        top: 40px;
+      }
+      .layer_drag {
+        display: none;
+      }
+    }
+  }
 
 	// 드래그 중일 때
 	&.dragging {
@@ -292,6 +310,7 @@ body.active {overflow: hidden;}
   }
   // 중앙 정렬 팝업
   &.align_center {
+    z-index: 2000;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -335,8 +354,9 @@ body.active {overflow: hidden;}
           padding: 0;
           margin-right: -20px;
           padding-right: 20px;
-          // width: 100%;
-          .popup_visual img {display: block;width: 100%;}
+          .popup_visual img {
+            display: block;width: 100%;
+          }
           .popup_sub_txt {
             font-size: 16px;
             color: #555;
@@ -439,7 +459,7 @@ body.active {overflow: hidden;}
     button {
       flex: none;
       padding: 0 10px;
-      background: #fff;
+      background: none;
       border: 0 none;
     
       color: var(--color-brand1);
@@ -448,9 +468,27 @@ body.active {overflow: hidden;}
       }
     }
   }
+  &.justify_between {
+    justify-content: space-between;
+    button {
+      flex: none;
+      padding: 0 10px;
+      background: none;
+      border: 0 none;
+    
+      color: var(--color-brand1);
+      &.btn_cancel {
+        color: var(--color-font3);
+      }
+    }
+  }
+
 }
+
+
+
 // 오늘 하루 안보기 버튼 영역
-.btn_today {
+.btn_today_wrap {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -459,10 +497,14 @@ body.active {overflow: hidden;}
   margin: 0 20px;
   > button {
     height: 100%;
-    padding: 0 20px;
-    background: #000;
-    font-size: 20px;
-    color: #fff;
+    padding: 0 10px;
+
+    background: none;
+    border: 0 none;
+    
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--color-brand1);
   }
 }
 // 체크박스 애니메이션
@@ -505,7 +547,7 @@ body.active {overflow: hidden;}
     }
   }
 }
-// 디자인 체크박스
+// 디자인 체크박스(20x20)
 .design_checkbox {
   input {
     display: none;
@@ -526,6 +568,38 @@ body.active {overflow: hidden;}
       background: #000;
     }
   }
+}
+// 디자인 체크박스(16x16)
+.inp_checkbox {
+  input {
+    display: none;
+    & + label {
+      display: inline-block;
+      position: relative;
+      padding-left: 20px;
+  
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 16px;
+      color: #000;
+      &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+  
+        width: 16px;
+        height: 16px;
+        border: 1px solid #eee;
+        background: #fff;
+      }
+    }
+    &:checked + label:after {
+      border: 0 none;
+      background: var(--color-brand1) url('../images/common/ico_check04.svg') no-repeat 50%;
+      background-size: 13px 11px;
+    }
+  } 
 }
 // 탭메뉴
 .tab_menu_wrap {
@@ -1491,11 +1565,12 @@ body.active {overflow: hidden;}
     &:after {
       content: '';
       position: absolute;
-      top: 0;
+      top: 44px;
       left: 0;
       width: 100%;
       height: 85%;
-      background: linear-gradient(179.94deg, #EAE8FF 13.17%, rgba(234, 232, 255, 0) 99.95%);
+      // background: linear-gradient(179.94deg, #EAE8FF 13.17%, rgba(234, 232, 255, 0) 99.95%);
+      background: linear-gradient(179.94deg, #EAE8FF 63.17%, rgba(234, 232, 255, 0) 99.95%);
     }
     #header {
       background: #eae8ff;

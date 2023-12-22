@@ -27,6 +27,8 @@ $(function () {
 		let isOpened = layerPopup.hasClass('active');
 		// 팝업 타입
 		let isCentered = layerPopup.hasClass('align_center');
+    // 높이값 고정
+		let isFixedValue = layerPopup.hasClass('fixed_value');
 
 		isOpened ? hideBottomSheet() : showBottomSheet();
 
@@ -41,10 +43,8 @@ $(function () {
 		function showBottomSheet() {
 			$('body').addClass('active');
 			layerPopup.addClass('active');
+			updateSheetHeight(sheetHeight);
 
-			if (!isCentered) {
-				updateSheetHeight(sheetHeight);
-			}
 		}
 
 		// 팝업 닫기
@@ -54,8 +54,19 @@ $(function () {
 		}
 
 		function updateSheetHeight(height) {
-			let value = height + '%';
-			layerContentWrap.css('height', value);
+      let deviceHeight = $(window).outerHeight();
+      let condition = (deviceHeight - 100) < layerContentWrap.outerHeight();
+
+      if (isCentered) return;
+
+      if(isFixedValue) {
+        if(condition){
+          layerContentWrap.css('height', deviceHeight);
+        }
+      } else {
+        let value = height + '%';
+        layerContentWrap.css('height', value);
+      }
 		}
 
 		// 드래그
@@ -122,6 +133,8 @@ $(function () {
 		let isOpened = layerPopup.hasClass('active');
 		// 팝업 타입
 		let isCentered = layerPopup.hasClass('align_center');
+    // 높이값 고정
+		let isFixedValue = layerPopup.hasClass('fixed_value');
 
 		isOpened ? '' : showBottomSheet();
 
@@ -149,8 +162,19 @@ $(function () {
 		}
 
 		function updateSheetHeight(height) {
-			let value = height + '%';
-			layerContentWrap.css('height', value);
+      let deviceHeight = $(window).outerHeight();
+      let condition = (deviceHeight - 100) < layerContentWrap.outerHeight();
+
+      if (isCentered) return;
+
+      if(isFixedValue) {
+        if(condition){
+          layerContentWrap.css('height', deviceHeight);
+        }
+      } else {
+        let value = height + '%';
+        layerContentWrap.css('height', value);
+      }
 		}
 
 		// 드래그

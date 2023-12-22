@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-	<title>푸터 없는 팝업</title>
+	<title>리워드 유의사항</title>
   <link rel="stylesheet" href="./css/swiper-bundle.min.css">
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/animation.css">
@@ -26,7 +26,7 @@
   </div>
 
   <!-- 리워드 유의사항 -->
-  <div id="CG0600300" class="modal_layer_popup hide_footer">
+  <div id="CG0600300" class="modal_layer_popup fixed_value hide_footer">
     <div class="dimmed_layer"></div>
     <div class="layer_content_wrap">
       <div class="layer_content">
@@ -38,12 +38,12 @@
         <div class="layer_body">
           <div class="noted_list">
             <ul>
-              <li><h2>위치정보를 못 잡아요</h2>
+              <!-- <li><h2>위치정보를 못 잡아요</h2>
                 <p>위치정보가 꺼진 경우 위치확인이 되지 않을 수 있어요. 스마트폰의 위치정보를 설정해주세요.</p>
               </li>
               <li><h2>위치도착 확인은 어떻게 하나요?</h2>
                 <p>위치확인 배너나 ‘도착확인‘ 버튼을 선택하시면 지도에서 도착위치 확인이 가능합니다. 목적지의 1km 반경 내에 있다면 ‘도착하셨나요?’ 버튼이 자동 노출됩니다.</p>
-              </li>
+              </li> -->
               <li><h2>스탬프는 어떻게 받나요?</h2>
                 <p>각 장소의 위치확인에 성공하면 스탬프가 자동으로 활성화되고 확인할 수 있어요.</p>
               </li>
@@ -91,7 +91,7 @@
   <script src="./js/init.js"></script>
   <script>
     setTimeout(() => {
-      $.fn.layerToggle('#CG0600300');
+      $.fn.layerToggle('#CG0600300', 50);
     }, 300);
   </script>
 

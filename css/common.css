@@ -122,6 +122,21 @@ body.active {
 .modal_layer_popup.fullscreen.fullpage .layer_content_wrap .layer_content .layer_body {
   padding: 0;
 }
+.modal_layer_popup.fixed_value .layer_content_wrap {
+  max-height: 100%;
+  height: auto;
+  border-radius: 0;
+  padding-top: 88px;
+}
+.modal_layer_popup.fixed_value .layer_content_wrap .layer_content .layer_header {
+  top: 40px;
+}
+.modal_layer_popup.fixed_value .layer_content_wrap .layer_close {
+  top: 40px;
+}
+.modal_layer_popup.fixed_value .layer_content_wrap .layer_drag {
+  display: none;
+}
 .modal_layer_popup.dragging .layer_content_wrap {
   transition: none;
 }
@@ -237,6 +252,7 @@ body.active {
   border-radius: 3px;
 }
 .modal_layer_popup.align_center {
+  z-index: 2000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -371,27 +387,42 @@ body.active {
 .btn_dialog.align_right button {
   flex: none;
   padding: 0 10px;
-  background: #fff;
+  background: none;
   border: 0 none;
   color: var(--color-brand1);
 }
 .btn_dialog.align_right button.btn_cancel {
   color: var(--color-font3);
 }
+.btn_dialog.justify_between {
+  justify-content: space-between;
+}
+.btn_dialog.justify_between button {
+  flex: none;
+  padding: 0 10px;
+  background: none;
+  border: 0 none;
+  color: var(--color-brand1);
+}
+.btn_dialog.justify_between button.btn_cancel {
+  color: var(--color-font3);
+}
 
-.btn_today {
+.btn_today_wrap {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 100%;
   margin: 0 20px;
 }
-.btn_today > button {
+.btn_today_wrap > button {
   height: 100%;
-  padding: 0 20px;
-  background: #000;
-  font-size: 20px;
-  color: #fff;
+  padding: 0 10px;
+  background: none;
+  border: 0 none;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--color-brand1);
 }
 
 .inpchk_ani {
@@ -448,6 +479,34 @@ body.active {
   width: 20px;
   height: 20px;
   background: #000;
+}
+
+.inp_checkbox input {
+  display: none;
+}
+.inp_checkbox input + label {
+  display: inline-block;
+  position: relative;
+  padding-left: 20px;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #000;
+}
+.inp_checkbox input + label:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #eee;
+  background: #fff;
+}
+.inp_checkbox input:checked + label:after {
+  border: 0 none;
+  background: var(--color-brand1) url("../images/common/ico_check04.svg") no-repeat 50%;
+  background-size: 13px 11px;
 }
 
 .tab_menu_wrap .tab_title {
@@ -1318,11 +1377,11 @@ body.active {
 #wrap.main_content_wrap:after {
   content: "";
   position: absolute;
-  top: 0;
+  top: 44px;
   left: 0;
   width: 100%;
   height: 85%;
-  background: linear-gradient(179.94deg, #EAE8FF 13.17%, rgba(234, 232, 255, 0) 99.95%);
+  background: linear-gradient(179.94deg, #EAE8FF 63.17%, rgba(234, 232, 255, 0) 99.95%);
 }
 #wrap.main_content_wrap #header {
   background: #eae8ff;

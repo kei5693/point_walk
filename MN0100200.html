@@ -32,19 +32,21 @@
       <div class="layer_content">
         <!-- header -->
         <div class="layer_header">
-          <h1>‘동작 및 피스니스’ 설정이 꺼져 있습니다.</h1>
+          <!-- <h1></h1> -->
         </div>
         <!-- body -->
         <div class="layer_body">
-          <p class="popup_sub_txt">
-            사용자의 걸음 수를 측정하기 위해 해당 설정이 켜져 있어야 합니다.
-          </p>
+          <div class="popup_visual">
+            <img src="./images/img_guide_detail02.jpg" alt="" />
+          </div>
         </div>
         <!-- footer -->
         <div class="layer_footer">
-          <div class="btn_dialog align_right">
-            <button type="button" class="btn_cancel">취소</button>
-            <button type="button" class="btn_confirm">확인</button>
+          <div class="btn_today_wrap">
+            <div class="inp_checkbox">
+              <input type="checkbox" id="inp01" /><label for="inp01">오늘 하루 안보기</label>
+            </div>
+            <button type="button">확인</button>
           </div>
         </div>
       </div>
@@ -71,7 +73,7 @@
   <script src="./js/init.js"></script>
   <script>
     setTimeout(() => {
-      common.layerToggle('#MN0100020-pop1');
+      $.fn.layerToggle('#MN0100020-pop1');
     }, 300);
   </script>
 
