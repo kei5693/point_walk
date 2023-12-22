@@ -3150,9 +3150,8 @@ body.active {
 }
 .reward_wrap .jelly_status .status_list > li {
   padding: 28px 24px 24px;
-  border-radius: 24px;
   background-color: #fff;
-  box-shadow: 0px 26px 58.5px -23px rgba(0, 0, 0, 0.2509803922);
+  box-shadow: 0px 15px 25px -10px rgba(0, 0, 0, 0.2509803922);
 }
 .reward_wrap .jelly_status .status_list > li + li {
   margin-top: 16px;
@@ -3380,6 +3379,10 @@ body.active {
 }
 .reward_wrap .point_exchange .exchange_form .point_tbl td + td {
   border-left: 1px solid #EEE;
+}
+.reward_wrap .point_exchange .exchange_form .point_tbl td:last-child {
+  text-align: left;
+  padding-left: 10px;
 }
 .reward_wrap .point_exchange .exchange_form + .notice_wrap {
   margin-top: 16px;

@@ -1,13 +1,4 @@
 @charset "UTF-8";
-:root {
-  --color-brand1: #4E2AF4;
-  --color-brand2: #D6BBFB;
-  --color-brand3: #B5FA95;
-  --color-brand4: #EAE8FF;
-  --color-sec1: #FF2E6D;
-  --color-font1: #000;
-  --color-font2: #777;
-}
 
 /* 포인트 워크 설정 */
 
@@ -208,7 +199,7 @@
     height: 20px;
     background: #fff;
     border: 2px solid #ddd;
-    border-radius: 4px;
+    border-radius: 50%;
 }
 .downloadset_wrap .check_all {
     padding: 10px 0;

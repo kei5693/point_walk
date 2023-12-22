@@ -55,6 +55,10 @@
               </ul>
             </div>
 
+            <!-- 데이터 없을때 -->
+            <!-- <div class="no_list">등록된 댓글이 없어요.<br>사진을 찍어 기록을 자랑해 보세요.</div> -->
+            <!-- 데이터 없을때 -->
+
             <div class="comments_thum">
               <ul class="gathering_image_list">
                 <li><a href="#"><img src="./images/img_gather1.jpg" alt="" /></a></li>
@@ -188,8 +192,6 @@
 
           </div>
 
-          <div class="dimmed_layer2"></div>
-
           <!-- 댓글입력 -->
           <div class="enter_reply_wrap fixed">
             <div class="inner">
@@ -202,16 +204,16 @@
                     <p><span>슝슝</span>님에게 답글을 입력하는 중…</p>
                     <button type="button"><span>닫기</span></button>
                   </div>
-                </div>
-  
-                <!-- class 에 'hide' 추가/제거 -->
-                <div class="attachment">
-                  <a href="#"><img src="./images/img_gather1.jpg" alt="" /></a>
-                </div>
-              
+                </div>               
               </div>
 
-              <div class="input_wrap">
+              <!-- 이미지 첨부시 : default는 숨겨져 있음 => class 에 'show' 추가/제거 -->
+               <div class="attachment">
+                <a href="#"><img src="./images/img_gather1.jpg" alt="" /></a>
+              </div>
+              <!--// 이미지 첨부시 -->            
+
+              <div class="input_wrap">                
                 <div class="inner">
                   <button type="button" class="btn_attachment">첨부</button>
                   <div>

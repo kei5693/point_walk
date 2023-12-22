@@ -39,7 +39,7 @@ $(function (){
     if (guideDetailWrap.length === 0) return;
     
     const wrap = $('#wrap');
-    const closeGuideDetail = guideDetailWrap.find('.layer_content_wrap .layer_close');
+    const closeGuideDetail = guideDetailWrap.find('.layer_content_wrap .btn_back');
     
     const playerDownloadWrap = $('.player_download_wrap');
     // 플레이어

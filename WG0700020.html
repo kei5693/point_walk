@@ -33,21 +33,29 @@
       <div id="guideDetail" class="walk_detail_wrap modal_layer_popup fullscreen player_show">
         <div class="dimmed_layer"></div>
         <div class="layer_content_wrap">
+          
           <div class="layer_content">
+
             <!-- header -->
-      
-            <!-- body --> <div class="layer_header">
-              <h1>걷기가이드 상세화면</h1>
-            </div>
+            <div class="layer_header">
+              <button type="button" class="btn_back">뒤로가기</button>
+              <button type="button" class="btn_share">공유하기</button>
+            </div>     
+
+            <!-- body -->                
             <div class="layer_body">
-      
-      
+
+              <!-- 걷기가이드 상세 이미지 -->
+              <div class="visual_image">
+                <img src="/images/walking/visual01_big.png" alt="">
+              </div>
+              <!--// 걷기가이드 상세 이미지 -->
+
             </div>
             <!-- footer -->
             <div class="layer_footer">
             </div>
           </div>
-          <button type="button" class="layer_close">close</button>
           <div class="layer_drag"><span></span></div>
         </div>
       </div>
@@ -55,6 +63,7 @@
       
         <!-- 플레이어, 다운로드, 걷기 가이드의 경우 스타일 분기 hide_button -->
         <div class="player_download_wrap">
+
             <!-- 다운로드 -->
             <div class="download_wrap">
                 <p>이장섭코치와 함께 30분 걷기에 도전하세요!</p>
@@ -64,6 +73,17 @@
                 </button>
             </div>
             <!--// 다운로드 -->
+
+            <!-- 다운로드 중 -->
+            <div class="download_wrap downloading">
+              <p>이장섭코치와 함께 30분 걷기에 도전하세요!</p>
+              <button type="button">
+                <div><lottie-player autoplay loop mode="normal" src="./json/download.json"></lottie-player></div>
+                <span>다운로드 중</span>
+              </button>
+            </div>
+            <!--// 다운로드 중 -->
+
             <!-- 플레이어 -->
             <div class="player_wrap">
                 <div class="player_status">
@@ -74,9 +94,13 @@
                     <div style="width: 30%;"></div>
                 </div>
                 <div class="player_controll">
+
+                    <!-- 프로필 이미지 -->
                     <div class="profile">
-                    <img src="./images/img_user.png" alt="" />
+                      <img src="/images/walking/visual01_big.png" alt="" />
                     </div>
+                    <!-- 프로필 이미지 -->
+
                     <div class="controll">
                     <button type="button" class="btn_play_stop"><span>재생</span></button>
                     <button type="button" class="btn_next"><span>다음</span></button>
@@ -94,6 +118,7 @@
                 </div>
             </div>
             <!--// 플레이어 -->
+            
         </div>
         <!-- //플레이어, 다운로드 -->
   </div>

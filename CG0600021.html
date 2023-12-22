@@ -74,10 +74,25 @@
                 <dt>리워드</dt><dd>챌린지 완료 시 각 개인 1,000J 지급</dd>
               </dl>
 
-              <div class="progress_wrap">
+              <!-- 총 참여자 누적거리 -->
+              <!-- <div class="progress_wrap">
                 <div class="info">
                   <strong>총 참여자 누적거리</strong>
-                  <div><strong>0</strong>/100km</div>
+                  <div><strong>0</strong>/100 km</div>
+                </div>
+                <div class="graph">
+                  <div class="inner">
+                    <span class="walking1">현재</span>
+                  </div>
+                </div>
+              </div> -->
+              <!--// 총 참여자 누적거리 -->
+
+              <!-- 총 참여자 누적걸음 -->
+              <div class="progress_wrap">
+                <div class="info">
+                  <strong>총 참여자 누적걸음</strong>
+                  <div><strong>0</strong>/100 걸음</div>
                 </div>
                 <div class="graph">
                   <div class="inner">
@@ -85,10 +100,13 @@
                   </div>
                 </div>
               </div>
+              <!--// 총 참여자 누적거리 -->
+
+
             </div>
 
-            <!-- 진행중 걸음 기록 -->
-            <div class="challenge_report">
+            <!-- 진행중 걸음수 기록 -->
+            <div class="challenge_report walk">
               <div class="graph_cont">
                 <h3><span></span>걸음</h3>
 
@@ -98,6 +116,43 @@
                       <span class="walking1"><em><i>0</i>걸음</em></span>
                       <!-- <span class="walking2"><em>10,000걸음</em></span> -->
                       <em>10,000걸음</em>
+                    </div>
+                  </div>
+
+                  <ul>
+                    <li>
+                      <span>걸음</span>
+                      <p><span>400</span>걸음</p>
+                    </li>
+                    <li>
+                      <span>시간</span>
+                      <p><span>2</span>h<span>1</span>m</p>
+                    </li>
+                    <li>
+                      <span>칼로리</span>
+                      <p><span>1,234</span>kal</p>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- 걷기가이드 재생 버튼 -->
+                <!-- <button type="button" class="common_btn btn_headphone"onclick=""><span>걷기가이드 재생</span></button> -->
+                <!-- //걷기가이드 재생 버튼 -->
+
+              </div>
+            </div>
+            <!--// 진행중 걸음수 기록 -->
+
+            <!-- 진행중 거리 기록 -->
+            <div class="challenge_report">
+              <div class="graph_cont">
+                <h3><span></span>km</h3>
+
+                <div class="graph_wrap">
+                  <div class="graph">
+                    <div class="inner">
+                      <span class="walking1"><em><i>0</i>km</em></span>
+                      <em>1000km</em>
                     </div>
                   </div>
 
@@ -118,11 +173,12 @@
                 </div>
 
                 <!-- 걷기가이드 재생 버튼 -->
-                <button type="button" class="common_btn btn_headphone"onclick=""><span>걷기가이드 재생</span></button>
+                <!-- <button type="button" class="common_btn btn_headphone"onclick=""><span>걷기가이드 재생</span></button> -->
                 <!-- //걷기가이드 재생 버튼 -->
 
               </div>
             </div>
+            <!--// 진행중 거리 기록 -->
 
             <!-- 크루 : 참여전 -->
             <div class="challenge_crew bg1">

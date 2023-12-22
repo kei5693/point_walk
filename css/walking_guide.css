@@ -1,13 +1,6 @@
 @charset "UTF-8";
-:root {
-  --color-brand1: #4E2AF4;
-  --color-brand2: #D6BBFB;
-  --color-brand3: #B5FA95;
-  --color-brand4: #EAE8FF;
-  --color-sec1: #FF2E6D;
-  --color-font1: #000;
-  --color-font2: #777;
-}
+
+/* 걷기가이드 */
 
 .walking_guide_wrap {
   transition: padding 0.3s;
@@ -119,7 +112,7 @@
 .walking_guide_wrap .guide_list_wrap > .guide_list > div {
   overflow: hidden;
   position: relative;
-  border-radius: 24px 24px 0 0;
+  border-radius: 24px;
 }
 .walking_guide_wrap .guide_list_wrap > .guide_list > div + div {
   margin-top: 16px;
@@ -198,9 +191,8 @@
   font-size: 0;
   line-height: 0;
 }
-
-.walk_detail_wrap.modal_layer_popup.fullscreen .layer_content_wrap {
-  background: green;
+.walking_guide_wrap .select_box > .optionList > li {
+  padding-right: 30px;
 }
 .walk_detail_wrap.modal_layer_popup .layer_content_wrap .layer_content .layer_header {
   background:transparent;
@@ -209,8 +201,38 @@
   background: url(../images/common/ico_cross04.svg) no-repeat 50%;
   background-size: 100%;
 }
+.walk_detail_wrap.modal_layer_popup.fullscreen .layer_content_wrap {
+  padding-top: 0;
+}
+.walk_detail_wrap.modal_layer_popup .layer_content_wrap .layer_content .layer_body {
+  padding: 0;
+}
+.walk_detail_wrap.modal_layer_popup.fullscreen .layer_content_wrap .layer_content .layer_header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  left: 0;
+  padding: 0 10px;
+}
+.walk_detail_wrap.modal_layer_popup.fullscreen .layer_content_wrap .layer_content .layer_header > button {
+  font-size: 0;
+  line-height: 0;
+  padding: 20px;
+
+}
+.walk_detail_wrap.modal_layer_popup.fullscreen .layer_content_wrap .layer_content .layer_header .btn_back {
+  background: url(../images/common/ico_arrow_left02.svg) no-repeat 50%;
+  background-size: 16px;
+}
+.walk_detail_wrap.modal_layer_popup.fullscreen .layer_content_wrap .layer_content .layer_header .btn_share {
+  background: url(../images/common/ico_share02.svg) no-repeat 50%;
+  background-size: 16px;
+}
 .walk_detail_wrap .layer_header h1 {
   opacity: 0;
+}
+.walk_detail_wrap .visual_image {
+  margin: 0 -20px;
 }
 #wrap.download_show .player_download_wrap .player_wrap {
   transform: translateY(-100%);
@@ -223,6 +245,12 @@
   color: #98A2B3;
   margin-left: auto;
 } 
+.player_download_wrap .player_wrap .player_controll .profile {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
 
 .guide_detail_wrap .layer_content_wrap {
   padding: 0;

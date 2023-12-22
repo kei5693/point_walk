@@ -22,28 +22,32 @@
 </head>
 <body>
   <div class="popup_btn_wrap">
-    <button type="button" class="layer_button_toggle" data-popup-name='#MN0100020-pop1'>실패</button>
+    <button type="button" class="layer_button_toggle" data-popup-name='#MN0100020-pop1'>성공</button>
   </div>
 
   <!-- 실패 -->
   <div id="MN0100020-pop1" class="modal_layer_popup align_center">
     <div class="dimmed_layer"></div>
+
+    <!-- 축하애니메이션 -->
+    <lottie-player autoplay loop mode="normal" src="./json/confetti.json" class="event_bonus"></lottie-player>
+    <!--// 축하애니메이션 -->
+
     <div class="layer_content_wrap">
       <div class="layer_content">
         <!-- header -->
         <div class="layer_header">
-          <h1>‘동작 및 피스니스’ 설정이 꺼져 있습니다.</h1>
+          <h1>챌린지 도전에 성공했어요</h1>
         </div>
         <!-- body -->
         <div class="layer_body">
           <p class="popup_sub_txt">
-            사용자의 걸음 수를 측정하기 위해 해당 설정이 켜져 있어야 합니다.
-          </p>
+           다른 챌린지에 도전하세요!
+          </p>        
         </div>
         <!-- footer -->
         <div class="layer_footer">
           <div class="btn_dialog align_right">
-            <button type="button" class="btn_cancel">취소</button>
             <button type="button" class="btn_confirm">확인</button>
           </div>
         </div>

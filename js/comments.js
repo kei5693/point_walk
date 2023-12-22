@@ -1,26 +1,19 @@
 $(function (){
 
-  // 댓글 > 댓글쓰기
   const dimLayer1 = $('.enter_reply_wrap.fixed');
-  const dimLayer2 = $('.dimmed_layer2');
   const infoWrap = $('.enter_reply_wrap.fixed .info_wrap');
   const inputWrap = $('.enter_reply_wrap.fixed .input_wrap');
   const viewCount =  $('.enter_reply_wrap.fixed > .inner > .count');
   const viewCount2 =  $('.enter_reply_wrap.fixed .input_wrap > .inner .count');
-
-  $(document).on('focus', '.enter_reply_wrap.fixed .input_wrap input', function() {
-    if(!dimLayer1.hasClass('active')){
-        dimLayer2.fadeIn(200);
-    }else{
-        dimLayer2.fadeOut(200);
-    }    
-    viewCount.show();
-    viewCount2.hide();
-  }) 
-  $(document).on('focusout', '.enter_reply_wrap.fixed .input_wrap input', function() {
-    dimLayer2.fadeOut(200);
-    viewCount.hide();
-    viewCount2.show();
+  const bookMark = $('comments_list_wrap .btn_bookmark');
+ 
+  // 댓글 > 댓글쓰기
+  inputWrap.on('click', function(e) {  
+    if ($(this).has(e.target).length) {
+       $.fn.enterReplyShow();
+       viewCount.show();
+       viewCount2.hide();  
+    }
   }) 
 
   // 댓글 > 답글쓰기
@@ -62,6 +55,14 @@ $(function (){
     }
   })
 
-   
+   // 댓글 > 이미지 첨부
+  $(document).on('click', '.btn_attachment', function() {
+    $('.enter_reply_wrap.fixed > .inner .attachment').toggleClass('show');    
+  })   
+
+ // 댓글 > 북마크 버튼 
+  $(document).on('click', '.comments_list_wrap .btn_bookmark', function() {
+    $(this).toggleClass('active');    
+  })  
   
 });
