@@ -27,7 +27,7 @@ $(function () {
 		let isOpened = layerPopup.hasClass('active');
 		// 팝업 타입
 		let isCentered = layerPopup.hasClass('align_center');
-    // 높이값 고정
+		// 높이값 고정
 		let isFixedValue = layerPopup.hasClass('fixed_value');
 
 		isOpened ? hideBottomSheet() : showBottomSheet();
@@ -54,19 +54,19 @@ $(function () {
 		}
 
 		function updateSheetHeight(height) {
-      let deviceHeight = $(window).outerHeight();
-      let condition = (deviceHeight - 100) < layerContentWrap.outerHeight();
+			let deviceHeight = $(window).outerHeight();
+			let condition = (deviceHeight - 100) < layerContentWrap.outerHeight();
 
-      if (isCentered) return;
+			if (isCentered) return;
 
-      if(isFixedValue) {
-        if(condition){
-          layerContentWrap.css('height', deviceHeight);
-        }
-      } else {
-        let value = height + '%';
-        layerContentWrap.css('height', value);
-      }
+			if (isFixedValue) {
+				if (condition) {
+					layerContentWrap.css('height', deviceHeight);
+				}
+			} else {
+				let value = height + '%';
+				layerContentWrap.css('height', value);
+			}
 		}
 
 		// 드래그
@@ -108,7 +108,7 @@ $(function () {
 			})();
 		}
 	});
-  // $.fn.layerToggle('#CG0600020-pop2');
+	// $.fn.layerToggle('#CG0600020-pop2');
 
 	// 공통 - 팝업 열기
 	$.fn.layerOpen = (function (target, sheetHeight = 100) {
@@ -133,7 +133,7 @@ $(function () {
 		let isOpened = layerPopup.hasClass('active');
 		// 팝업 타입
 		let isCentered = layerPopup.hasClass('align_center');
-    // 높이값 고정
+		// 높이값 고정
 		let isFixedValue = layerPopup.hasClass('fixed_value');
 
 		isOpened ? '' : showBottomSheet();
@@ -162,19 +162,19 @@ $(function () {
 		}
 
 		function updateSheetHeight(height) {
-      let deviceHeight = $(window).outerHeight();
-      let condition = (deviceHeight - 100) < layerContentWrap.outerHeight();
+			let deviceHeight = $(window).outerHeight();
+			let condition = (deviceHeight - 100) < layerContentWrap.outerHeight();
 
-      if (isCentered) return;
+			if (isCentered) return;
 
-      if(isFixedValue) {
-        if(condition){
-          layerContentWrap.css('height', deviceHeight);
-        }
-      } else {
-        let value = height + '%';
-        layerContentWrap.css('height', value);
-      }
+			if (isFixedValue) {
+				if (condition) {
+					layerContentWrap.css('height', deviceHeight);
+				}
+			} else {
+				let value = height + '%';
+				layerContentWrap.css('height', value);
+			}
 		}
 
 		// 드래그
@@ -247,345 +247,356 @@ $(function () {
 		});
 	});
 
-  // 공통 : 탭메뉴 이벤트
-  $('.tab_menu_wrap').each(function () {
-    const tabTitles = $(this).find('.tab_title > li');
-    const initialIndex = 0;
+	// 공통 : 탭메뉴 이벤트
+	$('.tab_menu_wrap').each(function () {
+		const tabTitles = $(this).find('.tab_title > li');
+		const initialIndex = 0;
 
-    setActiveTab(tabTitles, initialIndex);
+		setActiveTab(tabTitles, initialIndex);
 
-    tabTitles.on('click', function (e) {
-      setActiveTab(tabTitles, $(this).index());
-    });
-    
-    function setActiveTab(titles, index) {
-      titles.each(function (i) {
-        $(this).toggleClass('active', i === index);
-      });
-    }
-  });
+		tabTitles.on('click', function (e) {
+			setActiveTab(tabTitles, $(this).index());
+		});
 
-  // 공통 : 숫자 애니메인션 카운터
-  $.fn.animateCounter = function (targetValue, duration) {
-    return this.each(function () {
-        const targetCounter = $(this);
+		function setActiveTab(titles, index) {
+			titles.each(function (i) {
+				$(this).toggleClass('active', i === index);
+			});
+		}
+	});
 
-        let startValue = parseInt(targetCounter.text().trim() === '' ? 0 : targetCounter.text().trim());
-        let increment = (targetValue - startValue) / duration;
+	// 공통 : 숫자 애니메인션 카운터
+	$.fn.animateCounter = function (targetValue, duration) {
+		return this.each(function () {
+			const targetCounter = $(this);
 
-        // Update counter
-        let startTimestamp;
+			let startValue = parseInt(targetCounter.text().trim() === '' ? 0 : targetCounter.text().trim());
+			let increment = (targetValue - startValue) / duration;
 
-        function updateCounter(timestamp) {
-            if (!startTimestamp) startTimestamp = timestamp;
-            let elapsedTime = timestamp - startTimestamp;
+			// Update counter
+			let startTimestamp;
 
-            if (elapsedTime < duration) {
-                let newValue = Math.round(startValue + increment * elapsedTime);
+			function updateCounter(timestamp) {
+				if (!startTimestamp) startTimestamp = timestamp;
+				let elapsedTime = timestamp - startTimestamp;
 
-                targetCounter.text(newValue.toLocaleString()); // Use toLocaleString to add commas
-                requestAnimationFrame(updateCounter);
-            } else {
-                // Set the final value as the targetValue
-                targetCounter.text(targetValue.toLocaleString());
-            }
-        }
+				if (elapsedTime < duration) {
+					let newValue = Math.round(startValue + increment * elapsedTime);
 
-        // Start the animation
-        requestAnimationFrame(updateCounter);
-    });
-  };
-  // $('셀렉터').animateCounter(1000, 1000);
-  // 셀렉터에 해당하는 태그가 1개 이상이면 에러
+					targetCounter.text(newValue.toLocaleString()); // Use toLocaleString to add commas
+					requestAnimationFrame(updateCounter);
+				} else {
+					// Set the final value as the targetValue
+					targetCounter.text(targetValue.toLocaleString());
+				}
+			}
 
-  // 프로필 설정 : 인풋 포커스, 인풋 값 삭제
-  $('.inp_box_list > li').each(function () {
-    const input = $(this).find('input');
-    const button = $(this).find('button');
+			// Start the animation
+			requestAnimationFrame(updateCounter);
+		});
+	};
+	// $('셀렉터').animateCounter(1000, 1000);
+	// 셀렉터에 해당하는 태그가 1개 이상이면 에러
 
-    input.on('focus', function () {
-      $(this).closest('li').addClass('active');
-    });
+	// 프로필 설정 : 인풋 포커스, 인풋 값 삭제
+	$('.inp_box_list > li').each(function () {
+		const input = $(this).find('input');
+		const button = $(this).find('button');
 
-    input.on('blur', function () {
-      $(this).closest('li').removeClass('active');
-    });
+		input.on('focus', function () {
+			$(this).closest('li').addClass('active');
+		});
 
-    button.on('click', function () {
-      $(this).closest('li').find('input').val('');
-    });
-  });
-  // 마퀴 이벤트
-  $.fn.marqueeEvent = function (speed) {
-    this.each(function () {
-      const parent = $(this);
-      const clone = parent.html();
-      const firstElement = parent.children().first();
-      let i = 0;
-  
-      parent.append(clone).append(clone);
-  
-      setInterval(function () {
-        firstElement.css('margin-left', `-${i}px`);
-        if (i > firstElement.width()) {
-          i = 0;
-        }
-        i = i + speed;
-      }, 0);
-    });
-  
-    return this;
-  };
-  //$('셀렉터').marqueeEvent(0.2);
+		input.on('blur', function () {
+			$(this).closest('li').removeClass('active');
+		});
 
-  // 챌린지 : 상세 리워드 받음 로티
-  $.fn.downloadAnimation = function () {
-    const downloadAni = $('.download_ani');
-  
-    if (downloadAni.length === 0) return;
-  
-    const lottiePlayer = downloadAni.find('lottie-player');
-  
-    downloadAni.addClass('active');
-    lottiePlayer[0].play();
-  
-    lottiePlayer.on('complete', () => {
-      // console.log('complete');
-      downloadAni.removeClass('active');
-      lottiePlayer[0].stop();
-    });
-  
-    return this;
-  };
-  //$.fn.downloadAnimation();
+		button.on('click', function () {
+			$(this).closest('li').find('input').val('');
+		});
+	});
+	// 마퀴 이벤트
+	$.fn.marqueeEvent = function (speed) {
+		this.each(function () {
+			const parent = $(this);
+			const clone = parent.html();
+			const firstElement = parent.children().first();
+			let i = 0;
 
-  // 걷기 가이드 애니메이션 카운트
-  $.animationCount = function (value = 3) {
-    const animationCountWrap = $('.animation_count');
-    const animationNumber = animationCountWrap.find('> p');
-  
-    startAni();
-  
-    animationNumber.on('animationend', function () {
-      if (value > 1) {
-        value--;
-  
-        animationNumber.html(value);
-        animationNumber.removeClass('active');
-  
-        setTimeout(function () {
-          animationNumber.addClass('active');
-        }, 10);
-      } else if (animationNumber.html() == 1) {
-        endAni();
-      }
-    });
-  
-    function startAni() {
-      animationCountWrap.addClass('active');
-      animationNumber.addClass('active');
-      animationNumber.html(value);
-    }
-  
-    function endAni() {
-      animationNumber.removeClass('active');
-      animationCountWrap.removeClass('active');
-    }
-  };
-  //$.animationCount();
+			parent.append(clone).append(clone);
 
-  // 디자인 셀렉트
-  $.fn.designSelect = function () {
-    const selectBoxes = $('.design_select');
-  
-    selectBoxes.each(function () {
-      const select = $(this);
-      const selected = select.find('.selected');
-      const selectTitle = selected.find('span');
-      const optionList = select.find('.optionList > li');
-  
-      selected.on('click', function () {
-        selectBoxes.not(select).removeClass('active');
-        select.toggleClass('active');
-      });
-  
-      optionList.on('click', function (e) {
-        optionList.not($(this)).removeClass('select');
-        $(this).addClass('select');
-        select.removeClass('active');
-        selectTitle.text(e.target.innerText);
-      });
-  
-      $(document).on('click', function (e) {
-        if (!$(e.target).closest('.design_select').length) {
-          selectBoxes.removeClass('active');
-        }
-      });
-    });
-  };
+			setInterval(function () {
+				firstElement.css('margin-left', `-${i}px`);
+				if (i > firstElement.width()) {
+					i = 0;
+				}
+				i = i + speed;
+			}, 0);
+		});
 
-  // 헤더 상단 댓글 버튼 클릭
-  $('#header .btn_comments').on('click', function() {
-    $.fn.enterReplyShow();
-  });
+		return this;
+	};
+	//$('셀렉터').marqueeEvent(0.2);
 
-  // 댓글창 보임
-  $.fn.enterReplyShow = function () {
-    const enterReplyWrap = $('.enter_reply_wrap');
-    if (enterReplyWrap.length) {
-      enterReplyWrap.addClass('active');
-      $('body').addClass('active');
-    }
-  };
-  //$.fn.enterReplyShow()
+	// 챌린지 : 상세 리워드 받음 로티
+	$.fn.downloadAnimation = function () {
+		const downloadAni = $('.download_ani');
 
-  // 댓글창 사라짐
-  $.fn.enterReplyHide = function () {
-    const enterReplyWrap = $('.enter_reply_wrap');
-    if (enterReplyWrap.length) {
-      enterReplyWrap.removeClass('active');
-      $('body').removeClass('active');
-    }
-  };
-  //$.fn.enterReplyHide()
+		if (downloadAni.length === 0) return;
 
-  // 댓글 닫기 이벤트
-  $.fn.enterReplyEvent = function () {
-    const enterReplyWrap = $('.enter_reply_wrap');
-    if (!enterReplyWrap.length) return;
+		const lottiePlayer = downloadAni.find('lottie-player');
 
-    const btnCloseReply = enterReplyWrap.find('> .inner .info_wrap .status button');
+		downloadAni.addClass('active');
+		lottiePlayer[0].play();
 
-    // 입력창 버튼으로 닫기
-    btnCloseReply.on('click', function () {
-      $.fn.enterReplyHide();
-    });
+		lottiePlayer.on('complete', () => {
+			// console.log('complete');
+			downloadAni.removeClass('active');
+			lottiePlayer[0].stop();
+		});
 
-    // 입력창 dimmed로 닫기
-    $('html').on('click', function (e) {
-      if ($(e.target).hasClass('enter_reply_wrap active')) {
-        $.fn.enterReplyHide();
-      }
-    });
-  };
+		return this;
+	};
+	//$.fn.downloadAnimation();
 
-  // 플레이어 버튼 이벤트
-  $.fn.playerButtonEvent = function () {
-    const wrap = $('#wrap');
-    const playerDownloadWrap = $('.player_download_wrap');
+	// 걷기 가이드 애니메이션 카운트
+	$.animationCount = function (value = 3) {
+		const animationCountWrap = $('.animation_count');
+		const animationNumber = animationCountWrap.find('> p');
 
-    if (!playerDownloadWrap.length) return;
+		startAni();
 
-    const downloadWrap = playerDownloadWrap.find('> .download_wrap');
-    const playerWrap = playerDownloadWrap.find('> .player_wrap');
-    const btnCloseDetailLayer = playerWrap.find('> button');
-    const btnClosePlayer = playerWrap.find('> .player_status button');
-    const btnPlayerUnit = playerWrap.find('> .player_controll .controll > button');
+		animationNumber.on('animationend', function () {
+			if (value > 1) {
+				value--;
 
-    if (downloadWrap.length) {
-      console.log('1');
-      const btnDownload = downloadWrap.find('> button');
-      btnDownload.on('click', function () {
-        const condition = downloadWrap.hasClass('downloading');
+				animationNumber.html(value);
+				animationNumber.removeClass('active');
 
-        if (condition) {
-          downloadWrap.removeClass('downloading');
-          wrap.attr('class', 'player_show');
-        } else {
-          downloadWrap.addClass('downloading');
-        }
-      });
+				setTimeout(function () {
+					animationNumber.addClass('active');
+				}, 10);
+			} else if (animationNumber.html() == 1) {
+				endAni();
+			}
+		});
 
-      btnCloseDetailLayer.on('click', function () {
-        const condition = btnCloseDetailLayer.hasClass('active');
+		function startAni() {
+			animationCountWrap.addClass('active');
+			animationNumber.addClass('active');
+			animationNumber.html(value);
+		}
 
-        if (condition) {
-          btnCloseDetailLayer.removeClass('active');
-        } else {
-          btnCloseDetailLayer.addClass('active');
-          closePlayList();
-        }
-        $.fn.layerToggle('#guideDetail');
-      });
+		function endAni() {
+			animationNumber.removeClass('active');
+			animationCountWrap.removeClass('active');
+		}
+	};
+	//$.animationCount();
 
-      btnClosePlayer.on('click', function () {
-        const condition = btnCloseDetailLayer.hasClass('active');
+	// 디자인 셀렉트
+	$.fn.designSelect = function () {
+		const selectBoxes = $('.design_select');
 
-        condition ? btnCloseDetailLayer.removeClass('active') : btnCloseDetailLayer.addClass('active');
-        resetPopupBtn();
-      });
-    }
+		selectBoxes.each(function () {
+			const select = $(this);
+			const selected = select.find('.selected');
+			const selectTitle = selected.find('span');
+			const optionList = select.find('.optionList > li');
 
-    btnPlayerUnit.eq(0).on('click', function () {
-      btnPlayerUnit.eq(0).toggleClass('active');
-    });
+			selected.on('click', function () {
+				selectBoxes.not(select).removeClass('active');
+				select.toggleClass('active');
+			});
 
-    btnPlayerUnit.eq(2).on('click', function () {
-      btnPlayerUnit.eq(2).toggleClass('active');
-    });
+			optionList.on('click', function (e) {
+				optionList.not($(this)).removeClass('select');
+				$(this).addClass('select');
+				select.removeClass('active');
+				selectTitle.text(e.target.innerText);
+			});
 
-    btnPlayerUnit.eq(3).on('click', function () {
-      if (btnPlayerUnit.eq(3).hasClass('active')) {
-        resetPopupBtn();
-      } else {
-        openPlayList();
-      }
-    });
+			$(document).on('click', function (e) {
+				if (!$(e.target).closest('.design_select').length) {
+					selectBoxes.removeClass('active');
+				}
+			});
+		});
+	};
 
-    function resetPopupBtn() {
-      wrap.removeClass('player_show');
-      btnCloseDetailLayer.removeClass('active');
-      closePlayList();
-    }
+	// 헤더 상단 댓글 버튼 클릭
+	$('#header .btn_comments').on('click', function () {
+		$.fn.enterReplyShow();
+	});
 
-    function openPlayList() {
-      btnPlayerUnit.eq(3).addClass('active');
-      btnCloseDetailLayer.removeClass('active');
+	// 댓글창 보임
+	$.fn.enterReplyShow = function () {
+		const enterReplyWrap = $('.enter_reply_wrap');
+		if (enterReplyWrap.length) {
+			enterReplyWrap.addClass('active');
+			$('body').addClass('active');
+		}
+	};
+	//$.fn.enterReplyShow()
 
-      $.fn.layerClose('#guideDetail');
-      $.fn.layerOpen('#playlistPopup');
-    }
+	// 댓글창 사라짐
+	$.fn.enterReplyHide = function () {
+		const enterReplyWrap = $('.enter_reply_wrap');
+		if (enterReplyWrap.length) {
+			enterReplyWrap.removeClass('active');
+			$('body').removeClass('active');
+		}
+	};
+	//$.fn.enterReplyHide()
 
-    function closePlayList() {
-      btnPlayerUnit.eq(3).removeClass('active');
+	// 댓글 닫기 이벤트
+	$.fn.enterReplyEvent = function () {
+		const enterReplyWrap = $('.enter_reply_wrap');
+		if (!enterReplyWrap.length) return;
 
-      $.fn.layerClose('#playlistPopup');
-      $.fn.layerClose('#guideDetail');
-    }
-  };
+		const btnCloseReply = enterReplyWrap.find('> .inner .info_wrap .status button');
 
-  // 재생목록 팝업 클릭 이벤트(재생, 중지, 닫기)
-  $.fn.playlistPopupEvent = function () {
-    const wrap = $('#wrap');
-    const playlistPopup = $('.playlist_wrap');
-    const playlistUnit = playlistPopup.find('.play_list > div');
-    const closePlaylistPopup = playlistPopup.find('.layer_content_wrap .layer_content .header > .title_wrap .btn_back');
+		// 입력창 버튼으로 닫기
+		btnCloseReply.on('click', function () {
+			$.fn.enterReplyHide();
+		});
 
-    const playerDownloadWrap = $('.player_download_wrap');
-    const downloadWrap = playerDownloadWrap.find('> .download_wrap');
-  
-    const playerWrap = playerDownloadWrap.find('> .player_wrap');
-    const btnCloseDetailLayer = playerWrap.find('> button');
-    const btnClosePlayer = playerWrap.find('> .player_status button');
-    const btnPlayerUnit = playerWrap.find('> .player_controll .controll > button');
-  
-    playlistUnit.on('click', function () {
-      $(this).toggleClass('paused');
-    });
-  
-    closePlaylistPopup.on('click', function () {
-      resetPopupBtn();
-    });
-  
-    function resetPopupBtn() {
-      wrap.removeClass('player_show');
-      $.fn.layerClose('#guideDetail');
-      closePlayList();
-    }
-  
-    function closePlayList() {
-      $.fn.layerClose('#playlistPopup');
-      btnPlayerUnit.eq(3).removeClass('active');
-    }
-  };
+		// 입력창 dimmed로 닫기
+		$('html').on('click', function (e) {
+			if ($(e.target).hasClass('enter_reply_wrap active')) {
+				$.fn.enterReplyHide();
+			}
+		});
+	};
+
+	// 플레이어 버튼 이벤트
+	$.fn.playerButtonEvent = function () {
+		const wrap = $('#wrap');
+		const playerDownloadWrap = $('.player_download_wrap');
+
+		if (!playerDownloadWrap.length) return;
+
+		const downloadWrap = playerDownloadWrap.find('> .download_wrap');
+		const playerWrap = playerDownloadWrap.find('> .player_wrap');
+		const btnCloseDetailLayer = playerWrap.find('> button');
+		const btnClosePlayer = playerWrap.find('> .player_status button');
+		const btnPlayerUnit = playerWrap.find('> .player_controll .controll > button');
+
+		if (downloadWrap.length) {
+			console.log('1');
+			const btnDownload = downloadWrap.find('> button');
+			btnDownload.on('click', function () {
+				const condition = downloadWrap.hasClass('downloading');
+
+				if (condition) {
+					downloadWrap.removeClass('downloading');
+					wrap.attr('class', 'player_show');
+				} else {
+					downloadWrap.addClass('downloading');
+				}
+			});
+
+			btnCloseDetailLayer.on('click', function () {
+				const condition = btnCloseDetailLayer.hasClass('active');
+
+				if (condition) {
+					btnCloseDetailLayer.removeClass('active');
+				} else {
+					btnCloseDetailLayer.addClass('active');
+					closePlayList();
+				}
+				$.fn.layerToggle('#guideDetail');
+			});
+
+			btnClosePlayer.on('click', function () {
+				const condition = btnCloseDetailLayer.hasClass('active');
+
+				condition ? btnCloseDetailLayer.removeClass('active') : btnCloseDetailLayer.addClass('active');
+				resetPopupBtn();
+			});
+		}
+
+		btnPlayerUnit.eq(0).on('click', function () {
+			btnPlayerUnit.eq(0).toggleClass('active');
+		});
+
+		btnPlayerUnit.eq(2).on('click', function () {
+			btnPlayerUnit.eq(2).toggleClass('active');
+		});
+
+		btnPlayerUnit.eq(3).on('click', function () {
+			if (btnPlayerUnit.eq(3).hasClass('active')) {
+				resetPopupBtn();
+			} else {
+				openPlayList();
+			}
+		});
+
+		function resetPopupBtn() {
+			wrap.removeClass('player_show');
+			btnCloseDetailLayer.removeClass('active');
+			closePlayList();
+		}
+
+		function openPlayList() {
+			btnPlayerUnit.eq(3).addClass('active');
+			btnCloseDetailLayer.removeClass('active');
+
+			$.fn.layerClose('#guideDetail');
+			$.fn.layerOpen('#playlistPopup');
+		}
+
+		function closePlayList() {
+			btnPlayerUnit.eq(3).removeClass('active');
+
+			$.fn.layerClose('#playlistPopup');
+			$.fn.layerClose('#guideDetail');
+		}
+	};
+
+	// 재생목록 팝업 클릭 이벤트(재생, 중지, 닫기)
+	$.fn.playlistPopupEvent = function () {
+		const wrap = $('#wrap');
+		const playlistPopup = $('.playlist_wrap');
+		const playlistUnit = playlistPopup.find('.play_list > div');
+		const closePlaylistPopup = playlistPopup.find('.layer_content_wrap .layer_content .header > .title_wrap .btn_back');
+
+		const playerDownloadWrap = $('.player_download_wrap');
+		const downloadWrap = playerDownloadWrap.find('> .download_wrap');
+
+		const playerWrap = playerDownloadWrap.find('> .player_wrap');
+		const btnCloseDetailLayer = playerWrap.find('> button');
+		const btnClosePlayer = playerWrap.find('> .player_status button');
+		const btnPlayerUnit = playerWrap.find('> .player_controll .controll > button');
+
+		playlistUnit.on('click', function () {
+			$(this).toggleClass('paused');
+		});
+
+		closePlaylistPopup.on('click', function () {
+			resetPopupBtn();
+		});
+
+		function resetPopupBtn() {
+			wrap.removeClass('player_show');
+			$.fn.layerClose('#guideDetail');
+			closePlayList();
+		}
+
+		function closePlayList() {
+			$.fn.layerClose('#playlistPopup');
+			btnPlayerUnit.eq(3).removeClass('active');
+		}
+	};
+
+	$.fn.headerScrollEvent = function () {
+		$(window).on('scroll', function () {
+			const currentScrollPos = $(window).scrollTop();
+			const mainHeader = $('#wrap #header');
+
+			if (mainHeader) {
+				currentScrollPos == 0 ? mainHeader.removeClass('fixed') : mainHeader.addClass('fixed');
+			}
+		});
+	};
 });

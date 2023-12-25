@@ -4,12 +4,13 @@ $(function () {
 	$.fn.enterReplyEvent();
 	$.fn.playerButtonEvent();
 	$.fn.playlistPopupEvent();
+	$.fn.headerScrollEvent();
 
 
 	// walking_guide
 	$.fn.filterViewEvent();
-  $.fn.detailToggleEvent();
-  $.fn.detailPopupClose();
+	$.fn.detailToggleEvent();
+	$.fn.detailPopupClose();
 
 
 	// main

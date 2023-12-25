@@ -240,9 +240,7 @@ body.active {
   height: 60px;
   padding: 0 50px;
   cursor: grab;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 .modal_layer_popup .layer_content_wrap .layer_drag span {
   display: block;
@@ -636,9 +634,7 @@ body.active {
   font-size: 13px;
   font-weight: 800;
   cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 .select_box > .selected {
   display: flex;
@@ -846,8 +842,7 @@ body.active {
 }
 .gathering_image_list > li a img {
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .comments_list_wrap .comments_sort {
@@ -1121,8 +1116,7 @@ body.active {
 .enter_reply_wrap > .inner .info_wrap .attachment a img {
   width: 52px;
   height: 52px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .enter_reply_wrap > .inner .input_wrap {
   padding: 0 20px;
@@ -1159,15 +1153,8 @@ body.active {
 .enter_reply_wrap > .inner .input_wrap .inner > div input:focus-visible {
   outline: none;
 }
-.enter_reply_wrap > .inner .input_wrap .inner > div input::-moz-placeholder {
-  color: #D9D9D9;
-}
 .enter_reply_wrap > .inner .input_wrap .inner > div input::placeholder {
   color: #D9D9D9;
-}
-.enter_reply_wrap > .inner .input_wrap .inner > div input:-moz-placeholder-shown + button {
-  background: #D9D9D9;
-  color: rgba(0, 0, 0, 0.2);
 }
 .enter_reply_wrap > .inner .input_wrap .inner > div input:placeholder-shown + button {
   background: #D9D9D9;
@@ -1273,7 +1260,7 @@ body.active {
   padding-bottom: 122px;
 }
 #wrap #header {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   z-index: 999;
@@ -1284,6 +1271,9 @@ body.active {
   height: 44px;
   padding: 0 20px;
   background: #F9F9FB;
+}
+#wrap #header.fixed {
+  position: fixed;
 }
 #wrap #header h1 {
   transform-origin: left;
@@ -1377,7 +1367,7 @@ body.active {
 #wrap.main_content_wrap:after {
   content: "";
   position: absolute;
-  top: 44px;
+  top: 0;
   left: 0;
   width: 100%;
   height: 85%;
@@ -1418,13 +1408,14 @@ body.active {
   padding: 0 20px;
 }
 #wrap.main_content_wrap #container .attendance_wrap .title_cont h2 {
+  padding-right: 74px;
   font-size: 16px;
   font-weight: 600;
   line-height: 24px;
 }
 #wrap.main_content_wrap #container .attendance_wrap .title_cont > div {
   position: absolute;
-  top: 0;
+  top: 24px;
   right: 20px;
   display: flex;
 }
@@ -1447,10 +1438,10 @@ body.active {
   background-size: 100%;
 }
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont {
-  margin-top: 24px;
+  margin-top: 16px;
 }
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .attendance_link {
-  margin: 24px 0 0 20px;
+  margin: 0px 0 0 20px;
   display: flex;
 }
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .attendance_link a {
@@ -1712,6 +1703,10 @@ body.active {
 #wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-slide > div > a {
   display: block;
 }
+#wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-slide > div > a .text {
+  position: relative;
+  z-index: 10;
+}
 #wrap.main_content_wrap #container .main_swipe_menu .banner_swiper .swiper-slide > div > a .text > em {
   position: relative;
   z-index: 10;
@@ -1909,7 +1904,7 @@ body.active {
   transform: translateY(-50%);
   width: 5px;
   height: 10px;
-  background: url(../images/common/ico_arrow_right02.svg) no-repeat 50%;
+  background: url("../images/common/ico_arrow_right02.svg") no-repeat 50%;
   background-size: 100%;
 }
 #wrap.main_content_wrap #container .status_wrap .main_status .title > div > p {
@@ -2166,6 +2161,7 @@ body.active {
 }
 #wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > a .visual_box {
   position: relative;
+  min-height: 220px;
 }
 #wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > a .visual_box:after {
   content: "";
@@ -2179,6 +2175,9 @@ body.active {
 #wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > a .visual_box img {
   display: block;
   width: 100%;
+  height: 100%;
+  min-height: 220px;
+  object-fit: cover;
 }
 #wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > a .title_box {
   position: absolute;
@@ -2193,7 +2192,7 @@ body.active {
   flex: 1;
   padding: 10px 16px 20px;
   background: #000;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) -5%, #000 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #000 100%);
 }
 #wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > a .title_box > .inner > .type {
   position: absolute;
@@ -2231,6 +2230,7 @@ body.active {
   align-items: center;
 }
 #wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > a .title_box > .inner > .location span {
+  flex-shrink: 0;
   position: relative;
   width: 30px;
   height: 30px;
@@ -2251,7 +2251,7 @@ body.active {
   border-radius: 12px;
   font-size: 12px;
   font-weight: 600;
-  line-height: 1;
+  line-height: 1.2;
   color: #344054;
 }
 #wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list > ul > li > a .title_box > .inner > .title {
@@ -2362,9 +2362,6 @@ body.active {
 #wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list .icon_wrap > div {
   display: flex;
   align-items: center;
-}
-#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list .icon_wrap > div:only-child em {
-  display: inline-block;
 }
 #wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .challenge_list .icon_wrap > div span {
   display: inline-block;
@@ -2744,8 +2741,7 @@ body.active {
   display: block;
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .playlist_wrap .layer_content_wrap .layer_content .container .play_list > div .content_box {
   position: absolute;
@@ -3259,9 +3255,6 @@ body.active {
 }
 .reward_wrap .point_exchange .exchange_form > .inp_box_list > li > .inp_box input:focus-visible {
   outline: none;
-}
-.reward_wrap .point_exchange .exchange_form > .inp_box_list > li > .inp_box input:-moz-placeholder-shown + .btn_delete {
-  display: none;
 }
 .reward_wrap .point_exchange .exchange_form > .inp_box_list > li > .inp_box input:placeholder-shown + .btn_delete {
   display: none;

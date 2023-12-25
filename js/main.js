@@ -98,14 +98,14 @@ $(function () {
 	};
 
 
-	// 메인 : 보너스 받기, 스크롤에 그래프 이벤트(챌린지에서 동일 이벤트 있어서 사용 안함)
+	// 메인 : 보너스 받기, 스크롤에 그래프 이벤트
 	$.fn.mainBonusEvent = function () {
 		const mainStatus = $('.main_content_wrap .main_status');
 		const bonusCont = mainStatus.find('.graph_cont > ul > li');
 		const graph = mainStatus.find('.graph_cont > .graph span');
 
 		// 보너스 받기
-		bonusCont.on('click', function (){
+		bonusCont.on('click', function () {
 			if ($(this).hasClass('active')) {
 
 				let heartEffect01 = $(this).find('.heart_effect01');
@@ -128,7 +128,7 @@ $(function () {
 		});
 
 		// 스크롤에 그래프 이벤트
-		$(window).on('scroll', function (){
+		$(window).on('scroll', function () {
 			if ($('.main_status').length === 0) return;
 
 			const currentScrollPos = $(window).scrollTop();
@@ -151,7 +151,7 @@ $(function () {
 	};
 
 
-	// 메인 : 챌린지 목록 찜 버튼 이벤트
+	// 메인 : 챌린지 목록 찜 버튼 이벤트(챌린지에서 동일 이벤트 있어서 사용 안함)
 	$.fn.mainBtnEvent = function () {
 		$(document).on('click', '.main_content_wrap .challenge_list > ul > li > button', function (e) {
 			$(this).toggleClass('active');
@@ -160,7 +160,7 @@ $(function () {
 
 
 	// 메인 : 스크롤 이벤트(출석, 스와이퍼, 상태, 툴바)
-	$.fn.mainScrollEvent = function(){
+	$.fn.mainScrollEvent = function () {
 		if ($('.main_content_wrap').length === 0) return;
 
 		// 출석
@@ -210,9 +210,9 @@ $(function () {
 					}
 				});
 
-				function resetScroll(){
-					$('.status_wrap > ul > li').each(function(){
-						if(!$(this).hasClass('clear')){
+				function resetScroll() {
+					$('.status_wrap > ul > li').each(function () {
+						if (!$(this).hasClass('clear')) {
 							$(this).find('> .inner > .contents > .content2').slideUp();
 						}
 					});
@@ -237,7 +237,7 @@ $(function () {
 
 		const monthlyAttendance = this.find('.monthly_calendar .calendar_tbl');
 		const monthlyDate = this.find('.monthly_calendar .calendar_tbl td a');
-		
+
 		let heartEffect01 = this.find('.monthly_calendar .calendar_tbl .heart_effect01');
 		let heartEffect02 = this.find('.monthly_calendar .calendar_tbl .heart_effect02');
 
@@ -262,9 +262,9 @@ $(function () {
 				date.on('click', function (e) {
 					e.preventDefault();
 
-					if($(this).closest('td').hasClass('today')){
+					if ($(this).closest('td').hasClass('today')) {
 						date.find('.icon').addClass('clicked');
-	
+
 						// 클릭 효과 lottie
 						heartEffect02.find('lottie-player').each(function () {
 							$(this).get(0).play();
@@ -272,7 +272,7 @@ $(function () {
 						// callback
 						heartEffect02.find('lottie-player').eq(1).on('complete', function () {
 							// 토요일인가 평일인가
-							if($(this).closest('td').index() == 6){
+							if ($(this).closest('td').index() == 6) {
 								date.closest('td').removeClass('today').addClass('bonus');
 							} else {
 								date.closest('td').removeClass('today').addClass('complete');
@@ -281,7 +281,7 @@ $(function () {
 					}
 
 					// 오늘 보너스 받고, 전체 보너스받기로 전환
-					if($(this).closest('td').hasClass('bonus')){
+					if ($(this).closest('td').hasClass('bonus')) {
 						date.closest('td').removeClass('bonus').addClass('complete');
 					}
 				});
