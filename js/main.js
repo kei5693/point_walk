@@ -108,7 +108,7 @@ $(function () {
 
 			let posCenter = window.outerWidth / 2;
 			let pos = 0;
-			let posLimit = weeklyUl.offsetWidth - weeklyInner.offsetWidth + 20; // inner에 패딩 20있어서 추가
+			let posLimit = weeklyUl.offsetWidth - weeklyInner.offsetWidth + 0; // inner에 패딩 20있어서 추가
 
 			if (weeklyLi[n].offsetLeft + weeklyLi[n].offsetWidth / 2 <= posCenter) {
 				pos = 0;
