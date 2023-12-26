@@ -98,7 +98,7 @@ $(function () {
 				}
 			}
 
-			console.log(pos, weeklyLi.eq(n).position().left, weeklyLi.eq(n).outerWidth(), posCenter);
+			console.log(pos, weeklyLi.eq(n).position().left, weeklyLi.eq(n).outerWidth(), posCenter, posLimit);
 
 			weeklyInner.animate({scrollLeft : pos}, 500); 
 		}

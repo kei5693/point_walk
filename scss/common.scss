@@ -1694,9 +1694,12 @@ body.active {overflow: hidden;}
                 display: none;
               }
               > ul {
-                display: flex;
-                flex-wrap: nowrap;
-                align-items: center;
+                // display: flex;
+                // flex-wrap: nowrap;
+                // align-items: center;
+
+                display: grid;
+                grid-template-columns: repeat(7, 1fr);
 
                 > li {
                   flex-shrink: 0;
@@ -1707,7 +1710,7 @@ body.active {overflow: hidden;}
                   border-radius: 16px;
                   transition: background 0.3s;
 
-                  margin-right: 0px;
+                  margin-right: 16px;
                   // & + li {margin-left: 16px;}
                   > a {
                     display: block;
