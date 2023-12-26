@@ -1700,6 +1700,7 @@ body.active {overflow: hidden;}
 
                 display: grid;
                 grid-template-columns: repeat(7, 1fr);
+                grid-gap: 0 16px;
 
                 > li {
                   flex-shrink: 0;
@@ -1710,7 +1711,7 @@ body.active {overflow: hidden;}
                   border-radius: 16px;
                   transition: background 0.3s;
 
-                  margin-right: 16px;
+                  // margin-right: 16px;
                   // & + li {margin-left: 16px;}
                   > a {
                     display: block;

@@ -1502,6 +1502,7 @@ body.active {
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+  grid-gap: 0 16px;
 }
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li {
   flex-shrink: 0;
@@ -1510,7 +1511,6 @@ body.active {
   border: 1px solid #E9F1FF;
   border-radius: 16px;
   transition: background 0.3s;
-  margin-right: 16px;
 }
 #wrap.main_content_wrap #container .attendance_wrap .calendar_cont .weekly_unit .inner > ul > li > a {
   display: block;

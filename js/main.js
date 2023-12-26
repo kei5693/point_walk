@@ -83,21 +83,17 @@ $(function () {
 			let pos = 0;
 			let gap = 0;
 			const posLimit = weeklyUl.outerWidth() - weeklyInner.outerWidth() + 20; // inner에 패딩 20있어서 추가
-			
-
 
 			if (weeklyLi.eq(n).position().left + gap + weeklyLi.eq(n).outerWidth() / 2 <= posCenter) {
 				pos = 0;
 			} else {
-				// pos = (weeklyLi.eq(n).position().left + gap + weeklyLi.eq(n).outerWidth() / 2) - posCenter;
-				pos = weeklyLi.eq(n).position().left - posCenter;
-
+				pos = (weeklyLi.eq(n).position().left + gap + weeklyLi.eq(n).outerWidth() / 2) - posCenter;
 				if (pos > posLimit) {
 					pos = posLimit;
 				}
 			}
 
-			weeklyInner.animate({scrollLeft : pos}, 500); 
+			weeklyInner.animate({scrollLeft : pos}, 500);
 		}
 	};
 
