@@ -11,7 +11,9 @@
 }
 .walking_guide_wrap .desc_box .inner > div {
   height: 20px;
-  padding: 0 8px;
+  width: 50%;
+  max-width: 65px;
+  padding: 0 4px;
   background: #FDB022;
   border-radius: 2px;
   font-size: 12px;
@@ -203,6 +205,8 @@
 }
 .walk_detail_wrap.modal_layer_popup.fullscreen .layer_content_wrap {
   padding-top: 0;
+  padding-bottom: 0;
+  max-width: 100%;
 }
 .walk_detail_wrap.modal_layer_popup .layer_content_wrap .layer_content .layer_body {
   padding: 0;
@@ -233,9 +237,6 @@
 }
 .walk_detail_wrap .visual_image {
   margin: 0 -20px;
-}
-#wrap.download_show .player_download_wrap .player_wrap {
-  transform: translateY(-100%);
 }
 
 #wrap .player_download_wrap .player_wrap .player_status {

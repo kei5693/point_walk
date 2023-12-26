@@ -117,6 +117,7 @@
     border: 0 none;
     font-size: 16px;
     font-weight: 600;
+    width: 100%;
   }
   .profile_wrap .form_list_wrap .inp_box_list > li > div input:focus-visible {
     outline: none;
