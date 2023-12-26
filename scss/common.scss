@@ -1706,7 +1706,9 @@ body.active {overflow: hidden;}
                   border: 1px solid #E9F1FF;
                   border-radius: 16px;
                   transition: background 0.3s;
-                  & + li {margin-left: 16px;}
+
+                  margin-right: 16px;
+                  // & + li {margin-left: 16px;}
                   > a {
                     display: block;
                     padding: 16px 0 9px;

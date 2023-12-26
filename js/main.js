@@ -77,49 +77,30 @@ $(function () {
 			});
 		}
 
-		// // 클릭한 대상으로 scroll 이동 이벤트
-		// function switchTab(n) {
-		// 	const posCenter = window.outerWidth / 2;
-		// 	let pos = 0;
-		// 	let gap = 0;
-		// 	const posLimit = weeklyUl.outerWidth() - weeklyInner.outerWidth() + 20; // inner에 패딩 20있어서 추가
+		// 클릭한 대상으로 scroll 이동 이벤트
+		function switchTab(n) {
+			const posCenter = window.outerWidth / 2;
+			let pos = 0;
+			let gap = 0;
+			const posLimit = weeklyUl.outerWidth() - weeklyInner.outerWidth() + 20; // inner에 패딩 20있어서 추가
 			
 
-		// 	if (weeklyLi.eq(n).position().left + gap + weeklyLi.eq(n).outerWidth() / 2 <= posCenter) {
-		// 		pos = 0;
-		// 	} else {
-		// 		pos = (weeklyLi.eq(n).position().left + gap + weeklyLi.eq(n).outerWidth() / 2) - posCenter;
-		// 		if (pos > posLimit) {
-		// 			pos = posLimit;
-		// 		}
-		// 	}
 
-		// 	weeklyInner.scrollLeft(pos);
-		// }
-
-
-		// 클릭한 대상으로 scroll 이동 이벤트
-		// 제이쿼리로 적용시 미세하게 중앙으로 이동하지 않는 문제가 있어서 바닐라로 수정
-		function switchTab(n) {
-			let attendance = document.querySelector('.attendance_wrap .calendar_cont');
-			let weeklyInner = attendance.querySelector(':scope > .weekly_unit .inner');
-			let weeklyUl = weeklyInner.querySelector(':scope > ul');
-			let weeklyLi = weeklyUl.querySelectorAll('li');
-
-			let posCenter = window.outerWidth / 2;
-			let pos = 0;
-			let posLimit = weeklyUl.offsetWidth - weeklyInner.offsetWidth + 0; // inner에 패딩 20있어서 추가
-
-			if (weeklyLi[n].offsetLeft + weeklyLi[n].offsetWidth / 2 <= posCenter) {
+			if (weeklyLi.eq(n).position().left + gap + weeklyLi.eq(n).outerWidth() / 2 <= posCenter) {
 				pos = 0;
 			} else {
-				pos = (weeklyLi[n].offsetLeft + weeklyLi[n].offsetWidth / 2) - posCenter;
+				pos = (weeklyLi.eq(n).position().left + gap + weeklyLi.eq(n).outerWidth() / 2) - posCenter;
+
+				//pos = scrollWidth - (menuWidth /2) + (_width /2);
+
 				if (pos > posLimit) {
-					pos = posLimit
+					pos = posLimit;
 				}
 			}
 
-			weeklyInner.scrollLeft = pos;
+			console.log(pos, weeklyLi.eq(n).position().left, weeklyLi.eq(n).outerWidth(), posCenter);
+
+			weeklyInner.animate({scrollLeft : pos}, 500); 
 		}
 	};
 
