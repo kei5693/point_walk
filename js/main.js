@@ -77,23 +77,49 @@ $(function () {
 			});
 		}
 
-		// 클릭한 대상으로 scroll 이동 이벤트
-		function switchTab(n) {
-			const posCenter = window.outerWidth / 2;
-			let pos = 0;
-			let gap = 0;
-			const posLimit = weeklyUl.outerWidth() - weeklyInner.outerWidth() + 20; // inner에 패딩 20있어서 추가
+		// // 클릭한 대상으로 scroll 이동 이벤트
+		// function switchTab(n) {
+		// 	const posCenter = window.outerWidth / 2;
+		// 	let pos = 0;
+		// 	let gap = 0;
+		// 	const posLimit = weeklyUl.outerWidth() - weeklyInner.outerWidth() + 20; // inner에 패딩 20있어서 추가
+			
 
-			if (weeklyLi.eq(n).position().left + gap + weeklyLi.eq(n).outerWidth() / 2 <= posCenter) {
+		// 	if (weeklyLi.eq(n).position().left + gap + weeklyLi.eq(n).outerWidth() / 2 <= posCenter) {
+		// 		pos = 0;
+		// 	} else {
+		// 		pos = (weeklyLi.eq(n).position().left + gap + weeklyLi.eq(n).outerWidth() / 2) - posCenter;
+		// 		if (pos > posLimit) {
+		// 			pos = posLimit;
+		// 		}
+		// 	}
+
+		// 	weeklyInner.scrollLeft(pos);
+		// }
+
+
+		// 클릭한 대상으로 scroll 이동 이벤트
+		// 제이쿼리로 적용시 미세하게 중앙으로 이동하지 않는 문제가 있어서 바닐라로 수정
+		function switchTab(n) {
+			let attendance = document.querySelector('.attendance_wrap .calendar_cont');
+			let weeklyInner = attendance.querySelector(':scope > .weekly_unit .inner');
+			let weeklyUl = weeklyInner.querySelector(':scope > ul');
+			let weeklyLi = weeklyUl.querySelectorAll('li');
+
+			let posCenter = window.outerWidth / 2;
+			let pos = 0;
+			let posLimit = weeklyUl.offsetWidth - weeklyInner.offsetWidth + 20; // inner에 패딩 20있어서 추가
+
+			if (weeklyLi[n].offsetLeft + weeklyLi[n].offsetWidth / 2 <= posCenter) {
 				pos = 0;
 			} else {
-				pos = (weeklyLi.eq(n).position().left + gap + weeklyLi.eq(n).outerWidth() / 2) - posCenter;
+				pos = (weeklyLi[n].offsetLeft + weeklyLi[n].offsetWidth / 2) - posCenter;
 				if (pos > posLimit) {
-					pos = posLimit;
+					pos = posLimit
 				}
 			}
 
-			weeklyInner.scrollLeft(pos);
+			weeklyInner.scrollLeft = pos;
 		}
 	};
 
@@ -108,22 +134,26 @@ $(function () {
 		bonusCont.on('click', function () {
 			if ($(this).hasClass('active')) {
 
+				const downloadAni = $('.download_ani');
 				let heartEffect01 = $(this).find('.heart_effect01');
-				let heartEffect02 = $(this).find('.heart_effect02');
+				//let heartEffect02 = $(this).find('.heart_effect02');
+
+				if(downloadAni.hasClass('active')) return
 
 				$(this).addClass('clicked');
-
 				heartEffect01.hide();
 
+				$.fn.downloadAnimation();
+
 				// 클릭 효과 lottie
-				heartEffect02.find('lottie-player').each(function () {
-					$(this).get(0).play();
-				});
+				// heartEffect02.find('lottie-player').each(function () {
+				// 	$(this).get(0).play();
+				// });
 
 				// callback
-				heartEffect02.find('lottie-player').eq(1).on('complete', function () {
-					$(this).closest('li').removeClass('active').addClass('complete');
-				});
+				// heartEffect02.find('lottie-player').eq(1).on('complete', function () {
+				// 	$(this).closest('li').removeClass('active').addClass('complete');
+				// });
 			}
 		});
 

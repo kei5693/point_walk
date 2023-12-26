@@ -1052,9 +1052,9 @@ let main = {
 		if (document.querySelector('.main_content_wrap .status_wrap') == null) return;
 
 		const target = document.querySelector('.main_content_wrap .status_wrap li.walking .content1 > .progress_wrap > div');
-		common.animateCounter('.main_content_wrap li.walking .content1 .text_wrap strong', count, 1000);
-		target.querySelector(':scope > span').style.width = today + '%';
-		target.querySelector(':scope > em').style.width = yesterday + '%';
+		// common.animateCounter('.main_content_wrap li.walking .content1 .text_wrap strong', count, 1000);
+		// target.querySelector(':scope > span').style.width = today + '%';
+		// target.querySelector(':scope > em').style.width = yesterday + '%';
 	},
 	// 월간 출석 클릭 이벤트
 	monthlyAttendanceEvent: function (today) {

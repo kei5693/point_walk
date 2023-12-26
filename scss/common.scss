@@ -691,7 +691,7 @@ body.active {overflow: hidden;}
 
   display: flex;
   justify-content: center;
-  align-items: center;
+  // align-items: center;
 
   pointer-events: none;
   &.active {
@@ -707,6 +707,7 @@ body.active {overflow: hidden;}
     height: 300px;
 
     position: relative;
+    top: 84px;
     div {
       position: absolute;
       bottom: 0;
@@ -1549,6 +1550,14 @@ body.active {overflow: hidden;}
           background: url('../images/challenge/ico_favorite.svg') no-repeat 50%;
           background-size: 16px;
         }
+        &.btn_info  span {
+          background: url('../images/common/ico_info01.svg') no-repeat 50%;
+          background-size: 24px;
+        }
+        &.btn_setup span {
+          background: url('../images/common/ico_setting01.svg') no-repeat 50%;
+          background-size: 24px;
+        }
       }
     }
   }
@@ -1611,7 +1620,7 @@ body.active {overflow: hidden;}
           position: relative;
           padding: 0 20px;
           h2 {
-						padding-right: 74px;
+						// padding-right: 74px;
             font-size: 16px;
             font-weight: 600;
             line-height: 24px;
@@ -2225,6 +2234,7 @@ body.active {overflow: hidden;}
                     background-image: url('../images/common/ico_heart07.svg');
                   }
                   .heart_effect02 {
+                    display: none;
                     z-index: 10;
                   }
                 }
@@ -2482,7 +2492,7 @@ body.active {overflow: hidden;}
                             display: flex;
                             align-items: end;
                             > .inner {
-                              flex: 1;
+                              width: 100%;
                               padding: 10px 16px 20px;
               
                               background: #000;
@@ -2550,6 +2560,8 @@ body.active {overflow: hidden;}
                                   font-weight: 600;
                                   line-height: 1.2;
                                   color: #344054;
+
+                                  @include text_ellipsis();
                                 }
                               }
                               > .title {
@@ -2714,7 +2726,7 @@ body.active {overflow: hidden;}
             &.jelly .content2.lottie .text_wrap {
               lottie-player {
                 width: 200px;
-                margin: -24px auto 0;
+                margin: -24px auto -54px;
               }
               h4 {
                 margin-top: -30px;
