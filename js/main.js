@@ -81,7 +81,7 @@ $(function () {
 		function switchTab(n) {
 			const posCenter = window.outerWidth / 2;
 			let pos = 0;
-			let gap = 0;
+			let gap = -10;
 			const posLimit = weeklyUl.outerWidth() - weeklyInner.outerWidth() + 20; // inner에 패딩 20있어서 추가
 
 			if (weeklyLi.eq(n).position().left + gap + weeklyLi.eq(n).outerWidth() / 2 <= posCenter) {
