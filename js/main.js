@@ -93,7 +93,8 @@ $(function () {
 				}
 			}
 
-			weeklyInner.animate({scrollLeft : pos}, 500);
+			weeklyInner.scrollLeft(pos);
+			//weeklyInner.animate({scrollLeft : pos}, 500);
 		}
 	};
 
@@ -112,7 +113,7 @@ $(function () {
 				let heartEffect01 = $(this).find('.heart_effect01');
 				//let heartEffect02 = $(this).find('.heart_effect02');
 
-				if(downloadAni.hasClass('active')) return
+				if (downloadAni.hasClass('active')) return
 
 				$(this).addClass('clicked');
 				heartEffect01.hide();
