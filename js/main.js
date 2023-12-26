@@ -89,16 +89,13 @@ $(function () {
 			if (weeklyLi.eq(n).position().left + gap + weeklyLi.eq(n).outerWidth() / 2 <= posCenter) {
 				pos = 0;
 			} else {
-				pos = (weeklyLi.eq(n).position().left + gap + weeklyLi.eq(n).outerWidth() / 2) - posCenter;
-
-				//pos = scrollWidth - (menuWidth /2) + (_width /2);
+				// pos = (weeklyLi.eq(n).position().left + gap + weeklyLi.eq(n).outerWidth() / 2) - posCenter;
+				pos = weeklyLi.eq(n).position().left - posCenter;
 
 				if (pos > posLimit) {
 					pos = posLimit;
 				}
 			}
-
-			console.log(pos, weeklyLi.eq(n).position().left, weeklyLi.eq(n).outerWidth(), posCenter, posLimit);
 
 			weeklyInner.animate({scrollLeft : pos}, 500); 
 		}
