@@ -88,13 +88,13 @@ $(function () {
 				pos = 0;
 			} else {
 				pos = (weeklyLi.eq(n).position().left + gap + weeklyLi.eq(n).outerWidth() / 2) - posCenter;
+				console.log(weeklyLi.eq(n).position().left + gap + weeklyLi.eq(n).outerWidth() / 2, posCenter, pos);
 				if (pos > posLimit) {
 					pos = posLimit;
 				}
 			}
 
 			weeklyInner.scrollLeft(pos);
-			//weeklyInner.animate({scrollLeft : pos}, 500);
 		}
 	};
 
