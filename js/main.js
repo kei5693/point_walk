@@ -78,6 +78,27 @@ $(function () {
 		}
 
 		// 클릭한 대상으로 scroll 이동 이벤트
+		// function switchTab(n) {
+		// 	const posCenter = window.outerWidth / 2;
+		// 	const el = weeklyLi.eq(n);
+		// 	const elPosition = el.position().left;
+		// 	const elWidth = el.outerWidth() / 2;
+		// 	const gap = 0;
+	
+		// 	let pos = 0;
+		// 	const posLimit = weeklyUl.outerWidth() - weeklyInner.outerWidth() + 20; // inner에 패딩 20있어서 추가
+	
+		// 	if (elPosition + gap + elWidth <= posCenter) {
+		// 			pos = 0;
+		// 	} else {
+		// 			pos = (elPosition + gap + elWidth) - posCenter;
+		// 			// if (pos > posLimit) {
+		// 			// 	pos = posLimit;
+		// 			// }
+		// 			pos = Math.min(pos, posLimit);
+		// 	}
+		// 	weeklyInner.scrollLeft(pos);
+		// }
 		function switchTab(n) {
 			const posCenter = window.outerWidth / 2;
 			let pos = 0;

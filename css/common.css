@@ -1887,10 +1887,12 @@ body.active {
   margin: 0 20px;
 }
 #wrap.main_content_wrap #container .status_wrap .main_status .title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  position: relative;
   padding-top: 16px;
+}
+#wrap.main_content_wrap #container .status_wrap .main_status .title > div {
+  position: relative;
+  z-index: 10;
 }
 #wrap.main_content_wrap #container .status_wrap .main_status .title > div > span {
   font-size: 13px;
@@ -1926,18 +1928,21 @@ body.active {
   background-size: 100%;
 }
 #wrap.main_content_wrap #container .status_wrap .main_status .title > div > p {
-  margin-top: 8px;
+  margin-top: 4px;
   font-size: 13px;
   font-weight: 400;
   color: var(--color-brand1);
 }
 #wrap.main_content_wrap #container .status_wrap .main_status .title > img {
+  position: absolute;
+  top: 0;
+  right: 0;
   width: 117px;
   height: 117px;
 }
 #wrap.main_content_wrap #container .status_wrap .main_status .graph_cont {
   position: relative;
-  margin-top: 12px;
+  margin-top: 28px;
   padding: 18px 18px 13px;
   border-radius: 16px;
   background: #F9F5FF;
@@ -2090,6 +2095,13 @@ body.active {
 #wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .link_wrap a > div {
   flex: 1;
   margin-left: 10px;
+}
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content1 a > div > em,
+#wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .link_wrap a > div > em {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--color-brand1);
 }
 #wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content1 a > div > span,
 #wrap.main_content_wrap #container .status_wrap > ul > li > .inner > .contents .content2 .link_wrap a > div > span {

@@ -2159,11 +2159,15 @@ body.active {overflow: hidden;}
           padding: 16px 16px 20px;
           margin: 0 20px;
           .title {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            // display: flex;
+            // justify-content: space-between;
+            // align-items: center;
+
+            position: relative;
             padding-top: 16px;
             > div {
+              position: relative;
+              z-index: 10;
               > span {
                 font-size: 13px;
                 font-weight: 400;
@@ -2199,20 +2203,24 @@ body.active {overflow: hidden;}
                 }
               }
               > p {
-                margin-top: 8px;
+                margin-top: 4px;
                 font-size: 13px;
                 font-weight: 400;
                 color: var(--color-brand1);
               }
             }
             > img {
+              position: absolute;
+              top: 0;
+              right: 0;
+
               width: 117px;
               height: 117px;
             }
           }
           .graph_cont {
             position: relative;
-            margin-top: 12px;
+            margin-top: 28px;
             padding: 18px 18px 13px;
             border-radius: 16px;
             background: #F9F5FF;
@@ -2378,6 +2386,12 @@ body.active {overflow: hidden;}
                     > div {
                       flex: 1;
                       margin-left: 10px;
+                      > em {
+                        display: block;
+                        font-size: 11px;
+                        font-weight: 400;
+                        color: var(--color-brand1);
+                      }
                       > span {
                         font-size: 11px;
                         font-weight: 400;
