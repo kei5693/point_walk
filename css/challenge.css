@@ -905,7 +905,6 @@
   margin-top: 8px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
 }
 .challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .stamp_wrap ul li {
   position: relative;
@@ -919,6 +918,10 @@
   margin: 2px 0;
   text-align: center;
 }
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .stamp_wrap ul:has(> li:only-child) li,
+.challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .stamp_wrap ul:has(> li:first-child + li:last-child) li {
+  flex: 1;
+} 
 .challenge_content_wrap .challenge_detail_wrap > .inner .challenge_reward > .toggle_cont > .stamp_wrap ul li:nth-child(3n+2) {
   width: 33.4%;
 }
